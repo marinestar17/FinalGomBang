@@ -57,10 +57,7 @@ pageEncoding="UTF-8"%>
         	$("#Commercialpro").on("click",Commercialpro)
         	$("#Garagepro").on("click",Garagepro);
         	$("#Lotpro").on("click",Lotpro);
-    		$("#searchButton").on("click",searchItem);
-    		
-    		/* $( "#geoapi-prefectures" ).addClass( "selectpicker search-fields" ); // css의 시점 문제를 해결
-    		$( "#geoapi-cities" ).addClass( "selectpicker search-fields" );  // css의 시점 문제를 해결 */
+    		$("#searchButton").on("click",searchItem); // 검색 버튼 클릭
     		
     	});
     	
@@ -160,6 +157,7 @@ pageEncoding="UTF-8"%>
     	    		}
     	    	});
     	    }
+    	    
     	    function splitOption(resp){
     	    	$.each(resp, function(index,item){
     	 		var forSale_Option = $(".forSale_Option"+item.forSale_Seq).val();
@@ -231,61 +229,8 @@ pageEncoding="UTF-8"%>
     	    	  $(".filtr-container").html(data);
     	    }
     	    
-    	    /* function geoApiChangePrefecture () {
-    			geoapi_prefecture_selected = $("#geoapi-prefectures option:selected");
-    		    geoApiInitializeCities();
-    		    geoApiInitializeTowns();
-    		    if (geoapi_prefecture_selected.val() == '都道府県を選択してください') {
-    		      return;
-    		    }
-    		    $.getJSON(geoapi_url, { "method": "getCities", "prefecture": geoapi_prefecture_selected.text() }, setCities);
-    		}
-    		
-    	    
-    		function setCities (json) {
-    		    var cities = json.response['location'];
-    		    $("#cities").empty();
-    		    var content="";
-    			content+='<select style="color: #999;"id="geoapi-cities" name="geoapi_cities" data-live-search="true" data-live-search-placeholder="Search value" >';
-    			content+='<option style="color: #95c41f;" value="市区町村名を選択してください" >市区町村名を選択してください</option>';
-    			content+='</select>';
-    			$( "#geoapi-cities" ).addClass( "selectpicker search-fields" );
-    			 $("#cities").html(content);
-    			 for (var index = 0; index < cities.length; index++) {
-     		        var option = $(document.createElement('option'));
-     		        option.text(cities[index].city);
-     		        option.val(cities[index].city);
-     		        option.css("color","#95c41f");
-     		        $('#geoapi-cities').append(option);
-     		    }
-     		    $("#geoapi-cities").change(searchAddress);
-    		}
-    		
-    		// 주소로 우편번호 리스트 출력
-    		function searchAddress(){
-    			geoapi_prefectures = $("#geoapi-prefectures option:selected").val();
-    			geoapi_cities = $("#geoapi-cities option:selected").val();
-    			geoapi_towns = $("#geoapi_towns option:selected").val();
-    			var postCodeList = "";
-    			$.ajax({
-    				url:"https://apis.postcode-jp.com/api/v2/search?apiKey=ISdegT3BVbqK3v41cl1yinQOc0LfWelSsdNBPWr&q="+geoapi_prefectures+" "+geoapi_cities,
-    				type:"get",
-    				success:function(res){
-    					postCodeList+="<option value='町を選択してください。' class='postcode' style='color: #95c41f;'>町を選択してください。</option>";
-    					$.each(res.data,function(index,item){
-    						//postCodeList+="<option class='postcode' data-town='"+ item.town+"' data-code='"+item.postcode+"'>"+item.postcode+" "+item.town"</option>";
-    						if(item.town!=""){
-    							postCodeList+="<option class='postcode' data-town='"+ item.town+"' data-code='"+item.postcode+"' style='color: #95c41f;'>"+item.town+"</option>";
-    						}
-    					})
-    					//$("#geoapi_towns").change(selectPostCode);
-    					$("#geoapi_towns").html(postCodeList);
-    					
-    				}
-    			});
-    		} */
     </script>
-    
+    <!-- 주소API CSS -->
     <style>
     #geoapi-prefectures{
     	width:100%;
@@ -838,21 +783,29 @@ pageEncoding="UTF-8"%>
                 <div class="services-info">
                     <i class="flaticon-apartment"></i>
                     <h5>Apartments</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                    <p>한국의 아파트와는 다릅니다.<br>
+                    	아파트.<br>
+                    	アパート。
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInLeft delay-04s">
                 <div class="services-info">
                     <i class="flaticon-internet"></i>
-                    <h5>Houses</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                    <h5>Mansion</h5>
+                    <p>한국의 아파트가 일본의 맨션입니다.<br>
+                    	맨션.<br>
+                    	マンション。
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInRight delay-04s">
                 <div class="services-info">
                     <i class="flaticon-vehicle"></i>
-                    <h5>Garages</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                    <h5>ShareHouse</h5>
+                    <p>
+                    	
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInRight delay-04s">
@@ -871,9 +824,9 @@ pageEncoding="UTF-8"%>
 <!-- Services end -->
 
 <!-- Recently properties start -->
-<div class="mb-70 recently-properties">
+<!-- <div class="mb-70 recently-properties">
     <div class="container">
-        <!-- Main title -->
+        Main title
         <div class="main-title">
             <h1>Featured Properties</h1>
         </div>
@@ -881,7 +834,7 @@ pageEncoding="UTF-8"%>
             <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInLeft delay-04s">
                 <div class="property">
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-pad">
-                        <!-- Property img -->
+                        Property img
                         <div class="property-img">
                             <div class="property-tag button alt featured">Featured</div>
                             <div class="property-price">$150,000</div>
@@ -904,17 +857,17 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 property-content ">
-                        <!-- title -->
+                        title
                         <h1 class="title">
                             <a href="properties-details.html">Beautiful Single Home</a>
                         </h1>
-                        <!-- Property address -->
+                        Property address
                         <h3 class="property-address">
                             <a href="properties-details.html">
                                 <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
                             </a>
                         </h3>
-                        <!-- Facilities List -->
+                        Facilities List
                         <ul class="facilities-list fl-2 clearfix">
                             <li>
                                 <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
@@ -933,7 +886,7 @@ pageEncoding="UTF-8"%>
                                 <span>1 Garage </span>
                             </li>
                         </ul>
-                        <!-- Property footer -->
+                        Property footer
                         <div class="property-footer">
                             <span class="left">
                                 <a href="#"><i class="fa fa-user"></i>Jhon Doe</a>
@@ -948,7 +901,7 @@ pageEncoding="UTF-8"%>
             <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInRight delay-04s">
                 <div class="property">
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-pad">
-                        <!-- Property img -->
+                        Property img
                         <div class="property-img">
                             <div class="property-tag button alt featured">Featured</div>
                             <div class="property-price">$150,000</div>
@@ -971,17 +924,17 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 property-content ">
-                        <!-- title -->
+                        title
                         <h1 class="title">
                             <a href="properties-details.html">Beautiful Single Home</a>
                         </h1>
-                        <!-- Property address -->
+                        Property address
                         <h3 class="property-address">
                             <a href="properties-details.html">
                                 <i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
                             </a>
                         </h3>
-                        <!-- Facilities List -->
+                        Facilities List
                         <ul class="facilities-list fl-2 clearfix">
                             <li>
                                 <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
@@ -1000,7 +953,7 @@ pageEncoding="UTF-8"%>
                                 <span>1 Garage </span>
                             </li>
                         </ul>
-                        <!-- Property footer -->
+                        Property footer
                         <div class="property-footer">
                             <span class="left">
                                 <a href="#"><i class="fa fa-user"></i>Jhon Doe</a>
@@ -1014,7 +967,7 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Partners block end -->
 
 <div class="clearfix"></div>
@@ -1091,7 +1044,7 @@ pageEncoding="UTF-8"%>
 <!-- Categories end-->
 
 <!-- Pricing tables 2 start -->
-<div class="pricing-tables-2 mb-70">
+<!-- <div class="pricing-tables-2 mb-70">
     <div class="container">
         <div class="main-title">
             <h1>Pricing Tables</h1>
@@ -1153,7 +1106,7 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Pricing tables 2 end -->
 
 <!-- Testimonials 2 -->
@@ -1162,10 +1115,10 @@ pageEncoding="UTF-8"%>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="sec-title-three">
-                        <h4>Happy Clients</h4>
-                        <h2>Testimonials</h2>
+                        <h4>Happy Programmer</h4>
+                        <h2>GomBang Project</h2>
                         <div class="text">
-                            We collect reviews from our customers so you can get an honest opinion of what an apartment is really like!
+                            1명의 리더와 3명의 사축들이 함께 만든 일본에 향하는 한국인들을 위한 부동산 사이트!
                         </div>
                     </div>
                 </div>
@@ -1176,15 +1129,18 @@ pageEncoding="UTF-8"%>
                         <div class="item content clearfix">
                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                 <div class="avatar">
-                                    <img src="http://placehold.it/220x220" alt="avatar-1" class="img-responsive">
+                                    <img src="/GomBang/img/심진용.jpg" alt="avatar-1" class="img-responsive">
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
-                                    Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim. Donec vel lectus vel felis lacinia luctus vitae iaculis arcu. Mauris mattis, massa eu porta ultricies.
+                                		SCIT MASTER 36기 심진용<br>
+                                    	언제나 팀원들을 챙기는 배려심 깊은<br>
+                                    	진정한 리더<br>  
+                                    	절.대.리.더.해
                                 </div>
                                 <div class="author-name">
-                                    John Antony
+                                    JINYONG SIM
                                 </div>
                                 <ul class="rating">
                                     <li>
@@ -1200,7 +1156,7 @@ pageEncoding="UTF-8"%>
                                         <i class="fa fa-star"></i>
                                     </li>
                                     <li>
-                                        <i class="fa fa-star-half-full"></i>
+                                        <i class="fa fa-star"></i>
                                     </li>
                                 </ul>
                             </div>
@@ -1208,15 +1164,18 @@ pageEncoding="UTF-8"%>
                         <div class="item content active clearfix">
                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                 <div class="avatar">
-                                    <img src="http://placehold.it/220x220" alt="avatar-2" class="img-responsive">
+                                    <img src="/GomBang/img/KakaoTalk_20190420_200626848.jpg" alt="avatar-2" class="img-responsive">
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
-                                    Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim. Donec vel lectus vel felis lacinia luctus vitae iaculis arcu. Mauris mattis, massa eu porta ultricies.
+                                	SCIT MASTER 36기 김경호<br>
+                                	언제나 솔선수범 리더를 받쳐주는 특등사축<br>
+                                	어느 기업이나 원하는 인재<br>
+                                	Three Gold
                                 </div>
                                 <div class="author-name">
-                                    John Antony
+                                     KYEONGHO KIM
                                 </div>
                                 <ul class="rating">
                                     <li>
@@ -1232,7 +1191,7 @@ pageEncoding="UTF-8"%>
                                         <i class="fa fa-star"></i>
                                     </li>
                                     <li>
-                                        <i class="fa fa-star-half-full"></i>
+                                        <i class="fa fa-star"></i>
                                     </li>
                                 </ul>
                             </div>
@@ -1240,12 +1199,14 @@ pageEncoding="UTF-8"%>
                         <div class="item content clearfix">
                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                 <div class="avatar">
-                                    <img src="http://placehold.it/220x220" alt="avatar-3" class="img-responsive">
+                                    <img src="/GomBang/img/KakaoTalk_20190420_200635259.jpg" alt="avatar-3" class="img-responsive">
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
-                                    Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim. Donec vel lectus vel felis lacinia luctus vitae iaculis arcu. Mauris mattis, massa eu porta ultricies.
+                                	SCIT MASTER 36기 김문승<br>
+                                	3차 역량평가 지옥의 재재시험까지 봤지만 여기까지 올라왔다.<br>
+                                	주의 : 실물과 사진은 다를수 있습니다.
                                 </div>
                                 <div class="author-name">
                                     John Antony
@@ -1359,24 +1320,24 @@ pageEncoding="UTF-8"%>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                                Address: 코엑스 4층 SCIT 교육센터
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                                Email:<a href="sjydiablo@naver.com">sjydiablo@naver.com</a>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+82-00-0000-0000">+82-00-0000-0000</a>
                             </li>
                             <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
+                                <!-- <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071 -->
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- <!-- Links -->
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
@@ -1384,10 +1345,10 @@ pageEncoding="UTF-8"%>
                         </div>
                         <ul class="links">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="goHome">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact Us</a>
@@ -1461,7 +1422,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
                             <h1>Subscribe</h1>
@@ -1483,7 +1444,7 @@ pageEncoding="UTF-8"%>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -1495,17 +1456,17 @@ pageEncoding="UTF-8"%>
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
                     <li>
-                        <a href="#" class="facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>

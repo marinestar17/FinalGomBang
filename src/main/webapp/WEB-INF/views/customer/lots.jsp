@@ -48,6 +48,8 @@
                         <h3 class="property-address">
                             <a href="customerItemDetail?forSale_Seq=${searchItemList.forSale_Seq }">
                                 <i class="fa fa-map-marker"></i>${searchItemList.geoapi_prefectures} ${searchItemList.geoapi_cities} ${searchItemList.geoapi_towns} ${searchItemList.geoapi_remain}
+                            	<br>
+                            	<i class="fa fa-train"></i>${searchItemList.forSale_SubwayDistance2 }
                             </a>
                         </h3>
                         <!-- Facilities List -->

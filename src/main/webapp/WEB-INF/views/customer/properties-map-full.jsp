@@ -263,7 +263,7 @@ pageEncoding="UTF-8"%>
     <div class="col-lg-12">
         <div class="row">
             <!-- <div id="map"></div> -->
-            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box" style="width:400px;">
             <div id="map"></div>
         </div>
     </div>
@@ -410,12 +410,6 @@ pageEncoding="UTF-8"%>
 <!-- Custom javascript -->
 <script src="resources/user/js/ie10-viewport-bug-workaround.js"></script>
 
-<!-- <script>
-    var latitude = 51.541216;
-    var longitude = -0.095678;
-    var providerName = 'Hydda.Full';
-    generateMap(latitude, longitude, providerName);
-</script> -->
 </body>
 </html>
 

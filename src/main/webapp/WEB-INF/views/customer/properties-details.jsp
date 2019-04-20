@@ -54,6 +54,9 @@ pageEncoding="UTF-8"%>
  		splitOption();
  		reservation();
  		bookmarkcheck();
+ 		$("#searchButton").on("click",function(){
+ 			$("#searchItemForm").submit();
+ 		})
  	});
  	
  	function splitOption(){
@@ -98,8 +101,8 @@ pageEncoding="UTF-8"%>
  				var imgContent="";
  				var imgContentDiv="";
  				$.each(res,function(index,item){
- 					imgContent += '<li data-target="#carousel-custom" data-slide-to="0" class="" >';
- 					imgContent += '<img src="/GomBang/img/'+item.saveName+'" alt="Chevrolet Impala" style="width:auto;height:60px;margin-left: auto; margin-right: auto; display: block;">';
+ 					imgContent += '<li data-target="#carousel-custom" data-slide-to="'+index+'" class="" style="width:90px;height:60px;display: inline-block;float:none;">';
+ 					imgContent += '<img src="/GomBang/img/'+item.saveName+'" alt="Chevrolet Impala" style="height:60px;max-width:90px;margin-left:auto;margin-right:auto ;float:none; ">';
  					imgContent += '</li>';
  				})
  				$.each(res,function(index,item){
@@ -243,6 +246,31 @@ pageEncoding="UTF-8"%>
        		});//ajax
  	}//function
  </script>
+ 
+ <style>
+    #geoapi-prefectures{
+    	width:100%;
+    	color: #999;
+		height:44px;
+		border: 1px solid #e0e0e0;
+		display:block;
+    }
+    #geoapi-cities{
+		width:100%;
+		color: #999;
+		height:44px;
+		border: 1px solid #e0e0e0;
+		display:block;
+	}
+	#geoapi-towns{
+		width:100%;
+		height:44px;
+		border: 1px solid #e0e0e0;
+		color: #999;
+		display:block;
+
+	}
+    </style>
 <body>
 
 <div class="page_loader"></div>
@@ -485,10 +513,17 @@ pageEncoding="UTF-8"%>
                         </p>
                     </div>
                     <div class="pull-right">
+                    	<c:if test="${detailItem.forSale_Status=='For Rent' }">
                         <h3><span>${detailItem.forSale_Rent }</span></h3>
                         <h5>
-                            Per Manth
+                            Per Month
                         </h5>
+                        </c:if>
+                        <c:if test="${detailItem.forSale_Status=='For Sale' }">
+                        <h3><span>${detailItem.forSale_Rent }</span></h3>
+                        <h5>
+                        </h5>
+                        </c:if>
                     </div>
                 </div>
                 <!-- Properties details section start -->
@@ -539,7 +574,7 @@ pageEncoding="UTF-8"%>
                                 </a>
                             </div>
                             <!-- Indicators -->
-                            <ol id="detailImageOl" class="carousel-indicators thumbs visible-lg visible-md">
+                            <ol id="detailImageOl" class="carousel-indicators thumbs visible-lg visible-md" style="text-align: center;">
                                 <li data-target="#carousel-custom" data-slide-to="0" class=""><img src="http://placehold.it/90x60" alt="Chevrolet Impala"></li>
                                 <li data-target="#carousel-custom" data-slide-to="1" class=""><img src="http://placehold.it/90x60" alt="Chevrolet Impala"></li>
                                 <li data-target="#carousel-custom" data-slide-to="2" class=""><img src="http://placehold.it/90x60" alt="Chevrolet Impala"></li>
@@ -680,7 +715,6 @@ pageEncoding="UTF-8"%>
                             <li class=""><a href="#tab4default" data-toggle="tab" aria-expanded="false">Price</a></li>
                             <li class=""><a href="#tab3default" data-toggle="tab" aria-expanded="false">Amenities</a></li>
                             <li class=""><a href="#tab5default" data-toggle="tab" aria-expanded="false">for Subway</a></li>
-                            <li class=""><a href="#tab2default" data-toggle="tab" aria-expanded="false">for Subway</a></li>
                         </ul>
                         <div class="panel with-nav-tabs panel-default">
                             <div class="panel-body">
@@ -885,8 +919,8 @@ pageEncoding="UTF-8"%>
                     <!-- Properties comments start -->
                     <div class="properties-comments mb-40">
                         <!-- Comments section start -->
-                        <div class="comments-section">
-                            <!-- Main Title 2 -->
+                        <!-- <div class="comments-section">
+                            Main Title 2
                             <div class="main-title-2">
                                 <h1><span>Comments </span> Section</h1>
                             </div>
@@ -1036,7 +1070,7 @@ pageEncoding="UTF-8"%>
                                     </ul>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- Comments section end -->
                     </div>
                     <!-- Properties comments end -->
@@ -1097,117 +1131,157 @@ pageEncoding="UTF-8"%>
                             <h1><span>Advanced</span> Search</h1>
                         </div>
 
-                        <form method="GET">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
-                                    <option>Property Status</option>
-                                    <option>For Sale</option>
-                                    <option>For Rent</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="location" data-live-search="true" data-live-search-placeholder="Search value">
-                                    <option>Location</option>
-                                    <option>United States</option>
-                                    <option>United Kingdom</option>
-                                    <option>American Samoa</option>
-                                    <option>Belgium</option>
-                                    <option>Cameroon</option>
-                                    <option>Canada</option>
-                                </select>
-                            </div>
+                        <form method="GET" id="searchItemForm" action="searchItem" >
+                        <div class="form-group">
+                            <select id="selectOptionStatus" class="selectpicker search-fields" name="forSale_Status" data-live-search="true" data-live-search-placeholder="Search value">
+                                <option>Property Status</option>
+                                <option>For Sale</option>
+                                <option>For Rent</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="selectHouseType" class="selectpicker search-fields" name="forSale_HouseType" data-live-search="true" data-live-search-placeholder="Search value" >
+                                <option>Property Types</option>
+                                <option>Apartment</option>
+                                <option>House</option>
+                                <option>Commercial</option>
+                                <option>Garage</option>
+                                <option>Lot</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="geoapi-prefectures" name="geoapi_prefectures" class="test1">
+  								<option value="都道府県を選択してください">都道府県を選択してください</option>
+							</select>
+                        </div>
 
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="property-types" data-live-search="true" data-live-search-placeholder="Search value" >
-                                    <option>Property Types</option>
-                                    <option>Residential</option>
-                                    <option>Commercial</option>
-                                    <option>Land</option>
-                                </select>
-                            </div>
+                        <div class="form-group" id="cities">
+                            <select id="geoapi-cities" name="geoapi_cities" >
+  								<option value="市区町村名を選択してください">市区町村名を選択してください</option>
+							</select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="geoapi-towns" class="input-text" name="geoapi_towns">
+                            	<option value="市町を選択してください">町を選択してください</option>
+                            </select>
+                        </div>
 
-                            <div class="form-group">
-                                <select class="selectpicker search-fields" name="area-from" data-live-search="true" data-live-search-placeholder="Search value" >
-                                    <option>Area From</option>
-                                    <option>1000</option>
-                                    <option>800</option>
-                                    <option>600</option>
-                                    <option>400</option>
-                                    <option>200</option>
-                                    <option>100</option>
-                                </select>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bedrooms">
-                                            <option>Bedrooms</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bathroom">
-                                            <option>Bathroom</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
+                        <!-- <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields" name="bedrooms">
+                                        <option>Bedrooms</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <select class="selectpicker search-fields" name="balcony">
-                                            <option>Balcony</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <select class="selectpicker search-fields" data-live-search="true" name="garage">
-                                            <option>Garage</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields" name="bathroom">
+                                        <option>Bathroom</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="range-slider">
-                                <label>Area</label>
-                                <div data-min="0" data-max="10000" data-unit="Sq ft" data-min-name="min_area" data-max-name="max_area" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields" name="balcony">
+                                        <option>Balcony</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields" data-live-search="true" name="garage">
+                                        <option>Garage</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> -->
 
-                            <div class="range-slider">
-                                <label>Price</label>
-                                <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                <div class="clearfix"></div>
-                            </div>
+                        <!-- <div class="range-slider">
+                            <label>For Train</label>
+                            <div data-min="0" data-max="2000" data-unit="M" data-min-name="min_distance" data-max-name="max_distance" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                            <div class="clearfix"></div>
+                        </div> -->
 
-                            <div class="form-group mb-0">
-                                <button class="search-button">Search</button>
+                        <div class="range-slider">
+                            <label>Price</label>
+                            <div data-min="0" data-max="300000" data-unit="엔화" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <a class="show-more-options" data-toggle="collapse" data-target="#options-content">
+                            <i class="fa fa-plus-circle"></i> Show More Options
+                        </a>
+                        <div id="options-content" class="collapse">
+                            <label class="margin-t-10">Features</label>
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="에어컨">
+                                <label for="checkbox1">
+                                    	에어컨
+                                </label>
                             </div>
-                        </form>
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="세탁기">
+                                <label for="checkbox2">
+                                    	세탁기
+                                </label>
+                            </div>
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="베란다">
+                                <label for="checkbox3">
+                                    	베란다
+                                </label>
+                            </div>
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="엘리베이터">
+                                <label for="checkbox4">
+                                    	엘리베이터
+                                </label>
+                            </div>
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="흡연장">
+                                <label for="checkbox5">
+                                    	흡연장
+                                </label>
+                            </div>
+                            <div class="checkbox checkbox-theme checkbox-circle">
+                                <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="주차장">
+                                <label for="checkbox6">
+                                   	 주차장
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-0">
+                            <button type="button" class="search-button" id="searchButton">Search</button>
+                        </div>
+                    </form>
                     </div>
                     <!-- Search contents sidebar end -->
 
@@ -1993,8 +2067,11 @@ pageEncoding="UTF-8"%>
                          	console.log("aaa" + subwayMin);
                          	console.log("subwayDestination" + JSON.stringify(subwayDestination));
                          	cnt++;
-                         	
-                         	if(cnt == subwayArr.length){
+                         	console.log(cnt + " // cnt");
+                         	console.log(subwayArr.length + " // 어레이크기");
+                         	if(cnt == subwayArr.length-1){
+                         		routeMap2();
+                         	}else if(subwayArr.length==1){
                          		routeMap2();
                          	}
                          	else if(cnt!=subwayArr.length+1){
