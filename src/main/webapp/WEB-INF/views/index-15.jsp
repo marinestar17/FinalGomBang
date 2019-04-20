@@ -394,6 +394,7 @@ pageEncoding="UTF-8"%>
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
                             <li><a href="reservationcomplete">Reservation Complete</a></li> 
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>    
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -402,6 +403,14 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
                         </ul>
                     </li>
                     <!--  <li class="dropdown mega-dropdown">
@@ -757,9 +766,9 @@ pageEncoding="UTF-8"%>
 <!-- Featured properties end -->
 
 <!-- Services start -->
-<div class="services mb-100 clearfix">
+<!-- <div class="services mb-100 clearfix">
     <div class="container">
-        <!-- Main title -->
+        Main title
         <div class="main-title">
             <h1>What Are you Looking For?</h1>
         </div>
@@ -797,7 +806,7 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Services end -->
 
 <!-- Recently properties start -->
@@ -1021,7 +1030,7 @@ pageEncoding="UTF-8"%>
 <!-- Categories end-->
 
 <!-- Pricing tables 2 start -->
-<div class="pricing-tables-2 mb-70">
+<!-- <div class="pricing-tables-2 mb-70">
     <div class="container">
         <div class="main-title">
             <h1>Pricing Tables</h1>
@@ -1083,7 +1092,7 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Pricing tables 2 end -->
 
 <!-- Testimonials 2 -->
@@ -1297,12 +1306,9 @@ pageEncoding="UTF-8"%>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+55-417-634-7071">+82 4XX-634-7071</a>
                             </li>
-                            <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -1391,29 +1397,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="footer-item">
-                        <div class="main-title-2">
-                            <h1>Subscribe</h1>
-                        </div>
-                        <div class="newsletter clearfix">
-                            <p>
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                            </p>
-
-                            <form action="#" method="post">
-                                <div class="form-group">
-                                    <input class="nsu-field btn-block" id="nsu-email-0" type="text" name="email" placeholder="Enter your Email Address" required="">
-                                </div>
-                                <div class="form-group mb-0">
-                                    <button type="submit" class="button-sm button-theme btn-block">
-                                        Subscribe
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

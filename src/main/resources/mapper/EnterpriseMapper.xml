@@ -559,7 +559,9 @@ where
 			             ,FORSALE_HOUSETYPE=#{forSale_HouseType}
 			              ,FORSALE_LAT=#{forSale_Lat}
 			               ,FORSALE_LNG=#{forSale_Lng}
-		
+			                 ,FORSALE_SUBWAY=#{forSale_Subway}
+			                  ,FORSALE_SUBWAYDISTANCE=#{forSale_SubwayDistance}
+			                   ,FORSALE_SUBWAYDISTANCE2=#{forSale_SubwayDistance2}                            
 		WHERE
 		     FORSALE_SEQ=#{forSale_Seq}
 		<!-- <selectKey keyProperty="forSale_Seq" resultType="int" order="AFTER">
@@ -758,5 +760,48 @@ where
 	WHERE
 		FORSALE_SEQ = #{forSale_Seq}
 </update>
-
+<!--Poupular properties  -->
+<select id="popularproperties" resultType="Total">
+select
+         f.FORSALE_SEQ as FORSALE_SEQ
+        ,FORSALE_TITLE
+        ,FORSALE_STATUS
+        ,ENTERPRISE_ID
+        ,GEOAPI_PREFECTURES
+        ,GEOAPI_CITIES
+        ,GEOAPI_TOWNS
+        ,GEOAPI_REMAIN
+        ,FORSALE_RENT
+        ,FORSALE_DEPOSIT
+        ,FORSALE_REWARD
+        ,FORSALE_MANAGECOST
+        ,FORSALE_OPTION
+        ,FORSALE_ETC
+        ,FORSALE_INDATE
+        ,FORSALE_POSTCODE
+        ,FORSALE_HOUSETYPE
+        ,FORSALE_LAT
+        ,FORSALE_LNG
+        ,FORSALE_SUBWAY
+        ,FORSALE_SUBWAYDISTANCE
+        ,FORSALE_SUBWAYDISTANCE2
+        ,FORSALE_HITCOUNT
+        ,FORSALE_TRADE
+        ,IMAGE_SEQ
+        ,ORIGINNAME
+        ,SAVENAME
+from
+        forsale f,
+        (select 
+                        i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
+                    from 
+                        image i
+                        , (select min(image_seq) as image_seq, forsale_seq from image group by forsale_seq) i2
+                    where 
+                        i.image_seq = i2.image_seq and i.FORSALE_SEQ = i2.forsale_seq) i 	
+where
+        f.forsale_seq=i.forsale_seq
+order by
+        f.FORSALE_HITCOUNT DESC
+</select>
 </mapper>

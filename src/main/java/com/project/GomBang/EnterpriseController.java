@@ -112,7 +112,7 @@ public class EnterpriseController {
 		
 		session.invalidate();
 		
-		return "index-15";
+		return "index-14";
 	}
 	@RequestMapping(value="/checkId", method=RequestMethod.GET)
 	public @ResponseBody String checkId(String id, HttpSession session) {
@@ -190,9 +190,10 @@ public class EnterpriseController {
 	}
 	// 매물 등록하기
 	@RequestMapping(value="/insertItem", method= {RequestMethod.POST,RequestMethod.GET} )
-	public String insertItem(Item item) {
+	public String insertItem(Item item,HttpSession session) {
 		System.out.println("콘트롤러 확인");
-		item.setEnterprise_ID("aaa");
+		String userid = (String) session.getAttribute("enterpriseLoginID");
+		item.setEnterprise_ID(userid);
 		System.out.println(item);
 		dao.insertItem(item);
 		System.out.println(item.getForSale_Seq());
@@ -262,7 +263,7 @@ public class EnterpriseController {
 		System.out.println("src value : " + src);*/
 
 
-		String path = "C:\\Users\\SIM\\Documents\\test\\";
+		String path = "C:\\Users\\user\\Pictures\\imagefile\\";
 		//String path = "C:\\Users\\vvvxc\\OneDrive\\사진\\배경화면사진";
 
 		
