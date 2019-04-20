@@ -14,6 +14,7 @@ import com.project.GomBang.VO.EnterpriseBoard;
 import com.project.GomBang.VO.EnterpriseComment;
 import com.project.GomBang.VO.Item;
 import com.project.GomBang.VO.Reservation;
+import com.project.GomBang.VO.Total;
 
 
 public interface AdminMapper {
@@ -119,4 +120,10 @@ public interface AdminMapper {
 	public Item adminItemDetail(String forSale_Seq); // 매물 정보 상세 조회
 	
 	public int adminItemDelete(String forSale_Seq); //관리자가 매물 삭제
+	
+	public ArrayList<Total> adminReservationList(Total total); //예약 리스트 보기 
+	
+	public Total adminReservationDetail(String reservation_Seq); //예약 상세히 보기 ...
+	
+	public ArrayList<Total> adminTradeBoard(Total total); // 거래 완료 리스트
 }

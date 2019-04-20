@@ -401,7 +401,7 @@
 	                           <!--  <img src="http://placehold.it/130x90" alt="my-properties-1" class="img-responsive hidden-xs"> -->
 	                            <div class="title">
 	                                <h4><a href="customerItemDetail?forSale_Seq=${item.forSale_Seq}">${item.forSale_Title} </a></h4>
-	                                <span><i class="fa fa-map-marker"></i>${item.geoapi_prefectures} &nbsp; ${item.geoapi_cities} &nbsp; ${item.geoapi_towns} &nbsp; ${geoapi_remain}  </span>
+	                                <span><i class="fa fa-map-marker"></i>${item.geoapi_prefectures} &nbsp; ${item.geoapi_cities} &nbsp; ${item.geoapi_towns} &nbsp; ${item.geoapi_remain}  </span>
 	                                <span class="table-property-price">${item.forSale_Rent}yen / ${item.forSale_Status}</span>
 	                            </div>
 	                        </td>

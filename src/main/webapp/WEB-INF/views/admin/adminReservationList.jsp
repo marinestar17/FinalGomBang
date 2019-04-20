@@ -151,29 +151,29 @@
                     <li class="title">
                         MAIN NAVIGATION
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">dashboard</i>
                             <span class="nav-label">GomBang</span>
                         </a>
                         <ul>
                             <li>
-                                <a href="GomBangAdmin">Main Page</a>
+                                <a href="GomBangAdmin">메인 페이지</a>
                             </li>
                             <li >
-                                <a href="#">Time Line</a>
+                                <a href="#">관리자</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
-                            <span class="nav-label">Administrator Menu</span>
+                            <span class="nav-label">관리자 기본 메뉴</span>
                         </a>
                         <ul>
                           
                             <li>
-                                <a href="adminMessage">Work Message</a>
+                                <a href="adminMessage">관리자 메세지</a>
                             </li>
                         </ul>
                     </li>
@@ -185,38 +185,38 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="../forms/basic-form-elements.html">????</a>
+                                <a href="adminEnterpriseBoardList">기업 문의</a>
                             </li>
                             <li>
-                                <a href="adminEnterpriseBoardList">Enterprise QUESTION</a>
-                            </li>
-                            <li>
-                                <a href="adminCustomerBoardList">Customer Board</a>
+                                <a href="adminCustomerBoardList">고객 게시판</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
                             <span class="nav-label">각 항목 리스트</span>
                         </a>
                         <ul>
                              <li>
-                                <a href="customerList">Customer List</a>
+                                <a href="customerList">고객 리스트</a>
                             </li>
                             <li>
-                                <a href="allEnterprisePrint">Enterprise List & Permission</a>
+                                <a href="allEnterprisePrint">기업 리스트</a>
                             </li>
                             <li>
-                                <a href="adminItemList">Item List</a>
+                                <a href="adminItemList">매물 리스트</a>
                             </li>
                             <li>
-                                <a href="adminReservationList">Reservation List</a>
+                                <a href="adminReservationList">예약 리스트</a>
+                            </li>
+                            <li>
+                                <a href="adminTradeList">거래완료 리스트</a>
                             </li>
                         </ul>
                     </li>
                    
-                     <li>
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
                             <span class="nav-label">통계자료</span>
@@ -263,40 +263,6 @@
                                 	</ul>
                             </li>
                         </ul> 
-                    </li>
-                   
-                    
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">shopping_cart</i>
-                            <span class="nav-label">E-Commerce</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="../ecommerce/cart.html">Cart</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/orders.html">Orders</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/payment.html">Payment</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/pricing-table.html">Pricing Table</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/product-detail.html">Product Detail</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/product-edit.html">Product Edit</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/product-grid.html">Product Grid</a>
-                            </li>
-                            <li>
-                                <a href="../ecommerce/product-list.html">Product List</a>
-                            </li>
-                        </ul>
                     </li>
                     
                 </ul>
@@ -410,7 +376,7 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>고객 게시판 관리</h1>
+                <h1>예약 관리</h1>
                 <ol class="breadcrumb">
                     <li><a href="../../index.html">Home</a></li>
                     <li><a href="javascript:void(0);">Tables</a></li>
@@ -421,8 +387,8 @@
                 <div class="row clearfix">
                   <!--   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6"> -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Item List</div>
-                            <div class="panel-body itemTable">
+                            <div class="panel-heading">Reservation List</div>
+                            <div class="panel-body reservationTable">
                                 <!-- <table class="table">
                                     <thead>
                                         <tr>

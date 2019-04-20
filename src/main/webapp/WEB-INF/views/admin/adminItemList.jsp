@@ -211,7 +211,7 @@
                                 <a href="adminReservationList">예약 리스트</a>
                             </li>
                             <li>
-                                <a href="#">거래완료 리스트</a>
+                                <a href="adminTradeList">거래완료 리스트</a>
                             </li>
                         </ul>
                     </li>
@@ -376,7 +376,7 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>고객 게시판 관리</h1>
+                <h1>매물 관리</h1>
                 <ol class="breadcrumb">
                     <li><a href="../../index.html">Home</a></li>
                     <li><a href="javascript:void(0);">Tables</a></li>

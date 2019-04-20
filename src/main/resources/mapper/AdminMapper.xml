@@ -848,4 +848,81 @@
 		FROM
 			DUAL
 	</select>
+	
+	<!--예약 리스트 가져오기  -->
+	<select id="adminReservationList" parameterType = "Total" resultType = "Total">
+		SELECT
+			FORSALE_TITLE
+			,R.ENTERPRISE_ID AS ENTERPRISE_ID
+			,R.CUSTOMER_ID AS CUSTOMER_ID
+			,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM-DD') AS RESERVATION_INDATE
+			,RESERVATION_COMPLETE
+			,RESERVATION_SEQ
+		FROM
+			FORSALE F, RESERVATION R
+		WHERE
+			R.FORSALE_SEQ = F.FORSALE_SEQ
+		AND
+			F.FORSALE_TRADE = 'N'
+		<if test="searchSelect != null and searchSelect.equals('enterprise_ID')">
+		AND
+			enterprise_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('customer_ID')">
+		AND
+			customer_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('reservation_Complete')">
+		AND
+			reservation_Complete like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('reservation_Indate')">
+		AND
+			reservation_Indate like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('forSale_Title')">
+		AND
+			forSale_Title like '%'||#{search}||'%'
+		</if>
+	</select>
+	
+	<!-- 예약한 거 상세 조회 -->
+	<select id="adminReservationDetail" parameterType = "String" resultType = "Total">
+		SELECT
+			FORSALE_TITLE
+			,GEOAPI_PREFECTURES
+			,GEOAPI_CITIES
+			,GEOAPI_TOWNS
+			,GEOAPI_REMAIN
+			,FORSALE_STATUS
+			,FORSALE_RENT
+			,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM-DD') RESERVATION_INDATE
+			,RESERVATION_COMPLETE
+			,RESERVATION_SEQ
+			,R.CUSTOMER_ID
+			,R.ENTERPRISE_ID
+		FROM
+			FORSALE F, RESERVATION R
+		WHERE
+			R.RESERVATION_SEQ = #{reservation_Seq}
+		AND
+			R.FORSALE_SEQ = F.FORSALE_SEQ
+	</select>
+	
+	<!-- 거래 완료 리스트 가져오기 -->
+	<select id="adminTradeBoard" parameterType = "Total" resultType = "Total">
+		SELECT
+			FORSALE_TITLE
+			,R.ENTERPRISE_ID AS ENTERPRISE_ID
+			,R.CUSTOMER_ID AS CUSTOMER_ID
+			,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM-DD') AS RESERVATION_INDATE
+			,RESERVATION_SEQ
+			,TO_CHAR(FORSALE_TRADEINDATE, 'YYYY-MM-DD') AS FORSALE_TRADEINDATE
+		FROM
+			FORSALE F, RESERVATION R
+		WHERE
+			R.FORSALE_SEQ = F.FORSALE_SEQ
+		AND
+			F.FORSALE_TRADE = 'Y'
+	</select>
 </mapper>

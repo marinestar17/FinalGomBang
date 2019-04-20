@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>GomBang - Administrator</title>
+    <title>고객 게시판 |GomBang-Administrator</title>
     <!-- Favicon -->
     <link rel="icon" href="resources/adminBoot/favicon.ico" type="image/x-icon">
 
@@ -33,9 +34,6 @@
     <!-- Metis Menu Css -->
     <link href="resources/adminBoot/assets/plugins/metisMenu/dist/metisMenu.css" rel="stylesheet" />
 
-    <!-- Jquery Datatables Css -->
-    <link href="resources/adminBoot/assets/plugins/DataTables/media/css/dataTables.bootstrap.css" rel="stylesheet" />
-
     <!-- Pace Loader Css -->
     <link href="resources/adminBoot/assets/plugins/pace/themes/white/pace-theme-flash.css" rel="stylesheet" />
 
@@ -54,15 +52,7 @@
         <header>
             <nav class="navbar navbar-default">
                 <!-- Search Bar -->
-                <div class="search-bar">
-                    <div class="search-icon">
-                        <i class="material-icons">search</i>
-                    </div>
-                    <input type="text" placeholder="Start typing...">
-                    <div class="close-search js-close-search">
-                        <i class="material-icons">close</i>
-                    </div>
-                </div>
+               
                 <!-- #END# Search Bar -->
 
                 <div class="container-fluid">
@@ -74,7 +64,7 @@
                             <i class="material-icons">menu</i>
                         </a>
                         <!-- Logo -->
-                        <a class="navbar-brand" href="GomBangAdmin">
+                       <a class="navbar-brand" href="GomBangAdmin">
                             <span class="logo-minimized">G.B</span>
                             <span class="logo">GomBang-Administrator</span>
                         </a>
@@ -90,25 +80,19 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Call Search -->
-                            <li>
-                                <a href="javascript:void(0);" class="js-search" data-close="true">
-                                    <i class="material-icons">search</i>
-                                </a>
-                            </li>
+                           
                             <!-- #END# Call Search -->
                             <!-- Fullscreen Request -->
-                            <li>
-                                <a href="javascript:void(0);" class="fullscreen js-fullscreen">
-                                    <i class="material-icons">fullscreen</i>
-                                </a>
-                            </li>
+                          
                             <!-- #END# Fullscreen Request -->
                             <!-- Email -->
-                            <li class="dropdown email-menu">
+                          
                             <!-- #END# Email -->
                             <!-- Notifications -->
+                            
                             <!-- #END# Notifications -->
                             <!-- Tasks -->
+                          
                             <!-- #END# Tasks -->
                             <!-- User Menu -->
                             <li class="dropdown user-menu">
@@ -127,13 +111,13 @@
                                     <li class="body">
                                         <ul>
                                             <li>
-                                                <a href="../miscellaneous/profile.html">
-                                                    <i class="material-icons">account_circle</i> Profile
+                                                <a href="resources/adminBoot/pages/miscellaneous/profile.html">
+                                                    <i class="material-icons">account_circle</i> 프로필
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0);">
-                                                    <i class="material-icons">lock_open</i> Change Password
+                                                <a href="addAdmin">
+                                                    <i class="material-icons">lock_open</i> 개인정보수정
                                                 </a>
                                             </li>
                                         </ul>
@@ -141,11 +125,11 @@
                                     <li class="footer">
                                         <div class="row clearfix">
                                             <div class="col-xs-5">
-                                                <a href="../examples/locked-screen.html" class="btn btn-default btn-sm btn-block">Log Off</a>
+                                                <a href="lockScreen" class="btn btn-default btn-sm btn-block">로그오프</a>
                                             </div>
                                             <div class="col-xs-2"></div>
                                             <div class="col-xs-5">
-                                                <a href="javascript:void(0);" class="btn btn-default btn-sm btn-block">Log Out</a>
+                                                <a href="adminLogout" class="btn btn-default btn-sm btn-block">로그아웃</a>
                                             </div>
                                         </div>
                                     </li>
@@ -164,7 +148,7 @@
         </header>
         <!-- #END# Top Bar -->
         <!-- Left Menu -->
-         <aside class="sidebar">
+       <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu">
                     <li class="title">
@@ -395,32 +379,68 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>기업 통계</h1>  
+                <h1>예약 상세 정보</h1>
                 <ol class="breadcrumb">
-                    <li><a href="GomBangAdmin">메인화면</a></li>
-                    <li><a href="javascript:void(0);">통계자료</a></li>
-                    <li class="active">기업 유형별</li>
+                    <li><a href="GomBangAdmin">Home</a></li>
+                    <li><a href="javascript:void(0);">Tables</a></li>
+                    <li class="active">Normal Tables</li>
                 </ol>
             </div>
             <div class="page-body">
                 <div class="row clearfix">
-                    <!-- Line Chart -->
-                    <!-- #END# Line Chart -->
-                    <!-- Bar Chart -->
-                    <!-- #END# Bar Chart -->
-                    <!-- Area Chart -->
-                    <!-- #END# Area Chart -->
-                    <!-- Donut Chart -->
-                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                       	 <div class="panel panel-default">
-                            <div class="panel-heading">기업 유형별</div>
+                   <!--  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6"> -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">[${reservationDetail.forSale_Status}] ${reservationDetail.forSale_Title}</div>
                             <div class="panel-body">
-                                <div id="donut_chart"></div>
+                                <table class="table reservationDetail" data_seq="${reservationDetail.reservation_Seq}">
+                                    <tbody>
+                                        <tr>
+                                            <td width=15%;><b>기업 ID</b></td>
+                                            <td>${reservationDetail.enterprise_ID}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>고객 ID</b></td>
+                                            <td>${reservationDetail.customer_ID}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>매물 주소</b></td>
+                                            <td>${reservationDetail.geoapi_prefectures} &nbsp; ${reservationDetail.geoapi_cities} &nbsp; ${reservationDetail.geoapi_towns} &nbsp; ${reservationDetail.geoapi_remain}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>예약 일시</b></td>
+                                            <td>${reservationDetail.reservation_Indate}</td>
+                                        </tr>
+                                         <tr>
+                                            <td><b>예약 상황</b></td>
+                                            <td>${reservationDetail.reservation_Complete}</td>
+                                        </tr>
+                                        <%-- <tr>
+                                        	<c:if test="${enterpriseDetail.enterprise_Permission eq 'W' }">
+                                        	<td>
+                                        		 <button type="button" class="btn btn-outline btn-default" id = "permissionDenyButton" data-ID = "${enterpriseDetail.enterprise_ID}"><i class="fa fa-close"></i>거부</button>
+                                        		  <button type="button" class="btn btn-outline btn-success" id = "permissionAcceptButton" data-ID = "${enterpriseDetail.enterprise_ID}"><i class="fa fa-check"></i>허가</button>
+                                        	</td>
+                                        	</c:if>
+                                        	<c:if test="${enterpriseDetail.enterprise_Permission eq 'N' }">
+                                        	<td>
+                                        		  <button type="button" class="btn btn-outline btn-success" id = "permissionAcceptButton" data-ID = "${enterpriseDetail.enterprise_ID}"><i class="fa fa-check"></i>허가</button>
+                                        	</td>
+                                        	</c:if>
+                                        	<c:if test="${enterpriseDetail.enterprise_Permission eq 'Y' }">
+                                        	<td>
+                                        		 <button type="button" class="btn btn-outline btn-default" id = "permissionDenyButton" data-ID = "${enterpriseDetail.enterprise_ID}"><i class="fa fa-close"></i>거부</button>
+                                        	</td>
+                                        	</c:if>
+                                        </tr> --%>
+                                    </tbody>
+                                </table> 
+                                <table>
+                                	<tr>
+                                		<td> <button type="button" class="btn btn-outline btn-default enterpriseBoardDelete" data_bSeq="${adminCustomerDetail.customerBoard_Seq}"><i class="fa fa-close"></i> 삭제</button></td>
+                                	</tr>
+                                </table>
                             </div>
                         </div>
-                   	  </div>
-               			
-                    <!-- #END# Donut Chart -->
                 </div>
             </div>
         </section>
@@ -438,6 +458,7 @@
             </div>
         </footer>
         <!-- #END# Footer -->
+    </div>
 
     <!-- Jquery Core Js -->
     <script src="resources/adminBoot/assets/plugins/jquery/dist/jquery.min.js"></script>
@@ -460,33 +481,20 @@
     <!-- Switchery Js -->
     <script src="resources/adminBoot/assets/plugins/switchery/dist/switchery.js"></script>
 
-    <!-- Morris.js Chart Js -->
-    <script src="resources/adminBoot/assets/plugins/raphael/raphael.js"></script>
-    <script src="resources/adminBoot/assets/plugins/morris.js/morris.js"></script>
-	
-	<!-- JQuery Datatables Js -->
-    <script src="resources/adminBoot/assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/media/js/dataTables.bootstrap.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.bootstrap.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.flash.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/jszip.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/pdfmake.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/vfs_fonts.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.html5.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.print.min.js"></script>
-   
+    <!-- Piety Js -->
+    <script src="resources/adminBoot/assets/plugins/peity/jquery.peity.js"></script>
+
     <!-- Custom Js -->
     <script src="resources/adminBoot/assets/js/admin.js"></script>
-    <script src="resources/adminBoot/assets/js/pages/charts/morris.js"></script>
-    <script src="resources/adminBoot/assets/js/enterpriseStats.js"></script>
-	<script src="resources/adminBoot/assets/js/pages/tables/jquery-datatables.js"></script>
-	
+    <script src="resources/adminBoot/assets/js/pages/tables/normal-tables.js"></script>
+
     <!-- Google Analytics Code -->
     <script src="resources/adminBoot/assets/js/google-analytics.js"></script>
 
     <!-- Demo Purpose Only -->
     <script src="resources/adminBoot/assets/js/demo.js"></script>
     
+    <!--개인 js -->
+      <script src="resources/adminBoot/assets/js/etc.js"></script>
 </body>
 </html>

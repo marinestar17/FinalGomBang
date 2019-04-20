@@ -25,6 +25,10 @@
        adminItemBoard();
        printItemBoard();
        adminItemDelete();
+       adminReservation();
+       printReservation();
+       adminTrade();
+       printTrade();
     });
     
     //회원수 count
@@ -355,6 +359,7 @@
     	});
     } //function
 
+    //기업 게시판 출ㄺ
     function printEnterpriseBoard(list){
     	var table = '';
 		table+= '<table class="table">';
@@ -416,6 +421,7 @@
     	});//ajax
     }
     
+    //매물 게시판 출력
     function printItemBoard(list){
     	var table = '';
 		table+= '<table class="table">';
@@ -463,6 +469,7 @@
         })
     }
     
+    //매물 삭제
     function adminItemDelete(){
     	$(".itemBoardDelete").on("click", function(){
     		var seq = $(this).attr("data_bSeq");
@@ -478,5 +485,128 @@
     			} //success
     		}); //ajax
     	});
+    }
+    
+    //예약 리스트 불러오기
+    function adminReservation(searchSelect, search){
+    	$.ajax({
+    		url:"adminReservation"
+    		,data:{searchSelect:searchSelect, search:search}
+    		,type:"get"
+    		,success:function(list){
+    			printReservation(list)
+    		}
+    		,error: function(){
+    			alert("zzz");
+    		}
+    	});
+    }
+    
+    //예약 리스트 출력
+    function printReservation(list){
+    	var table = '';
+		table+= '<table class="table">';
+        table+='<thead><tr>';
+        table+='<th>#</th>';
+        table+='<th>EnterpriseID</th>';  
+        table+='<th>CustomerID</th>';  
+        table+='<th>ITEM</th>';
+        table+='<th>INDATE</th>';
+        table+='<th>STATUS</th>'
+        table+='</tr></thead>';
+        table+='<tbody><tr>';
+        $.each(list,function(index,item){
+        	 table+='<td>'+item.reservation_Seq +'</td>';
+        	 table+='<td>'+item.enterprise_ID +'</td>';
+        	 table+='<td>'+item.customer_ID+'</td>';
+        	 table+='<td><a href="adminReservationDetail?reservation_Seq='+item.reservation_Seq+'">'+item.forSale_Title  +'</a></td>';
+        	 table+='<td>'+item.reservation_Indate  +'</td>';
+        	 table+='<td>'+item.reservation_Complete  +'</td>';
+        	 table+='</tr>';
+        })
+        table+='</tbody></table>';
+        table+='<table>';
+        table+='<tr><td> <div class="col-sm-4">';
+        table+='<select class="selectpicker form-control show-tick show5">';
+        table+='<option value="enterprise_ID">기업ID</option>';
+        table+='<option value="customer_ID">고객ID</option>';
+        table+='<option value="reservation_Complete">진행상태</option>';
+        table+='<option value="reservation_Indate">날짜</option>';
+        table+='<option value="forSale_Title">매물이름</option>';
+        table+='</select></div>';
+        table+='<div class="col-sm-8">';
+        table+='<div class="input-group">';
+        table+='<input type="text" class="form-control" id = "search5" placeholder="검색">';
+        table+='<span class="input-group-btn">';
+        table+='<button class="btn btn-default default5" type="button">Search</button></span></div></div></td>';
+        table+='</tr>';
+        table+='</table>';
+        $(".reservationTable").html(table);
+        
+        $(".default5").on("click", function(){
+        	var searchSelect = $(".show5").val();
+        	var search = $("#search5").val();
+        	adminReservation(searchSelect, search);
+        })
+    }
+    
+    //거래 완료 리스트 가져오기...
+    function adminTrade(searchSelect, search){
+    	$.ajax({
+    		url:"adminTradeBoard"
+			,data:{searchSelect:searchSelect, search:search}
+			,type:"get"
+			,success:function(list){
+				printTrade(list);
+			}
+    	});
+    }
+    
+    //거래 완료 리스트 출력
+    function printTrade(list){
+    	var table = '';
+		table+= '<table class="table">';
+        table+='<thead><tr>';
+        table+='<th>Reservation NO</th>';
+        table+='<th>EnterpriseID</th>';  
+        table+='<th>CustomerID</th>';  
+        table+='<th>ITEM</th>';
+        table+='<th>Reservation Indate</th>';
+        table+='<th>TRADE Indate</th>'
+        table+='</tr></thead>';
+        table+='<tbody><tr>';
+        $.each(list,function(index,item){
+        	 table+='<td>'+item.reservation_Seq +'</td>';
+        	 table+='<td>'+item.enterprise_ID +'</td>';
+        	 table+='<td>'+item.customer_ID+'</td>';
+        	 table+='<td><a href="adminTradeDetail?reservation_Seq='+item.reservation_Seq+'">'+item.forSale_Title  +'</a></td>';
+        	 table+='<td>'+item.reservation_Indate  +'</td>';
+        	 table+='<td>'+item.forSale_TradeIndate  +'</td>';
+        	 table+='</tr>';
+        })
+        table+='</tbody></table>';
+        table+='<table>';
+        table+='<tr><td> <div class="col-sm-4">';
+        table+='<select class="selectpicker form-control show-tick show6">';
+        table+='<option value="enterprise_ID">기업ID</option>';
+        table+='<option value="customer_ID">고객ID</option>';
+        table+='<option value="reservation_Indate">예약날짜</option>';
+        table+='<option value="forSale_TradeIndate">거래날짜</option>';
+        table+='<option value="forSale_Title">매물이름</option>';
+        table+='</select></div>';
+        table+='<div class="col-sm-8">';
+        table+='<div class="input-group">';
+        table+='<input type="text" class="form-control" id = "search6" placeholder="검색">';
+        table+='<span class="input-group-btn">';
+        table+='<button class="btn btn-default default6" type="button">Search</button></span></div></div></td>';
+        table+='</tr>';
+        table+='</table>';
+        $(".tradeTable").html(table);
+        
+        $(".default6").on("click", function(){
+        	var searchSelect = $(".show6").val();
+        	var search = $("#search6").val();
+        	adminTrade(searchSelect, search);
+        })
     }
 }(jQuery));

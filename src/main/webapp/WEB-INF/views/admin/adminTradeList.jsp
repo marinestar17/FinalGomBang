@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>GomBang - Administrator</title>
+    <title>거래완료 리스트 |GomBang-Administrator</title>
     <!-- Favicon -->
     <link rel="icon" href="resources/adminBoot/favicon.ico" type="image/x-icon">
 
@@ -32,9 +32,6 @@
 
     <!-- Metis Menu Css -->
     <link href="resources/adminBoot/assets/plugins/metisMenu/dist/metisMenu.css" rel="stylesheet" />
-
-    <!-- Jquery Datatables Css -->
-    <link href="resources/adminBoot/assets/plugins/DataTables/media/css/dataTables.bootstrap.css" rel="stylesheet" />
 
     <!-- Pace Loader Css -->
     <link href="resources/adminBoot/assets/plugins/pace/themes/white/pace-theme-flash.css" rel="stylesheet" />
@@ -75,7 +72,7 @@
                         </a>
                         <!-- Logo -->
                         <a class="navbar-brand" href="GomBangAdmin">
-                            <span class="logo-minimized">G.B</span>
+                             <span class="logo-minimized">G.B</span>
                             <span class="logo">GomBang-Administrator</span>
                         </a>
                         <!-- #END# Logo -->
@@ -90,28 +87,12 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Call Search -->
-                            <li>
-                                <a href="javascript:void(0);" class="js-search" data-close="true">
-                                    <i class="material-icons">search</i>
-                                </a>
-                            </li>
                             <!-- #END# Call Search -->
                             <!-- Fullscreen Request -->
-                            <li>
-                                <a href="javascript:void(0);" class="fullscreen js-fullscreen">
-                                    <i class="material-icons">fullscreen</i>
-                                </a>
-                            </li>
                             <!-- #END# Fullscreen Request -->
                             <!-- Email -->
-                            <li class="dropdown email-menu">
-                            <!-- #END# Email -->
-                            <!-- Notifications -->
-                            <!-- #END# Notifications -->
-                            <!-- Tasks -->
-                            <!-- #END# Tasks -->
                             <!-- User Menu -->
-                            <li class="dropdown user-menu">
+                           <li class="dropdown user-menu">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="resources/adminBoot/assets/images/avatars/face2.jpg" alt="User Avatar" />
                                     <span class="hidden-xs">${sessionScope.admin.admin_Name }</span>
@@ -127,13 +108,13 @@
                                     <li class="body">
                                         <ul>
                                             <li>
-                                                <a href="../miscellaneous/profile.html">
-                                                    <i class="material-icons">account_circle</i> Profile
+                                                <a href="resources/adminBoot/pages/miscellaneous/profile.html">
+                                                    <i class="material-icons">account_circle</i> 프로필
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0);">
-                                                    <i class="material-icons">lock_open</i> Change Password
+                                                <a href="addAdmin">
+                                                    <i class="material-icons">lock_open</i> 개인정보수정
                                                 </a>
                                             </li>
                                         </ul>
@@ -141,11 +122,11 @@
                                     <li class="footer">
                                         <div class="row clearfix">
                                             <div class="col-xs-5">
-                                                <a href="../examples/locked-screen.html" class="btn btn-default btn-sm btn-block">Log Off</a>
+                                                <a href="lockScreen" class="btn btn-default btn-sm btn-block">로그오프</a>
                                             </div>
                                             <div class="col-xs-2"></div>
                                             <div class="col-xs-5">
-                                                <a href="javascript:void(0);" class="btn btn-default btn-sm btn-block">Log Out</a>
+                                                <a href="adminLogout" class="btn btn-default btn-sm btn-block">로그아웃</a>
                                             </div>
                                         </div>
                                     </li>
@@ -164,7 +145,7 @@
         </header>
         <!-- #END# Top Bar -->
         <!-- Left Menu -->
-         <aside class="sidebar">
+        <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu">
                     <li class="title">
@@ -395,35 +376,58 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>기업 통계</h1>  
+                <h1>예약 관리</h1>
                 <ol class="breadcrumb">
-                    <li><a href="GomBangAdmin">메인화면</a></li>
-                    <li><a href="javascript:void(0);">통계자료</a></li>
-                    <li class="active">기업 유형별</li>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="javascript:void(0);">Tables</a></li>
+                    <li class="active">Normal Tables</li>
                 </ol>
             </div>
             <div class="page-body">
                 <div class="row clearfix">
-                    <!-- Line Chart -->
-                    <!-- #END# Line Chart -->
-                    <!-- Bar Chart -->
-                    <!-- #END# Bar Chart -->
-                    <!-- Area Chart -->
-                    <!-- #END# Area Chart -->
-                    <!-- Donut Chart -->
-                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                       	 <div class="panel panel-default">
-                            <div class="panel-heading">기업 유형별</div>
-                            <div class="panel-body">
-                                <div id="donut_chart"></div>
+                  <!--   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6"> -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Trade Complete List</div>
+                            <div class="panel-body tradeTable">
+                                <!-- <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Larry</td>
+                                            <td>Kitkat</td>
+                                            <td>@larrykitkat</td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table> -->
                             </div>
                         </div>
-                   	  </div>
-               			
-                    <!-- #END# Donut Chart -->
-                </div>
-            </div>
-        </section>
+                    </div>
+                       <%-- <div class="row clearfix">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Write Your Comment Message</div>
+                            <div class="panel-body">
+	                                <div class="col-sm-10">
+	                                    <input type="text" placeholder="내용을 써주세요.." class="form-control input-sm" name = "adminMessage_Content" id = "adminMessage_Content"/>
+	                                    <input type = "hidden" value = "${sessionScope.admin.admin_ID }" name = "admin_ID" id = "admin_ID">
+	                                    <input type = "hidden" value = "${sessionScope.admin.admin_Name}" name = "admin_Name" id = "admin_Name">
+	                                </div>   
+	                              	<div class="pull-left m-w-150">
+	                              		  <button type="button" class="btn btn-block btn-default btn-sm" id = "adminMessageButton">등록</button>
+	                              	</div>  
+                            </div>
+                        </div>
+                    </div> --%>
+				</div>
+        </section>  
         <!-- Footer -->
         <footer>
             <div class="container-fluid">
@@ -438,6 +442,7 @@
             </div>
         </footer>
         <!-- #END# Footer -->
+    </div>
 
     <!-- Jquery Core Js -->
     <script src="resources/adminBoot/assets/plugins/jquery/dist/jquery.min.js"></script>
@@ -460,33 +465,20 @@
     <!-- Switchery Js -->
     <script src="resources/adminBoot/assets/plugins/switchery/dist/switchery.js"></script>
 
-    <!-- Morris.js Chart Js -->
-    <script src="resources/adminBoot/assets/plugins/raphael/raphael.js"></script>
-    <script src="resources/adminBoot/assets/plugins/morris.js/morris.js"></script>
-	
-	<!-- JQuery Datatables Js -->
-    <script src="resources/adminBoot/assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/media/js/dataTables.bootstrap.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.bootstrap.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.flash.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/jszip.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/pdfmake.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/vfs_fonts.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.html5.min.js"></script>
-    <script src="resources/adminBoot/assets/plugins/DataTables/extensions/export/buttons.print.min.js"></script>
-   
+    <!-- Piety Js -->
+    <script src="resources/adminBoot/assets/plugins/peity/jquery.peity.js"></script>
+
     <!-- Custom Js -->
     <script src="resources/adminBoot/assets/js/admin.js"></script>
-    <script src="resources/adminBoot/assets/js/pages/charts/morris.js"></script>
-    <script src="resources/adminBoot/assets/js/enterpriseStats.js"></script>
-	<script src="resources/adminBoot/assets/js/pages/tables/jquery-datatables.js"></script>
-	
+    <script src="resources/adminBoot/assets/js/pages/tables/normal-tables.js"></script>
+
     <!-- Google Analytics Code -->
     <script src="resources/adminBoot/assets/js/google-analytics.js"></script>
 
     <!-- Demo Purpose Only -->
     <script src="resources/adminBoot/assets/js/demo.js"></script>
     
+    <!-- 개인 js -->
+     <script src="resources/adminBoot/assets/js/etc.js"></script>
 </body>
 </html>
