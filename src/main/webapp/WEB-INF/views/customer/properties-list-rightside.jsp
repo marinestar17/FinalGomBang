@@ -845,7 +845,7 @@ pageEncoding="UTF-8"%>
                 </div>
 
                 <!-- Helping box Start -->
-                <div class="sidebar-widget helping-box clearfix">
+                <!-- <div class="sidebar-widget helping-box clearfix">
                     <div class="main-title-2">
                         <h1><span>Helping</span> Center</h1>
                     </div>
@@ -859,10 +859,10 @@ pageEncoding="UTF-8"%>
                         <h4>Phone</h4>
                         <p><a href="tel:+55-417-634-7071">+55 417 634 7071</a> </p>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Latest reviews start -->
-                <div class="sidebar-widget latest-reviews mb-0">
+                <!-- <div class="sidebar-widget latest-reviews mb-0">
                     <div class="main-title-2">
                         <h1><span>Latest</span> Reviews</h1>
                     </div>
@@ -908,7 +908,7 @@ pageEncoding="UTF-8"%>
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -916,7 +916,7 @@ pageEncoding="UTF-8"%>
 <!-- Properties section body end -->
 
 <!-- Partners block start -->
-<div class="partners-block">
+<!-- <div class="partners-block">
     <div class="container">
         <h3>Brands & Partners</h3>
         <div class="row">
@@ -965,7 +965,7 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Partners block end -->
 
 <!-- Footer start -->

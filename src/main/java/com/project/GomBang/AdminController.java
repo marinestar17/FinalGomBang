@@ -27,6 +27,7 @@ import com.project.GomBang.VO.EnterpriseBoard;
 import com.project.GomBang.VO.EnterpriseComment;
 import com.project.GomBang.VO.Item;
 import com.project.GomBang.VO.Reservation;
+import com.project.GomBang.VO.Total;
 
 @Controller
 public class AdminController {
@@ -166,6 +167,12 @@ public class AdminController {
 	 @RequestMapping(value = "/adminReservationList", method = RequestMethod.GET)
 	 public String adminReservationList() {
 		return "admin/adminReservationList";
+	 }
+	 
+	//거래 완료 리스트 페이지 이동
+	 @RequestMapping(value = "/adminTradeList", method = RequestMethod.GET)
+	 public String adminTradeList() {
+		 return "admin/adminTradeList";
 	 }
 	 
 	//관리차 추가하기
@@ -876,6 +883,70 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	//관리자가 예약 리스트 보기
+	@RequestMapping(value = "/adminReservation", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Total> adminReservationList(@RequestParam(value="search" ,defaultValue="")String search, @RequestParam(value="searchSelect" ,defaultValue="")String searchSelect){
+		ArrayList<Total> tList = new ArrayList<Total>();
+		Total total = new Total();
+		total.setSearch(search);
+		total.setSearchSelect(searchSelect);
+		try {
+			tList = dao.adminReservationList(total);
+			for (Total t : tList) {
+				if (t.getReservation_Complete().equals("Y")) {
+					t.setReservation_Complete("예약 완료");
+				} else if(t.getReservation_Complete().equals("W")) {
+					t.setReservation_Complete("예약 대기중");
+				} else {
+					t.setReservation_Complete("예약 취소");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tList;
+	}
+	
+	//예약 상세 보기..
+	@RequestMapping(value = "/adminReservationDetail", method = RequestMethod.GET)
+	public String adminReservationDetail(String reservation_Seq, Model model) {
+		Total total = new Total();
+		try {
+			total = dao.adminReservationDetail(reservation_Seq);
+			if (total != null) {
+				if (total.getReservation_Complete().equals("W")) {
+					total.setReservation_Complete("예약 대기중");
+				} else if (total.getReservation_Complete().equals("Y")) {
+					total.setReservation_Complete("예약 완료");
+				} else {
+					total.setReservation_Complete("예약 취소");
+				}
+				model.addAttribute("reservationDetail", total);
+				return "admin/adminReservationDetail";
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//거래 완료 리스트 ...
+	@RequestMapping(value = "/adminTradeBoard", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Total> adminTradeBoard(@RequestParam(value="search" ,defaultValue="")String search, @RequestParam(value="searchSelect" ,defaultValue="")String searchSelect){
+		ArrayList<Total> tList = new ArrayList<Total>();
+		Total total = new Total();
+		total.setSearch(search);
+		total.setSearchSelect(searchSelect);
+		try {
+			tList = dao.adminTradeBoard(total);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tList;
 	}
 	
 }

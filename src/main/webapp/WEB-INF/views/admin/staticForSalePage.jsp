@@ -217,7 +217,7 @@
                                 <a href="adminReservationList">예약 리스트</a>
                             </li>
                             <li>
-                                <a href="#">거래완료 리스트</a>
+                                <a href="adminTradeList">거래완료 리스트</a>
                             </li>
                         </ul>
                     </li>
