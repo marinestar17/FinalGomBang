@@ -17,6 +17,7 @@ import com.project.GomBang.VO.EnterpriseBoard;
 import com.project.GomBang.VO.EnterpriseComment;
 import com.project.GomBang.VO.Item;
 import com.project.GomBang.VO.Reservation;
+import com.project.GomBang.VO.Total;
 
 
 
@@ -639,6 +640,42 @@ public class AdminDAO {
 			e.printStackTrace();
 		}
 		 return result;
+	 }
+	 
+	 //관리자가 예약 리스트 보기
+	 public ArrayList<Total> adminReservationList(Total total) {
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Total> tList = new ArrayList<Total>();
+		 try {
+			tList = map.adminReservationList(total);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return tList;
+	 }
+	 
+	 //예약 상세히 보기
+	 public Total adminReservationDetail(String reservation_Seq) {
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 Total total = new Total();
+		 try {
+			total = map.adminReservationDetail(reservation_Seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return total;
+	 }
+	 
+	 //거래 완료 리스트
+	 public ArrayList<Total> adminTradeBoard(Total total) {
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Total> tList = new ArrayList<Total>();
+		 try {
+			tList = map.adminTradeBoard(total);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return tList;
 	 }
 	 
 }

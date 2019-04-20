@@ -754,6 +754,7 @@ where
 		FORSALE
 	SET
 		FORSALE_TRADE = 'Y'
+		,FORSALE_TRADEINDATE = SYSDATE
 	WHERE
 		FORSALE_SEQ = #{forSale_Seq}
 </update>
