@@ -84,5 +84,7 @@ public interface EnterpriseMapper {
 	public int tradeComplete(String forSale_Seq) ; //거래 완료
 	
 	public ArrayList<Total> tradeCompleteList(String enterprise_ID); //거래 리스트 완료 출려개ㅐㅐㅐㅐㅐㅐㅐㅐㅐ
+	
+	public ArrayList<Total> popularproperties();//popularproperties
 }
 

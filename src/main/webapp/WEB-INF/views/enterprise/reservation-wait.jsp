@@ -148,7 +148,8 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
-                            <li><a href="reservationcomplete">Reservation Complete</a></li> 
+                            <li><a href="reservationcomplete">Reservation Complete</a></li>
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>    
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -157,6 +158,14 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                      <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
                         </ul>
                     </li>
                     <!--  <li class="dropdown mega-dropdown">
@@ -312,6 +321,11 @@ pageEncoding="UTF-8"%>
                             <li>
                                 <a href="reservationcomplete">
                                     <i class="flaticon-people-1"></i>Reservation complete
+                                </a>
+                            </li>
+                              <li>
+                                <a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">
+                                    <i class="flaticon-people-2"></i>Trade complete
                                 </a>
                             </li>
                             <li>

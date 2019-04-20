@@ -96,7 +96,7 @@ pageEncoding="UTF-8"%>
 	}
 	
 	
-	function setCities (json) {
+	/* function setCities (json) {
 	    var cities = json.response['location'];
 	    $("#cities").empty();
 	    var content="";
@@ -113,7 +113,7 @@ pageEncoding="UTF-8"%>
 	        $('#geoapi-cities').append(option);
 	    }
 	    $("#geoapi-cities").change(searchAddress);
-	} 
+	}  */
 
 	var myLatLng = {lat: 0, lng: 0};
 	
@@ -128,9 +128,9 @@ pageEncoding="UTF-8"%>
 		$("#searchAddress").on("click",searchAddress);
 		$("#checkMap").on("click",codeAddress);
 		ck = CKEDITOR.replace("editor", editorConfig);
-		
+		$("#geoapi-cities").change(searchAddress);
 		//$( "#geoapi-prefectures" ).addClass( "selectpicker search-fields" ); // css의 시점 문제를 해결
-		$( "#geoapi-cities" ).addClass( "selectpicker search-fields" );  // css의 시점 문제를 해결 */
+		//$( "#geoapi-cities" ).addClass( "selectpicker search-fields" );  // css의 시점 문제를 해결 */
 		//$("#geoapi-cities").css("display","block");
 		/* $( "#geoapi-prefectures" ).change(function() {
 			$( "#geoapi-cities" ).removeClass( "selectpicker search-fields" );
@@ -238,48 +238,50 @@ pageEncoding="UTF-8"%>
 	}
 	
 	// 주소로 우편번호 리스트 출력
-	function searchAddress(){
+		function searchAddress(){
 		geoapi_prefectures = $("#geoapi-prefectures option:selected").val();
 		geoapi_cities = $("#geoapi-cities option:selected").val();
-		geoapi_towns = $("#geoapi_towns option:selected").val();
-		var postCodeList = "";
-		$.ajax({
+		geoapi_towns = $("#geoapi-towns option:selected").val();
+
+		/* $.ajax({
 			url:"https://apis.postcode-jp.com/api/v2/search?apiKey=ISdegT3BVbqK3v41cl1yinQOc0LfWelSsdNBPWr&q="+geoapi_prefectures+" "+geoapi_cities,
 			type:"get",
 			success:function(res){
 				
-				/* $.each(res.data,function(index,item){
-					postCodeList+="<tr><td class='postcode' data-town='"+ item.town+"' data-code='"+item.postcode+"'>"+item.postcode+"<td><td>"+item.town+"</td></tr>";
-				}) */
 				$.each(res.data,function(index,item){
-					//postCodeList+="<option class='postcode' data-town='"+ item.town+"' data-code='"+item.postcode+"'>"+item.postcode+" "+item.town"</option>";
+					console.log(item.town);
 					if(item.town!=""){
 						postCodeList+="<option class='postcode' data-town='"+ item.town+"' data-code='"+item.postcode+"'>"+item.town+"</option>";
 					}
 				})
 				
-				$("#geoapi_towns").change(selectPostCode);
-				$("#geoapi_towns").html(postCodeList);
+				
+				//$("#geoapi-towns").html(postCodeList);
 				
 			}
-		});
+		}); */
+		$("#geoapi-towns").change(selectPostCode);
 	}
 	// 우편번호 선택
 	function selectPostCode(){
-		geoapi_towns = $("#geoapi_towns option:selected").val();
-		var town = $("#geoapi_towns option:selected").attr('data-town');
-		var postCode = $("#geoapi_towns option:selected").attr('data-code');
-		
-		$("#geoapi_towns").val(town);
-		$("#geoapi_postCode").val(postCode);
+		geoapi_towns = $("#geoapi-towns option:selected").val();
+		/* var town = $("#geoapi-towns option:selected").attr('data-town'); */
+		/* var postCode = $("#geoapi-towns option:selected").attr('data-code');
+		alert(postCode); */
+		$("#geoapi-towns").val(geoapi_towns);
+		/* $("#geoapi_postCode").val(postCode); */
 	}
-	
-	
+	var map;
+    var subwayMap;
+    var forSale_Lat = 0;
+    var forSale_Lng = 0;
+    var pyrmont = {lat : 0, lng : 0};
 	// 지도에 표시
 	function codeAddress() {
+		var subwayArr = new Array();
 		geocoder = new google.maps.Geocoder();
 	    //In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
-	   	geoapi_towns = $("#geoapi_towns").val();
+	   	geoapi_towns = $("#geoapi-towns").val();
 	    geoapi_remain = $("#geoapi_remain").val();
 	    // 표시되는 주소
 	    var address =geoapi_prefectures + geoapi_cities + geoapi_towns + geoapi_remain;
@@ -291,20 +293,36 @@ pageEncoding="UTF-8"%>
 	           // 주소의 위도 경도 가져오기 
 	          
 	        myLatLng = {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()};
-			console.log(myLatLng);
+	        forSale_Lat = parseFloat(myLatLng.lat);
+	        forSale_Lng = parseFloat(myLatLng.lng);
+	        pyrmont = {lat : forSale_Lat, lng : forSale_Lng};
+	        $("#forSale_Lat").val(myLatLng.lat);
+			$("#forSale_Lng").val(myLatLng.lng);
 	        // 맵에 찍기  
 			var map = new google.maps.Map(document.getElementById('map'), {
 	          center: myLatLng,
 	          zoom: 18,
 	          mapTypeId: 'roadmap'
 	        });
+	        
+			subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	            center: myLatLng,
+	            zoom: 17
+	          });
+			
+			searchSubway(pyrmont);
+			
+	        console.log("여기서부터확인");
+	        console.log(results[0]);
+	        console.log(results[0].address_components[results[0].address_components.length-1].long_name);
+	        $("#geoapi_postCode").val(results[0].address_components[results[0].address_components.length-1].long_name);
+	        console.log("여기까지 확인");
 			// 마크찍기
 	          var marker = new google.maps.Marker({
 		            position: myLatLng,
 		            map: map,
 		            title: 'Hello World!'
 		          });
-	        
 	        } else {
 	            alert( 'Geocode was not successful for the following reason: ' + status );
 	        }
@@ -312,9 +330,11 @@ pageEncoding="UTF-8"%>
 	        var infowindow = new google.maps.InfoWindow();
 	        var service = new google.maps.places.PlacesService(map);
 	    } );
+	    
 	}
-		
-	
+	var subwayLat=0;
+    var subwayLng=0;
+    
 	// ckeditor Config
 	var editorConfig = {
 	        filebrowserUploadUrl : "requestupload", //이미지 업로드
@@ -332,6 +352,217 @@ pageEncoding="UTF-8"%>
 	            break;
 	        }
 	    });
+	    
+	    
+	    var subRadius=1000;
+	      // 가장 가까운 지하철 찾기
+	      function searchSubway(pyrmont){
+	    	  subRadius=100;
+	    	  subCallBack();
+	      }
+	      var subwayLat;
+	      var subwayLng;
+	      var subwayArr = new Array();
+	      var subwayDistanceArr = new Array();
+	       function subCallBack(){
+	    	  subRadius=subRadius+100;
+	    	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+	    	  subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	            center: pyrmont,
+	            zoom: 15
+	          });
+	    	  var service = new google.maps.places.PlacesService(subwayMap);
+	    	  
+	    	  service.nearbySearch(
+	                  {location: pyrmont, radius: subRadius, type: ['subway_station']},
+	                  function(results, status, pagination) {
+	                    if (status !== 'OK'){
+	                    	subCallBack();
+	                    }else{
+	                    	console.log(results);
+	                    	for(var i=0; i<=results.length-1; i++){
+	                    		//subwayArr.push(results[i].geometry.location);
+	                    		subwayArr.push(results[i]);
+	                    	}
+	                    	/* for(var var i=0; i<=results.length-1; i++){
+	                    		console.log(subwayArr[i]);
+	                    	} */
+	                    	console.log(subwayArr);
+	                    	
+	                    	subwayLat = results[results.length-1].geometry.location.lat();
+	                    	subwayLng = results[results.length-1].geometry.location.lng();
+	                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
+	                    	console.log(subwayLng); */
+	                    	//createSubwayMarkers(results);
+	                    	routeMap();
+	                         getNextPage = pagination.hasNextPage && function() {
+	                           pagination.nextPage();
+	                         };
+	                    }
+	                  });
+	    	  
+	      } 
+	      
+	      // 마크 찍기
+	      function createSubwayMarkers(places) {
+	    	var pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+	        var bounds = new google.maps.LatLngBounds();
+	        subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	          center: pyrmont,
+	          zoom: 15
+	        });
+	        
+	        var placesList = document.getElementById('places');
+	        for (var i = 0, place; place = places[i]; i++) {
+	        	image = {
+	        			url : place.icon,
+	    	            size: new google.maps.Size(71, 71),
+	    	            origin: new google.maps.Point(0, 0),
+	    	            anchor: new google.maps.Point(17, 34),
+	    	            scaledSize: new google.maps.Size(25, 25)
+	    	          };
+
+	    	          var centerMarker = new google.maps.Marker({
+	    	            map: subwayMap,
+	    	            title: place.name,
+	    	            position: pyrmont
+	    	          });
+	    	          
+	    	          var marker = new google.maps.Marker({
+	    	            map: subwayMap,
+	    	            title: place.name,
+	    	            position: place.geometry.location
+	    	          });
+					
+	    	          var li = document.createElement('li');
+	    	          li.textContent = place.name;
+	    	          placesList.appendChild(li);
+	    	          
+	    	          
+	        }
+	        var infowindow = new google.maps.InfoWindow();
+	        var service = new google.maps.places.PlacesService(subwayMap);
+	      }
+	      
+	      
+	      
+	      function routeMap() {
+	    	  var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
+	          var directionsDisplay = new google.maps.DirectionsRenderer;
+	          var directionsService = new google.maps.DirectionsService;
+	          var subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	            center: origin,
+	            zoom: 17
+	          });
+	          directionsDisplay.setMap(subwayMap);
+
+	          calculateAndDisplayRoute(directionsService, directionsDisplay);
+	        }
+	      
+	      
+			
+	        function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+	        	test(subwayArr,directionsService, directionsDisplay);
+	        }
+	        
+	        var cnt=0;
+	        var subwayMin = 99999;
+			var subwayDestination = {lat: 0, lng: 0};
+			
+	        function test(subwayArr,directionsService, directionsDisplay){
+	        		
+	        	  var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
+	              var destination= {lat: 0, lng: 0};  // 가까운 지하철 위도경도
+	              var i=cnt;
+	             console.log(subwayArr[i]);
+	        	 directionsService.route({
+	                 origin: {lat:forSale_Lat, lng:forSale_Lng},  // 매물주소의 위도경도
+	                 destination: {lat: subwayArr[i].geometry.location.lat(), lng: subwayArr[i].geometry.location.lng()},  // 가까운 지하철 위도경도
+	                 // Note that Javascript allows us to access the constant
+	                 // using square brackets and a string value as its
+	                 // "property."
+	                 travelMode: google.maps.TravelMode['WALKING']
+	               }, function(response, status) {
+	                 if (status == 'OK') {
+	               		//directionsDisplay.setDirections(response);
+	                         subwayDistanceArr.push(response.routes[0].legs[0].distance.text);
+	                         subwayDistanceArr.push(response.routes[0].legs[0].distance.value);
+	                         if(response.routes[0].legs[0].distance.value <= subwayMin){
+	                         	subwayMin = response.routes[0].legs[0].distance.value;
+	                         	console.log(subwayArr[i].geometry.location.lat() + "리스폰"+i);
+	                         	console.log(response.routes[0].legs[0].distance.value+ "리스폰"+i);
+	                	  		console.log(response.routes[0].legs[0].distance.text+ "리스폰"+i);
+	                         	subwayDestination = {lat: subwayArr[i].geometry.location.lat(), lng: subwayArr[i].geometry.location.lng()};
+	                         	console.log(subwayArr[i].name + "//역이름" );
+	                         	$("#forSubway").val(subwayArr[i].name);
+	                         	console.log("i = " + i);
+	                         	console.log("aaa" + subwayMin);
+	                         	console.log("subwayDestination" + JSON.stringify(subwayDestination));
+	                         	cnt++;
+	                         	console.log(cnt + " // cnt");
+	                         	console.log(subwayArr.length + " // 어레이크기");
+	                         	if(subwayArr.length==1){
+	                         		routeMap2();
+	                         	}
+	                         	else if(cnt == subwayArr.length-1){
+	                         		routeMap2();
+	                         	}
+	                         	else if(cnt!=subwayArr.length+1){
+	                         		test(subwayArr,directionsService, directionsDisplay);
+	                         	}
+	                         	
+	                         	
+	                         }
+	               	  
+	                 } else {
+	                   window.alert('Directions request failed due to ' + status);
+	                 }
+	               });
+	        	 
+	        	return;
+	        }
+	        
+	        function routeMap2() {
+	      	  var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
+	            var directionsDisplay = new google.maps.DirectionsRenderer;
+	            var directionsService = new google.maps.DirectionsService;
+	            var subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	              center: origin,
+	              zoom: 17
+	            });
+	            
+	            directionsDisplay.setMap(subwayMap);
+
+	            calculateAndDisplayRoute2(directionsService, directionsDisplay);
+	          }
+	        
+	        function calculateAndDisplayRoute2(directionsService, directionsDisplay) {
+	            //var selectedMode = document.getElementById('mode').value;
+	            console.log("2번쨰");
+	            console.log(subwayDestination);
+	            var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
+	            var destination= {lat: subwayDestination.lat, lng: subwayDestination.lng};  // 가까운 지하철 위도경도
+	            console.log("확인용");
+	            console.log(destination);
+	            directionsService.route({
+	              origin: {lat:forSale_Lat, lng:forSale_Lng},  // 매물주소의 위도경도
+	              destination: {lat: subwayDestination.lat, lng: subwayDestination.lng},  // 가까운 지하철 위도경도
+	              // Note that Javascript allows us to access the constant
+	              // using square brackets and a string value as its
+	              // "property."
+	              travelMode: google.maps.TravelMode['WALKING']
+	            }, function(response, status) {
+	              if (status == 'OK') {
+	                directionsDisplay.setDirections(response);
+	                console.log(response.routes[0].legs[0].distance.text);
+	                console.log(response.routes[0].legs[0].distance.value+"제발아아아앙");
+	                $("#forSubwayDistance").val(response.routes[0].legs[0].distance.value);
+	                $("#forSubwayDistance2").val(response.routes[0].legs[0].distance.text);
+	              } else {
+	                window.alert('Directions request failed due to ' + status);
+	              }
+	            });
+	          }
 	
 	  
 	    // 구글 지도
@@ -341,19 +572,9 @@ pageEncoding="UTF-8"%>
 	          zoom: 12,
 	          mapTypeId: 'roadmap'
 	        });
-	      }
+	      }  
 	    
-	
-	  
-
-	   for (var i = 0; i < arrMemo.length; i++) {
-		
-		   if(arrMemo[i]=="에어컨"){
-			   $('input:checkbox[id="checkbox1"]').attr("checked", true);
-			   alert(arrMemo[i]);
-
-		   }
-	}
+	    
 	   
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD16Rw_1wxr6ylwIbpNOeW76O89uhaIaz4&libraries=places&callback=initAutocomplete&libraries=places&language=ja&region=J"
@@ -598,20 +819,20 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="col-md-12">
                 <div class="submit-address">
-                    <form method="GET" action="updateItem" id="updateItemForm">
+                   <form method="GET" action="updateItem" id="updateItemForm">
                         <div class="main-title-2">
                             <h1><span>Basic</span> Information</h1>
                         </div>
                         <div class="search-contents-sidebar mb-30">
                             <div class="form-group">
-                                <label>제목</label>
+                               <label>제목</label>
                                 <input type="text" id="forSale_Title" class="input-text" name="forSale_Title" placeholder="Property Title" value="${enterItem.forSale_Title}">
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select id="forSale_Status" class="selectpicker search-fields" name="forSale_Status">
+                                       <select id="forSale_Status" class="selectpicker search-fields" name="forSale_Status">
                                             <option <c:if test="${enterItem.forSale_Status=='For Sale'}">selected</c:if>>For Sale</option>
                                             <option <c:if test="${enterItem.forSale_Status=='For Rent'}">selected</c:if>>For Rent</option>
                                         </select>
@@ -620,7 +841,7 @@ pageEncoding="UTF-8"%>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Type</label>
-                                        <select id="forSale_HouseType" class="selectpicker search-fields" name="forSale_HouseType" >
+                                         <select id="forSale_HouseType" class="selectpicker search-fields" name="forSale_HouseType" >
                                             <option <c:if test="${enterItem.forSale_HouseType=='Apartment'}">selected</c:if>>Apartment</option>
                                             <option <c:if test="${enterItem.forSale_HouseType=='House'}">selected</c:if>>House</option>
                                             <option <c:if test="${enterItem.forSale_HouseType=='Commercial'}">selected</c:if>>Commercial</option>
@@ -631,7 +852,7 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 col-sm-6">
+                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
                                         <label>야칭</label>
                                         <input type="text" id="forSale_Rent" class="input-text" name="forSale_Rent" placeholder="家賃" value="${enterItem.forSale_Rent}">
@@ -675,15 +896,15 @@ pageEncoding="UTF-8"%>
                                     <label>현</label>
                                      <!-- class="selectpicker search-fields"  -->
                                     <select id="geoapi-prefectures" name="geoapi_prefectures" >
-  										<option value="${enterItem.geoapi_prefectures}"></option>
+  										<option value="都道府県を選択してください">都道府県を選択してください</option>
 									</select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group" id="cities">
                                     <label>City</label>
-                                    <select id="geoapi-cities" name="geoapi_cities"  data-live-search="true" data-live-search-placeholder="Search value">
-  										<option value="${enterItem.geoapi_cities}"></option>
+                                    <select id="geoapi-cities" name="geoapi_cities"  data-live-search="true" data-live-search-placeholder="Search value" style="color:#999;">
+  										<option value="市区町村名を選択してください">市区町村名を選択してください</option>
 									</select>
                                 </div>
                             </div>
@@ -701,9 +922,16 @@ pageEncoding="UTF-8"%>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>마을</label>
-                                    <select type="text" id="geoapi_towns" class="input-text" name="geoapi_towns"  placeholder="마을">
-                                    	<option>선택</option>
+                                    <select id="geoapi-towns" class="input-text" name="geoapi_towns">
+                                    	<option>町を選択してください。</option>
                                     </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>나머지 주소</label>
+                                    <input type="text" id="geoapi_remain" class="input-text" name="geoapi_remain"  placeholder="나머지 주소">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
@@ -714,19 +942,19 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>나머지 주소</label>
-                                    <input type="text" id="geoapi_remain" class="input-text" name="geoapi_remain"  placeholder="나머지 주소">
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
                                     <!-- <input type="hidden" id="forSale_Address" name="forSale_Address" class="input-text"> -->
                                     <!-- <input type="hidden" id="geoapi_prefectures" name="geoapi_prefectures" class="input-text"> -->
-                                    <input type="hidden" id="geoapi_cities" name="geoapi_cities" class="input-text">
+                                    <input type="hidden" id="geoapi_cities" class="input-text">
                                     <input type="hidden" id="forSale_PostCode" name="forSale_PostCode" class="input-text">
                                     <input type="hidden" id="forSale_ETC" name="forSale_ETC" class="input-text">
                                     <input type="hidden" id="forSale_Lat" name="forSale_Lat" class="input-text" >
                                     <input type="hidden" id="forSale_Lng" name="forSale_Lng" class="input-text">
+                                    <input type="hidden" id="subwayLat"  class="input-text" >
+                                    <input type="hidden" id="subwayLng"  class="input-text">
+                                    <input type="hidden" id="forSale_Trade" name="forSale_Trade" class="input-text" value="N">
+                                    <input type="hidden" id="forSubway" name="forSale_Subway"  class="input-text">
+                                    <input type="hidden" id="forSubwayDistance" name="forSale_SubwayDistance"  class="input-text">
+                                    <input type="hidden" id="forSubwayDistance2" name="forSale_SubwayDistance2"  class="input-text">
                                 </div>
                             </div>
                         </div>
@@ -737,6 +965,7 @@ pageEncoding="UTF-8"%>
                                     <label>Check Map</label>
                                     <input type="button" id="checkMap" value="지도에서확인" >
                                    <div id="map"></div>
+                                   <div id="subwayMap"></div>
                                 </div>
                             </div>
                         </div>
@@ -745,7 +974,7 @@ pageEncoding="UTF-8"%>
                             <h1><span>Detailed</span> Information</h1>
                         </div>
 						
-                        <div class="row mb-30">
+                         <div class="row mb-30">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Detailed Information</label>
@@ -830,7 +1059,7 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div> -->
                             <div class="col-md-4 col-sm-4">
-                                <a href="#" class="btn button-md button-theme" id="updateItem">수정</a>
+                                <a class="btn button-md button-theme" id="updateItem">수정</a>
                                 <!-- <a href="#" class="btn button-md button-theme">Preview</a> -->
                             </div>
                             
@@ -1085,9 +1314,70 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 <!-- Copy end right-->
-<script>
+<!-- <script>
+var forSale_Lat = parseFloat($("#forSale_Lat").val());
+var forSale_Lng = parseFloat($("#forSale_Lng").val());
 
-</script>
+var subRadius=100;
+// 가장 가까운 지하철 찾기
+function searchSubway(pyrmont){
+	  subRadius=2000;
+	  subCallBack();
+}
+var subwayLat;
+var subwayLng;
+ function subCallBack(){
+	 console.log("확인");
+	  subRadius=subRadius+100;
+	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+	  subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+      center: pyrmont,
+      zoom: 15
+    });
+	  var service = new google.maps.places.PlacesService(subwayMap);
+	  
+	  service.nearbySearch(
+            {location: pyrmont, radius: subRadius, type: ['train_station']},
+            function(results, status, pagination) {
+              if (status !== 'OK'){
+              	subCallBack();
+              }else{
+              	subwayLat = results[results.length-1].geometry.location.lat();
+              	subwayLng = results[results.length-1].geometry.location.lng();
+              	console.log(subwayLat); // 지하철 위도 경도를 구했다.
+              	console.log(subwayLng);
+              	//createSubwayMarkers(results);
+              	routeMap();
+                   getNextPage = pagination.hasNextPage && function() {
+                     pagination.nextPage();
+                   };
+              }
+            });
+	  
+} 
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    //var selectedMode = document.getElementById('mode').value;
+    var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
+    var destination= {lat: subwayLat, lng: subwayLng};  // 가까운 지하철 위도경도
+    directionsService.route({
+      origin: {lat:forSale_Lat, lng:forSale_Lng},  // 매물주소의 위도경도
+      destination: {lat: subwayLat, lng: subwayLng},  // 가까운 지하철 위도경도
+      // Note that Javascript allows us to access the constant
+      // using square brackets and a string value as its
+      // "property."
+      travelMode: google.maps.TravelMode['WALKING']
+    }, function(response, status) {
+      if (status == 'OK') {
+        directionsDisplay.setDirections(response);
+        console.log(response.routes[0].legs[0].distance.text);
+        $("#forSubwayDistance").html(response.routes[0].legs[0].distance.text);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+</script> -->
 <script src="resources/user/js/jquery-2.2.0.min.js"></script>
 <script src="resources/user/js/bootstrap.min.js"></script>
 <script src="resources/user/js/bootstrap-submenu.js"></script>
