@@ -27,8 +27,8 @@
 			           FORSALE_HOUSETYPE,
 			           FORSALE_LAT,
 			           FORSALE_LNG,
-			           FORSALE_SUBWAY,
 			           FORSALE_TRADE,
+			           FORSALE_SUBWAY,
 			           FORSALE_SUBWAYDISTANCE,
 			           FORSALE_SUBWAYDISTANCE2,
 			           FORSALE_HITCOUNT
