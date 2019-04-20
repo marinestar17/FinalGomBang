@@ -110,7 +110,9 @@ pageEncoding="UTF-8"%>
     				forSale_HouseType:$( "#selectHouseType option:selected" ).text(),
     				geoapi_prefectures:$( "#geoapi-prefectures option:selected" ).text(),
     				geoapi_cities:$( "#geoapi-cities option:selected" ).text(), 
-    				geoapi_towns:$( "#geoapi-towns option:selected" ).text(), 
+    				geoapi_towns:$( "#geoapi-towns option:selected" ).text(),
+    				min_distance:$("input[name=min_distance]").val(),
+    				max_distance:$("input[name=max_distance]").val(),
     				max_price:$("input[name=max_price]").val(),
     				min_price:$("input[name=min_price]").val(),
     				forSale_OptionA:$('input[name=forSale_OptionA]:checked').val(),
@@ -498,6 +500,8 @@ pageEncoding="UTF-8"%>
                 <input type="hidden" id="selectedGeoapi_prefectures" value="${PreviousSearchItem.geoapi_prefectures }">
                 <input type="hidden" id="selectedGeoapi_towns" value="${PreviousSearchItem.geoapi_towns }">
                 <input type="hidden" id="selectedGeoapi_cities" value="${PreviousSearchItem.geoapi_cities }">
+                <input type="hidden" id="selectedMin_distance" value="${PreviousSearchItem.min_distance }">
+                <input type="hidden" id="selectedMax_distance" value="${PreviousSearchItem.max_distance }">
                 <input type="hidden" id="selectedMin_price" value="${PreviousSearchItem.min_price }">
                 <input type="hidden" id="selectedMax_price" value="${PreviousSearchItem.max_price }">
                 <!-- 시작 -->
@@ -540,14 +544,17 @@ pageEncoding="UTF-8"%>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 property-content ">
                         <!-- title -->
                         <h1 class="title">
-                            <a href="customerItemDetail?forSale_Seq=${searchItemList.forSale_Seq }">${searchItemList.forSale_Title}//${status.count }</a>
+                            <a href="customerItemDetail?forSale_Seq=${searchItemList.forSale_Seq }">${searchItemList.forSale_Title}</a>
                         </h1>
                         <!-- Property address -->
                         <h3 class="property-address">
                             <a href="customerItemDetail?forSale_Seq=${searchItemList.forSale_Seq }">
                                 <i class="fa fa-map-marker"></i>${searchItemList.geoapi_prefectures} ${searchItemList.geoapi_cities} ${searchItemList.geoapi_towns} ${searchItemList.geoapi_remain}
+                            	<br>
+                            	<i class="fa fa-train"></i>${searchItemList.forSale_SubwayDistance2 }
                             </a>
                         </h3>
+                        
                         <!-- Facilities List -->
                         <ul class="facilities-list clearfix">
                             <c:forEach var="optionList" items="${optionList[status.count-1]}" varStatus="num">
@@ -712,11 +719,11 @@ pageEncoding="UTF-8"%>
                             </div>
                         </div> -->
 
-                        <!-- <div class="range-slider">
+                        <div class="range-slider">
                             <label>For Train</label>
                             <div data-min="0" data-max="2000" data-unit="M" data-min-name="min_distance" data-max-name="max_distance" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                             <div class="clearfix"></div>
-                        </div> -->
+                        </div>
 
                         <div class="range-slider">
                             <label>Price</label>

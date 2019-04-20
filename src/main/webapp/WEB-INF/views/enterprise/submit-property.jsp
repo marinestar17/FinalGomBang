@@ -257,6 +257,7 @@ pageEncoding="UTF-8"%>
     var pyrmont = {lat : 0, lng : 0};
 	// 지도에 표시
 	function codeAddress() {
+		var subwayArr = new Array();
 		geocoder = new google.maps.Geocoder();
 	    //In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
 	   	geoapi_towns = $("#geoapi-towns").val();
@@ -477,7 +478,12 @@ pageEncoding="UTF-8"%>
 	                         	console.log("aaa" + subwayMin);
 	                         	console.log("subwayDestination" + JSON.stringify(subwayDestination));
 	                         	cnt++;
-	                         	if(cnt == subwayArr.length-1){
+	                         	console.log(cnt + " // cnt");
+	                         	console.log(subwayArr.length + " // 어레이크기");
+	                         	if(subwayArr.length==1){
+	                         		routeMap2();
+	                         	}
+	                         	else if(cnt == subwayArr.length-1){
 	                         		routeMap2();
 	                         	}
 	                         	else if(cnt!=subwayArr.length+1){
@@ -496,7 +502,6 @@ pageEncoding="UTF-8"%>
 	        }
 	        
 	        function routeMap2() {
-	       		alert("22");
 	      	  var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
 	            var directionsDisplay = new google.maps.DirectionsRenderer;
 	            var directionsService = new google.maps.DirectionsService;
@@ -531,6 +536,7 @@ pageEncoding="UTF-8"%>
 	                console.log(response.routes[0].legs[0].distance.text);
 	                console.log(response.routes[0].legs[0].distance.value+"제발아아아앙");
 	                $("#forSubwayDistance").val(response.routes[0].legs[0].distance.value);
+	                $("#forSubwayDistance2").val(response.routes[0].legs[0].distance.text);
 	              } else {
 	                window.alert('Directions request failed due to ' + status);
 	              }
@@ -924,8 +930,10 @@ pageEncoding="UTF-8"%>
                                     <input type="hidden" id="forSale_Lng" name="forSale_Lng" class="input-text">
                                     <input type="hidden" id="subwayLat"  class="input-text" >
                                     <input type="hidden" id="subwayLng"  class="input-text">
+                                    <input type="hidden" id="forSale_Trade" name="forSale_Trade" class="input-text" value="N">
                                     <input type="hidden" id="forSubway" name="forSale_Subway"  class="input-text">
                                     <input type="hidden" id="forSubwayDistance" name="forSale_SubwayDistance"  class="input-text">
+                                    <input type="hidden" id="forSubwayDistance2" name="forSale_SubwayDistance2"  class="input-text">
                                 </div>
                             </div>
                         </div>

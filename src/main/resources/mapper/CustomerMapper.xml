@@ -194,6 +194,7 @@ WHERE
 			           FORSALE_LNG,
 			           FORSALE_SUBWAY,
 			           	 FORSALE_SUBWAYDISTANCE,
+			           	 FORSALE_SUBWAYDISTANCE2,
 			           	  FORSALE_HITCOUNT
 	FROM
 		FORSALE
@@ -237,6 +238,7 @@ WHERE
 			           FORSALE_LNG,
 			           	FORSALE_SUBWAY,
 			           	 FORSALE_SUBWAYDISTANCE,
+			           	 FORSALE_SUBWAYDISTANCE2,
 			           	  FORSALE_HITCOUNT
 	FROM
 		FORSALE
@@ -265,11 +267,16 @@ WHERE
 			              FORSALE_LNG,
 			              FORSALE_SUBWAY,
 			           	 FORSALE_SUBWAYDISTANCE,
+			           	 FORSALE_SUBWAYDISTANCE2,
 			           	  FORSALE_HITCOUNT
 	FROM
 		FORSALE
 	WHERE
 		FORSALE_RENT BETWEEN #{min_price} AND #{max_price}
+		<if test="min_distance!=-1">
+		AND
+		FORSALE_SUBWAYDISTANCE BETWEEN #{min_distance} AND #{max_distance}
+		</if>
 		<if test="forSale_Status!='Property Status'">
 		AND
 		FORSALE_STATUS=#{forSale_Status}
@@ -314,14 +321,6 @@ WHERE
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>
-		<!-- 
-		AND
-		GEOAPI_PREFECTURES=#{geoapi_prefectures}
-		AND
-		GEOAPI_CITIES=#{geoapi_cities}
-		AND
-		GEOAPI_TOWNS=#{geoapi_towns}
-		 -->
 </select>
 
 <!-- 물품 검색 -->
@@ -348,11 +347,16 @@ WHERE
 			              FORSALE_LNG,
 			              FORSALE_SUBWAY,
 			           	 FORSALE_SUBWAYDISTANCE,
+			           	 FORSALE_SUBWAYDISTANCE2,
 			           	  FORSALE_HITCOUNT
 	FROM
 		FORSALE
 	WHERE
 		FORSALE_RENT BETWEEN #{min_price} AND #{max_price}
+		<if test="min_distance!=-1">
+		AND
+		FORSALE_SUBWAYDISTANCE BETWEEN #{min_distance} AND #{max_distance}
+		</if>
 		<if test="forSale_Status!='Property Status'">
 		AND
 		FORSALE_STATUS=#{forSale_Status}
@@ -552,10 +556,10 @@ WHERE
 		,FORSALE_STATUS
 		,FORSALE_RENT
 		,F.FORSALE_SEQ
+		,FORSALE_TRADE
 		,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM-DD') RESERVATION_INDATE
 		,RESERVATION_COMPLETE
 		,RESERVATION_SEQ
-		,FORSALE_TRADE
 	FROM
 		FORSALE F, RESERVATION R
 	WHERE

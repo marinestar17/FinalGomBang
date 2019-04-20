@@ -28,7 +28,9 @@
 			           FORSALE_LAT,
 			           FORSALE_LNG,
 			           FORSALE_SUBWAY,
+			           FORSALE_TRADE,
 			           FORSALE_SUBWAYDISTANCE,
+			           FORSALE_SUBWAYDISTANCE2,
 			           FORSALE_HITCOUNT
 		)
 		VALUES
@@ -52,8 +54,10 @@
 			          ,#{forSale_HouseType}
 			           ,#{forSale_Lat}
 			            ,#{forSale_Lng}
+			             ,#{forSale_Trade}
 			             ,#{forSale_Subway}
 			              ,#{forSale_SubwayDistance}
+			               ,#{forSale_SubwayDistance2}
 			               ,0
 		)
 		<selectKey keyProperty="forSale_Seq" resultType="int" order="AFTER">

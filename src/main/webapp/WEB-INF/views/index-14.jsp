@@ -555,7 +555,9 @@ pageEncoding="UTF-8"%>
                             <a href="#" class="btn button-md button-theme" data-animation="animated fadeInUp delay-15s">Get Started Now</a>
                             <a href="#" class="btn button-md border-button-theme" data-animation="animated fadeInUp delay-15s">Learn More</a>
                         </div>
-
+                        
+						
+                        
                         <div class="banner-search-box hidden-xs hidden-sm">
                             <!-- Search area start -->
                             <div class="search-area animated fadeInDown delay-1s">
@@ -571,6 +573,7 @@ pageEncoding="UTF-8"%>
                                                     </select>
                                                 </div>
                                             </div>
+                                            <input type="hidden" id="selectedMin_distance" name="min_distance" value=-1>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group">
                                                     <select id="forSale_HouseType" class="selectpicker search-fields" name="forSale_HouseType" data-live-search="true" data-live-search-placeholder="Search value">

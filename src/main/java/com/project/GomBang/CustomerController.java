@@ -246,82 +246,83 @@ public class CustomerController {
 	}
 	
 	// 매물 검색하기
-	@RequestMapping(value="/searchAllItem", method=RequestMethod.GET)
-	public @ResponseBody ArrayList<Item> searchAllItem() {
-		ArrayList<Item> list = null;
-		ArrayList<Image> imagelist = new ArrayList<Image>();
-		list = dao.searchAllItem();
-		for (Item item : list) {
-			imagelist = dao.detailImg(item.getForSale_Seq());
-			item.setForSale_ETC(imagelist.get(0).getSaveName());
-		}
-		return list;
-	}
-	
-	// 매물 검색하기
-			@RequestMapping(value="/searchItem", method=RequestMethod.GET)
-			public String searchItem(SearchItem item, Model model) {
-				if(item.getGeoapi_cities().equals("市区町村を選択してください")||item.getGeoapi_cities().equals("市区町村名を選択してください")) {
-					item.setGeoapi_cities("none");
-				}
-				if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
-					item.setGeoapi_towns("none");
-				}
-				ArrayList<String[]> optionList = new ArrayList<String[]>();
-				ArrayList<Item> list = null;
-				ArrayList<Image> imagelist = new ArrayList<Image>();
-				ArrayList<Image> searchImgList = new ArrayList<Image>();
-				ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
-				list = dao.searchItem(item);
-				for (Item item2 : list) {
-					imagelist = dao.detailImg(item2.getForSale_Seq());
-					searchImgList.add(imagelist.get(0));
-					String[] optionArr = item2.getForSale_Option().split(",");
-					optionList.add(optionArr);
-					threeImgList.add(imagelist);
-				}
-				for (ArrayList<Image> arrayList : threeImgList) {
-					System.out.println(arrayList);
-				}
-				model.addAttribute("PreviousSearchItem", item);
-				model.addAttribute("optionList", optionList);
-				model.addAttribute("searchItemList", list);
-				model.addAttribute("searchImgList", searchImgList);
-				model.addAttribute("threeImgList", threeImgList);
-				return "customer/properties-list-rightside";
+		@RequestMapping(value="/searchAllItem", method=RequestMethod.GET)
+		public @ResponseBody ArrayList<Item> searchAllItem() {
+			ArrayList<Item> list = null;
+			ArrayList<Image> imagelist = new ArrayList<Image>();
+			list = dao.searchAllItem();
+			for (Item item : list) {
+				imagelist = dao.detailImg(item.getForSale_Seq());
+				item.setForSale_ETC(imagelist.get(0).getSaveName());
 			}
-	
-	// 매물 검색하기
-	@RequestMapping(value="/searchItem2", method=RequestMethod.GET)
-	public String searchItem2(SearchItem item, Model model) {
-		if(item.getGeoapi_cities().contains("市区町村を選択してください")||item.getGeoapi_cities().contains("市区町村名を選択してください")) {
-			item.setGeoapi_cities("none");
+			return list;
 		}
-		if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
-			item.setGeoapi_towns("none");
+		
+		// 매물 검색하기
+				@RequestMapping(value="/searchItem", method=RequestMethod.GET)
+				public String searchItem(SearchItem item, Model model) {
+					System.out.println(item);
+					if(item.getGeoapi_cities().equals("市区町村を選択してください")||item.getGeoapi_cities().equals("市区町村名を選択してください")) {
+						item.setGeoapi_cities("none");
+					}
+					if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
+						item.setGeoapi_towns("none");
+					}
+					ArrayList<String[]> optionList = new ArrayList<String[]>();
+					ArrayList<Item> list = null;
+					ArrayList<Image> imagelist = new ArrayList<Image>();
+					ArrayList<Image> searchImgList = new ArrayList<Image>();
+					ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
+					list = dao.searchItem(item);
+					for (Item item2 : list) {
+						imagelist = dao.detailImg(item2.getForSale_Seq());
+						searchImgList.add(imagelist.get(0));
+						String[] optionArr = item2.getForSale_Option().split(",");
+						optionList.add(optionArr);
+						threeImgList.add(imagelist);
+					}
+					for (ArrayList<Image> arrayList : threeImgList) {
+						System.out.println(arrayList);
+					}
+					model.addAttribute("PreviousSearchItem", item);
+					model.addAttribute("optionList", optionList);
+					model.addAttribute("searchItemList", list);
+					model.addAttribute("searchImgList", searchImgList);
+					model.addAttribute("threeImgList", threeImgList);
+					return "customer/properties-list-rightside";
+				}
+		
+		// 매물 검색하기
+		@RequestMapping(value="/searchItem2", method=RequestMethod.GET)
+		public String searchItem2(SearchItem item, Model model) {
+			if(item.getGeoapi_cities().contains("市区町村を選択してください")||item.getGeoapi_cities().contains("市区町村名を選択してください")) {
+				item.setGeoapi_cities("none");
+			}
+			if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
+				item.setGeoapi_towns("none");
+			}
+			System.out.println(item);
+			ArrayList<String[]> optionList = new ArrayList<String[]>();
+			ArrayList<Item> list = null;
+			ArrayList<Image> imagelist = new ArrayList<Image>();
+			ArrayList<Image> searchImgList = new ArrayList<Image>();
+			ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
+			list = dao.searchItem(item);
+			for (Item item2 : list) {
+				imagelist = dao.detailImg(item2.getForSale_Seq());
+				searchImgList.add(imagelist.get(0));
+				threeImgList.add(imagelist);
+				String[] optionArr = item2.getForSale_Option().split(",");
+				optionList.add(optionArr);
+			}
+			model.addAttribute("PreviousSearchItem", item);
+			model.addAttribute("optionList", optionList);
+			model.addAttribute("searchItemList", list);
+			model.addAttribute("searchImgList", searchImgList);
+			model.addAttribute("threeImgList", threeImgList);
+			/*return "customer/properties-list-rightside";*/
+			return "customer/lots";
 		}
-		System.out.println(item);
-		ArrayList<String[]> optionList = new ArrayList<String[]>();
-		ArrayList<Item> list = null;
-		ArrayList<Image> imagelist = new ArrayList<Image>();
-		ArrayList<Image> searchImgList = new ArrayList<Image>();
-		ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
-		list = dao.searchItem(item);
-		for (Item item2 : list) {
-			imagelist = dao.detailImg(item2.getForSale_Seq());
-			searchImgList.add(imagelist.get(0));
-			threeImgList.add(imagelist);
-			String[] optionArr = item2.getForSale_Option().split(",");
-			optionList.add(optionArr);
-		}
-		model.addAttribute("PreviousSearchItem", item);
-		model.addAttribute("optionList", optionList);
-		model.addAttribute("searchItemList", list);
-		model.addAttribute("searchImgList", searchImgList);
-		model.addAttribute("threeImgList", threeImgList);
-		/*return "customer/properties-list-rightside";*/
-		return "customer/lots";
-	}
 	
 	//게시판 등록페이지 이동
 	@RequestMapping(value="/makeCustomerboard", method=RequestMethod.GET)
