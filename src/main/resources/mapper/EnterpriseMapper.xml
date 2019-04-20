@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 게시판 처리 SQL -->
+<mapper namespace="com.project.GomBang.DAO.EnterpriseMapper"> <!-- 인터페이스의 경로 -->
+ 	<insert id="insertItem" parameterType="Item">
+		INSERT INTO FORSALE
+		(
+			FORSALE_SEQ,
+			FORSALE_TITLE,
+			FORSALE_STATUS,
+			 ENTERPRISE_ID,
+			  GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			   FORSALE_RENT,
+			     FORSALE_DEPOSIT,
+			      FORSALE_REWARD,
+			       FORSALE_MANAGECOST,
+			       FORSALE_OPTION,
+			         FORSALE_ETC,
+			          FORSALE_INDATE,
+			           FORSALE_POSTCODE,
+			           FORSALE_HOUSETYPE,
+			           FORSALE_LAT,
+			           FORSALE_LNG,
+			           FORSALE_SUBWAY,
+			           FORSALE_SUBWAYDISTANCE,
+			           FORSALE_HITCOUNT
+		)
+		VALUES
+		(
+			FORSALE_SEQ.NEXTVAL
+			,#{forSale_Title}
+			 ,#{forSale_Status}
+			  ,#{enterprise_ID}
+			  ,#{geoapi_prefectures}
+			   ,#{geoapi_cities}
+			    ,#{geoapi_towns}
+			     ,#{geoapi_remain}
+			   ,#{forSale_Rent}
+			    ,#{forSale_Deposit}
+			     ,#{forSale_Reward}
+			      ,#{forSale_ManageCost}
+			      ,#{forSale_Option}
+			        ,#{forSale_ETC}
+			         ,sysdate
+			          ,#{forSale_PostCode}
+			          ,#{forSale_HouseType}
+			           ,#{forSale_Lat}
+			            ,#{forSale_Lng}
+			             ,#{forSale_Subway}
+			              ,#{forSale_SubwayDistance}
+			               ,0
+		)
+		<selectKey keyProperty="forSale_Seq" resultType="int" order="AFTER">
+            select FORSALE_SEQ.CURRVAL
+            FROM
+            DUAL  
+         </selectKey>
+	</insert>
+	
+	<insert id="insertImg" parameterType="Image">
+		INSERT INTO IMAGE
+		(
+			IMAGE_SEQ
+			 ,FORSALE_SEQ
+			  ,ORIGINNAME
+			   ,SAVENAME
+		)
+		VALUES
+		(
+			IMAGE_SEQ.NEXTVAL
+			 ,#{forSale_Seq}
+			  ,#{originName}
+			   ,#{saveName}
+		)
+		
+	</insert>
+	
+	<insert id="insertEnterprise" parameterType="Enterprise">
+	INSERT INTO ENTERPRISE
+	(
+		ENTERPRISE_ID,
+	     ENTERPRISE_PW,
+	      ENTERPRISE_NAME,
+	       ENTERPRISE_ADDRESS,
+	        ENTERPRISE_REGINUM,
+	         ENTERPRISE_MANAGERNAME,
+	          ENTERPRISE_MANAGERPHONE,
+	           ENTERPRISE_MANAGEREMAIL,
+	            ENTERPRISE_ETC,
+	             ENTERPRISE_CODE
+	)
+	VALUES
+	(
+		#{enterprise_ID},
+		 #{enterprise_PW},
+		  #{enterprise_Name},
+		   #{enterprise_Address},
+		    #{enterprise_RegiNum},
+		     #{enterprise_ManagerName},
+		      #{enterprise_ManagerPhone},
+		       #{enterprise_ManagerEmail},
+		        #{enterprise_ETC},
+		         #{enterprise_Code}
+	)
+</insert>
+<select id="selectEnterprise" parameterType="Enterprise" resultType="Enterprise">
+	SELECT
+		ENTERPRISE_ID,
+		 ENTERPRISE_PW,
+		  ENTERPRISE_NAME,
+	       ENTERPRISE_ADDRESS,
+	        ENTERPRISE_REGINUM,
+	         ENTERPRISE_MANAGERNAME,
+	          ENTERPRISE_MANAGERPHONE,
+	           ENTERPRISE_MANAGEREMAIL,
+	            ENTERPRISE_ETC,
+	             ENTERPRISE_CODE,
+	              ENTERPRISE_PERMISSION
+	FROM
+		ENTERPRISE
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID} AND ENTERPRISE_PW=#{enterprise_PW}
+</select>
+<select id="enterpriseList" resultType="Enterprise">
+	SELECT
+		ENTERPRISE_ID,
+		 ENTERPRISE_PW
+	FROM
+		ENTERPRISE
+</select>
+
+<delete id="deleteEnterprise" parameterType="Enterprise">
+	DELETE
+	FROM
+		ENTERPRISE
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID}
+</delete>
+
+<update id="updateEnterprise" parameterType="Enterprise">
+	UPDATE
+		ENTERPRISE
+	SET
+		ENTERPRISE_PW=#{enterprise_PW},
+		  ENTERPRISE_NAME=#{enterprise_Name},
+	       ENTERPRISE_ADDRESS=#{enterprise_Address},
+	        ENTERPRISE_REGINUM=#{enterprise_RegiNum},
+	         ENTERPRISE_MANAGERNAME=#{enterprise_ManagerName},
+	          ENTERPRISE_MANAGERPHONE=ENTERPRISE_MANAGERPHONE,
+	           ENTERPRISE_MANAGEREMAIL=#{enterprise_ManagerEmail},
+	            ENTERPRISE_ETC=#{enterprise_ETC},
+	             ENTERPRISE_CODE=#{enterprise_Code}
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID}
+</update>
+
+<select id="searchUpdate" parameterType="String" resultType="Enterprise">
+	SELECT
+		ENTERPRISE_ID,
+		 ENTERPRISE_PW,
+		  ENTERPRISE_NAME,
+	       ENTERPRISE_ADDRESS,
+	        ENTERPRISE_REGINUM,
+	         ENTERPRISE_MANAGERNAME,
+	          ENTERPRISE_MANAGERPHONE,
+	           ENTERPRISE_MANAGEREMAIL,
+	            ENTERPRISE_ETC,
+	             ENTERPRISE_CODE
+	FROM
+		ENTERPRISE
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID}
+</select>	
+
+<!--기업 게시판 글등록 -->
+<insert id="insertEnterpriseBoard" parameterType="EnterpriseBoard">
+	INSERT INTO
+		ENTERPRISEBOARD(
+			ENTERPRISEBOARD_SEQ
+			,ENTERPRISE_ID
+			,ENTERPRISEBOARD_TITLE
+			,ENTERPRISEBOARD_CONTENT
+			,ENTERPRISEBOARD_INDATE
+			,ENTERPRISEBOARD_HITCOUNT
+		)
+		VALUES (
+			ENTERPRISEBOARD_SEQ.NEXTVAL
+			,#{enterprise_ID}
+			,#{enterpriseBoard_Title}
+			,#{enterpriseBoard_Content}
+			,SYSDATE
+			,0
+		)
+</insert>
+
+<!--기업 게시판 글 출력 -->
+<select id="enterpriseBoardList" resultType = "EnterpriseBoard">
+	SELECT
+		ENTERPRISEBOARD_SEQ
+		,ENTERPRISE_ID
+		,ENTERPRISEBOARD_TITLE
+		,ENTERPRISEBOARD_CONTENT
+		,TO_CHAR(ENTERPRISEBOARD_INDATE, 'YYYY/MM/DD') AS enterpriseBoard_Indate
+		,ENTERPRISEBOARD_HITCOUNT
+	FROM
+		ENTERPRISEBOARD
+</select>
+
+<!--기업 게시판 글 하나 조회 -->
+<select id="selectEnterpriseboard" parameterType = "String" resultType="EnterpriseBoard">
+	SELECT
+		ENTERPRISEBOARD_SEQ
+		,ENTERPRISE_ID
+		,ENTERPRISEBOARD_TITLE
+		,ENTERPRISEBOARD_CONTENT
+		,TO_CHAR(ENTERPRISEBOARD_INDATE, 'YYYY/MM/DD') AS enterpriseBoard_Indate
+		,ENTERPRISEBOARD_HITCOUNT
+	FROM
+		ENTERPRISEBOARD
+	WHERE
+		ENTERPRISEBOARD_SEQ = #{enterpriseBoard_Seq}
+</select>
+
+<!--기업 게시판 조회수 관련 -->
+<update id="countEnterpriseboard" parameterType = "String" >
+	UPDATE
+		ENTERPRISEBOARD
+	SET
+		ENTERPRISEBOARD_HITCOUNT = ENTERPRISEBOARD_HITCOUNT+1
+	WHERE
+		ENTERPRISEBOARD_SEQ = #{enterpriseBoard_Seq}
+</update>
+
+<!--매물리스트 출력  -->
+<select id="itemList" resultType="Item" parameterType="String">
+SELECT
+            FORSALE_SEQ,
+			FORSALE_TITLE,
+			FORSALE_STATUS,
+			ENTERPRISE_ID,
+			GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			FORSALE_RENT,
+		    AFORSLE_DEPOSIT,
+		    FORSALE_REWARD,
+			FORSALE_MANAGECOST,
+		    FORSALE_OPTION,
+		    FORSALE_ETC,
+		    FORSALE_INDATE,
+		    FORSALE_POSTCODE,
+			FORSALE_HOUSETYPE,
+			FORSALE_LAT,
+			FORSALE_LNG
+FROM
+	        FORSALE
+WHERE
+	        ENTERPRISE_ID=#{enterprise_ID}
+
+</select>
+
+<!-- 최근 등록한 6개 매물 6출력 -->
+<select id="ICList" resultType="Total">
+select 
+				f.FORSALE_SEQ as FORSALE_SEQ,
+			    FORSALE_TITLE,
+			    FORSALE_STATUS ,
+			    ENTERPRISE_ID,
+			    GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			    FORSALE_RENT,
+			    FORSALE_DEPOSIT,
+				FORSALE_REWARD,
+				FORSALE_MANAGECOST,
+			    FORSALE_OPTION,
+			    FORSALE_ETC,
+			    TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD')) - TO_DATE(FORSALE_INDATE)as FORSALE_INDATE,
+			    FORSALE_POSTCODE,
+			    FORSALE_HOUSETYPE,
+			    FORSALE_LAT,
+			    FORSALE_LNG,
+                SAVENAME,
+                IMAGE_SEQ,
+                ORIGINNAME
+		 from 
+		 		(select * from 
+                    (select * from forsale order by forsale_seq desc)
+                where 
+                      7>rownum
+                and 
+                	forsale_trade = 'N') f
+                , (select 
+                        i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
+                    from 
+                        image i
+                        , (select min(image_seq) as image_seq, forsale_seq from image group by forsale_seq) i2
+                    where 
+                        i.image_seq = i2.image_seq and i.FORSALE_SEQ = i2.forsale_seq) i 		 		
+        where
+             f.FORSALE_SEQ=i.FORSALE_SEQ
+        order by
+             f.FORSALE_SEQ desc
+</select>
+
+<!-- 최근등록한 6개 매물중 하우스타입에 따라 출력 -->
+<select id="HouseTypeList" resultType="Total" parameterType="String">
+select 
+				f.FORSALE_SEQ as FORSALE_SEQ,
+			    FORSALE_TITLE,
+			    FORSALE_STATUS ,
+			    ENTERPRISE_ID,
+			    GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			    FORSALE_RENT,
+			    FORSALE_DEPOSIT,
+				FORSALE_REWARD,
+				FORSALE_MANAGECOST,
+			    FORSALE_OPTION,
+			    FORSALE_ETC,
+			    TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD')) - TO_DATE(FORSALE_INDATE)as FORSALE_INDATE,
+			    FORSALE_POSTCODE,
+			    FORSALE_HOUSETYPE,
+			    FORSALE_LAT,
+			    FORSALE_LNG,
+                SAVENAME,
+                IMAGE_SEQ,
+                ORIGINNAME
+		 from 
+		 		(select * from 
+                    (select * from forsale order by forsale_seq desc)
+                where 
+                      7>rownum
+                and
+                	forsale_trade = 'N'
+                 and
+	            <if test='_parameter.equals("Apartment")'>
+					forSale_HouseType='Apartment'
+				</if>
+	 
+	    		<if test='_parameter.equals("House")'>
+					forSale_HouseType='House'
+				</if>
+		
+				<if test='_parameter.equals("Commercial")'>
+					forSale_HouseType='Commercial'
+				</if>
+	
+				<if test='_parameter.equals("Garage")'>
+					forSale_HouseType='Garage'
+				</if>
+	
+				<if test='_parameter.equals("Lot")'>
+					forSale_HouseType='Lot'
+				</if>      ) f
+                , (select 
+                        i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
+                    from 
+                        image i
+                        , (select min(image_seq) as image_seq, forsale_seq from image group by forsale_seq) i2
+                    where 
+                        i.image_seq = i2.image_seq and i.FORSALE_SEQ = i2.forsale_seq) i 		 		
+        where
+	             f.FORSALE_SEQ=i.FORSALE_SEQ
+		         
+		order by
+		             f.FORSALE_SEQ desc
+</select>
+
+<update id="remakeEnterpriseboard" parameterType="EnterpriseBoard">
+	UPDATE
+		ENTERPRISEBOARD
+	SET
+		ENTERPRISEBOARD_TITLE=#{enterpriseBoard_Title},
+	    ENTERPRISEBOARD_CONTENT=#{enterpriseBoard_Content}
+	WHERE
+		ENTERPRISEBOARD_SEQ=#{enterpriseBoard_Seq}
+</update>
+
+<!-- 기업 댓글 입력 -->
+<insert id="insertEnterpriseComment" parameterType="EnterpriseComment">
+	INSERT INTO ENTERPRISECOMMENT
+	(
+		ENTERPRISEBOARD_SEQ,
+		ENTERPRISE_ID,
+	    ENTERPRISECOMMENT_CONTENT,
+	    ENTERPRISECOMMENT_INDATE,
+	    ENTERPRISECOMMENT_SEQ
+	)
+	VALUES
+	(
+		#{enterpriseBoard_Seq},
+		#{enterprise_ID},
+		#{enterpriseComment_Content},
+		SYSDATE,
+		ENTERPRISECOMMENT_SEQ.NEXTVAL
+	)
+</insert>
+
+<!-- 기업 댓글 리스트 -->
+<select id="enterpriseCommentList" parameterType="EnterpriseComment" resultType="EnterpriseComment">
+	SELECT
+		ENTERPRISEBOARD_SEQ,
+		ENTERPRISE_ID,
+	    ENTERPRISECOMMENT_CONTENT,
+	    ENTERPRISECOMMENT_INDATE,
+	    ENTERPRISECOMMENT_SEQ
+	FROM
+		ENTERPRISECOMMENT
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID} AND ENTERPRISEBOARD_SEQ=#{enterpriseBoard_Seq}
+	ORDER BY
+		ENTERPRISECOMMENT_INDATE DESC
+</select>
+
+<delete id="deleteEnterpriseboard" parameterType="EnterpriseBoard">
+	DELETE
+	FROM
+		ENTERPRISEBOARD
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID} AND ENTERPRISEBOARD_SEQ=#{enterpriseBoard_Seq}
+	
+</delete>
+
+<!-- 기업이 등록한 매물리스트 출력 -->
+<select id="EnterpriseItemList" resultType="Total" parameterType="Total">
+select 
+				f.FORSALE_SEQ as FORSALE_SEQ,
+			    FORSALE_TITLE,
+			    FORSALE_STATUS ,
+			    ENTERPRISE_ID,
+			    GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			    FORSALE_RENT,
+			    FORSALE_DEPOSIT,
+				FORSALE_REWARD,
+				FORSALE_MANAGECOST,
+			    FORSALE_OPTION,
+			    FORSALE_ETC,
+			    TO_CHAR(FORSALE_INDATE, 'YYYY-MM-DD') FORSALE_INDATE,
+			    FORSALE_POSTCODE,
+			    FORSALE_HOUSETYPE,
+			    FORSALE_LAT,
+			    FORSALE_LNG,
+                SAVENAME,
+                IMAGE_SEQ,
+                ORIGINNAME
+		 from 
+		 		(select * from 
+                    (select * from forsale order by forsale_seq desc)
+                where 
+                    ENTERPRISE_ID=#{enterprise_ID}) f
+                , (select 
+                        i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
+                    from 
+                        image i
+                        , (select min(image_seq) as image_seq, forsale_seq from image group by forsale_seq) i2
+                    where 
+                        i.image_seq = i2.image_seq and i.FORSALE_SEQ = i2.forsale_seq) i 		 		
+        where
+             f.FORSALE_SEQ=i.FORSALE_SEQ
+        order by
+             f.FORSALE_SEQ desc
+
+</select>
+<!--자신이 등록한 매물리스트에서 삭제  -->
+<delete id="EnterpriseItemDelete" parameterType="Total">
+	DELETE
+	FROM
+		FORSALE
+	WHERE
+		ENTERPRISE_ID=#{enterprise_ID} AND FORSALE_SEQ=#{forSale_Seq}	
+</delete> 
+
+<!--자신이 등록한 매물리스트에서 이미지삭제 -->
+<delete id="EnterpriseImageDelete" parameterType="Total">
+	DELETE
+	FROM
+		IMAGE
+	WHERE
+		FORSALE_SEQ=#{forSale_Seq}	
+</delete>
+
+<!-- 수정시   시퀀스에해당하는 매물 정보 가져오기-->
+<select id="EnterpriseItem" resultType="Total" parameterType="Total">
+select
+    FORSALE_SEQ,
+    FORSALE_TITLE,
+    FORSALE_STATUS,
+    ENTERPRISE_ID,
+    GEOAPI_PREFECTURES,
+    GEOAPI_CITIES,
+    GEOAPI_TOWNS,
+    GEOAPI_REMAIN,
+    FORSALE_RENT,
+    FORSALE_DEPOSIT,
+    FORSALE_REWARD,
+    FORSALE_MANAGECOST,
+    FORSALE_OPTION,
+    FORSALE_ETC,
+    FORSALE_INDATE,
+    FORSALE_POSTCODE,
+    FORSALE_HOUSETYPE,
+    FORSALE_LAT,
+    FORSALE_LNG
+from
+    FORSALE
+where
+    FORSALE_SEQ=#{forSale_Seq}
+</select>
+
+<!-- 수정시   시퀀스에해당하는 이미지 정보 가져오기-->
+<select id="EnterpriseImage" resultType="Total" parameterType="Total">
+select
+    IMAGE_SEQ,
+    FORSALE_SEQ,
+    ORIGINNAME,
+    SAVENAME
+from
+    image
+where
+     FORSALE_SEQ=#{forSale_Seq}
+</select>
+
+<!-- 매물 수정 -->
+<update id="updateItem" parameterType="Item">
+		UPDATE 
+				FORSALE
+		SET
+			FORSALE_TITLE=#{forSale_Title}
+			,FORSALE_STATUS=#{forSale_Status}
+			 ,GEOAPI_PREFECTURES=#{geoapi_prefectures}
+			  ,GEOAPI_CITIES=#{geoapi_cities}
+			   ,GEOAPI_TOWNS=#{geoapi_towns}
+			    ,GEOAPI_REMAIN=#{geoapi_remain}
+			     ,FORSALE_RENT=#{forSale_Rent}
+			      ,FORSALE_DEPOSIT=#{forSale_Deposit}
+			       ,FORSALE_REWARD=#{forSale_Reward}
+			        ,FORSALE_MANAGECOST=#{forSale_ManageCost}
+			         ,FORSALE_OPTION=#{forSale_Option}
+			          ,FORSALE_ETC=#{forSale_ETC}
+			            ,FORSALE_POSTCODE=#{forSale_PostCode}
+			             ,FORSALE_HOUSETYPE=#{forSale_HouseType}
+			              ,FORSALE_LAT=#{forSale_Lat}
+			               ,FORSALE_LNG=#{forSale_Lng}
+		
+		WHERE
+		     FORSALE_SEQ=#{forSale_Seq}
+		<!-- <selectKey keyProperty="forSale_Seq" resultType="int" order="AFTER">
+            select FORSALE_SEQ.CURRVAL
+            FROM
+            DUAL  
+         </selectKey> -->
+
+</update>
+
+<!--매물 이미지 수정  -->
+<update id="updateImage" parameterType="Image">
+	UPDATE 
+		  	IMAGE
+	SET
+			IMAGE_SEQ=IMAGE_SEQ.NEXTVAL
+		   ,ORIGINNAME=#{originName}
+		   ,SAVENAME=#{saveName}
+	WHERE
+	 	FORSALE_SEQ=#{forSale_Seq}
+</update>
+<!--프로필 보기  -->
+<select id="enterpriseProfile" resultType ="Enterprise" parameterType="String">
+	SELECT
+		 ENTERPRISE_ID
+		,ENTERPRISE_PW
+		,ENTERPRISE_NAME
+		,ENTERPRISE_ADDRESS
+		,ENTERPRISE_REGINUM
+		,ENTERPRISE_MANAGERNAME
+		,ENTERPRISE_MANAGERPHONE
+		,ENTERPRISE_MANAGEREMAIL
+		,ENTERPRISE_ETC	
+	FROM
+		ENTERPRISE
+	WHERE
+		 ENTERPRISE_ID= #{enterprise_ID}
+</select>
+
+<!-- 프로필 데이터 기본정보 수정 -->
+<update id="updateenterpriseProfile" parameterType="Enterprise">
+	UPDATE 
+		  	 ENTERPRISE
+	SET
+	         ENTERPRISE_NAME=#{enterprise_Name}
+			,ENTERPRISE_PW=#{enterprise_PW}
+			,ENTERPRISE_ADDRESS=#{enterprise_Address}
+			,ENTERPRISE_REGINUM=#{enterprise_RegiNum}
+			,ENTERPRISE_MANAGERNAME=#{enterprise_ManagerName}
+			,ENTERPRISE_MANAGERPHONE=#{enterprise_ManagerPhone}
+			,ENTERPRISE_MANAGEREMAIL=#{enterprise_ManagerEmail}
+			,ENTERPRISE_ETC=#{enterprise_ETC}
+	WHERE
+	 		ENTERPRISE_ID= #{enterprise_ID}
+</update>
+
+<!-- 프로필 화면에서 비밀번호 수정 -->
+<update id="updateenterprisePassword" parameterType = "Enterprise">
+	UPDATE
+		ENTERPRISE
+	SET
+		ENTERPRISE_PW=#{enterprise_PW}
+	WHERE
+		ENTERPRISE_ID= #{enterprise_ID}
+</update>
+
+<!-- 기업페이지에서 기업이 등록한 매물을 예약한 고객 신청서 보여주기 -->
+<select id="reservationwait" resultType ="Total" parameterType="Total">
+	SELECT
+         RESERVATION_SEQ 
+		,R.ENTERPRISE_ID as ENTERPRISE_ID
+		,CUSTOMER_ID
+		,R.FORSALE_SEQ as FORSALE_SEQ
+		,RESERVATION_VISA
+		,RESERVATION_GUARANTOR
+		,RESERVATION_INDATE
+		,RESERVATION_COMPLETE
+	    ,FORSALE_TITLE
+		,GEOAPI_PREFECTURES
+		,GEOAPI_CITIES
+		,GEOAPI_TOWNS
+		,GEOAPI_REMAIN
+		,FORSALE_STATUS
+		,FORSALE_RENT
+	FROM
+		RESERVATION R, 
+		FORSALE F
+	WHERE
+		RESERVATION_COMPLETE='W'
+	AND
+		R.ENTERPRISE_ID=#{enterprise_ID}
+	AND
+	    F.forsale_seq=R.forsale_seq   
+</select>
+<!-- 예약 하기로 바꿔주기 -->
+<update id="updatereservation" parameterType="String">
+	UPDATE
+	    RESERVATION
+	SET
+		RESERVATION_COMPLETE='Y'
+	WHERE
+		RESERVATION_SEQ=#{reservation_Seq}
+</update>
+
+<!-- 기업페이지에서 기업이 등록한 매물을 예약성공한 고객 신청서 보여주기  -->
+<select id="reservationcomplete" resultType ="Total" parameterType="Total">
+	SELECT
+         RESERVATION_SEQ 
+		,R.ENTERPRISE_ID as ENTERPRISE_ID
+		,R.CUSTOMER_ID
+		,R.FORSALE_SEQ as FORSALE_SEQ
+		,RESERVATION_VISA
+		,RESERVATION_GUARANTOR
+		,RESERVATION_INDATE
+		,RESERVATION_COMPLETE
+	    ,FORSALE_TITLE
+		,GEOAPI_PREFECTURES
+		,GEOAPI_CITIES
+		,GEOAPI_TOWNS
+		,GEOAPI_REMAIN
+		,FORSALE_STATUS
+		,FORSALE_RENT
+		,CUSTOMER_EMAIL
+	FROM
+		RESERVATION R, 
+		FORSALE F,
+		CUSTOMER C
+	WHERE
+		RESERVATION_COMPLETE='Y'
+	AND
+		R.ENTERPRISE_ID=#{enterprise_ID}
+	AND
+	    F.forsale_seq=R.forsale_seq  
+	AND
+		R.CUSTOMER_ID = C.CUSTOMER_ID 
+	AND
+		F.FORSALE_TRADE = 'N'
+</select>
+
+<!-- 거래 완료 리스트 출력  -->
+<select id="tradeCompleteList" resultType ="Total" parameterType="Total">
+	SELECT
+         RESERVATION_SEQ 
+		,R.ENTERPRISE_ID as ENTERPRISE_ID
+		,R.CUSTOMER_ID
+		,R.FORSALE_SEQ as FORSALE_SEQ
+		,RESERVATION_VISA
+		,RESERVATION_GUARANTOR
+		,RESERVATION_INDATE
+		,RESERVATION_COMPLETE
+	    ,FORSALE_TITLE
+		,GEOAPI_PREFECTURES
+		,GEOAPI_CITIES
+		,GEOAPI_TOWNS
+		,GEOAPI_REMAIN
+		,FORSALE_STATUS
+		,FORSALE_RENT
+		,FORSALE_DEPOSIT
+		,FORSALE_REWARD
+		,CUSTOMER_EMAIL
+	FROM
+		RESERVATION R, 
+		FORSALE F,
+		CUSTOMER C
+	WHERE
+		RESERVATION_COMPLETE='Y'
+	AND
+		R.ENTERPRISE_ID=#{enterprise_ID}
+	AND
+	    F.forsale_seq=R.forsale_seq  
+	AND
+		F.FORSALE_TRADE = 'Y'
+	AND
+		R.CUSTOMER_ID = C.CUSTOMER_ID 
+</select>
+
+<!-- 예약 취소하기 -->
+<update id="enterpriseReservationCancel" parameterType = "Reservation">
+	UPDATE
+		RESERVATION
+	SET
+		RESERVATION_COMPLETE = 'N'
+	WHERE
+		CUSTOMER_ID = #{customer_ID}
+	AND
+		RESERVATION_SEQ = #{customer_ID}
+</update>
+
+<!-- 거래 완료  -->
+<update id="tradeComplete" parameterType = "String">
+	UPDATE
+		FORSALE
+	SET
+		FORSALE_TRADE = 'Y'
+	WHERE
+		FORSALE_SEQ = #{forSale_Seq}
+</update>
+
+</mapper>

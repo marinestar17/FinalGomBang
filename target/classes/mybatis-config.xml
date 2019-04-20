@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.project.GomBang.VO.Customer" alias="Customer" />
+		<typeAlias type="com.project.GomBang.VO.Item" alias="Item" />
+		<typeAlias type="com.project.GomBang.VO.Enterprise" alias="Enterprise" />
+		<typeAlias type="com.project.GomBang.VO.Admin" alias="Admin" />
+		<typeAlias type="com.project.GomBang.VO.Customerboard" alias="Customerboard" />
+		<typeAlias type="com.project.GomBang.VO.CkEditor" alias="CkEditor" />
+		<typeAlias type="com.project.GomBang.VO.EnterpriseBoard" alias="EnterpriseBoard" />
+		<typeAlias type="com.project.GomBang.VO.Image" alias="Image" />
+		<typeAlias type="com.project.GomBang.VO.Total" alias="Total" />
+		<typeAlias type="com.project.GomBang.VO.SearchItem" alias="SearchItem" />
+		<typeAlias type="java.util.HashMap" alias="Hmap"/>
+		<typeAlias type="com.project.GomBang.VO.CustomerComment" alias="CustomerComment" />
+		<typeAlias type="com.project.GomBang.VO.EnterpriseComment" alias="EnterpriseComment" />
+		<typeAlias type="com.project.GomBang.VO.AdminTODO" alias="Todo" />
+		<typeAlias type="com.project.GomBang.VO.AdminMessage" alias="Message" />
+		<typeAlias type="com.project.GomBang.VO.Reservation" alias="Reservation" />
+		<typeAlias type="com.project.GomBang.VO.Bookmark" alias="Bookmark" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/AdminMapper.xml" />
+		<mapper resource="mapper/CustomerMapper.xml" />
+		<mapper resource="mapper/EnterpriseMapper.xml" />
+	</mappers>
+</configuration>

@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 게시판 처리 SQL -->
+<mapper namespace="com.project.GomBang.DAO.CustomerMapper"> <!-- 인터페이스의 경로 -->
+	
+<!-- 회원가입 : Code here -->
+<insert id="signup" parameterType="Customer">
+INSERT INTO CUSTOMER(
+
+	 CUSTOMER_ID
+	,CUSTOMER_PW
+	,CUSTOMER_NAME
+	,CUSTOMER_BIRTHDATE
+	,CUSTOMER_PHONE
+	,CUSTOMER_GENDER
+	,CUSTOMER_EMAIL
+
+)VALUES(
+	
+	 #{customer_ID}
+	,#{customer_PW}
+	,#{customer_Name}
+	,#{customer_Birthdate}
+	,#{customer_Phone}
+	,#{customer_Gender}
+	,#{customer_Email}
+
+)
+
+</insert>
+<!-- 회원가입시 아이디 중복체크 -->
+<select id="checkid" resultType="Customer">
+SELECT
+	CUSTOMER_ID
+FROM
+	CUSTOMER
+
+</select> 
+
+<!-- 로그인 -->
+<select id="login" resultType="Customer" parameterType="Customer">
+SELECT
+	 CUSTOMER_ID
+	,CUSTOMER_PW
+	,CUSTOMER_Name
+	,CUSTOMER_Address
+	,CUSTOMER_Birthdate
+	,CUSTOMER_Nickname
+	,CUSTOMER_Phone
+	,CUSTOMER_Gender
+	,CUSTOMER_Email
+FROM
+	CUSTOMER
+WHERE
+	CUSTOMER_ID=#{customer_ID}
+	AND
+	CUSTOMER_PW=#{customer_PW}
+</select>	
+
+<!-- 회원정보수정 -->
+<update id="modify"   parameterType="Customer">
+UPDATE
+	CUSTOMER
+SET
+	 CUSTOMER_PW=#{customer_PW}
+	,CUSTOMER_NAME=#{customer_Name}
+	,CUSTOMER_BIRTHDATE=#{customer_Birthdate}
+	,CUSTOMER_PHONE=#{customer_Phone}
+	,CUSTOMER_EMAIL=#{customer_Email}
+WHERE
+	CUSTOMER_ID=#{customer_ID}	
+</update>	
+
+<select id="searchmodify" resultType="Customer" parameterType="String">
+SELECT
+     CUSTOMER_ID
+	,CUSTOMER_PW
+	,CUSTOMER_NAME
+	,CUSTOMER_ADDRESS
+	,CUSTOMER_BIRTHDATE
+	,CUSTOMER_NICKNAME
+	,CUSTOMER_PHONE
+	,CUSTOMER_EMAIL
+FROM
+	CUSTOMER
+WHERE
+	CUSTOMER_ID=#{customer_ID}	
+</select>	
+<delete id="deleteID" parameterType="Customer">
+DELETE
+FROM
+	CUSTOMER
+WHERE
+	CUSTOMER_ID=#{customer_ID}
+
+</delete>
+<insert id="insertCustomerboard" parameterType="Customerboard">
+	INSERT INTO CUSTOMERBOARD
+	(
+		CUSTOMERBOARD_SEQ,
+	    CUSTOMER_ID,
+	    CUSTOMERBOARD_TITLE,
+	    CUSTOMERBOARD_CONTENT,
+	    CUSTOMERBOARD_INDATE,
+	    CUSTOMERBOARD_TAG,
+	    CUSTOMERBOARD_HITCOUNT
+	)
+	VALUES
+	(
+		CUSTOMERBOARD_SEQ.NEXTVAL,
+		#{customer_ID},
+		#{customerBoard_Title},
+		#{customerBoard_Content},
+		SYSDATE,
+		#{customerBoard_Tag},
+		0
+	)
+</insert>
+<select id="customerBoardlist" resultType="Customerboard">
+	SELECT
+		CUSTOMERBOARD_SEQ,
+	    CUSTOMER_ID,
+	    CUSTOMERBOARD_TITLE,
+	    CUSTOMERBOARD_CONTENT,
+	    CUSTOMERBOARD_INDATE,
+	    CUSTOMERBOARD_TAG,
+	    CUSTOMERBOARD_HITCOUNT
+	FROM
+		CUSTOMERBOARD
+	ORDER BY
+		CUSTOMERBOARD_INDATE DESC
+</select>
+
+<select id="selectCustomerboard" parameterType="String" resultType="Customerboard">
+	SELECT
+		CUSTOMERBOARD_SEQ,
+	    CUSTOMER_ID,
+	    CUSTOMERBOARD_TITLE,
+	    CUSTOMERBOARD_CONTENT,
+	    CUSTOMERBOARD_INDATE,
+	    CUSTOMERBOARD_TAG,
+	    CUSTOMERBOARD_HITCOUNT
+	FROM
+		CUSTOMERBOARD
+	WHERE
+		CUSTOMERBOARD_SEQ=#{_parameter}
+</select>
+
+<update id="countCustomerboard" parameterType="String">
+	UPDATE
+		CUSTOMERBOARD
+	SET
+		CUSTOMERBOARD_HITCOUNT = CUSTOMERBOARD_HITCOUNT + 1
+	WHERE
+		CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+</update>
+
+<update id="remakeCustomerboard" parameterType="Customerboard">
+	UPDATE
+		CUSTOMERBOARD
+	SET
+		CUSTOMERBOARD_TITLE=#{customerBoard_Title},
+	    CUSTOMERBOARD_CONTENT=#{customerBoard_Content},
+	    CUSTOMERBOARD_TAG=#{customerBoard_Tag}
+	WHERE
+		CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+</update>
+
+
+<!-- 물품 상세 조회 -->
+<select id="customerItemDetail" parameterType="Int" resultType="Item">
+	SELECT
+		FORSALE_SEQ,
+		 FORSALE_TITLE,
+		  FORSALE_STATUS,
+		   ENTERPRISE_ID,
+		    GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			 FORSALE_RENT,
+			  FORSALE_DEPOSIT,
+			   FORSALE_REWARD,
+			    FORSALE_MANAGECOST,
+			     FORSALE_OPTION,
+			      FORSALE_ETC,
+			       FORSALE_INDATE,
+			        FORSALE_POSTCODE,
+			         FORSALE_HOUSETYPE,
+			          FORSALE_LAT,
+			           FORSALE_LNG,
+			           FORSALE_SUBWAY,
+			           	 FORSALE_SUBWAYDISTANCE,
+			           	  FORSALE_HITCOUNT
+	FROM
+		FORSALE
+	WHERE
+		FORSALE_SEQ=#{forSale_Seq}
+</select>
+
+<!-- 상세보기 이미지 리스트 가져오기 -->
+<select id="detailImg" parameterType="Int" resultType="Image">
+	SELECT
+		IMAGE_SEQ,
+		 FORSALE_SEQ,
+	      ORIGINNAME,
+		   SAVENAME
+	FROM
+		IMAGE
+	WHERE
+		FORSALE_SEQ=#{forSale_Seq}
+</select>
+<!-- 물품 전체 리스트 -->
+<select id="searchAllItem" resultType="Item">
+	SELECT
+		FORSALE_SEQ,
+		 FORSALE_TITLE,
+		  FORSALE_STATUS,
+		   ENTERPRISE_ID,
+		    GEOAPI_PREFECTURES,
+			   GEOAPI_CITIES,
+			    GEOAPI_TOWNS,
+			     GEOAPI_REMAIN,
+			 FORSALE_RENT,
+			  FORSALE_DEPOSIT,
+			   FORSALE_REWARD,
+			    FORSALE_MANAGECOST,
+			     FORSALE_OPTION,
+			      FORSALE_ETC,
+			       FORSALE_INDATE,
+			        FORSALE_POSTCODE,
+			         FORSALE_HOUSETYPE,
+			          FORSALE_LAT,
+			           FORSALE_LNG,
+			           	FORSALE_SUBWAY,
+			           	 FORSALE_SUBWAYDISTANCE,
+			           	  FORSALE_HITCOUNT
+	FROM
+		FORSALE
+</select>
+<!-- 물품 검색 -->
+<select id="searchItem" parameterType="SearchItem" resultType="Item">
+	SELECT
+		FORSALE_SEQ,
+		 FORSALE_TITLE,
+		  FORSALE_STATUS,
+		   ENTERPRISE_ID,
+		    GEOAPI_PREFECTURES,
+			 GEOAPI_CITIES,
+			  GEOAPI_TOWNS,
+			   GEOAPI_REMAIN,
+			    FORSALE_RENT,
+			     FORSALE_DEPOSIT,
+			      FORSALE_REWARD,
+			       FORSALE_MANAGECOST,
+			        FORSALE_OPTION,
+			         FORSALE_ETC,
+			          TRUNC(SYSDATE-FORSALE_INDATE) AS FORSALE_INDATE,
+			           FORSALE_POSTCODE,
+			            FORSALE_HOUSETYPE,
+			             FORSALE_LAT,
+			              FORSALE_LNG,
+			              FORSALE_SUBWAY,
+			           	 FORSALE_SUBWAYDISTANCE,
+			           	  FORSALE_HITCOUNT
+	FROM
+		FORSALE
+	WHERE
+		FORSALE_RENT BETWEEN #{min_price} AND #{max_price}
+		<if test="forSale_Status!='Property Status'">
+		AND
+		FORSALE_STATUS=#{forSale_Status}
+		</if>
+		<if test="forSale_HouseType!='Property Types'">
+		AND
+		FORSALE_HOUSETYPE=#{forSale_HouseType}
+		</if>
+		<if test="geoapi_prefectures!='都道府県を選択してください'">
+		AND
+		GEOAPI_PREFECTURES=#{geoapi_prefectures}
+		</if>
+		<if test="geoapi_cities!='none'">
+		AND
+		GEOAPI_CITIES=#{geoapi_cities}
+		</if>
+		<if test="geoapi_towns!='none'">
+		AND
+		GEOAPI_TOWNS=#{geoapi_towns}
+		</if>
+		<if test="forSale_OptionA=='에어컨'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionA}||'%'	
+		</if>
+		<if test="forSale_OptionB=='세탁기'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionB}||'%'	
+		</if>
+		<if test="forSale_OptionC=='베란다'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionC}||'%'	
+		</if>
+		<if test="forSale_OptionD=='엘리베이터'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionD}||'%'	
+		</if>
+		<if test="forSale_OptionE=='흡연장'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionE}||'%'	
+		</if>
+		<if test="forSale_OptionF=='주차장'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
+		</if>
+		<!-- 
+		AND
+		GEOAPI_PREFECTURES=#{geoapi_prefectures}
+		AND
+		GEOAPI_CITIES=#{geoapi_cities}
+		AND
+		GEOAPI_TOWNS=#{geoapi_towns}
+		 -->
+</select>
+
+<!-- 물품 검색 -->
+<select id="searchItemByNTO" parameterType="SearchItem" resultType="Item">
+	SELECT
+		FORSALE_SEQ,
+		 FORSALE_TITLE,
+		  FORSALE_STATUS,
+		   ENTERPRISE_ID,
+		    GEOAPI_PREFECTURES,
+			 GEOAPI_CITIES,
+			  GEOAPI_TOWNS,
+			   GEOAPI_REMAIN,
+			    FORSALE_RENT,
+			     FORSALE_DEPOSIT,
+			      FORSALE_REWARD,
+			       FORSALE_MANAGECOST,
+			        FORSALE_OPTION,
+			         FORSALE_ETC,
+			          TRUNC(SYSDATE-FORSALE_INDATE) AS FORSALE_INDATE,
+			           FORSALE_POSTCODE,
+			            FORSALE_HOUSETYPE,
+			             FORSALE_LAT,
+			              FORSALE_LNG,
+			              FORSALE_SUBWAY,
+			           	 FORSALE_SUBWAYDISTANCE,
+			           	  FORSALE_HITCOUNT
+	FROM
+		FORSALE
+	WHERE
+		FORSALE_RENT BETWEEN #{min_price} AND #{max_price}
+		<if test="forSale_Status!='Property Status'">
+		AND
+		FORSALE_STATUS=#{forSale_Status}
+		</if>
+		<if test="forSale_HouseType!='Property Types'">
+		AND
+		FORSALE_HOUSETYPE=#{forSale_HouseType}
+		</if>
+		<if test="geoapi_prefectures!='都道府県を選択してください'">
+		AND
+		GEOAPI_PREFECTURES=#{geoapi_prefectures}
+		</if>
+		<if test="geoapi_cities!='none'">
+		AND
+		GEOAPI_CITIES=#{geoapi_cities}
+		</if>
+		<if test="geoapi_towns!='町を選択してください。'">
+		AND
+		GEOAPI_TOWNS=#{geoapi_towns}
+		</if>
+		<if test="forSale_OptionA=='에어컨'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionA}||'%'	
+		</if>
+		<if test="forSale_OptionB=='세탁기'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionB}||'%'	
+		</if>
+		<if test="forSale_OptionC=='베란다'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionC}||'%'	
+		</if>
+		<if test="forSale_OptionD=='엘리베이터'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionD}||'%'	
+		</if>
+		<if test="forSale_OptionE=='흡연장'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionE}||'%'	
+		</if>
+		<if test="forSale_OptionF=='주차장'">
+		AND
+		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
+		</if>
+		<!-- 
+		AND
+		GEOAPI_PREFECTURES=#{geoapi_prefectures}
+		AND
+		GEOAPI_CITIES=#{geoapi_cities}
+		AND
+		GEOAPI_TOWNS=#{geoapi_towns}
+		 -->
+		ORDER BY FORSALE_INDATE DESC; 
+</select>
+
+<!-- 고객 댓글 입력 -->
+<insert id="insertCustomerComment" parameterType="CustomerComment">
+	INSERT INTO CUSTOMERCOMMENT
+	(
+		CUSTOMERBOARD_SEQ,
+		CUSTOMER_ID,
+	    CUSTOMERCOMMENT_CONTENT,
+	    CUSTOMERCOMMENT_INDATE,
+	    CUSTOMERCOMMENT_SEQ
+	)
+	VALUES
+	(
+		#{customerBoard_Seq},
+		#{customer_ID},
+		#{customerComment_Content},
+		SYSDATE,
+		CUSTOMERCOMMENT_SEQ.NEXTVAL
+	)
+</insert>
+
+<!-- 고객 댓글 리스트 -->
+<select id="customerCommentList" parameterType="CustomerComment" resultType="CustomerComment">
+	SELECT
+		CUSTOMERBOARD_SEQ,
+		CUSTOMER_ID,
+	    CUSTOMERCOMMENT_CONTENT,
+	    CUSTOMERCOMMENT_INDATE,
+	    CUSTOMERCOMMENT_SEQ
+	FROM
+		CUSTOMERCOMMENT
+	WHERE
+		CUSTOMER_ID=#{customer_ID} AND CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+	ORDER BY
+		CUSTOMERCOMMENT_INDATE DESC
+</select>
+
+<delete id="deleteCustomerboard" parameterType="Customerboard">
+	DELETE
+	FROM
+		CUSTOMERBOARD
+	WHERE
+		CUSTOMER_ID=#{customer_ID} AND CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+	
+</delete>
+
+<!-- 손님이 예약기능 실행 -->
+<insert id="insertCustomerReservation" parameterType = "Reservation">
+	INSERT INTO
+		RESERVATION(
+			RESERVATION_SEQ
+			,ENTERPRISE_ID
+			,CUSTOMER_ID
+			,FORSALE_SEQ
+			,RESERVATION_VISA
+			,RESERVATION_GUARANTOR
+		) VALUES (
+			RESERVATION_SEQ.NEXTVAL
+			,#{enterprise_ID}
+			,#{customer_ID}
+			,#{forSale_Seq}
+			,#{reservation_Visa}
+			,#{reservation_Guarantor}
+		)
+</insert>
+
+<!--손님이 예약한 목록 체크해서 예약 확인 -->
+<select id="reservationCheck" parameterType = "String" resultType = "Reservation">
+	SELECT
+		FORSALE_SEQ
+		,CUSTOMER_ID
+	FROM
+		RESERVATION
+	WHERE
+		CUSTOMER_ID = #{customer_ID}
+	AND
+		RESERVATION_COMPLETE != 'N'
+</select>
+
+<!--즐겨찾기 추가 -->
+<insert id="customerBookmark" parameterType = "Bookmark">
+	INSERT INTO
+		BOOKMARK(
+			BOOKMARK_SEQ
+			,ENTERPRISE_ID
+			,CUSTOMER_ID
+			,FORSALE_SEQ
+		) VALUES(
+			BOOKMARK_SEQ.NEXTVAL
+			,#{enterprise_ID}
+			,#{customer_ID}
+			,#{forSale_Seq}
+		)
+</insert>
+
+<!-- 고객 프로필 용 데이터 -->
+<select id="customerProfile" resultType = "Customer">
+	SELECT
+		CUSTOMER_ID
+		,CUSTOMER_NAME
+		,CUSTOMER_ADDRESS
+		,CUSTOMER_BIRTHDATE
+		,CUSTOMER_PHONE
+		,CUSTOMER_GENDER
+		,CUSTOMER_EMAIL
+	FROM
+		CUSTOMER
+	WHERE
+		CUSTOMER_ID = #{customer_ID}
+</select>
+
+<!-- 프로필 데이터 기본정보 수정 -->
+<update id="profileUpdate" parameterType = "Customer">
+	UPDATE
+		CUSTOMER
+	SET
+		CUSTOMER_NAME=#{customer_Name}
+		,CUSTOMER_BIRTHDATE=#{customer_Birthdate}
+		,CUSTOMER_PHONE=#{customer_Phone}
+		,CUSTOMER_EMAIL=#{customer_Email}
+	WHERE
+		CUSTOMER_ID=#{customer_ID}	
+</update>
+
+<!-- 프로필 화면에서 비밀번호 수정 -->
+<update id="profilePasswordUpdate" parameterType = "Customer">
+	UPDATE
+		CUSTOMER
+	SET
+		CUSTOMER_PW = #{customer_PW}
+	WHERE
+		CUSTOMER_ID = #{customer_ID}
+</update>
+
+<!-- 손님이 자신의 예약 확인 -->
+<select id="customerReservationList" parameterType = "String" resultType = "Total">
+	SELECT
+		FORSALE_TITLE
+		,GEOAPI_PREFECTURES
+		,GEOAPI_CITIES
+		,GEOAPI_TOWNS
+		,GEOAPI_REMAIN
+		,FORSALE_STATUS
+		,FORSALE_RENT
+		,F.FORSALE_SEQ
+		,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM-DD') RESERVATION_INDATE
+		,RESERVATION_COMPLETE
+		,RESERVATION_SEQ
+		,FORSALE_TRADE
+	FROM
+		FORSALE F, RESERVATION R
+	WHERE
+		R.CUSTOMER_ID = #{customer_ID}
+	AND
+		R.FORSALE_SEQ = F.FORSALE_SEQ
+</select>
+
+<!--손님이 자신의 즐겨찾기 확인 -->
+<select id="customerBookmarkList" parameterType = "String" resultType = "Total">
+	SELECT
+		FORSALE_TITLE
+		,GEOAPI_PREFECTURES
+		,GEOAPI_CITIES
+		,GEOAPI_TOWNS
+		,GEOAPI_REMAIN
+		,FORSALE_STATUS
+		,FORSALE_RENT
+		,F.FORSALE_SEQ
+		,TO_CHAR(BOOKMARK_INDATE, 'YYYY-MM-DD') BOOKMARK_INDATE
+		,BOOKMARK_SEQ
+	FROM
+		FORSALE F, BOOKMARK B
+	WHERE
+		B.CUSTOMER_ID = #{customer_ID}
+	AND
+		B.FORSALE_SEQ = F.FORSALE_SEQ
+</select>
+
+<!-- 손님이 예약 취소하기(삭제) -->
+<delete id="customerDeleteReservation" parameterType = "String">
+	DELETE
+		RESERVATION
+	WHERE
+		RESERVATION_SEQ = #{reservation_Seq}
+</delete>
+
+<!-- 손님이 즐겨찾기 삭제 -->
+<delete id="customerDeleteBookmark" parameterType = "String">
+	DELETE
+		BOOKMARK
+	WHERE
+		BOOKMARK_SEQ = #{bookmark_Seq}
+</delete>
+
+<!--손님 즐찾 중복 체크 -->
+<select id="bookmarkCheck" parameterType = "String" resultType = "Bookmark">
+	SELECT
+		FORSALE_SEQ
+		,CUSTOMER_ID
+	FROM
+		BOOKMARK
+	WHERE
+		CUSTOMER_ID = #{customer_ID}
+</select>
+
+<!-- 손님이 매물 누를 때 조회수 올라가서 인기도 측정 -->
+<update id="itemHitCountUp" parameterType = "String">
+	UPDATE
+		FORSALE
+	SET
+		FORSALE_HITCOUNT = FORSALE_HITCOUNT + 1
+	WHERE
+		FORSALE_SEQ = #{forSale_HitCount}	
+</update>
+
+</mapper>

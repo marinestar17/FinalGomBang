@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 게시판 처리 SQL -->
+<mapper namespace="com.project.GomBang.DAO.AdminMapper"> <!-- 인터페이스의 경로 -->
+	<!--관리자 로그인  -->
+	<select id="adminLogin" parameterType = "Admin" resultType = "Admin">
+		SELECT
+			ADMIN_ID
+			,ADMIN_PW
+			,ADMIN_NAME
+			,ADMIN_DEPARTMENT
+			,ADMIN_TITLE
+			,ADMIN_PHONE
+			,ADMIN_EMAIL
+		FROM
+			ADMIN
+		WHERE
+			ADMIN_ID = #{admin_ID}
+		AND
+			ADMIN_PW = #{admin_PW}
+	</select>
+	
+	<!-- 관리자 추가 -->
+	<insert id="insertAdmin" parameterType="Admin">
+		INSERT INTO
+			ADMIN (
+			 ADMIN_ID
+			,ADMIN_PW
+			,ADMIN_NAME
+			,ADMIN_PHONE
+			,ADMIN_EMAIL
+			,ADMIN_DEPARTMENT
+			,ADMIN_TITLE
+		) VALUES (
+			 #{admin_ID}
+			,#{admin_PW}
+			,#{admin_Name}
+			,#{admin_Phone}
+			,#{admin_Email}
+			,#{admin_Department}
+			,#{admin_Title}
+		)
+	</insert>
+	<!-- 관리자 정보 수정하기 -->
+	<update id="updateAdmin" parameterType="Admin">
+		UPDATE
+			ADMIN
+		SET
+			ADMIN_PW=#{admin_PW}
+			,ADMIN_NAME=#{admin_Name}
+			,ADMIN_PHONE=#{admin_Phone}
+			,ADMIN_EMAIL=#{admin_Email}
+			,ADMIN_DEPARTMENT=#{admin_Department}
+			,ADMIN_TITLE=#{admin_Title}
+		WHERE
+			ADMIN_ID=#{admin_ID}		
+	</update>
+	
+	<!-- 관리자 비밀번호 찾기 -->
+	<select id="findAdminPassword" parameterType="Admin" resultType="Admin">
+		SELECT 
+			ADMIN_PW
+		FROM
+			ADMIN
+		WHERE
+			ADMIN_ID = #{admin_ID}
+		AND
+			ADMIN_EMAIL= #{admin_Email}
+	</select>
+	
+	<!--기업 가입 승인 대기 리스트 -->
+	<select id="enterprisePermissionList" parameterType = "Enterprise" resultType = "Enterprise">
+		SELECT
+			ENTERPRISE_ID
+			,ENTERPRISE_NAME
+			,ENTERPRISE_ADDRESS
+			,ENTERPRISE_REGINUM
+			,ENTERPRISE_MANAGERNAME
+			,ENTERPRISE_MANAGERPHONE
+			,ENTERPRISE_ETC
+			,ENTERPRISE_CODE
+			,TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM-DD') AS enterprise_Indate
+		FROM
+			ENTERPRISE
+		WHERE
+			ENTERPRISE_PERMISSION = 'W'
+		<if test="searchSelect != null and searchSelect.equals('enterprise_ID')">
+		AND
+			ENTERPRISE_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('enterprise_Name')">
+		AND
+			ENTERPRISE_Name like '%'||#{search}||'%'
+		</if>
+	</select>
+	
+	<!--기업 가입 허가 리스트  -->
+	<select id="enterpriseAcceptList" parameterType = "Enterprise" resultType = "Enterprise">
+		SELECT
+			ENTERPRISE_ID
+			,ENTERPRISE_NAME
+			,ENTERPRISE_ADDRESS
+			,ENTERPRISE_REGINUM
+			,ENTERPRISE_MANAGERNAME
+			,ENTERPRISE_MANAGERPHONE
+			,ENTERPRISE_MANAGEREMAIL
+			,ENTERPRISE_ETC
+			,ENTERPRISE_CODE
+			,TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM-DD') AS enterprise_Indate
+		FROM
+			ENTERPRISE
+		WHERE
+			ENTERPRISE_PERMISSION = 'Y'
+		<if test="searchSelect != null and searchSelect.equals('enterprise_ID')">
+		AND
+			ENTERPRISE_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('enterprise_Name')">
+		AND
+			ENTERPRISE_Name like '%'||#{search}||'%'
+		</if>
+		ORDER BY
+			ENTERPRISE_INDATE ASC
+	</select>
+	
+	<!--기업 가입 불허 리스트  -->
+	<select id="enterpriseDenyList" parameterType = "Enterprise" resultType = "Enterprise">
+		SELECT
+			ENTERPRISE_ID
+			,ENTERPRISE_NAME
+			,ENTERPRISE_ADDRESS
+			,ENTERPRISE_REGINUM
+			,ENTERPRISE_MANAGERNAME
+			,ENTERPRISE_MANAGERPHONE
+			,ENTERPRISE_MANAGEREMAIL
+			,ENTERPRISE_ETC
+			,ENTERPRISE_CODE
+			,TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM-DD') AS enterprise_Indate
+		FROM
+			ENTERPRISE
+		WHERE
+			ENTERPRISE_PERMISSION = 'N'
+		<if test="searchSelect != null and searchSelect.equals('enterprise_ID')">
+		AND
+			ENTERPRISE_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('enterprise_Name')">
+		AND
+			ENTERPRISE_Name like '%'||#{search}||'%'
+		</if>
+	</select>
+	
+	<!--기업 디테일 페이지 이동용  -->
+	<select id="enterpriseDetail" parameterType = "String" resultType = "Enterprise">
+		SELECT
+			ENTERPRISE_ID
+			,ENTERPRISE_NAME
+			,ENTERPRISE_ADDRESS
+			,ENTERPRISE_REGINUM
+			,ENTERPRISE_MANAGERNAME
+			,ENTERPRISE_MANAGERPHONE
+			,ENTERPRISE_MANAGEREMAIL
+			,ENTERPRISE_ETC
+			,ENTERPRISE_CODE
+			,TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM-DD') AS enterprise_Indate
+			,ENTERPRISE_PERMISSION
+		FROM
+			ENTERPRISE
+		WHERE
+			ENTERPRISE_ID = #{enterprise_ID}
+	</select>
+	
+	<!-- 전체 기업 출력  -->
+	<select id="allEnterprisePrint" resultType="Enterprise">
+		SELECT
+			ENTERPRISE_ID
+			,ENTERPRISE_NAME
+			,ENTERPRISE_ADDRESS
+			,ENTERPRISE_REGINUM
+			,ENTERPRISE_MANAGERNAME
+			,ENTERPRISE_MANAGERPHONE
+			,ENTERPRISE_MANAGEREMAIL
+			,ENTERPRISE_ETC
+			,ENTERPRISE_CODE
+			,TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM-DD') AS enterprise_Indate
+			,ENTERPRISE_PERMISSION
+		FROM
+			ENTERPRISE
+	</select>
+	
+	<!--전체 고객 출력 and 다중 검색 고객 출력  -->
+	<select id="allCustomerPrint" parameterType = "Customer" resultType = "Customer">
+		SELECT
+			CUSTOMER_ID
+			,CUSTOMER_NAME
+			,CUSTOMER_ADDRESS
+			,CUSTOMER_BIRTHDATE
+			,CUSTOMER_NICKNAME
+			,CUSTOMER_PHONE
+			,CUSTOMER_GENDER
+			,CUSTOMER_EMAIL
+			,TO_CHAR(CUSTOMER_INDATE, 'YYYY-MM-DD') AS customer_Indate
+		FROM
+			CUSTOMER
+		<if test="searchSelect != null and searchSelect.equals('customer_ID')">
+		WHERE
+			CUSTOMER_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('customer_Gender')">
+		WHERE
+			CUSTOMER_GENDER like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('customer_Name')">
+		WHERE
+			CUSTOMER_NAME like '%'||#{search}||'%'
+		</if>
+	</select>
+	
+	<!--고객 성별 통계용  -->
+	<select id="customerGenderStats" resultType = "Customer">
+		SELECT
+			COUNT(CUSTOMER_GENDER) AS stats_Count
+			,CUSTOMER_GENDER
+		FROM
+			CUSTOMER
+		GROUP BY
+			CUSTOMER_GENDER
+	</select>
+	
+	<!--고객 연령대 통계용  -->
+	<select id="customerAgeStats" resultType = "Customer">
+		SELECT
+			TRUNC(MONTHS_BETWEEN(SYSDATE, CUSTOMER_BIRTHDATE) / 12) AS stats_Count
+		FROM
+			CUSTOMER
+	</select>
+	
+	<!--기업 업체별 통계용 -->
+	<select id = "enterpriseCodeStats" resultType = "Enterprise">
+		SELECT
+			COUNT(ENTERPRISE_CODE) AS stats_Count
+			,ENTERPRISE_CODE
+		FROM
+			ENTERPRISE
+		WHERE
+			ENTERPRISE_PERMISSION = 'Y'
+		GROUP BY
+			ENTERPRISE_CODE
+	</select>
+	
+	<!--기업가입 승인 허가 -->
+	<update id="enterprisePermissionAccept" parameterType= "String">
+		UPDATE
+			ENTERPRISE
+		SET
+			ENTERPRISE_PERMISSION = 'Y'
+		WHERE
+			ENTERPRISE_ID = #{enterprise_ID}
+	</update>
+	
+	<!--기업가입 승인 불허  -->
+	<update id = "enterprisePermissionDeny" parameterType = "String">
+		UPDATE
+			ENTERPRISE
+		SET
+			ENTERPRISE_PERMISSION = 'N'
+		WHERE
+			ENTERPRISE_ID = #{enterprise_ID}
+	</update> 
+	
+	<!-- 손님과 기업 각각 인원수 한번에 -->
+	<select id="countAccount" resultType="HashMap">
+		SELECT
+			(SELECT COUNT(*) FROM CUSTOMER) AS C_COUNT
+			,(SELECT COUNT(*) FROM ENTERPRISE WHERE ENTERPRISE_PERMISSION = 'Y') AS E_COUNT 
+		FROM
+			DUAL
+	</select>
+	
+	<!-- 각 주체별 전체 개수  -->
+	<select id="countSubject" resultType = "HashMap">
+		SELECT
+			(SELECT COUNT(*) FROM CUSTOMER) AS C_COUNT
+			,(SELECT COUNT(*) FROM ENTERPRISE) AS E_COUNT
+			,(SELECT COUNT(*) FROM FORSALE) AS F_COUNT 
+			,(SELECT COUNT(*) FROM RESERVATION) AS R_COUNT
+		FROM
+			DUAL
+	</select>
+	
+	<!-- 각 게시물 갯수 count -->
+	<select id="countBoard" resultType="HashMap">
+		SELECT
+			(SELECT COUNT(*) FROM CUSTOMERBOARD) AS C_COUNT
+			,(SELECT COUNT(*) FROM ENTERPRISEBOARD) AS E_COUNT
+		FROM
+			DUAL
+	</select>
+	
+	<!-- 매물 수 -->
+	<select id="countForSale" resultType = "integer">
+		SELECT 
+			COUNT(*) 
+		FROM
+			FORSALE
+	</select>  
+	
+	<!-- 기업 게시물 업무, 가입 승인 업무 개수 count -->
+	<select id="countEnterpriseTask" resultType="HashMap">
+		SELECT
+			(SELECT COUNT(*) FROM ENTERPRISEBOARD WHERE ENTERPRISEBOARD_ADMINCHECK = 'N') AS B_COUNT
+			,(SELECT COUNT(*) FROM ENTERPRISE WHERE ENTERPRISE_PERMISSION = 'W') AS E_COUNT
+		FROM
+			DUAL
+	</select>
+	
+	<!-- 예약 갯수 Y,N count -->
+	<select id = "countReservation" resultType = "HashMap">
+		SELECT
+			(SELECT COUNT(*) FROM RESERVATION WHERE RESERVATION_COMPLETE = 'Y') AS Y_RESERVATION
+			,(SELECT COUNT(*) FROM RESERVATION WHERE RESERVATION_COMPLETE = 'N') AS N_RESERVATION
+		FROM
+			DUAL	
+	</select>
+	
+	<!-- TODO 넣기... -->
+	<insert id="insertTODO" parameterType="Todo">
+		INSERT INTO
+			ADMINTODO (
+				ADMINTODO_SEQ
+				,ADMIN_ID
+				,ADMINTODO_CONTENT
+				,ADMINTODO_INDATE
+			) VALUES (
+				ADMINTODO_SEQ.NEXTVAL
+				,#{admin_ID}
+				,#{adminTodo_Content}
+				,SYSDATE
+			)
+	</insert>
+	
+	<!-- TODO 뽑기.. (본인 ID만) -->
+	<select id="printTODO" parameterType = "String" resultType="Todo">
+		SELECT
+			ADMINTODO_SEQ
+			,ADMIN_ID
+			,ADMINTODO_CONTENT
+			,ADMINTODO_INDATE
+		FROM
+			ADMINTODO
+		WHERE
+			ADMIN_ID = #{admin_ID}
+		ORDER BY 
+			ADMINTODO_SEQ DESC
+	</select>
+	
+	<!-- TODO 수정 -->
+	<update id="updateTODO" parameterType = "Todo">
+		UPDATE
+			ADMINTODO
+		SET
+			ADMINTODO_CONTENT = #{adminTodo_Content}
+		WHERE
+			ADMIN_ID = #{admin_ID}
+		AND
+			ADMINTODO_SEQ = #{adminTodo_Seq}
+	</update>
+	
+	<!-- TODO 삭제 -->
+	<delete id="deleteTODO" parameterType = "String">
+		DELETE
+			ADMINTODO
+		WHERE
+			ADMINTODO_SEQ = #{adminTodo_Seq}
+	</delete>
+	
+	<!-- 메인페이지 통계 - 년도:기업 가입 수  -->
+	<select id="mainPageEnterprise" resultType = "Enterprise">
+		SELECT 
+			STATS_COUNT
+			,EX AS ENTERPRISE_INDATE
+		FROM (
+			SELECT 
+				COUNT(*) AS stats_Count
+				,TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM') AS EX
+			FROM
+				ENTERPRISE
+			GROUP BY
+				TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM')
+			ORDER BY
+				TO_CHAR(ENTERPRISE_INDATE, 'YYYY-MM') DESC
+		)
+		WHERE
+			 10 > ROWNUM
+	</select>
+	
+	<!--메인페이지 통계 - 년도:고객  가입 수-->
+	<select id="mainPageCustomer" resultType = "Customer">
+		SELECT 
+			STATS_COUNT
+			,EX AS CUSTOMER_INDATE
+		FROM (
+			SELECT 
+				COUNT(*) AS stats_count
+				,TO_CHAR(CUSTOMER_INDATE, 'YYYY-MM') AS EX
+			FROM
+				CUSTOMER
+			GROUP BY
+				TO_CHAR(CUSTOMER_INDATE, 'YYYY-MM')
+			ORDER BY
+				TO_CHAR(CUSTOMER_INDATE, 'YYYY-MM') DESC
+		)
+		WHERE
+			 10 > ROWNUM
+	</select>
+	
+	<!--메인페이지 통계 - 년도:매물 등록 수 -->
+	<select id="mainPageItem" resultType = "Item">
+		SELECT 
+			STATS_COUNT
+			,EX AS FORSALE_INDATE
+		FROM (
+			SELECT 
+				COUNT(*) AS stats_Count
+				,TO_CHAR(FORSALE_INDATE, 'YYYY-MM') AS EX
+			FROM
+				FORSALE
+			GROUP BY
+				TO_CHAR(FORSALE_INDATE, 'YYYY-MM')
+			ORDER BY
+				TO_CHAR(FORSALE_INDATE, 'YYYY-MM') DESC
+		)
+		WHERE
+			 10 > ROWNUM
+	</select>
+	
+	<!--메인 페이지 통계  - 년도:예약 수 -->
+	<select id="mainPageReservation" resultType = "Reservation">
+		SELECT
+			STATS_COUNT
+			,EX AS RESERVATION_INDATE
+		FROM(
+			SELECT
+				COUNT(*) AS stats_Count
+				,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM') AS EX
+			FROM
+				RESERVATION
+			GROUP BY
+				TO_CHAR(RESERVATION_INDATE, 'YYYY-MM')
+			ORDER BY
+				TO_CHAR(RESERVATION_INDATE, 'YYYY-MM') DESC
+		)
+		WHERE
+			10 > ROWNUM
+	</select>
+	
+	<!--관리자 간편 게시판 등록 -->
+	<insert id="insertAdminMessage" parameterType = "Message">
+		INSERT INTO
+			ADMINMESSAGE (
+				ADMINMESSAGE_SEQ
+				,ADMIN_NAME
+				,ADMIN_ID
+				,ADMINMESSAGE_CONTENT
+				,ADMINMESSAGE_INDATE
+			) VALUES (
+				ADMINMESSAGE_SEQ.NEXTVAL
+				,#{admin_Name}
+				,#{admin_ID}
+				,#{adminMessage_Content}
+				,SYSDATE
+			)
+	</insert>
+	
+	<!-- 관리자 간편 게시판 출력 -->
+	<select id="printMessage" parameterType = "Message" resultType="Message">
+		SELECT
+			ADMINMESSAGE_SEQ
+			,ADMIN_ID
+			,ADMIN_NAME
+			,ADMINMESSAGE_CONTENT
+			,TO_CHAR(ADMINMESSAGE_INDATE, 'YYYY-MM-DD') AS adminMessage_Indate
+		FROM
+			ADMINMESSAGE
+		<if test="searchSelect != null and searchSelect.equals('admin_ID')">
+		WHERE
+			ADMIN_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('adminMessage_Content')">
+		WHERE
+			ADMINMESSAGE_CONTENT like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('adminMessage_Indate')">
+		WHERE
+			ADMINMESSAGE_INDATE like '%'||#{search}||'%'
+		</if>
+		ORDER BY
+			ADMINMESSAGE_SEQ DESC
+	</select>
+	
+	<!-- 메인 페이지 간편 게시판 5개  -->
+	<select id="mainPageMessage" resultType = "Message">
+		SELECT
+				ADMINMESSAGE_SEQ
+				,ADMIN_ID
+				,ADMIN_NAME
+				,ADMINMESSAGE_CONTENT
+				,TRUNC(SYSDATE) - TRUNC(ADMINMESSAGE_INDATE) AS ADMINMESSAGE_INDATE 
+			FROM
+				ADMINMESSAGE
+            WHERE 
+                6>ROWNUM
+			ORDER BY
+				ADMINMESSAGE_SEQ DESC
+	</select>
+	
+	<!-- 매물 통계 (임대/판매) 카운트 -->
+	<select id="countForSaleRent" resultType = "HashMap">
+		SELECT
+			(SELECT COUNT(*) FROM FORSALE WHERE FORSALE_STATUS = 'For Sale') AS S_COUNT
+			,(SELECT COUNT(*) FROM FORSALE WHERE FORSALE_STATUS = 'For Rent') AS R_COUNT
+		FROM
+			DUAL
+	</select>
+	
+	<!-- 매물통계 (종류별) 카운트-->
+	<select id="countHouseType" resultType = "Item">
+		SELECT
+			FORSALE_HOUSETYPE
+			,COUNT(FORSALE_HOUSETYPE) AS stats_Count
+		FROM 
+			FORSALE
+		GROUP BY 
+			FORSALE_HOUSETYPE
+	</select>
+	
+	<!-- 관리자 입장에서 고객 게시판 출력하기 -->
+	<select id="adminCustomerBoard" parameterType = "Customerboard" resultType = "Customerboard">
+		SELECT
+			CUSTOMERBOARD_SEQ
+			,CUSTOMER_ID
+			,CUSTOMERBOARD_TITLE
+			,CUSTOMERBOARD_CONTENT
+			,CUSTOMERBOARD_INDATE
+			,CUSTOMERBOARD_TAG
+			,CUSTOMERBOARD_HITCOUNT
+		FROM
+			CUSTOMERBOARD
+		<if test="searchSelect != null and searchSelect.equals('customer_ID')">
+		WHERE
+			customer_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('customerboard_Title')">
+		WHERE
+			customerBoard_Title like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('customerboard_Tag')">
+		WHERE
+			customerBoard_Tag like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('customerboard_Indate')">
+		WHERE
+			customerBoard_Indate like '%'||#{search}||'%'
+		</if>
+		ORDER BY
+			CUSTOMERBOARD_SEQ DESC
+	</select>
+	
+	<!-- 관리자 입장에서 고객 게시물 상세 조회 -->
+	<select id="admincustomerBoardDetail" parameterType = "String" resultType = "CustomerBoard">
+		SELECT
+			CUSTOMERBOARD_SEQ
+			,CUSTOMER_ID
+			,CUSTOMERBOARD_TITLE
+			,CUSTOMERBOARD_CONTENT
+			,CUSTOMERBOARD_INDATE
+			,CUSTOMERBOARD_TAG
+			,CUSTOMERBOARD_HITCOUNT
+		FROM
+			CUSTOMERBOARD
+		WHERE
+			CUSTOMERBOARD_SEQ = #{customerBoard_Seq}
+	</select>
+	
+	<!-- 관리자 입장에서 고객 게시물 덧글 출력 -->
+	<select id="adminCustomerBoardComment" resultType = "CustomerComment">
+		SELECT
+			CUSTOMERCOMMENT_SEQ
+			,CUSTOMERBOARD_SEQ
+			,CUSTOMER_ID
+			,CUSTOMERCOMMENT_CONTENT
+			,CUSTOMERCOMMENT_INDATE
+		FROM
+			CUSTOMERCOMMENT
+		WHERE
+			CUSTOMERBOARD_SEQ = #{customerBoard_Seq}
+		ORDER BY
+			CUSTOMERCOMMENT_INDATE ASC	
+	</select>
+	
+	<!-- 매물통계 - 기업이 등록한 매물 갯수 카운트 -->
+	<select id="enterpriseItemCount" resultType = "Item">
+		SELECT
+			COUNT(*) AS stats_Count
+			,ENTERPRISE_ID
+		FROM
+			FORSALE
+		GROUP BY
+			ENTERPRISE_ID
+	</select>
+	
+	<!-- 관리자가 고객 게시판에 덧글달기 -->
+	<insert id="adminInsertCustomerComment" parameterType="CustomerComment">
+		INSERT INTO
+			CUSTOMERCOMMENT (
+				CUSTOMERCOMMENT_SEQ
+				,CUSTOMERBOARD_SEQ
+				,CUSTOMER_ID
+				,CUSTOMERCOMMENT_CONTENT
+				,CUSTOMERCOMMENT_INDATE
+			) VALUES (
+				CUSTOMERCOMMENT_SEQ.NEXTVAL
+				,#{customerBoard_Seq}
+				,'관리자'
+				,#{customerComment_Content}
+				,SYSDATE
+			)
+	</insert>
+	
+	<!-- 관리자가 고객 게시판 덧글 삭제 -->
+	<delete id="adminDeleteCustomerComment" parameterType = "String">
+		DELETE
+			CUSTOMERCOMMENT
+		WHERE
+			CUSTOMERCOMMENT_SEQ = #{customerComment_Seq}
+	</delete>
+	
+	<!-- 관리자가 고객 게시판 글 삭제 -->
+	<delete id="adminDeleteCustomerBoard" parameterType = "String">
+		DELETE
+			CUSTOMERBOARD
+		WHERE	
+			CUSTOMERBOARD_SEQ = #{customerBoard_Seq}
+	</delete>
+	
+	<!-- 관리자 입장에서 기업 게시판 리스트 출력 -->
+	<select id="adminEnterpriseBoard" parameterType = "EnterpriseBoard" resultType = "EnterpriseBoard">
+		SELECT
+			ENTERPRISEBOARD_SEQ
+			,ENTERPRISE_ID
+			,ENTERPRISEBOARD_TITLE
+			,ENTERPRISEBOARD_INDATE
+			,ENTERPRISEBOARD_HITCOUNT
+			,ENTERPRISEBOARD_ADMINCHECK
+		FROM
+			ENTERPRISEBOARD
+		<if test="searchSelect != null and searchSelect.equals('enterprise_ID')">
+		WHERE
+			enterprise_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('enterpriseBoard_Title')">
+		WHERE
+			enterpriseBoard_Title like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('enterpriseBoard_Indate')">
+		WHERE
+			enterpriseBoard_Indate like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('enterpriseBoard_AdminCheck')">
+		WHERE
+			enterpriseBoard_AdminCheck like '%'||#{search}||'%'
+		</if>
+		ORDER BY
+			ENTERPRISEBOARD_SEQ DESC
+	</select>
+	
+	<!-- 관리자 입장에서 기업 게시물 상세 조회 -->
+	<select id="adminEnterpriseBoardDetail" parameterType = "String" resultType = "EnterpriseBoard">
+		SELECT
+			ENTERPRISEBOARD_SEQ
+			,ENTERPRISE_ID
+			,ENTERPRISEBOARD_TITLE
+			,ENTERPRISEBOARD_INDATE
+			,ENTERPRISEBOARD_CONTENT
+			,ENTERPRISEBOARD_HITCOUNT
+			,ENTERPRISEBOARD_ADMINCHECK
+		FROM
+			ENTERPRISEBOARD
+		WHERE
+			ENTERPRISEBOARD_SEQ = #{enterpriseBoard_Seq}
+	</select>
+	
+	<!--관리자가 기업 게시판 글 삭제 -->
+	<delete id="adminDeleteEnterpriseBoard" parameterType = "String">
+		DELETE
+			ENTERPRISEBOARD
+		WHERE
+			ENTERPRISEBOARD_SEQ = #{enterpriseBoard_Seq}
+	</delete>
+	
+	<!-- 관리자가 기업 게시판 글에 덧글 등록 -->
+	<insert id="adminInsertEnterpriseComment" parameterType="EnterpriseComment">
+		INSERT INTO
+			ENTERPRISECOMMENT (
+				ENTERPRISECOMMENT_SEQ
+				,ENTERPRISEBOARD_SEQ
+				,ENTERPRISE_ID
+				,ENTERPRISECOMMENT_CONTENT
+				,ENTERPRISECOMMENT_INDATE
+			) VALUES (
+				ENTERPRISECOMMENT_SEQ.NEXTVAL
+				,#{enterpriseBoard_Seq}
+				,'관리자'
+				,#{enterpriseComment_Content}
+				,SYSDATE
+			)
+	</insert>
+	
+	<!-- 관리자 입장에서 고객 게시물 덧글 출력 -->
+	<select id="adminEnterpriseBoardComment" parameterType = "String" resultType = "EnterpriseComment">
+		SELECT
+			ENTERPRISECOMMENT_SEQ
+			,ENTERPRISEBOARD_SEQ
+			,ENTERPRISE_ID
+			,ENTERPRISECOMMENT_CONTENT
+			,ENTERPRISECOMMENT_INDATE
+		FROM
+			ENTERPRISECOMMENT
+		WHERE
+			ENTERPRISEBOARD_SEQ = #{enterpriseBoard_Seq}
+		ORDER BY
+			ENTERPRISECOMMENT_INDATE ASC	
+	</select>
+	
+	<!-- 관리자 입장에서 기업 게시물 덧글 삭제 -->
+	<delete id="adminDeleteEnterpriseComment" parameterType = "String">
+		DELETE
+			ENTERPRISECOMMENT
+		WHERE
+			ENTERPRISECOMMENT_SEQ = #{enterpriseComment_Seq}
+	</delete>
+	
+	<!--관리자가 기업 게시물에 덧글을 달면 체크 상태 변경 -->
+	<update id="adminUpdateCheck" parameterType = "String">
+		UPDATE
+			ENTERPRISEBOARD
+		SET
+			ENTERPRISEBOARD_ADMINCHECK = 'Y'
+		WHERE
+			ENTERPRISEBOARD_SEQ = #{enterpriseBoard_Seq}
+	</update>
+	
+	<!--관리자가 등록된 매물 리스트 보기 -->
+	<select id="adminItemBoard"  parameterType = "Item" resultType = "Item">
+		SELECT
+			FORSALE_SEQ
+			,FORSALE_TITLE
+			,FORSALE_STATUS
+			,ENTERPRISE_ID
+			,FORSALE_INDATE
+			,FORSALE_HOUSETYPE
+		FROM
+			FORSALE
+		<if test="searchSelect != null and searchSelect.equals('enterprise_ID')">
+		WHERE
+			enterprise_ID like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('forSale_Title')">
+		WHERE
+			forSale_Title like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('forSale_Status')">
+		WHERE
+			forSale_Status like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('forSale_Indate')">
+		WHERE
+			forSale_Indate like '%'||#{search}||'%'
+		</if>
+		<if test="searchSelect != null and searchSelect.equals('forSale_HouseType')">
+		WHERE
+			forSale_HouseType like '%'||#{search}||'%'
+		</if>
+		ORDER BY
+			FORSALE_INDATE DESC
+	</select>
+	
+	<!--관리자 입장에서 매물 상세 조회  -->
+	<select id="adminItemDetail" parameterType = "String" resultType = "Item">
+		SELECT
+			FORSALE_SEQ
+			,FORSALE_TITLE
+			,FORSALE_STATUS
+			,ENTERPRISE_ID
+			,GEOAPI_PREFECTURES
+			,GEOAPI_CITIES
+			,GEOAPI_TOWNS
+			,GEOAPI_REMAIN
+			,FORSALE_RENT
+			,FORSALE_DEPOSIT
+			,FORSALE_REWARD
+			,FORSALE_MANAGECOST
+			,FORSALE_OPTION
+			,FORSALE_ETC
+			,FORSALE_INDATE
+			,FORSALE_POSTCODE
+			,FORSALE_HOUSETYPE
+		FROM
+			FORSALE
+		WHERE
+			FORSALE_SEQ = #{forSale_Seq}
+	</select>
+	
+	<!-- 관리자 입장에서 매물 삭제 -->
+	<delete id="adminItemDelete" parameterType = "String">
+		DELETE 
+			FORSALE
+		WHERE
+			FORSALE_SEQ = #{forSale_Seq}
+	</delete>
+	
+	<!-- 매물 통계 (임대) 시키킹,레이킹 존재 여부 카운트 -->
+	<select id="countShikiRei" resultType = "HashMap">
+		SELECT 
+			(SELECT
+				COUNT(*) 
+			FROM 
+				FORSALE 
+			WHERE 
+				FORSALE_DEPOSIT = 0
+			AND
+				FORSALE_REWARD = 0
+			AND
+				FORSALE_STATUS = 'For Rent') AS ZERO
+			,(SELECT
+				COUNT(*) 
+			FROM 
+				FORSALE 
+			WHERE 
+				FORSALE_DEPOSIT != 0
+			AND
+				FORSALE_REWARD != 0
+			AND
+				FORSALE_STATUS = 'For Rent') AS NO_ZERO
+		FROM
+			DUAL
+	</select>
+</mapper>
