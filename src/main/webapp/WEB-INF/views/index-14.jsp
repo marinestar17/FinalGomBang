@@ -235,7 +235,7 @@ pageEncoding="UTF-8"%>
 
 
     	
-    }
+    
     #geoapi-prefectures{
     	width:100%;
 		height:40px;
@@ -1270,7 +1270,7 @@ pageEncoding="UTF-8"%>
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <img src="resources/user/img/logos/logo-2.png" alt="logo-2">
+                <!-- <img src="resources/user/img/logos/logo-2.png" alt="logo-2"> -->
             </div>
             <div class="col-md-7 col-sm-6 col-xs-12">
                 <h3>Looking To Sell Or Rent Your Property?</h3>
