@@ -34,6 +34,7 @@
 	        var forSale = [];
         	var data = [];
         	var reservation = [];
+        	var trade = [];
         	var y = [];
         	
         	
@@ -68,30 +69,41 @@
 	      	        		})// each
 	      	        		
 	      	        		$.ajax({
-			      	        			url:"mainPageReservation"
+	      	        			url:"mainPageReservation"
+	      	        			,type:"get"
+	      	        			,data:{}
+	      	        			,success:function(list){
+	      	        				$.each(list,function(index,item){
+			      	        			reservation[index]=item.stats_Count;
+			      	        		})// each
+			      	        		
+			      	        		$.ajax({
+			      	        			url:"mainPageTrade"
 			      	        			,type:"get"
 			      	        			,data:{}
 			      	        			,success:function(list){
 			      	        				$.each(list,function(index,item){
-					      	        			reservation[index]=item.stats_Count;
-					      	        		})// each
-					      	        		
-					      	        	  for(var i=0;i<8;i++){
-						    	      	    	data[i]={y:y[i],a:enterprise[i],b:customer[i],c:forSale[i], d:reservation[i]};
+			      	        					trade[index] = item.stats_Count;
+			      	        				})
+			      	        				
+			      	        		   	  for(var i=0;i<8;i++){
+						    	      	    	data[i]={y:y[i],a:enterprise[i],b:customer[i],c:forSale[i], d:reservation[i], e:trade[i]};
 						    	      	      }
 						    	      	      
 						    	      	    Morris.Line({
 						    	                element: 'line_chart',
 						    	                data: data,
 						    	                xkey: 'y',
-						    	                ykeys: ['a', 'b', 'c', 'd'],
-						    	                labels: ['Enterprises', 'Customers', 'Items', 'Reservation'],
+						    	                ykeys: ['a', 'b', 'c', 'd', 'e'],
+						    	                labels: ['Enterprises', 'Customers', 'Items', 'Reservation' , 'Trade'],
 						    	                hideHover: 'auto',
 						    	                resize: true,
-						    	                lineColors: ['#f6b225', '#DA4453', '#16a085', '#050099']
+						    	                lineColors: ['#f6b225', '#DA4453', '#16a085', '#050099', '#F15F5F']
 						    	            }); //MORRIS
-						      	        	} //success
-						      	        }); //ajax 
+			      	        			}
+			      	        		})
+				      	        	} //success
+				      	        }); //ajax 
 	      	        	} //success
 	      	        }); //ajax 
 	      	       
