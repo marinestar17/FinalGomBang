@@ -139,6 +139,7 @@ pageEncoding="UTF-8"%>
 		$("#checkMap").on("click",codeAddress);
 		ck = CKEDITOR.replace("editor", editorConfig);
 		$("#geoapi-cities").change(searchAddress);
+		$("#geoapi_postCode").on("click",codeAddress);
 		//$( "#geoapi-prefectures" ).addClass( "selectpicker search-fields" ); // css의 시점 문제를 해결
 		//$( "#geoapi-cities" ).addClass( "selectpicker search-fields" );  // css의 시점 문제를 해결 */
 		//$("#geoapi-cities").css("display","block");
@@ -755,7 +756,7 @@ pageEncoding="UTF-8"%>
             <div class="breadcrumb-area">
                 <h1>Submit Property</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="goHome">Home</a></li>
                     <li class="active">Submit Property</li>
                 </ul>
             </div>
@@ -770,8 +771,9 @@ pageEncoding="UTF-8"%>
         <div class="row">
             <div class="col-md-12">
                 <div class="notification-box">
-                    <h3>Don't Have an Account?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan.</p>
+                    <h3>매물 등록 페이지입니다.</h3>
+                    <p>1. For Sale 선택시에는 家賃란에는 판매가를 적어주세요.</p>
+                    <p>2. 주소 입력 후 우편번호 클릭시 자동 입력 후 지도에서 위치 확인이 가능합니다.</p>
                 </div>
             </div>
             <div class="col-md-12">
@@ -782,7 +784,7 @@ pageEncoding="UTF-8"%>
                         </div>
                         <div class="search-contents-sidebar mb-30">
                             <div class="form-group">
-                                <label>제목</label>
+                                <label>Title</label>
                                 <input type="text" id="forSale_Title" class="input-text" name="forSale_Title" placeholder="Property Title">
                             </div>
                             <div class="row">
@@ -800,10 +802,9 @@ pageEncoding="UTF-8"%>
                                         <label>Type</label>
                                         <select id="forSale_HouseType" class="selectpicker search-fields" name="forSale_HouseType" >
                                             <option>Apartment</option>
-                                            <option>House</option>
-                                            <option>Commercial</option>
-                                            <option>Garage</option>
-                                            <option>Lot</option>
+                                            <option>Mansion</option>
+                                            <option>Share House</option>
+                                            <option>One Room</option>
                                         </select>
                                     </div>
                                 </div>
@@ -811,25 +812,25 @@ pageEncoding="UTF-8"%>
                             <div class="row">
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>야칭</label>
-                                        <input type="text" id="forSale_Rent" class="input-text" name="forSale_Rent" placeholder="家賃">
+                                        <label>家賃</label>
+                                        <input type="text" id="forSale_Rent" class="input-text" name="forSale_Rent" placeholder="値段 or 家賃">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>시키킹</label>
+                                        <label>敷金</label>
                                         <input type="text" id="forSale_Deposit" class="input-text" name="forSale_Deposit" placeholder="敷金">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>레이킹</label>
+                                        <label>礼金</label>
                                         <input type="text" id="forSale_Reward" class="input-text" name="forSale_Reward" placeholder="礼金">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>관리비</label>
+                                        <label>管理費</label>
                                         <input type="text" id="forSale_ManageCost" class="input-text" name="forSale_ManageCost" placeholder="管理費">
                                     </div>
                                 </div>
@@ -850,7 +851,7 @@ pageEncoding="UTF-8"%>
                         <div class="row mb-30 ">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>현</label>
+                                    <label>Prefecture</label>
                                      <!-- class="selectpicker search-fields"  -->
                                     <select id="geoapi-prefectures" name="geoapi_prefectures" >
   										<option value="都道府県を選択してください">都道府県を選択してください</option>
@@ -878,7 +879,7 @@ pageEncoding="UTF-8"%>
                             </div> -->
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>마을</label>
+                                    <label>Town</label>
                                     <select id="geoapi-towns" class="input-text" name="geoapi_towns">
                                     	<option>町を選択してください。</option>
                                     </select>
@@ -887,14 +888,14 @@ pageEncoding="UTF-8"%>
                             
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>나머지 주소</label>
-                                    <input type="text" id="geoapi_remain" class="input-text" name="geoapi_remain"  placeholder="나머지 주소">
+                                    <label>The rest of the address</label>
+                                    <input type="text" id="geoapi_remain" class="input-text" name="geoapi_remain"  placeholder="残りのアドレス">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Postal Code</label>
-                                    <input type="text" id="geoapi_postCode" class="input-text" name="zip"  placeholder="우편번호">
+                                    <input type="text" id="geoapi_postCode" class="input-text" name="zip"  placeholder="郵便番号">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
@@ -920,7 +921,6 @@ pageEncoding="UTF-8"%>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Check Map</label>
-                                    <input type="button" id="checkMap" value="지도에서확인" >
                                    <div id="map"></div>
                                    <div id="subwayMap"></div>
                                 </div>
