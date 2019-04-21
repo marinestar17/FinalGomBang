@@ -791,7 +791,8 @@ select
         ,ORIGINNAME
         ,SAVENAME
 from
-        forsale f,
+        (select * from forsale
+         where 5>rownum)f,
         (select 
                         i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
                     from 

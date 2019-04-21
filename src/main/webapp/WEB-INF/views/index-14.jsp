@@ -232,6 +232,10 @@ pageEncoding="UTF-8"%>
     </script>
     <!-- 주소API CSS -->
     <style>
+
+
+    	
+    }
     #geoapi-prefectures{
     	width:100%;
 		height:40px;
@@ -296,6 +300,17 @@ pageEncoding="UTF-8"%>
                         <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i>Customer Modify</a>
                     </li>
                     </c:if>
+                    <c:if test="${sessionScope.enterpriseLoginID!=null}">
+                    <li>
+                        <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                    </li>
+                    <li>
+                        <a href="goUpdate?enterprise_ID=${sessionScope.enterpriseLoginID}" class="sign-in"><i class="fa fa-user">
+                        
+                        </i> Enterprise Modify
+                        </a>
+                    </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
@@ -304,7 +319,6 @@ pageEncoding="UTF-8"%>
 <!-- Top header end -->
 
 <!-- Main header start (소비자)-->
-<c:if test="${sessionScope.customerLoginID==null && sessionScope.enterpriseLoginID==null}"></c:if>
 <c:if test="${sessionScope.enterpriseLoginID==null}">
 <header class="main-header">
     <div class="container">
@@ -316,8 +330,8 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="goHome" class="logo">
-                    <img src="resources/user/img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -328,7 +342,7 @@ pageEncoding="UTF-8"%>
                             Home<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="goHome">Home</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -369,9 +383,9 @@ pageEncoding="UTF-8"%>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
-                        <a href="submitProperty" class="button"> 
+                        <!-- <a href="submitProperty" class="button"> 
                             Submit Property
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
             </div>
@@ -393,8 +407,8 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="goHome" class="logo">
-                    <img src="resources/user/img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -450,7 +464,7 @@ pageEncoding="UTF-8"%>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item item-100vh active">
-                <img src="http://placehold.it/2200x1200" alt="banner-slider-1" class="img-responsive">
+                <img src="http:/GomBang/img/mainImage.jpg" alt="banner-slider-1" class="img-responsive">
                 <div class="carousel-caption banner-slider-inner banner-tb text-left">
                     <div class="banner-content banner-content-left">
                         <div class="text-center hidden-md hidden-lg">
@@ -947,10 +961,11 @@ pageEncoding="UTF-8"%>
         <div class="clearfix"></div>
         <div class="row wow">
             <div class="col-lg-5 col-md-5 col-sm-12 col-pad wow fadeInRight delay-04s">
-                <div class="category">
-                    <div class="category_bg_box category_long_bg cat-4-bg">
-                        <div class="category-overlay">
-                            <div class="category-content">
+                <div class="category" style="background-image: url(http:/GomBang/img/${popularlist1.saveName})">
+                    <div class="category_bg_box category_long_bg cat-4-bg" style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
+                    <%--   <img src="/GomBang/img/${popularlist.saveName}"class="category-img" alt="..."> --%>
+                        <div class="category-overlay" >
+                            <div class="category-content" >
                                 <div class="category-subtitle">14 Properties</div>
                                 <h3 class="category-title"><a href="#">San Francisco</a></h3>
                             </div>
@@ -962,7 +977,7 @@ pageEncoding="UTF-8"%>
                 <div class="row">
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-1-bg">
+                            <div class="category_bg_box cat-1-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">14 Properties</div>
@@ -977,7 +992,7 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-2-bg">
+                            <div class="category_bg_box cat-2-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">24 Properties</div>
@@ -992,7 +1007,7 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-12 col-pad wow fadeInUp delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-3-bg">
+                            <div class="category_bg_box cat-3-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">9 Properties</div>
@@ -1171,8 +1186,8 @@ pageEncoding="UTF-8"%>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
                                 	SCIT MASTER 36기 김문승<br>
-                                	3차 역량평가 지옥의 재재시험까지 봤지만 여기까지 올라왔다.<br>
-                                	주의 : 실물과 사진은 다를수 있습니다.
+                                	조장님의 뒤통수를 언제나 노리고 있습니다.<br>
+                                	주의 : 항상 눈은 조장의 목을 쳐다보고있습니다.
                                 </div>
                                 <div class="author-name">
                                     John Antony
@@ -1268,6 +1283,8 @@ pageEncoding="UTF-8"%>
 </div>
 <!-- Intro section end -->
 
+<!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
+
 <!-- Footer start -->
 <footer class="main-footer clearfix">
     <div class="container">
@@ -1343,13 +1360,14 @@ pageEncoding="UTF-8"%>
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
                                 </h3>
                                 <p>February 27, 2018</p>
                                 <div class="price">
@@ -1357,7 +1375,7 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -1384,7 +1402,8 @@ pageEncoding="UTF-8"%>
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->
@@ -1416,6 +1435,8 @@ pageEncoding="UTF-8"%>
     </div>
 </footer>
 <!-- Footer end -->
+
+<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
 <!-- Copy right start -->
 <div class="copy-right">
