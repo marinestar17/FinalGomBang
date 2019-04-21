@@ -248,6 +248,37 @@ pageEncoding="UTF-8"%>
  </script>
  
  <style>
+ 	
+ 	/* #map_canvas {
+			float: left;
+			width: 413px;
+			height: 406px;
+		} */
+		/* #listing {
+			float: left;
+			margin-left: 1px;
+			width: 205px;
+			height: 326px;
+			overflow: auto;
+			cursor: pointer;
+		} */
+		#controls {
+			padding: 5px;
+		}
+		.placeIcon {
+			width: 16px;
+			height: 16px;
+			margin: 2px;
+		}
+		#results {
+			border-collapse: collapse;
+			width: 184px;
+		}
+		#locationField {
+			margin-left: 1px;
+		}
+ 	
+ 	
     #geoapi-prefectures{
     	width:100%;
     	color: #999;
@@ -865,12 +896,12 @@ pageEncoding="UTF-8"%>
                             <input type="hidden" value="${detailItem.forSale_Lat }" id="forSale_Lat">
                             <input type="hidden" value="${detailItem.forSale_Lng }" id="forSale_Lng">
                         </div>
-                        <div id="map" class="contact-map"></div>
+                        <!-- <div id="map" class="contact-map"></div>
                         <div id="storeList"></div>
-    <div id="controls">
-		<form name="controls">
-			<input type="radio" name="searchType" class="searchType" value="cafe" onclick="search()" checked="checked" data-val="카페" />카페
-			<br/>
+    				<div id="controls">
+						<form name="controls">
+							<input type="radio" name="searchType" class="searchType" value="cafe" onclick="search()" checked="checked" data-val="카페" />카페
+							<br/>
 			<input type="radio" name="searchType" class="searchType" value="convenience_store" onclick="search()" data-val="편의점" />편의점
 			<br/>
 			<input type="radio" name="searchType" class="searchType" value="train_station" onclick="search()" data-val="지하철" />지하철
@@ -880,24 +911,56 @@ pageEncoding="UTF-8"%>
 			<input type="radio" name="searchType" class="searchType" value="convenience_store" onclick="search()" data-val="편의점" />편의점
 			<br/>
 			<input type="radio" name="searchType" class="searchType" value="supermarket" onclick="search()" data-val="슈퍼마켓" />슈퍼마켓
-			</form>
-	</div>
-	
-	
-    <div id="right-panel">
+						</form>
+					</div>
+	<div id="right-panel">
       <h2>Results</h2>
       <ul id="places"></ul>
-    </div>
-                    </div>
+    </div> -->
+	
+    
+    				
+    				
+    	<div id="locationField">
+			<input id="autocomplete" type="hidden">
+		</div>
+		<div id="map_canvas" class="contact-map"></div>
+		
+		<div id="controls">
+			<form name="controls">
+				<input type="radio" name="type" value="cafe" onclick="search()" checked="checked" />카페
+				<br/>
+				<input type="radio" name="type" value="bus_station" onclick="search()" />버스정류장
+				<br/>
+				<input type="radio" name="type" value="restaurant" onclick="search()" />레스토랑
+				<br/>
+				<input type="radio" name="type" value="subway_station" onclick="search()" />지하철
+				<br/>
+				<input type="radio" name="type" value="train_station" onclick="search()" />기차역
+				<br/>
+				<input type="radio" name="type" value="supermarket" onclick="search()" />슈퍼마켓
+				<br/>
+				<input type="radio" name="type" value="convenience_store" onclick="search()" />편의점
+				</form>
+		</div>
+		<div id="ResultCnt">
+			
+		</div>
+		<div id="listing" >
+			<table id="results"></table>
+		</div>
+    					
+    				
+                   </div>
                 </div>
                 <!-- Location end -->
 
                 <!-- Properties details section start -->
-                <div class="Properties-details-section sidebar-widget">
-                    <!-- Properties comments start -->
+                <!-- <div class="Properties-details-section sidebar-widget">
+                    Properties comments start
                     <div class="properties-comments mb-40">
-                        <!-- Comments section start -->
-                        <!-- <div class="comments-section">
+                        Comments section start
+                        <div class="comments-section">
                             Main Title 2
                             <div class="main-title-2">
                                 <h1><span>Comments </span> Section</h1>
@@ -1048,15 +1111,15 @@ pageEncoding="UTF-8"%>
                                     </ul>
                                 </li>
                             </ul>
-                        </div> -->
-                        <!-- Comments section end -->
+                        </div>
+                        Comments section end
                     </div>
-                    <!-- Properties comments end -->
+                    Properties comments end
 
-                    <!-- Contact 1 start -->
+                    Contact 1 start
                     <div class="contact-1">
                         <div class="contact-form">
-                            <!-- Main Title 2 -->
+                            Main Title 2
                             <div class="main-title-2">
                                 <h1><span>Contact</span> with us</h1>
                             </div>
@@ -1096,8 +1159,8 @@ pageEncoding="UTF-8"%>
                             </form>
                         </div>
                     </div>
-                    <!-- Contact 1 end -->
-                </div>
+                    Contact 1 end
+                </div> -->
                 <!-- Properties details section end -->
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -1395,7 +1458,7 @@ pageEncoding="UTF-8"%>
 <!-- Properties details page end -->
 
 <!-- Partners block start -->
-<div class="partners-block">
+<!-- <div class="partners-block">
     <div class="container">
         <h3>Brands & Partners</h3>
         <div class="row">
@@ -1444,8 +1507,10 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Partners block end -->
+
+<!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
 <!-- Footer start -->
 <footer class="main-footer clearfix">
@@ -1460,29 +1525,29 @@ pageEncoding="UTF-8"%>
                             <h1>Contact Us</h1>
                         </div>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
+                            SCITMASTERS, 36rd C class Group no.3,
                         </p>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                                Address: 코엑스 4층 SCIT 교육센터
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                                Email:<a href="sjydiablo@naver.com">sjydiablo@naver.com</a>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+82-00-0000-0000">+82-00-0000-0000</a>
                             </li>
                             <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
+                                <!-- <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071 -->
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- <!-- Links -->
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
@@ -1490,10 +1555,10 @@ pageEncoding="UTF-8"%>
                         </div>
                         <ul class="links">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="goHome">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact Us</a>
@@ -1567,7 +1632,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
                             <h1>Subscribe</h1>
@@ -1589,12 +1654,14 @@ pageEncoding="UTF-8"%>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </footer>
 <!-- Footer end -->
+
+<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
 <!-- Copy right start -->
 <div class="copy-right">
@@ -1778,12 +1845,194 @@ pageEncoding="UTF-8"%>
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      
+      // 연습용
+      	var map, places, iw;
+		var markers = [];
+		var autocomplete;
+	      var subwayMap;
+		  var forSale_Lat = parseFloat($("#forSale_Lat").val());
+		  var forSale_Lng = parseFloat($("#forSale_Lng").val());
+		  var pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+		function initMap() {
+			var myLatlng = new google.maps.LatLng(forSale_Lat, forSale_Lng);
+			var myOptions = {
+				zoom: 16,
+				center: myLatlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			
+			
+			
+			map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+			
+			var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+			var marker = new google.maps.Marker({
+		          position: pyrmont,
+		          map: map,
+		          title: 'Hello World!',
+		          icon:image
+		        });
+			places = new google.maps.places.PlacesService(map);
+			google.maps.event.addListener(map, 'tilesloaded', tilesLoaded);
+			autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+			google.maps.event.addListener(autocomplete, 'place_changed', function () {
+				showSelectedPlace();
+			});
+			searchSubway(pyrmont);
+		}
 
-      var map;
+		function tilesLoaded() {
+			google.maps.event.clearListeners(map, 'tilesloaded');
+			google.maps.event.addListener(map, 'zoom_changed', search);
+			google.maps.event.addListener(map, 'dragend', search);
+			search();
+		}
+
+		function showSelectedPlace() {
+			clearResults();
+			clearMarkers();
+			var place = autocomplete.getPlace();
+			alert(place.geometry.location);
+			map.panTo(place.geometry.location);
+			markers[0] = new google.maps.Marker({
+				position: place.geometry.location,
+				map: map
+			});
+			iw = new google.maps.InfoWindow({
+				content: getIWContent(place)
+			});
+			iw.open(map, markers[0]);
+		}
+
+		function search() {
+			var type;
+			for (var i = 0; i < document.controls.type.length; i++) {
+				if (document.controls.type[i].checked) {
+					type = document.controls.type[i].value;
+				}
+			}
+			autocomplete.setBounds(map.getBounds());
+			var search = {
+				bounds: map.getBounds()
+			};
+			if(type != 'train2_station'){
+				search.types = [type];
+			}
+			
+			places.search(search, function (results, status) {
+				
+				if (status !== 'OK'){
+					addResultCnt(0);
+					clearResults();
+					clearMarkers();
+                	return;
+                }
+				else if (status == google.maps.places.PlacesServiceStatus.OK) {
+					addResultCnt(results.length);
+					clearResults();
+					clearMarkers();
+					for (var i = 0; i < results.length; i++) {
+						markers[i] = new google.maps.Marker({
+							position: results[i].geometry.location,
+						});
+						google.maps.event.addListener(markers[i], 'click', getDetails(results[i], i));
+						dropMarker(i);
+						addResult(results[i], i);
+					}
+					
+				}
+				
+			});
+		}
+		
+		function addResultCnt(cnt){
+			var storeList = '<table>';
+    	  	storeList += '<tr id=>';
+        	storeList += '<td><h3>'+cnt+'개<h3></td>';
+        	storeList += '</tr>';
+          	storeList += '</table>';
+          
+          	$("#ResultCnt").html(storeList);
+		}
+
+		function clearMarkers() {
+			for (var i = 0; i < markers.length; i++) {
+				if (markers[i]) {
+					markers[i].setMap(null);
+					markers[i] == null;
+				}
+			}
+		}
+
+		function dropMarker(i) {
+				markers[i].setMap(map);
+		}
+
+		function addResult(result, i) {
+			var results = document.getElementById('results');
+			var tr = document.createElement('tr');
+			//tr.style.backgroundColor = (i % 2 == 0 ? '#F0F0F0' : '#FFFFFF');
+			tr.onclick = function () {
+				google.maps.event.trigger(markers[i], 'click');
+			};
+			var iconTd = document.createElement('td');
+			var nameTd = document.createElement('td');
+			var icon = document.createElement('img');
+			icon.src = result.icon.replace('http:', '');
+			icon.setAttribute('class', 'placeIcon');
+			var name = document.createTextNode(result.name);
+			iconTd.appendChild(icon);
+			nameTd.appendChild(name);
+			tr.appendChild(iconTd);
+			tr.appendChild(nameTd);
+			results.appendChild(tr);
+		}
+
+		function clearResults() {
+			var results = document.getElementById('results');
+			while (results.childNodes[0]) {
+				results.removeChild(results.childNodes[0]);
+			}
+		}
+
+		function getDetails(result, i) {
+			return function () {
+				places.getDetails({
+					reference: result.reference
+				}, showInfoWindow(i));
+			}
+		}
+
+		function showInfoWindow(i) {
+			return function (place, status) {
+				if (iw) {
+					iw.close();
+					iw = null;
+				}
+				if (status == google.maps.places.PlacesServiceStatus.OK) {
+					iw = new google.maps.InfoWindow({
+						content: getIWContent(place)
+					});
+					iw.open(map, markers[i]);
+				}
+			}
+		}
+
+		function getIWContent(place) {
+			var content = '<table style="border:0"><tr><td style="border:0;">';
+			content += '<img class="placeIcon" src="' + place.icon + '"></td>';
+			content += '<td style="border:0;"><b><a href="' + place.url + '">' + place.name + '</a></b>';
+			content += '</td></tr></table>';
+			return content;
+		}
+      // 연습용 끝
+
+      /* var map;
       var subwayMap;
 	  var forSale_Lat = parseFloat($("#forSale_Lat").val());
-	  var forSale_Lng = parseFloat($("#forSale_Lng").val());
-      function initMap() {
+	  var forSale_Lng = parseFloat($("#forSale_Lng").val()); */
+      /* function initMap() {
         // Create the map.
         var pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
         map = new google.maps.Map(document.getElementById('map'), {
@@ -1841,8 +2090,6 @@ pageEncoding="UTF-8"%>
       // 주변 시설물 개수 출력
       function storeCount(places){
     	  var searchPlace = $('input[name="searchType"]:checked').attr('data-val');
-    	  /* alert(searchPlace);
-    	  var storeCnt = $('input[name="searchType"]:checked').val(); */
           var storeCnt = 0;
           
           if(places!=null){
@@ -1900,7 +2147,7 @@ pageEncoding="UTF-8"%>
         }
         var infowindow = new google.maps.InfoWindow();
         var service = new google.maps.places.PlacesService(map);
-      }
+      } */
       
       var subRadius=1000;
       // 가장 가까운 지하철 찾기
@@ -1912,6 +2159,7 @@ pageEncoding="UTF-8"%>
       var subwayLng;
       var subwayArr = new Array();
       var subwayDistanceArr = new Array();
+      var j = 0;
        function subCallBack(){
     	  subRadius=subRadius+100;
     	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
@@ -1920,7 +2168,6 @@ pageEncoding="UTF-8"%>
             zoom: 15
           });
     	  var service = new google.maps.places.PlacesService(subwayMap);
-    	  
     	  service.nearbySearch(
                   {location: pyrmont, radius: subRadius, type: ['subway_station']},
                   function(results, status, pagination) {
@@ -1929,25 +2176,47 @@ pageEncoding="UTF-8"%>
                     }else{
                     	console.log(results);
                     	for(var i=0; i<=results.length-1; i++){
-                    		//subwayArr.push(results[i].geometry.location);
                     		subwayArr.push(results[i]);
+                    		j=i;
                     	}
-                    	/* for(var var i=0; i<=results.length-1; i++){
-                    		console.log(subwayArr[i]);
-                    	} */
+                    	console.log("트레인");
                     	console.log(subwayArr);
+                    	service.nearbySearch(
+                                {location: pyrmont, radius: subRadius, type: ['train_station']},
+                                function(results, status, pagination) {
+                                  if (status !== 'OK'){
+                                  	subCallBack();
+                                  }else{
+                                  	console.log(results);
+                                  	for(var i=j; i<=results.length-1; i++){
+                                  		//subwayArr.push(results[i].geometry.location);
+                                  		subwayArr.push(results[i]);
+                                  	}
+                                  	
+                                  	console.log(subwayArr);
+                                  	
+                                  	subwayLat = results[results.length-1].geometry.location.lat();
+                                  	subwayLng = results[results.length-1].geometry.location.lng();
+                                  	console.log("서브웨이");
+                                	console.log(subwayArr);
+                                  	routeMap();
+                                       getNextPage = pagination.hasNextPage && function() {
+                                         pagination.nextPage();
+                                       };
+                                  }
+                                });
+                    	
+                    	
                     	
                     	subwayLat = results[results.length-1].geometry.location.lat();
                     	subwayLng = results[results.length-1].geometry.location.lng();
-                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
-                    	console.log(subwayLng); */
-                    	//createSubwayMarkers(results);
-                    	routeMap();
-                         getNextPage = pagination.hasNextPage && function() {
+                        
+                    	getNextPage = pagination.hasNextPage && function() {
                            pagination.nextPage();
                          };
                     }
                   });
+    	  		
     	  
       } 
       
@@ -2109,5 +2378,6 @@ pageEncoding="UTF-8"%>
         
     </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD16Rw_1wxr6ylwIbpNOeW76O89uhaIaz4&libraries=places&callback=initMap&sensor=false"></script>
+
 </body>
 </html>

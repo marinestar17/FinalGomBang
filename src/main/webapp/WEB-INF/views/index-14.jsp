@@ -267,7 +267,7 @@ pageEncoding="UTF-8"%>
 <body>
 
 <div class="page_loader"></div>
-
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 <!-- Top header start -->
 <header class="top-header hidden-xs" id="top">
     <div class="container">
@@ -453,7 +453,7 @@ pageEncoding="UTF-8"%>
 </header>
 </c:if>
 <!-- Main header end (기업)-->
-
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 <!-- Banner start -->
 <div class="banner">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -1329,22 +1329,13 @@ pageEncoding="UTF-8"%>
                                 <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
+                                <a href="searchItem3">Advanced Search</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Blog</a>
+                                 <a href="goCustomerboard">Q&A</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="properties-list-rightside.html">properties Listing</a>
-                            </li>
-                            <li>
-                                <a href="properties-grid-rightside.html">properties Grid</a>
-                            </li>
-                            <li>
-                                <a href="properties-details.html">properties Details</a>
+                            	<a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a>
                             </li>
                         </ul>
                     </div>

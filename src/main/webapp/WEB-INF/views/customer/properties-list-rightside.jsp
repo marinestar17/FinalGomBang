@@ -946,6 +946,8 @@ pageEncoding="UTF-8"%>
 </div> -->
 <!-- Partners block end -->
 
+<!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
+
 <!-- Footer start -->
 <footer class="main-footer clearfix">
     <div class="container">
@@ -959,29 +961,29 @@ pageEncoding="UTF-8"%>
                             <h1>Contact Us</h1>
                         </div>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
+                            SCITMASTERS, 36rd C class Group no.3,
                         </p>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                                Address: 코엑스 4층 SCIT 교육센터
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                                Email:<a href="sjydiablo@naver.com">sjydiablo@naver.com</a>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+82-00-0000-0000">+82-00-0000-0000</a>
                             </li>
                             <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
+                                <!-- <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071 -->
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- <!-- Links -->
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
@@ -989,10 +991,10 @@ pageEncoding="UTF-8"%>
                         </div>
                         <ul class="links">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="goHome">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact Us</a>
@@ -1066,7 +1068,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
                             <h1>Subscribe</h1>
@@ -1088,12 +1090,14 @@ pageEncoding="UTF-8"%>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </footer>
 <!-- Footer end -->
+
+<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
 <!-- Copy right start -->
 <div class="copy-right">
