@@ -296,6 +296,17 @@ pageEncoding="UTF-8"%>
                         <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i>Customer Modify</a>
                     </li>
                     </c:if>
+                    <c:if test="${sessionScope.enterpriseLoginID!=null}">
+                    <li>
+                        <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                    </li>
+                    <li>
+                        <a href="goUpdate?enterprise_ID=${sessionScope.enterpriseLoginID}" class="sign-in"><i class="fa fa-user">
+                        
+                        </i> Enterprise Modify
+                        </a>
+                    </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
@@ -304,7 +315,6 @@ pageEncoding="UTF-8"%>
 <!-- Top header end -->
 
 <!-- Main header start (소비자)-->
-<c:if test="${sessionScope.customerLoginID==null && sessionScope.enterpriseLoginID==null}"></c:if>
 <c:if test="${sessionScope.enterpriseLoginID==null}">
 <header class="main-header">
     <div class="container">
@@ -316,8 +326,8 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="goHome" class="logo">
-                    <img src="resources/user/img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -328,7 +338,7 @@ pageEncoding="UTF-8"%>
                             Home<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="goHome">Home</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -369,9 +379,9 @@ pageEncoding="UTF-8"%>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
-                        <a href="submitProperty" class="button"> 
+                        <!-- <a href="submitProperty" class="button"> 
                             Submit Property
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
             </div>
@@ -393,9 +403,6 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="goHome" class="logo">
-                    <img src="resources/user/img/logos/logo.png" alt="logo">
-                </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
@@ -450,7 +457,7 @@ pageEncoding="UTF-8"%>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item item-100vh active">
-                <img src="http://placehold.it/2200x1200" alt="banner-slider-1" class="img-responsive">
+                <img src="http:/GomBang/img/mainImage.jpg" alt="banner-slider-1" class="img-responsive">
                 <div class="carousel-caption banner-slider-inner banner-tb text-left">
                     <div class="banner-content banner-content-left">
                         <div class="text-center hidden-md hidden-lg">
