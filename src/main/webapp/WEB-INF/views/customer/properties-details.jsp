@@ -410,6 +410,9 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
+                </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
