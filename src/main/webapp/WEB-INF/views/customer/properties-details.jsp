@@ -953,6 +953,8 @@ pageEncoding="UTF-8"%>
     				
                    </div>
                 </div>
+                <a  class="btn button-sm border-button-theme reservation">예약(상담)신청</a>
+                    <a  class="btn button-sm border-button-theme bookmark ">책갈피 담아두기</a>
                 <!-- Location end -->
 
                 <!-- Properties details section start -->
@@ -1210,65 +1212,12 @@ pageEncoding="UTF-8"%>
                             </select>
                         </div>
 
-                        <!-- <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="bedrooms">
-                                        <option>Bedrooms</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="bathroom">
-                                        <option>Bathroom</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="balcony">
-                                        <option>Balcony</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" data-live-search="true" name="garage">
-                                        <option>Garage</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="range-slider">
+                        <div class="range-slider">
                             <label>For Train</label>
                             <div data-min="0" data-max="2000" data-unit="M" data-min-name="min_distance" data-max-name="max_distance" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                             <div class="clearfix"></div>
-                        </div> -->
+                        </div>
 
                         <div class="range-slider">
                             <label>Price</label>
@@ -1327,7 +1276,7 @@ pageEncoding="UTF-8"%>
                     <!-- Search contents sidebar end -->
 
                     <!-- Popular posts start -->
-                    <div class="sidebar-widget popular-posts">
+                    <!-- <div class="sidebar-widget popular-posts">
                         <div class="main-title-2">
                             <h1><span>Recently</span> Properties</h1>
                         </div>
@@ -1373,10 +1322,10 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Category posts start -->
-                    <div class="sidebar-widget category-posts">
+                    <!-- <div class="sidebar-widget category-posts">
                         <div class="main-title-2">
                             <h1><span>Popular</span> Category</h1>
                         </div>
@@ -1388,7 +1337,7 @@ pageEncoding="UTF-8"%>
                             <li><a href="#">Villa </a> <span>(19)  </span></li>
                             <li><a href="#">Other  </a> <span>(22)  </span></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <!-- Social media start -->
                     <!-- <div class="social-media sidebar-widget clearfix">

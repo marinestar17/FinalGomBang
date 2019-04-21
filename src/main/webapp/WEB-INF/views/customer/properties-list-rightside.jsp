@@ -643,59 +643,6 @@ pageEncoding="UTF-8"%>
                             </select>
                         </div>
 
-                        <!-- <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="bedrooms">
-                                        <option>Bedrooms</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="bathroom">
-                                        <option>Bathroom</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" name="balcony">
-                                        <option>Balcony</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <select class="selectpicker search-fields" data-live-search="true" name="garage">
-                                        <option>Garage</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
 
                         <div class="range-slider">
                             <label>For Train</label>
@@ -759,7 +706,7 @@ pageEncoding="UTF-8"%>
                 </div>
 
                 <!-- Category posts start -->
-                <div class="sidebar-widget category-posts">
+                <!-- <div class="sidebar-widget category-posts">
                     <div class="main-title-2">
                         <h1><span>popular</span> Category</h1>
                     </div>
@@ -771,10 +718,10 @@ pageEncoding="UTF-8"%>
                         <li><a href="#">Villa </a> <span>(19)  </span></li>
                         <li><a href="#">Other  </a> <span>(22)  </span></li>
                     </ul>
-                </div>
+                </div> -->
 
                 <!-- Popular posts start -->
-                <div class="sidebar-widget popular-posts">
+                <!-- <div class="sidebar-widget popular-posts">
                     <div class="main-title-2">
                         <h1><span>Recent</span> Properties</h1>
                     </div>
@@ -820,7 +767,7 @@ pageEncoding="UTF-8"%>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Helping box Start -->
                 <!-- <div class="sidebar-widget helping-box clearfix">

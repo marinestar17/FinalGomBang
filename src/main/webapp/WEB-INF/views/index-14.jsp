@@ -497,10 +497,9 @@ pageEncoding="UTF-8"%>
                                                     <select id="forSale_HouseType" class="selectpicker search-fields" name="forSale_HouseType" data-live-search="true" data-live-search-placeholder="Search value">
                                                         <option>Property Types</option>
                                                         <option>Apartment</option>
-                                                        <option>House</option>
-                                                        <option>Commercial</option>
-                                                        <option>Garage</option>
-                                                        <option>Lot</option>
+                                                        <option>Mansion</option>
+                                                        <option>Share House</option>
+                                                        <option>One Room</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -529,7 +528,7 @@ pageEncoding="UTF-8"%>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <div class="form-group">
+                                                <!-- <div class="form-group" style="display:none">
                                                     <select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value" >
                                                         <option>임시</option>
                                                         <option>1</option>
@@ -540,7 +539,7 @@ pageEncoding="UTF-8"%>
                                                         <option>6</option>
                                                         <option>7</option>
                                                     </select>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group mb-0">
@@ -755,7 +754,7 @@ pageEncoding="UTF-8"%>
             <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInLeft delay-04s">
                 <div class="services-info">
                     <i class="flaticon-internet"></i>
-                    <h5>Apartments</h5>
+                    <h5>Apartment</h5>
                     <p>한국의 아파트와는 다릅니다.<br>
                     	아파트.<br>
                     	アパート。
