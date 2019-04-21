@@ -232,6 +232,10 @@ pageEncoding="UTF-8"%>
     </script>
     <!-- 주소API CSS -->
     <style>
+
+
+    	
+    }
     #geoapi-prefectures{
     	width:100%;
 		height:40px;
@@ -957,10 +961,11 @@ pageEncoding="UTF-8"%>
         <div class="clearfix"></div>
         <div class="row wow">
             <div class="col-lg-5 col-md-5 col-sm-12 col-pad wow fadeInRight delay-04s">
-                <div class="category">
-                    <div class="category_bg_box category_long_bg cat-4-bg">
-                        <div class="category-overlay">
-                            <div class="category-content">
+                <div class="category" style="background-image: url(http:/GomBang/img/${popularlist1.saveName})">
+                    <div class="category_bg_box category_long_bg cat-4-bg" style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
+                    <%--   <img src="/GomBang/img/${popularlist.saveName}"class="category-img" alt="..."> --%>
+                        <div class="category-overlay" >
+                            <div class="category-content" >
                                 <div class="category-subtitle">14 Properties</div>
                                 <h3 class="category-title"><a href="#">San Francisco</a></h3>
                             </div>
@@ -972,7 +977,7 @@ pageEncoding="UTF-8"%>
                 <div class="row">
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-1-bg">
+                            <div class="category_bg_box cat-1-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">14 Properties</div>
@@ -987,7 +992,7 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-2-bg">
+                            <div class="category_bg_box cat-2-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">24 Properties</div>
@@ -1002,7 +1007,7 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-12 col-pad wow fadeInUp delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-3-bg">
+                            <div class="category_bg_box cat-3-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">9 Properties</div>
@@ -1181,8 +1186,8 @@ pageEncoding="UTF-8"%>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
                                 	SCIT MASTER 36기 김문승<br>
-                                	3차 역량평가 지옥의 재재시험까지 봤지만 여기까지 올라왔다.<br>
-                                	주의 : 실물과 사진은 다를수 있습니다.
+                                	조장님의 뒤통수를 언제나 노리고 있습니다.<br>
+                                	주의 : 항상 눈은 조장의 목을 쳐다보고있습니다.
                                 </div>
                                 <div class="author-name">
                                     John Antony
@@ -1346,13 +1351,14 @@ pageEncoding="UTF-8"%>
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
                                 </h3>
                                 <p>February 27, 2018</p>
                                 <div class="price">
@@ -1360,7 +1366,7 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -1387,7 +1393,8 @@ pageEncoding="UTF-8"%>
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->

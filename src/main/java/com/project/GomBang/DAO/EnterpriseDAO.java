@@ -428,6 +428,17 @@ public class EnterpriseDAO {
 		}
 		return tList;
 	}
-	
+	//popular properties
+	public ArrayList<Total> popularproperties(){
+		EnterpriseMapper map = session.getMapper(EnterpriseMapper.class);
+		ArrayList<Total> tList = new ArrayList<Total>();
+		try {
+			tList = map.popularproperties();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return tList;
+	}
 }
 
