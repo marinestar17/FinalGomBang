@@ -587,6 +587,8 @@ WHERE
 		R.CUSTOMER_ID = #{customer_ID}
 	AND
 		R.FORSALE_SEQ = F.FORSALE_SEQ
+	ORDER BY
+		RESERVATION_SEQ DESC
 </select>
 
 <!--손님이 자신의 즐겨찾기 확인 -->

@@ -445,6 +445,7 @@ WHERE
 <select id="customerCommentList" parameterType="CustomerComment" resultType="CustomerComment">
 	SELECT
 		CUSTOMERBOARD_SEQ,
+		CUSTOMERCOMMENT_SEQ,
 		CUSTOMER_ID,
 	    CUSTOMERCOMMENT_CONTENT,
 	    CUSTOMERCOMMENT_INDATE,
@@ -452,7 +453,7 @@ WHERE
 	FROM
 		CUSTOMERCOMMENT
 	WHERE
-		CUSTOMER_ID=#{customer_ID} AND CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+		CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
 	ORDER BY
 		CUSTOMERCOMMENT_INDATE DESC
 </select>
@@ -463,6 +464,15 @@ WHERE
 		CUSTOMERBOARD
 	WHERE
 		CUSTOMER_ID=#{customer_ID} AND CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+	
+</delete>
+
+<delete id="deleteCustomerComment" parameterType="CustomerComment">
+	DELETE
+	FROM
+		CUSTOMERCOMMENT
+	WHERE
+		CUSTOMER_ID=#{customer_ID} AND CUSTOMERCOMMENT_SEQ=#{customerComment_Seq}
 	
 </delete>
 
@@ -577,6 +587,8 @@ WHERE
 		R.CUSTOMER_ID = #{customer_ID}
 	AND
 		R.FORSALE_SEQ = F.FORSALE_SEQ
+	ORDER BY
+		RESERVATION_SEQ DESC
 </select>
 
 <!--손님이 자신의 즐겨찾기 확인 -->
