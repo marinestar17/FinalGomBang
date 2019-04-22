@@ -203,8 +203,11 @@ public class EnterpriseController {
 	}
 	// 매물등록 페이지 이동
 	@RequestMapping(value="/submitProperty", method=RequestMethod.GET)
-	public String submitProperty() {
+	public String submitProperty(Model model) {
 		imgList = new ArrayList<Image>();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		return "enterprise/submit-property";
 	}
 	// 매물 등록하기
@@ -533,6 +536,9 @@ public class EnterpriseController {
 		}
 		model.addAttribute("enterItem",total);
 		model.addAttribute("enterImage",total2);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		return "enterprise/remake-submit-property";
 	}
 	//기업 매물 수정		

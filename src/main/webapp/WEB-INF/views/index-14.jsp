@@ -1350,7 +1350,7 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
                                 <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">

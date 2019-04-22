@@ -243,7 +243,7 @@ pageEncoding="UTF-8"%>
                         <td class="title-container">
                             <img src="/GomBang/img/${enterItemList.saveName}" alt="my-properties-1" class="img-responsive hidden-xs">
                             <div class="title">
-                                <h4><a href="#">${enterItemList.forSale_Title }</a></h4>
+                                <h4><a href="customerItemDetail?forSale_Seq=${enterItemList.forSale_Seq}">${enterItemList.forSale_Title }</a></h4>
                                 <span><i class="fa fa-map-marker"></i> ${enterItemList.geoapi_prefectures} ${enterItemList.geoapi_cities} ${enterItemList.geoapi_towns} ${enterItemList.geoapi_remain} </span>
                                 <span class="table-property-price">${enterItemList.forSale_Rent }</span>
                             </div>
@@ -416,7 +416,7 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
                                 <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
