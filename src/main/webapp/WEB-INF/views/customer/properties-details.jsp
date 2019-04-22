@@ -197,7 +197,8 @@ pageEncoding="UTF-8"%>
 						alert("예약 성사시, 각 기업과의 연락은 개인 E-mail 등을 이용해주시기 바랍니다.");
 						 $("#reservation_Visa").val("");
 						 $("#reservation_Guarantor").val("");
-						 location.reload();
+						 var url = "searchItem3"; 
+				    		$(location).attr('href',url);
 					} 
     			}
     			,error : function(){
@@ -238,7 +239,6 @@ pageEncoding="UTF-8"%>
        			,success:function(result){
        				if (result == 1) {
 						alert("책갈피 등록");
-						$(".bookmark").val("책갈피 등록중");
 					} else {
 						alert("error!");
 					}
