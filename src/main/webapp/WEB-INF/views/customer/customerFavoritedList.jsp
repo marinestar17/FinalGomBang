@@ -305,6 +305,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-monitor"></i>Customer board
+                                </a>
+                            </li>
+                            <li>
                                 <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}">
                                     <i class="flaticon-apartment"></i>Reservation Properties
                                 </a>
