@@ -83,6 +83,10 @@ public class CustomerController {
 			session.setAttribute("customer",cu);
 			popularlist=dao1.popularproperties();
 	        model.addAttribute("popularlist",popularlist);
+	        model.addAttribute("popularlista",popularlist.get(0));
+	        model.addAttribute("popularlistb",popularlist.get(1));
+	        model.addAttribute("popularlistc",popularlist.get(2));
+	        model.addAttribute("popularlistd",popularlist.get(3));
 			return "index-14";
 		}else {
 			model.addAttribute("message","아이디나 비밀번호가 틀렸습니다");
