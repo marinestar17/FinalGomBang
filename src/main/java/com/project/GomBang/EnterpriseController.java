@@ -54,10 +54,10 @@ public class EnterpriseController {
 		
 		Enterprise result = dao.searchUpdate(enterprise_ID);
 		if (result == null) {
-			return "index-15";
+			return "index-14";
 		}
 		model.addAttribute("Enterprise", result);
-
+        
 		System.out.println(enterprise_ID);
 		
 		return "enterprise/goEnterprisesignup";
@@ -95,6 +95,11 @@ public class EnterpriseController {
 			model.addAttribute("ManagerEmail", result.getEnterprise_ManagerEmail());
 			model.addAttribute("ETC", result.getEnterprise_ETC());
 			model.addAttribute("Code", result.getEnterprise_Code());
+			ArrayList<Total> popularlist=new ArrayList<Total>();
+			popularlist=dao.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
+	        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+	        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		} else if(result.getEnterprise_Permission().equals("W")){
 			model.addAttribute("wait", "관리자의 심사중입니다.");
 		} else {
@@ -109,7 +114,11 @@ public class EnterpriseController {
 		if (loginId == null) {
 			return "customer/customerHome";
 		}
-		
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		session.invalidate();
 		
 		return "index-14";
@@ -141,8 +150,12 @@ public class EnterpriseController {
 		enterprise.setEnterprise_ID((String)session.getAttribute("loginId"));
 		dao.deleteEnterprise(enterprise);
 		session.setAttribute("loginId", null);
-		
-		return "index-15";
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
+		return "index-14";
 	}
 	@RequestMapping(value="/updateEnterprise", method=RequestMethod.POST)
 	public String update(Enterprise enterprise, HttpSession session, Model model) {
@@ -168,7 +181,13 @@ public class EnterpriseController {
 		model.addAttribute("ETC", enterprise.getEnterprise_ETC());
 		model.addAttribute("Code", enterprise.getEnterprise_Code());
 		
-		return "index-15";
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
+		
+		return "index-14";
 	}
 	@RequestMapping(value="/searchUpdate", method=RequestMethod.GET)
 	public @ResponseBody Enterprise searchUpdate(String enterprise_ID) {
@@ -317,8 +336,7 @@ public class EnterpriseController {
 		
 		String LoginID = (String)session.getAttribute("enterpriseLoginID");
 		if (LoginID==null) {
-			return "index-15";
-		}
+			return "index-14";		}
 		
 		return "redirect:/enterpriseBoardlist";
 	}
@@ -481,6 +499,13 @@ public class EnterpriseController {
 	    total.setEnterprise_ID(userid);
 		ArrayList<Total> enterItemList=dao.EnterpriseItemList(total);
 		model.addAttribute("enterItemList",enterItemList);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+		model.addAttribute("popularlist",popularlist);
+		model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+		model.addAttribute("popularlistb",popularlist.get(1));
+		/*model.addAttribute("popularlistc",popularlist.get(2));
+		model.addAttribute("popularlistd",popularlist.get(3));*/
 	    return "enterprise/my-properties";
 	}
 		//기업 자신이 등록한 매물 삭제하기
@@ -530,6 +555,9 @@ public class EnterpriseController {
 		Enterprise enterprise=new Enterprise();
 		String userid = (String)session.getAttribute("enterpriseLoginID");
 		enterprise=dao.enterpriseProfile(userid);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+		model.addAttribute("popularlist",popularlist);
 		model.addAttribute("enter",enterprise);
 		return "enterprise/enterpriseMyProfile";
 	}
@@ -544,16 +572,26 @@ public class EnterpriseController {
 		
 	//프로필 화면 - 비밀번호 변겅으로 이동
 	@RequestMapping(value = "/goprofilepassword", method = RequestMethod.GET)
-	public String profliePassword() {
+	public String profliePassword(Model model) {
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "enterprise/enterpriseProfilePassword";
 	}
 	
 	//프로필화면에서 비밀번호 수정
 	@RequestMapping(value = "/updateenterprisePassword", method={RequestMethod.POST,RequestMethod.GET})
-	public String updateenterprisePassword(Enterprise enterprise,HttpSession session) {
+	public String updateenterprisePassword(Enterprise enterprise,HttpSession session,Model model) {
 		int result=0;
 		result=dao.updateenterprisePassword(enterprise);
 		session.setAttribute("enterprise",enterprise);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "redirect:/enterpriseMyProfile";
 	}	
 		
@@ -565,6 +603,11 @@ public class EnterpriseController {
 		total.setEnterprise_ID(userid);
 		ArrayList<Total> reservationlist=dao.reservationwait(total);
 		model.addAttribute("reservationlist",reservationlist);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "enterprise/reservation-wait";
 	}
 		
@@ -584,6 +627,11 @@ public class EnterpriseController {
 		total.setEnterprise_ID(userid);
 		ArrayList<Total> completelist=dao.reservationcomplete(total);
 		model.addAttribute("completelist",completelist);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "enterprise/reservation-complete";
 	}	
 		
@@ -624,6 +672,11 @@ public class EnterpriseController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "enterprise/tradeCompleteList";
 	}
 	

@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.SynchronousQueue;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +36,19 @@ public class HomeController {
 	public String home(Model model) {
 		ArrayList<Total> popularlist=new ArrayList<Total>();
 		popularlist=dao.popularproperties();
-		model.addAttribute("popularlist",popularlist);
-		model.addAttribute("popularlista",popularlist.get(0).getSaveName());
-		model.addAttribute("popularlistb",popularlist.get(1));
-		/*model.addAttribute("popularlistc",popularlist.get(2));
-		model.addAttribute("popularlistd",popularlist.get(3));*/
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 	    return "index-14";
 	}
 	
 	@RequestMapping(value = "/goHome", method = RequestMethod.GET)
 	public String goHome(Model model) {
 		ArrayList<Total> popularlist=new ArrayList<Total>();
-	    popularlist=dao.popularproperties();
-		model.addAttribute("popularlist",popularlist);
-		model.addAttribute("popularlist1",popularlist.get(0));
-		model.addAttribute("popularlist2",popularlist.get(1));
-	/*	model.addAttribute("popularlist3",popularlist.get(2));
-		model.addAttribute("popularlist4",popularlist.get(3));*/
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "index-14";
 	}
 	

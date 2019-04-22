@@ -60,21 +60,21 @@ pageEncoding="UTF-8"%>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="list-inline">
-                    <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                   <!--  <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
+                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a> -->
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <ul class="top-social-media pull-right">
-                <c:if test="${sessionScope.customerLoginID==null && sessionScope.enterpriseLoginID==null}">
-                   <li>
+                   <c:if test="${sessionScope.enterpriseLoginID==null}">
+                    <li>
                         <a href="customerLogingo" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
                     <li>
                         <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i> Register</a>
                     </li>
-                </c:if>
-                <c:if test="${sessionScope.enterpriseLoginID!=null}">
+                    </c:if>
+                    <c:if test="${sessionScope.enterpriseLoginID!=null}">
                     <li>
                         <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                     </li>
@@ -103,8 +103,8 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="goHome" class="logo">
-                    <img src="resources/user/img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                   <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -128,7 +128,7 @@ pageEncoding="UTF-8"%>
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
                             <li><a href="reservationcomplete">Reservation Complete</a></li> 
-                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>  
+                             <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>  
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -147,62 +147,6 @@ pageEncoding="UTF-8"%>
                             <li><a href="goFullMap">Map</a></li> 
                         </ul>
                     </li>
-                    <!--  <li class="dropdown mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Board <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu mega-dropdown-menu row">
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Enterprise Board</li>
-                                    <li><a href="goEnterpriseboard">Board</a></li>
-                                    <li><a href="about-2.html">About 2</a></li>
-                                    <li><a href="services-1.html">Services 1</a></li>
-                                    <li><a href="services-2.html">Services 2</a></li>
-                                    <li><a href="pricing-tables.html">Pricing Tables 1</a></li>
-                                    <li><a href="pricing-tables-2.html">Pricing Tables 2</a></li>
-                                    <li><a href="pricing-tables-3.html">Pricing Tables 3</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="faq.html">Faq 1</a></li>
-                                    <li><a href="faq-2.html">Faq 2</a></li>
-                                    <li><a href="gallery-1.html">Gallery 1</a></li>
-                                    <li><a href="gallery-2.html">Gallery 2</a></li>
-                                    <li><a href="gallery-3.html">Gallery 3</a></li>
-                                    <li><a href="properties-comparison.html">Properties Comparison</a></li>
-                                    <li><a href="search-brand.html">Search Brand</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="contact.html">Contact 1</a></li>
-                                    <li><a href="contact-2.html">Contact 2</a></li>
-                                    <li><a href="contact-3.html">Contact 3</a></li>
-                                    <li><a href="typography.html">Typography</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                    <li><a href="icon.html">Icon</a></li>
-                                    <li><a href="404.html">Pages 404</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="enterpriseMyProfile">User profile</a></li>
-                                    <li><a href="myproperties">My Properties</a></li>
-                                    <li><a href="submitProperty">Submit New Property</a></li>
-                                    <li><a href="reservationwait">Reservation Wait</a></li> 
-                                    <li><a href="reservationcomplete">Reservation Complete</a></li> 
-                                    <li><a href="goprofilepassword">Forgot Password</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li> -->
-                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -238,48 +182,7 @@ pageEncoding="UTF-8"%>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <!-- User account box start -->
                 <div class="user-account-box">
-                    <div class="header clearfix">
-                        <div class="edit-profile-photo">
-                            <img src="http://placehold.it/150x150" alt="agent-1" class="img-responsive">
-                            <div class="change-photo-btn">
-                                <div class="photoUpload">
-                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                    <input type="file" class="upload">
-                                </div>
-                            </div>
-                        </div>
-                        <h3>John Doe</h3>
-                        <p>johndoe@gmail.com</p>
-
-                        <ul class="social-list clearfix">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="google">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="rss">
-                                    <i class="fa fa-rss"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
+                   
                     <div class="content">
                           <ul>
                             <li>
@@ -429,43 +332,7 @@ pageEncoding="UTF-8"%>
 </div>
 <!-- My Propertiess end -->
 
-<!-- Counters strat -->
-<div class="counters overview-bgi">
-    <div class="container">
 
-        <div class="row">
-            <div class="col-md-3 col-sm-6 bordered-right">
-                <div class="counter-box">
-                    <i class="flaticon-tag"></i>
-                    <h1 class="counter">967</h1>
-                    <p>Listings For Sale</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 bordered-right">
-                <div class="counter-box">
-                    <i class="flaticon-symbol-1"></i>
-                    <h1 class="counter">1276</h1>
-                    <p>Listings For Rent</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 bordered-right">
-                <div class="counter-box">
-                    <i class="flaticon-people"></i>
-                    <h1 class="counter">396</h1>
-                    <p>Agents</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="counter-box">
-                    <i class="flaticon-people-1"></i>
-                    <h1 class="counter">177</h1>
-                    <p>Brokers</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Counters end -->
 
 <!-- Footer start -->
 <footer class="main-footer clearfix">
@@ -480,29 +347,29 @@ pageEncoding="UTF-8"%>
                             <h1>Contact Us</h1>
                         </div>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
+                            SCITMASTERS, 36rd C class Group no.3,
                         </p>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                                Address: 코엑스 4층 SCIT 교육센터
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                                Email:<a href="sjydiablo@naver.com">sjydiablo@naver.com</a>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+82-00-0000-0000">+82-00-0000-0000</a>
                             </li>
                             <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
+                                <!-- <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071 -->
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- <!-- Links -->
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
@@ -510,10 +377,10 @@ pageEncoding="UTF-8"%>
                         </div>
                         <ul class="links">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="goHome">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact Us</a>
@@ -542,21 +409,22 @@ pageEncoding="UTF-8"%>
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -583,11 +451,12 @@ pageEncoding="UTF-8"%>
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
                             <h1>Subscribe</h1>
@@ -609,7 +478,7 @@ pageEncoding="UTF-8"%>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -621,17 +490,17 @@ pageEncoding="UTF-8"%>
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
                     <li>
-                        <a href="#" class="facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
