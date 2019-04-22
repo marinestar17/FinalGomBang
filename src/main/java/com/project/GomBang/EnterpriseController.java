@@ -71,7 +71,7 @@ public class EnterpriseController {
 			return "enterprise/enterpriseSignup";
 		}
 
-		return "index-15";
+		return "index-14";
 	}
 	@RequestMapping(value="/enterpriseLogin", method=RequestMethod.POST)
 	public String login(Enterprise enterprise, HttpSession session, Model model) {
@@ -106,7 +106,7 @@ public class EnterpriseController {
 			model.addAttribute("deny", "가입이 거부되었습니다. 관리자에게 문의하세요.");
 		}
 		
-		return "index-15";
+		return "index-14";
 	}
 	@RequestMapping(value="/enterpriseLogout", method=RequestMethod.GET)
 	public String logout(HttpSession session, Model model) {
