@@ -320,10 +320,10 @@
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-sm-6">
-                        Copyright &copy; 2017, <b>AdminBSB - Sensitive</b>
+                        Copyright &copy; 2019, <b>GomBang - SC_IT_MASTER C - 3</b>
                     </div>
                     <div class="col-sm-6 align-right">
-                        Hand-crafted & Made with love :)
+                        © 2019 탐라국. 혼저옵서예주식회사.
                     </div>
                 </div>
             </div>

@@ -378,9 +378,9 @@
             <div class="page-heading">
                 <h1>고객 게시판 관리</h1>
                 <ol class="breadcrumb">
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="javascript:void(0);">Tables</a></li>
-                    <li class="active">Normal Tables</li>
+                    <li><a href="GomBangAdmin">Home</a></li>
+                    <li><a href="javascript:void(0);">Board</a></li>
+                    <li class="active">Customer Board</li>
                 </ol>
             </div>
             <div class="page-body">
@@ -433,10 +433,10 @@
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-sm-6">
-                        Copyright &copy; 2017, <b>AdminBSB - Sensitive</b>
+                        Copyright &copy; 2019, <b>GomBang - SC_IT_MASTER C - 3</b>
                     </div>
                     <div class="col-sm-6 align-right">
-                        Hand-crafted & Made with love :)
+                        © 2019 탐라국. 혼저옵서예주식회사.
                     </div>
                 </div>
             </div>

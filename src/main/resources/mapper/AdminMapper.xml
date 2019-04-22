@@ -568,7 +568,6 @@
 			,CUSTOMERBOARD_TITLE
 			,CUSTOMERBOARD_CONTENT
 			,CUSTOMERBOARD_INDATE
-			,CUSTOMERBOARD_TAG
 			,CUSTOMERBOARD_HITCOUNT
 		FROM
 			CUSTOMERBOARD
@@ -579,10 +578,6 @@
 		<if test="searchSelect != null and searchSelect.equals('customerboard_Title')">
 		WHERE
 			customerBoard_Title like '%'||#{search}||'%'
-		</if>
-		<if test="searchSelect != null and searchSelect.equals('customerboard_Tag')">
-		WHERE
-			customerBoard_Tag like '%'||#{search}||'%'
 		</if>
 		<if test="searchSelect != null and searchSelect.equals('customerboard_Indate')">
 		WHERE
@@ -600,7 +595,6 @@
 			,CUSTOMERBOARD_TITLE
 			,CUSTOMERBOARD_CONTENT
 			,CUSTOMERBOARD_INDATE
-			,CUSTOMERBOARD_TAG
 			,CUSTOMERBOARD_HITCOUNT
 		FROM
 			CUSTOMERBOARD
