@@ -410,7 +410,7 @@ $(function(){
                     	<td class="expire-date hidden-xs">${cbList.customerBoard_Seq}</td>
                         <td class="title-container">
                         <!-- http://placehold.it/130x90 -->
-                            <img src="${cbList.customerBoard_Content}" alt="my-properties-1" class="img-responsive hidden-xs">
+                            <img src="${cbList.customerBoard_Content}" alt="my-properties-1" class="img-responsive hidden-xs" style="height:60px;">
                             <div class="title">
                                 <h4><a href="enterCustomerboard?customerBoard_Seq=${cbList.customerBoard_Seq}&customer_ID=${cbList.customer_ID}">${cbList.customerBoard_Title}</a></h4>
                                 <!-- <span><i class="fa fa-map-marker"></i> 123 Kathal St. Tampa City, </span> -->
