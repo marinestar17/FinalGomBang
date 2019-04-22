@@ -201,6 +201,20 @@
     <script type="text/javascript" src="resources/user/js/html5shiv.min.js"></script>
     <script type="text/javascript" src="resources/user/js/respond.min.js"></script>
     <![endif]-->
+    <style>
+    	#customer_birthdate{
+    		    width: 100%;
+    padding: 10px 15px;
+    font-size: 13px;
+    height: 44px;
+    border: 1px solid #e8e7e7;
+    outline: none;
+    color: #717171;
+    border-radius: 3px;
+    	
+    	}
+    
+    </style>
 </head>
 <body>
 <div class="page_loader"></div>

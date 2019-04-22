@@ -242,6 +242,8 @@ WHERE
 			           	  FORSALE_HITCOUNT
 	FROM
 		FORSALE
+	WHERE
+		FORSALE_TRADE!='Y'
 </select>
 <!-- 물품 검색 -->
 <select id="searchItem" parameterType="SearchItem" resultType="Item">
@@ -272,6 +274,8 @@ WHERE
 	FROM
 		FORSALE
 	WHERE
+		FORSALE_TRADE!='Y'
+		AND
 		FORSALE_RENT BETWEEN #{min_price} AND #{max_price}
 		<if test="min_distance!=-1">
 		AND
@@ -352,6 +356,8 @@ WHERE
 	FROM
 		FORSALE
 	WHERE
+		FORSALE_TRADE!='Y'
+		AND
 		FORSALE_RENT BETWEEN #{min_price} AND #{max_price}
 		<if test="min_distance!=-1">
 		AND
