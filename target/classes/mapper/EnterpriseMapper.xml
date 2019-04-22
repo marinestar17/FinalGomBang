@@ -352,21 +352,18 @@ select
 					forSale_HouseType='Apartment'
 				</if>
 	 
-	    		<if test='_parameter.equals("House")'>
-					forSale_HouseType='House'
+	    		<if test='_parameter.equals("Mansion")'>
+					forSale_HouseType='Mansion'
 				</if>
 		
-				<if test='_parameter.equals("Commercial")'>
-					forSale_HouseType='Commercial'
+				<if test='_parameter.equals("Share House")'>
+					forSale_HouseType='Share House'
 				</if>
 	
-				<if test='_parameter.equals("Garage")'>
-					forSale_HouseType='Garage'
+				<if test='_parameter.equals("One room")'>
+					forSale_HouseType='One room'
 				</if>
-	
-				<if test='_parameter.equals("Lot")'>
-					forSale_HouseType='Lot'
-				</if>      ) f
+	      ) f
                 , (select 
                         i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
                     from 

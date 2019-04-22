@@ -986,4 +986,85 @@ public class AdminController {
 		}
 		return hMap;
 	}
+	
+	//예약 통계 - 비자 종류 카운트
+	@RequestMapping(value = "/countReservationVisa", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Reservation> countReservationVisa(){
+		ArrayList<Reservation> rList = new ArrayList<Reservation>();
+		try {
+			rList = dao.countReservationVisa();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rList;
+	}
+	
+	//즐찾으로 인기 매물 5개 
+	@RequestMapping(value = "/countBookmarkItem", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> countBookmarkItem(){
+		ArrayList<Item> iList = new ArrayList<Item>();
+		try {
+			iList = dao.countBookmarkItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return iList;
+	}
+	
+	//사이트 예약 현황 상태 통계
+	@RequestMapping(value = "/countReservationComplete", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Reservation> countReservationComplete(){
+		ArrayList<Reservation> rList = new ArrayList<Reservation>();
+		try {
+			rList = dao.countReservationComplete();
+			for (Reservation r : rList) {
+				if (r.getReservation_Complete().equals("W")) {
+					r.setReservation_Complete("대기중");
+				} else if (r.getReservation_Complete().equals("N")) {
+					r.setReservation_Complete("취소됨");
+				} else {
+					r.setReservation_Complete("진행중");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rList;
+	}
+	
+	//임대 매물 야칭 범위용 통계
+	@RequestMapping(value = "/countRentItem", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> countRentItem(){
+		ArrayList<Item> iList = new ArrayList<Item>();
+		try {
+			iList = dao.countRentItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return iList;
+	}
+	
+    //예약 - 인기 매물 순위 
+	@RequestMapping(value = "/countReservationItem", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> countReservationItem(){
+		ArrayList<Item> iList = new ArrayList<Item>();
+		try {
+			iList = dao.countReservationItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return iList;
+	}
+	
+	//조회수 인기 매물..
+	@RequestMapping(value = "/hitCountItem", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> hitCountItem(){
+		ArrayList<Item> iList = new ArrayList<Item>();
+		try {
+			iList = dao.hitCountItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return iList;
+	}
 }

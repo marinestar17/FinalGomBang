@@ -1,8 +1,10 @@
 ﻿(function ($) {
     'use strict';
     $(function () {
-
-    	enterpriseCodeStats();
+    	countBookmarkItem();
+    	countReservationVisa();
+    	countReservationComplete();
+    	countReservationItem();
 
         //Init line chart
       /*  function initLineChart() {
@@ -63,30 +65,85 @@
             });
         }
 */
-        //Init donut chart - 기업 분류별 통계
-        function enterpriseCodeStats() {
-        	
-           /* Morris.Donut({
-                element: 'donut_chart',
-                data: [
-                    { label: 'Series A', value: 40 },
-                    { label: 'Series B', value: 32 },
-                    { label: 'Series C', value: 28 }
-                ],
-                colors: ['#f6b225', '#DA4453', '#16a085'],
-                formatter: function (y) {
-                    return y + '%';
-                }
-            });*/
-        	
+        //Init donut chart - 비자 통계
+        function countReservationVisa() {
         	$.ajax({
-        		url: "enterpriseCodeStats"
+        		url: "countReservationVisa"
         		,data:{}
         		,type:"get"
-        		,success:function(eList){
+        		,success:function(list){
         			var data = [];
-        			$.each(eList, function(index,item){
-        				data.push( {label: item.enterprise_Code, value: item.stats_Count});
+        			$.each(list, function(index,item){
+        				data.push( {y: item.reservation_Visa, a: item.stats_Count});
+        			})
+        			 Morris.Bar({
+        	                element: 'bar_chart',
+        	                data: data,
+        	                xkey: 'y',
+        	                ykeys: ['a'],
+        	                labels: ['인수'],
+        	                barColors: ['#01C0C8']
+        	            });
+        		}
+        	});//ajax
+        }
+        
+        //즐찾 인기 매물
+        function countBookmarkItem(){
+        	$.ajax({
+        		url:"countBookmarkItem"
+        		,data:{}
+        		,type:"get"
+        		,success:function(list){
+        			var data = [];
+        			$.each(list,function(index,item){
+        				data.push( {y: item.forSale_Title, a: item.stats_Count});
+        			})
+        			 Morris.Bar({
+     	                element: 'bar_chart2',
+     	                data: data,
+     	                xkey: 'y',
+     	                ykeys: ['a'],
+     	                labels: ['즐겨찾기 수'],
+     	                barColors: ['#16a085']
+     	            });
+        		}
+        	});
+        }
+        
+        //예약 인기 매물
+        function countReservationItem(){
+        	$.ajax({
+        		url:"countReservationItem"
+        		,data:{}
+        		,type:"get"
+        		,success:function(list){
+        			var data = [];
+        			$.each(list,function(index,item){
+        				data.push( {y: item.forSale_Title, a: item.stats_Count});
+        			})
+        			 Morris.Bar({
+     	                element: 'bar_chart3',
+     	                data: data,
+     	                xkey: 'y',
+     	                ykeys: ['a'],
+     	                labels: ['예약 수'],
+     	                barColors: ['#030066']
+     	            });
+        		}
+        	});
+        }
+        
+        // 사이트 예약 현황 통계
+        function countReservationComplete(){
+        	$.ajax({
+        		url:"countReservationComplete"
+        		,data:{}
+        		,type:"get"
+        		,success:function(list){
+        			var data = [];
+        			$.each(list, function(index,item){
+        				data.push( {label: item.reservation_Complete, value: item.stats_Count});
         			})
         			   Morris.Donut({
         		            element: "donut_chart",
@@ -97,9 +154,8 @@
         		            }
         		        });
         		}
-        	});//ajax
+        	});
         }
-        
         //고객 성별 통계용
      /*   function customerGenderStats(){
         	$.ajax({

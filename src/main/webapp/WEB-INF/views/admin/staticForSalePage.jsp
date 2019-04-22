@@ -441,6 +441,24 @@
                             </div> 
                         </div> 
                     </div>
+                    
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <div class="panel panel-default">
+                            <div class="panel-heading">임대 매물 야칭 통계</div>
+                            <div class="panel-body">
+                                <div id="bar_chart3"></div>
+                            </div> 
+                        </div> 
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <div class="panel panel-default">
+                            <div class="panel-heading">매물 조회수 인기순</div>
+                            <div class="panel-body">
+                                <div id="bar_chart4"></div>
+                            </div> 
+                        </div> 
+                    </div>
                     <!-- #END# Donut Chart -->
                 </div>
             </div>

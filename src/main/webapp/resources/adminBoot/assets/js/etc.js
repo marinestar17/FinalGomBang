@@ -176,7 +176,6 @@
     function permissionAccept(){
     	$("#permissionAcceptButton").on("click", function(){
     		var id = $(this).attr("data-ID");
-    		alert(id);
     		$.ajax({
     			url:"enterprisePermissionAccept"
     			,data:{enterprise_ID:id}

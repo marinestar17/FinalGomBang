@@ -53,10 +53,9 @@ pageEncoding="UTF-8"%>
     		init();
         	$("#Allpro").on("click",Allpro);
         	$("#Apartmentpro").on("click",Apartmentpro);
-        	$("#Housepro").on("click",Housepro);
-        	$("#Commercialpro").on("click",Commercialpro)
-        	$("#Garagepro").on("click",Garagepro);
-        	$("#Lotpro").on("click",Lotpro);
+        	$("#Mansionpro").on("click",Mansionpro);
+        	$("#ShareHousepro").on("click",ShareHousepro)
+        	$("#Oneroompro").on("click",Oneroompro);
     		$("#searchButton").on("click",searchItem); // 검색 버튼 클릭
     		
     	});
@@ -101,7 +100,7 @@ pageEncoding="UTF-8"%>
     	    		}
     	    	});
     	    }
-    	    function Housepro(){
+    	    function Mansionpro(){
     	    	var type=$(this).attr('value');
     	    	$.ajax({
     	    		type : 'POST'
@@ -115,7 +114,7 @@ pageEncoding="UTF-8"%>
     	    		}
     	    	});
     	    }
-    	    function Commercialpro(){
+    	    function ShareHousepro(){
     	    	var type=$(this).attr('value');
     	    	$.ajax({
     	    		type : 'POST'
@@ -129,21 +128,7 @@ pageEncoding="UTF-8"%>
     	    		}
     	    	});
     	    }
-    	    function Garagepro(){
-    	    	var type=$(this).attr('value');
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "HouseTypeList"
-    	    		, data : {
-    	    			forSale_HouseType:type
-    	    		}
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    function Lotpro(){
+    	    function Oneroompro(){
     	    	var type=$(this).attr('value');
     	    	$.ajax({
     	    		type : 'POST'
@@ -180,7 +165,7 @@ pageEncoding="UTF-8"%>
     	    function output(resp){
     	    	var data="";
     	    	$.each(resp, function(index,item){
-    	    	data+="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item' data-category='1, 2, 3, 4, 5'>"
+    	    	data+="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item' data-category='1, 2, 3, 4'>"
     	    	data+="<div class='property'>"
     	    	data+="<div class='property-img'>";
     	    	data+="<div class='property-tag button alt featured'>"+item.forSale_HouseType+"</div>";
@@ -431,7 +416,8 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
-                            <li><a href="reservationcomplete">Reservation Complete</a></li> 
+                            <li><a href="reservationcomplete">Reservation Complete</a></li>
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>     
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -440,6 +426,14 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
                         </ul>
                     </li>
                     
@@ -727,10 +721,9 @@ pageEncoding="UTF-8"%>
         <ul class="list-inline-listing filters filters-listing-navigation">
             <li class="active btn filtr-button filtr" data-filter="all"    id="Allpro">All</li>
             <li data-filter="1" class="btn btn-inline filtr-button filtr"  id="Apartmentpro" value="Apartment">Apartment</li>
-            <li data-filter="2" class="btn btn-inline filtr-button filtr"  id="Housepro" value="House">House</li>
-            <li data-filter="3" class="btn btn-inline filtr-button filtr"  id="Commercialpro" value="Commercial">Commercial</li>
-            <li data-filter="4" class="btn btn-inline filtr-button filtr"  id="Garagepro" value="Garage">Garage</li>
-            <li data-filter="5" class="btn btn-inline filtr-button filtr"  id="Lotpro" value="Lot">Lotpro</li>
+            <li data-filter="2" class="btn btn-inline filtr-button filtr"  id="Mansionpro" value="Mansion">Mansion</li>
+            <li data-filter="3" class="btn btn-inline filtr-button filtr"  id="ShareHousepro" value="Share House">Share House</li>
+            <li data-filter="4" class="btn btn-inline filtr-button filtr"  id="Oneroompro" value="One room">One room</li>
         </ul>
         
         <div class="row">
@@ -960,8 +953,8 @@ pageEncoding="UTF-8"%>
         <div class="clearfix"></div>
         <div class="row wow">
             <div class="col-lg-5 col-md-5 col-sm-12 col-pad wow fadeInRight delay-04s">
-                <div class="category" style="background-image: url(http:/GomBang/img/${popularlist1.saveName})">
-                    <div class="category_bg_box category_long_bg cat-4-bg" style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
+                <div class="category">
+                    <div class="category_bg_box category_long_bg cat-4-bg" style="background-image: url(http:/GomBang/img/${popularlista})">
                     <%--   <img src="/GomBang/img/${popularlist.saveName}"class="category-img" alt="..."> --%>
                         <div class="category-overlay" >
                             <div class="category-content" >
@@ -976,7 +969,7 @@ pageEncoding="UTF-8"%>
                 <div class="row">
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-1-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
+                            <div class="category_bg_box cat-1-bg"  style="background-image: url(http:/GomBang/img/${popularlistb})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">14 Properties</div>
@@ -991,7 +984,7 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-2-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
+                            <div class="category_bg_box cat-2-bg"  style="background-image: url(http:/GomBang/img/${popularlistb})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">24 Properties</div>
@@ -1006,7 +999,7 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-12 col-pad wow fadeInUp delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-3-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
+                            <div class="category_bg_box cat-3-bg"  style="background-image: url(http:/GomBang/img/${popularlistb})">
                                 <div class="category-overlay">
                                     <div class="category-content">
                                         <div class="category-subtitle">9 Properties</div>
@@ -1357,11 +1350,11 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
