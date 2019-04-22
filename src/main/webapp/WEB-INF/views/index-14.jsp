@@ -1177,11 +1177,12 @@ pageEncoding="UTF-8"%>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
                                 	SCIT MASTER 36기 김문승<br>
-                                	조장님의 뒤통수를 언제나 노리고 있습니다.<br>
-                                	주의 : 항상 눈은 조장의 목을 쳐다보고있습니다.
+                                	고양이축에도 못끼는 니세모노네코였지만<br>
+                                	ついにここまで来た。<br>
+                                	IT계의 새로운 인재 킹문승.
                                 </div>
                                 <div class="author-name">
-                                    John Antony
+                                    MUNSEUNG KIM
                                 </div>
                                 <ul class="rating">
                                     <li>
@@ -1205,15 +1206,18 @@ pageEncoding="UTF-8"%>
                         <div class="item content clearfix">
                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                 <div class="avatar">
-                                    <img src="http://placehold.it/220x220" alt="avatar-4" class="img-responsive">
+                                    <img src="/GomBang/img/KakaoTalk_20190421_001308220.jpg" alt="avatar-4" class="img-responsive">
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12 ">
                                 <div class="text">
-                                    Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim. Donec vel lectus vel felis lacinia luctus vitae iaculis arcu. Mauris mattis, massa eu porta ultricies.
+									SCIT MASTER 36기 정연준
+									프로젝트를 위해서 정처기는 5일만 공부한 그는<br>
+									IT계의 도 덕 책<br>
+									야 우냐?                                   	
                                 </div>
                                 <div class="author-name">
-                                    John Antony
+                                    YOUNJUN JUNG
                                 </div>
                                 <ul class="rating">
                                     <li>
