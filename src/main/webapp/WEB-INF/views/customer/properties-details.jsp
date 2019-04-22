@@ -860,7 +860,7 @@ pageEncoding="UTF-8"%>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <img src="http://placehold.it/708x359" alt="floor-plans" class="img-responsive">
+                                           <!--  <img src="http://placehold.it/708x359" alt="floor-plans" class="img-responsive"> -->
                                         </div>
                                         <!-- Floor Plans end -->
                                     </div>
