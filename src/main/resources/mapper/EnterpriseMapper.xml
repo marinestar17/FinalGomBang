@@ -724,8 +724,6 @@ where
 		FORSALE F,
 		CUSTOMER C
 	WHERE
-		RESERVATION_COMPLETE='Y'
-	AND
 		R.ENTERPRISE_ID=#{enterprise_ID}
 	AND
 	    F.forsale_seq=R.forsale_seq  
