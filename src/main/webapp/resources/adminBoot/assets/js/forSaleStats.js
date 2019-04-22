@@ -6,6 +6,8 @@
     	enterpriseItemCount();
     	bestItemCity();
     	shikirei();
+    	countRentItem();
+    	hitCountItem();
         //Init line chart
       /*  function initLineChart() {
             Morris.Line({
@@ -194,8 +196,70 @@
 			}
 		}); //ajax
 	}//function
-       
-        
+    
+    function countRentItem(){
+    	var rent1 = 0;
+    	var rent2 = 0;
+    	var rent3 = 0;
+    	var rent4 = 0;
+    	$.ajax({
+    		url:"countRentItem"
+    		,data:{}
+    		,type:"get"
+    		,success:function(list){
+    			var data = [];
+    			$.each(list,function(index,item){
+    				data.push(item.forSale_Rent);
+    				if (data[index] < 50000) {
+						rent1 = (rent1) + 1;
+					} else if(data[index] <80000 && data[index] > 49999) {
+						rent2 = (rent2) + 1;
+					} else if(data[index] < 100000 && data[index] > 79999){
+						rent3 = (rent3) + 1;
+					} else {
+						rent4 = (rent4) + 1;
+					}
+    			})
+    			console.log(data);
+    			Morris.Bar({
+	                element: 'bar_chart3',
+	                data: [
+	        		    { y: '5만엔 이하', a: rent1},
+	        		    { y: '5~8만엔', a: rent2},
+	        		    { y: '8~10만', a: rent3},
+	        		    { y: '10만 초과', a: rent4},
+	        		  ],   
+	                xkey: 'y',
+	                ykeys: ['a'],
+	                labels: ['최대 매물 수'],
+	                barColors: ['#6B9900']
+	            });
+    		}
+    	});
+    }
+    
+    function hitCountItem(){
+    	$.ajax({
+    		url:"hitCountItem"
+    		,data:{}
+    		,type:"get"
+    		,success:function(list){
+    			var data = [];
+    			$.each(list, function(index,item){
+    				data.push({ y: item.forSale_Title, a:item.forSale_HitCount});
+    			}) //each
+    				Morris.Bar({
+    	                element: 'bar_chart4',
+    	                data:data,
+    	                xkey: 'y',
+    	                ykeys: ['a'],
+    	                labels: ['조회수'],
+    	                barColors: ['#86E57F']
+    	            });
+    		}
+    	})
+    	
+    }
         //Init switch buttons
         var $switchButtons = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         $switchButtons.forEach(function (e) {

@@ -322,7 +322,7 @@
 	<select id = "countReservation" resultType = "HashMap">
 		SELECT
 			(SELECT COUNT(*) FROM RESERVATION WHERE RESERVATION_COMPLETE = 'Y') AS Y_RESERVATION
-			,(SELECT COUNT(*) FROM RESERVATION WHERE RESERVATION_COMPLETE = 'N') AS N_RESERVATION
+			,(SELECT COUNT(*) FROM RESERVATION WHERE RESERVATION_COMPLETE = 'W') AS N_RESERVATION
 		FROM
 			DUAL	
 	</select>
@@ -983,4 +983,85 @@
 		GROUP BY
 			GEOAPI_CITIES
 	</select>
+	
+	<!-- 예약 통계 - 사람들 비자 종류 -->
+	<select id="countReservationVisa" resultType = "Reservation">
+		SELECT 
+			COUNT(*) AS stats_Count
+			,RESERVATION_VISA
+		FROM
+			RESERVATION
+		GROUP BY
+			RESERVATION_VISA
+	</select>
+	
+	<!-- 즐겨찾기 인기 매물 통계 -->
+	<select id="countBookmarkItem" resultType = "Item">
+		SELECT
+			COUNT(B.FORSALE_SEQ) AS stats_Count
+			,F.FORSALE_TITLE
+		FROM
+			BOOKMARK B
+			,FORSALE F
+		WHERE
+			FORSALE_TRADE = 'N'
+		AND
+			B.FORSALE_SEQ = F.FORSALE_SEQ
+		AND
+			6> ROWNUM
+		GROUP BY
+			FORSALE_TITLE
+	</select>
+	
+	<!-- 예약 현황 통계 -->
+	<select id="countReservationComplete" resultType = "Reservation">
+		SELECT
+			COUNT(*) AS stats_Count
+			,RESERVATION_COMPLETE
+		FROM
+			RESERVATION
+		GROUP BY
+			RESERVATION_COMPLETE
+	</select>
+	
+	<!-- 임대 매물 야칭 통계 -->
+	<select id="countRentItem" resultType = "Item">
+		SELECT
+			FORSALE_RENT
+		FROM
+			FORSALE
+		WHERE
+			FORSALE_STATUS = 'For Rent'
+	</select>
+	
+	<!-- 예약 인기 매물 통계 -->
+	<select id="countReservationItem" resultType = "Item">
+		SELECT
+			COUNT(R.FORSALE_SEQ) AS stats_Count
+			,F.FORSALE_TITLE
+		FROM
+			RESERVATION R
+			,FORSALE F
+		WHERE
+			FORSALE_TRADE = 'N'
+		AND
+			R.FORSALE_SEQ = F.FORSALE_SEQ
+		AND
+			6> ROWNUM
+		GROUP BY
+			FORSALE_TITLE
+	</select>
+	
+	<!-- 조회수 높은 매물 통계 -->
+	<select id="hitCountItem" resultType = "Item">
+		SELECT
+			FORSALE_HITCOUNT
+			,FORSALE_TITLE
+		FROM 
+			FORSALE
+		WHERE
+			6> ROWNUM
+	</select>
+	
+	
 </mapper>
