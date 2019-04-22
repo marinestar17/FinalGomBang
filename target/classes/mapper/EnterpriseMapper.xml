@@ -360,8 +360,8 @@ select
 					forSale_HouseType='Share House'
 				</if>
 	
-				<if test='_parameter.equals("One room")'>
-					forSale_HouseType='One room'
+				<if test='_parameter.equals("One Room")'>
+					forSale_HouseType='One Room'
 				</if>
 	      ) f
                 , (select 
@@ -740,7 +740,7 @@ where
 	UPDATE
 		RESERVATION
 	SET
-		RESERVATION_COMPLETE = 'N'
+		RESERVATION_COMPLETE = 'W'
 	WHERE
 		CUSTOMER_ID = #{customer_ID}
 	AND
@@ -801,7 +801,9 @@ select
         ,SAVENAME
 from
         (select * from forsale
-         where 5>rownum)f,
+         where 5>rownum
+          and 
+         forsale_trade = 'N')f,
         (select 
                         i.IMAGE_SEQ as image_seq, i.forsale_seq as forsale_seq, originname, savename
                     from 
