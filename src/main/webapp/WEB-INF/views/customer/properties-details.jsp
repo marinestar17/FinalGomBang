@@ -2137,12 +2137,12 @@ pageEncoding="UTF-8"%>
                                   	subCallBack();
                                   }else{
                                   	console.log(results);
-                                  	for(var i=j; i<=results.length-1; i++){
+                                  	for(var i=0; i<=results.length-1; i++){
                                   		//subwayArr.push(results[i].geometry.location);
                                   		subwayArr.push(results[i]);
                                   	}
-                                  	
-                                  	console.log(subwayArr);
+                                  	console.log("체크");
+                                  	console.log(subwayArr[4]);
                                   	
                                   	subwayLat = results[results.length-1].geometry.location.lat();
                                   	subwayLng = results[results.length-1].geometry.location.lng();
@@ -2265,15 +2265,11 @@ pageEncoding="UTF-8"%>
                          	cnt++;
                          	console.log(cnt + " // cnt");
                          	console.log(subwayArr.length + " // 어레이크기");
-                         	if(cnt == subwayArr.length-1){
-                         		routeMap2();
-                         	}else if(subwayArr.length==1){
-                         		routeMap2();
-                         	}
-                         	else if(cnt!=subwayArr.length+1){
+                         	
+                         	if(cnt!=subwayArr.length+1){
                          		test(subwayArr,directionsService, directionsDisplay);
                          	}
-                         	
+                         	routeMap2();
                          	
                          }
                	  

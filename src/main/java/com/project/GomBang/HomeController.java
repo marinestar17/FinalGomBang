@@ -60,7 +60,7 @@ public class HomeController {
 	    popularlist=dao.popularproperties();
 		model.addAttribute("popularlist",popularlist);
 		model.addAttribute("popularlist1",popularlist.get(0));
-		model.addAttribute("popularlist2",popularlist.get(1));
+		/*model.addAttribute("popularlist2",popularlist.get(1));*/
 	/*	model.addAttribute("popularlist3",popularlist.get(2));
 		model.addAttribute("popularlist4",popularlist.get(3));*/
 		return "index-14";
