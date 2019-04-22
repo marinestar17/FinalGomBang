@@ -132,7 +132,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -166,7 +166,7 @@
                         </ul>
                     </li>
                     <c:if test="${sessionScope.customer.customer_ID!=null}">
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
@@ -268,10 +268,10 @@
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>My Profile</h1>
+                <h1>User profile</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Profile</li>
+                    <li><a href="index.html">User</a></li>
+                    <li class="active">User profile</li>
                 </ul>
             </div>
         </div>
@@ -286,53 +286,16 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <!-- User account box start -->
                 <div class="user-account-box">
-                    <div class="header clearfix">
-                        <div class="edit-profile-photo">
-                            <img src="http://placehold.it/150x150" alt="agent-1" class="img-responsive">
-                            <div class="change-photo-btn">
-                                <div class="photoUpload">
-                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                    <input type="file" class="upload">
-                                </div>
-                            </div>
-                        </div>
-                        <h3>John Doe</h3>
-                        <p>johndoe@gmail.com</p>
-
-                        <ul class="social-list clearfix">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="google">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="rss">
-                                    <i class="fa fa-rss"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
                     <div class="content">
                         <ul>
                             <li>
                                 <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
                                     <i class="flaticon-social"></i>Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-monitor"></i>Customer board
                                 </a>
                             </li>
                             <li>
@@ -394,59 +357,6 @@
     </div>
 </div>
 <!-- My profile end -->
-
-<!-- Partners block start -->
-<div class="partners-block">
-    <div class="container">
-        <h3>Brands & Partners</h3>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="carousel our-partners slide" id="ourPartners">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="col-xs-12 col-sm-6 col-md-3 partner-box">
-                                <a href="#">
-                                    <img src="http://placehold.it/135x50" alt="partner">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3 partner-box">
-                                <a href="#">
-                                    <img src="http://placehold.it/135x50" alt="partner-2">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3 partner-box">
-                                <a href="#">
-                                    <img src="http://placehold.it/135x50" alt="partner-3">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3 partner-box">
-                                <a href="#">
-                                    <img src="http://placehold.it/135x50" alt="partner-4">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3 partner-box">
-                                <a href="#">
-                                    <img src="http://placehold.it/135x50" alt="partner-5">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="left carousel-control" href="#ourPartners" data-slide="prev"><i class="fa fa-chevron-left icon-prev"></i></a>
-                    <a class="right carousel-control" href="#ourPartners" data-slide="next"><i class="fa fa-chevron-right icon-next"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Partners block end -->
 
 <!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 

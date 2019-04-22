@@ -268,10 +268,10 @@ $(function(){
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>Customer Board</h1>
+                <h1>Q&A BOARD</h1>
                 <ul class="breadcrumbs">
                     <li><a href="index.html">Q&A</a></li>
-                    <li class="active">Customer Board</li>
+                    <li class="active">Q&A BOARD</li>
                 </ul>
             </div>
         </div>
@@ -286,77 +286,35 @@ $(function(){
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <!-- User account box start -->
                 <div class="user-account-box">
-                    <div class="header clearfix">
-                        <div class="edit-profile-photo">
-                            <img src="http://placehold.it/150x150" alt="agent-1" class="img-responsive">
-                            <div class="change-photo-btn">
-                                <div class="photoUpload">
-                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                    <input type="file" class="upload">
-                                </div>
-                            </div>
-                        </div>
-                        <h3>John Doe</h3>
-                        <p>johndoe@gmail.com</p>
-
-                        <ul class="social-list clearfix">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="google">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="rss">
-                                    <i class="fa fa-rss"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="user-profile.html">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="my-properties.html">
-                                    <i class="flaticon-apartment"></i>My Properties
+                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-monitor"></i>Customer board
                                 </a>
                             </li>
                             <li>
-                                <a href="favorited-properties.html" class="active">
-                                    <i class="fa fa-heart"></i>Customer board
+                                <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-apartment"></i>Reservation Properties
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
-                                    <i class="fa fa-plus"></i>Submit New Property
+                                <a href="favoritedList?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="fa fa-heart"></i>Favorited Properties
                                 </a>
                             </li>
                             <li>
-                                <a href="change-password.html">
+                                <a href="profilePassword">
                                     <i class="flaticon-security"></i>Change Password
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="customerLogout">
                                     <i class="flaticon-sign-out-option"></i>Log Out
                                 </a>
                             </li>
@@ -431,24 +389,6 @@ $(function(){
     </div>
 </div>
 <!-- My Propertiess end -->
-
-<!-- Intro section strat -->
-<div class="intro-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <img src="resources/user/img/logos/logo-2.png" alt="logo-2">
-            </div>
-            <div class="col-md-7 col-sm-6 col-xs-12">
-                <h3>Looking To Sell Or Rent Your Property?</h3>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-12">
-                <a href="submit-property.html" class="btn button-md button-theme">Submit Now</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Intro section end -->
 
 <!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
