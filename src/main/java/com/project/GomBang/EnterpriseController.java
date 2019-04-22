@@ -665,6 +665,8 @@ public class EnterpriseController {
 		String userid = (String) session.getAttribute("enterpriseLoginID");
 		Total total=new Total();
 		total.setEnterprise_ID(userid);
+		ArrayList<Total> completelist=dao.reservationcomplete(total);
+		model.addAttribute("completelist",completelist);
 		ArrayList<Total> popularlist=new ArrayList<Total>();
 		popularlist=dao.popularproperties();
         model.addAttribute("popularlist",popularlist);
