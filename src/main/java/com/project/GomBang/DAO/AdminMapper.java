@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.project.GomBang.VO.Admin;
 import com.project.GomBang.VO.AdminMessage;
 import com.project.GomBang.VO.AdminTODO;
+import com.project.GomBang.VO.Bookmark;
 import com.project.GomBang.VO.Customer;
 import com.project.GomBang.VO.CustomerComment;
 import com.project.GomBang.VO.Customerboard;
@@ -132,4 +133,16 @@ public interface AdminMapper {
 	public ArrayList<Item> bestItemCity(); // 매물통계 - 등록된 것 중 인기 도시 5등까지
 	
 	public HashMap<String,Integer> countShikiRei(); //매물통계 - 시키/레이킹 없는거
+	
+	public ArrayList<Reservation> countReservationVisa(); // 예약통계 - 사람들 비자 종류 카운트
+	
+	public ArrayList<Item> countBookmarkItem(); //즐찾 - 인기 매물 통계
+	
+	public ArrayList<Reservation> countReservationComplete(); //사이트 예약 현황 통계
+	
+	public ArrayList<Item> countRentItem(); // 야칭 범위 통계용
+	
+	public ArrayList<Item> countReservationItem(); //예약 - 인기 매물 통계
+	
+	public ArrayList<Item> hitCountItem(); //조회수 높은 인기 매물들
 }

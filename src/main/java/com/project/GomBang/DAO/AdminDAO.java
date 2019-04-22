@@ -713,4 +713,77 @@ public class AdminDAO {
 		}
 		 return hMap;
 	 }
+	 
+	 //예약 통계 - 사람들 비자 종류 count
+	 public ArrayList<Reservation> countReservationVisa(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Reservation> rList = new ArrayList<Reservation>();
+		 try {
+			rList = map.countReservationVisa();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return rList;
+	 }
+	 
+	 //즐겨찾기 인기 순위 매물
+	 public ArrayList<Item> countBookmarkItem(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Item> iList = new ArrayList<Item>();
+		 try {
+			iList = map.countBookmarkItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return iList;
+	 }
+	 
+	 //사이트 예약 현황 통계
+	 public ArrayList<Reservation> countReservationComplete() {
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Reservation> rList = new ArrayList<Reservation>();
+		 try {
+			rList = map.countReservationComplete();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return rList;
+	 }
+	 
+	 //임대 매물 야칭값 범위 통계용
+	 public ArrayList<Item> countRentItem(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Item> iList = new ArrayList<Item>();
+		 try {
+			iList = map.countRentItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return iList;
+	 }
+	
+	 //예약 - 인기 순위 매물 
+	 public ArrayList<Item> countReservationItem(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Item> iList = new ArrayList<Item>();
+		 try {
+			iList = map.countReservationItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return iList;
+	 }
+	 
+	//조회수  - 인기 매물
+	public ArrayList<Item> hitCountItem(){
+		AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Item> iList = new ArrayList<Item>();
+		 try {
+			iList = map.hitCountItem();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return iList;
+	}
+	
 }

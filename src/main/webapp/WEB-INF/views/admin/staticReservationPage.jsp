@@ -394,13 +394,39 @@
                     <!-- Donut Chart -->
                       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                        	 <div class="panel panel-default">
-                            <div class="panel-heading">기업 유형별</div>
+                            <div class="panel-heading">고객 예약 - 비자 통계</div>
+                            <div class="panel-body">
+                                <div id="bar_chart"></div>
+                            </div>
+                        </div>
+                   	  </div>
+               		
+               		   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                       	 <div class="panel panel-default">
+                            <div class="panel-heading">즐겨찾기 인기 매물</div>
+                            <div class="panel-body">
+                                <div id="bar_chart2"></div>
+                            </div>
+                        </div>
+                   	  </div>
+                   	  
+                   	  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                       	 <div class="panel panel-default">
+                            <div class="panel-heading">예약 요청 인기 매물</div>
+                            <div class="panel-body">
+                                <div id="bar_chart3"></div>
+                            </div>
+                        </div>
+                   	  </div>
+                   	  
+                   	  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                       	 <div class="panel panel-default">
+                            <div class="panel-heading">예약 진행 현황</div>
                             <div class="panel-body">
                                 <div id="donut_chart"></div>
                             </div>
                         </div>
                    	  </div>
-               			
                     <!-- #END# Donut Chart -->
                 </div>
             </div>
