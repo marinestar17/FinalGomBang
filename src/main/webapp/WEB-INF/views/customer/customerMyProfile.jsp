@@ -66,14 +66,15 @@
 
 <div class="page_loader"></div>
 
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 <!-- Top header start -->
 <header class="top-header hidden-xs" id="top">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="list-inline">
-                    <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                    <!-- <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
+                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a> -->
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -112,7 +113,8 @@
 </header>
 <!-- Top header end -->
 
-<!-- Main header start -->
+<!-- Main header start (소비자)-->
+<c:if test="${sessionScope.enterpriseLoginID==null}">
 <header class="main-header">
     <div class="container">
         <nav class="navbar navbar-default">
@@ -123,14 +125,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.html" class="logo">
-                    <img src="img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -163,8 +165,8 @@
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    
-                    <li class="dropdown active">
+                    <c:if test="${sessionScope.customer.customer_ID!=null}">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
@@ -172,7 +174,7 @@
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -185,7 +187,81 @@
         </nav>
     </div>
 </header>
-<!-- Main header end -->
+</c:if>
+<!-- Main header end (소비자)-->
+
+<!-- Main header start (기업>-->
+<c:if test="${sessionScope.enterpriseLoginID!=null}">
+<header class="main-header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown active">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Profile<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                              <li><a href="enterpriseMyProfile">User profile</a></li>
+                              <li><a href="myproperties">My Properties</a></li>
+                              <li><a href="submitProperty">Submit New Property</a></li>
+                              <li><a href="goprofilepassword">Forgot Password</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Reservation<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="reservationwait">Reservation Wait</a></li> 
+                            <li><a href="reservationcomplete">Reservation Complete</a></li>
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>     
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Board<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
+                        </ul>
+                    </li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right rightside-navbar">
+                    <li>
+                        <a href="submitProperty" class="button"> 
+                            Submit Property
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+</c:if>
+<!-- Main header end (기업)-->
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 
 <!-- Sub banner start -->
  <div class="sub-banner overview-bgi">
@@ -255,7 +331,7 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="user-profile.html" class="active">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>

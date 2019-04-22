@@ -357,32 +357,27 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="user-profile.html">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="my-properties.html">
-                                    <i class="flaticon-apartment"></i>My Properties
+                                <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-apartment"></i>Reservation Properties
                                 </a>
                             </li>
                             <li>
-                                <a href="favorited-properties.html" class="active">
+                                <a href="favoritedList?customer_ID=${sessionScope.customer.customer_ID}">
                                     <i class="fa fa-heart"></i>Favorited Properties
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
-                                    <i class="fa fa-plus"></i>Submit New Property
-                                </a>
-                            </li>
-                            <li>
-                                <a href="change-password.html">
+                                <a href="profilePassword">
                                     <i class="flaticon-security"></i>Change Password
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="customerLogout">
                                     <i class="flaticon-sign-out-option"></i>Log Out
                                 </a>
                             </li>
