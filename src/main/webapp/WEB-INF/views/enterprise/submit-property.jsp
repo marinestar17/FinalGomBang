@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <script type="text/javascript" src="js/respond.min.js"></script>
     <![endif]-->
-    
+   
     <style>
     #geoapi-prefectures{
     	width:100%;
@@ -723,6 +723,7 @@ pageEncoding="UTF-8"%>
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
                             <li><a href="reservationcomplete">Reservation Complete</a></li> 
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>  
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -731,6 +732,14 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
                         </ul>
                     </li>
                     
@@ -756,8 +765,7 @@ pageEncoding="UTF-8"%>
             <div class="breadcrumb-area">
                 <h1>Submit Property</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="goHome">Home</a></li>
-                    <li class="active">Submit Property</li>
+                    
                 </ul>
             </div>
         </div>
@@ -1149,26 +1157,27 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+               <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -1195,7 +1204,8 @@ pageEncoding="UTF-8"%>
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->
