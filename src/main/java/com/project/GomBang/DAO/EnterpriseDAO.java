@@ -406,11 +406,11 @@ public class EnterpriseDAO {
 	}
 	
 	//거래 완료 알림
-	public int tradeComplete(String forSale_Seq) {
+	public int tradeComplete(Reservation reservation) {
 		EnterpriseMapper map = session.getMapper(EnterpriseMapper.class);
 		int result = 0;
 		try {
-			result = map.tradeComplete(forSale_Seq);
+			result = map.tradeComplete(reservation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -443,11 +443,11 @@ public class EnterpriseDAO {
 	}
 	
 	//완료된 매물의 예약 전부 취소
-	public int tradeReservationCancel(String forSale_Seq) {
+	public int tradeReservationCancel(Reservation reservation) {
 		EnterpriseMapper map = session.getMapper(EnterpriseMapper.class);
 		int result = 0;
 		try {
-			result = map.tradeReservationCancel(forSale_Seq);
+			result = map.tradeReservationCancel(reservation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

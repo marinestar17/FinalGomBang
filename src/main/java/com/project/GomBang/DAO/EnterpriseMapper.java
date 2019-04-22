@@ -81,12 +81,12 @@ public interface EnterpriseMapper {
 	
 	public int enterpriseReservationCancel(Reservation reservation); //예약 취소
 
-	public int tradeComplete(String forSale_Seq) ; //거래 완료
+	public int tradeComplete(Reservation reservation) ; //거래 완료
 	
 	public ArrayList<Total> tradeCompleteList(String enterprise_ID); //거래 리스트 완료 출려개ㅐㅐㅐㅐㅐㅐㅐㅐㅐ
 	
 	public ArrayList<Total> popularproperties();//popularproperties
 	
-	public int tradeReservationCancel(String forSale_Seq); //완료된 거래의 매물 예약 전부 취소
+	public int tradeReservationCancel(Reservation reservation); //완료된 거래의 매물 예약 전부 취소
 }
 

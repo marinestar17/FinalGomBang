@@ -314,27 +314,32 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="user-profile.html">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="my-properties.html" class="active">
-                                    <i class="flaticon-apartment"></i>My Properties
+                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-monitor"></i>Customer board
                                 </a>
                             </li>
                             <li>
-                                <a href="favorited-properties.html">
+                                <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-apartment"></i>Reservation Properties
+                                </a>
+                            </li>
+                            <li>
+                                <a href="favoritedList?customer_ID=${sessionScope.customer.customer_ID}">
                                     <i class="fa fa-heart"></i>Favorited Properties
                                 </a>
                             </li>
                             <li>
-                                <a href="change-password.html">
+                                <a href="profilePassword">
                                     <i class="flaticon-security"></i>Change Password
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="customerLogout">
                                     <i class="flaticon-sign-out-option"></i>Log Out
                                 </a>
                             </li>
@@ -377,7 +382,7 @@
 	                                                            예약 완료! 
 	                         </td>
 	                        </c:if>
-	                         <c:if test="${item.reservation_Complete eq 'Y' && item.forSale_Trade eq 'Y' }">
+	                         <c:if test="${item.forSale_TradeCustomer eq item.customer_ID}">
 	                         <td class="action">
 	                                                           거래 완료! 
 	                         </td>

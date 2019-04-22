@@ -656,12 +656,12 @@ public class EnterpriseController {
 	
 	//예약 --> 거래 완료 알림 버튼
 	@RequestMapping(value = "/tradeComplete", method = RequestMethod.POST)
-	public @ResponseBody int tradeComplete(String forSale_Seq) {
+	public @ResponseBody int tradeComplete(Reservation reservation) {
 		int result = 0;
 		int result2 = 0;
 		try {
-			result = dao.tradeComplete(forSale_Seq);
-			result2 = dao.tradeReservationCancel(forSale_Seq);
+			result2 = dao.tradeReservationCancel(reservation);
+			result = dao.tradeComplete(reservation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
