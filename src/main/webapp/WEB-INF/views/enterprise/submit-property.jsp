@@ -557,12 +557,11 @@ pageEncoding="UTF-8"%>
 	        var subwayMin = 99999;
 			var subwayDestination = {lat: 0, lng: 0};
 			
-	        function test(subwayArr,directionsService, directionsDisplay){
-	        		
+			function test(subwayArr,directionsService, directionsDisplay){
+        		
 	        	  var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
 	              var destination= {lat: 0, lng: 0};  // 가까운 지하철 위도경도
 	              var i=cnt;
-	             console.log(subwayArr[i]);
 	        	 directionsService.route({
 	                 origin: {lat:forSale_Lat, lng:forSale_Lng},  // 매물주소의 위도경도
 	                 destination: {lat: subwayArr[i].geometry.location.lat(), lng: subwayArr[i].geometry.location.lng()},  // 가까운 지하철 위도경도
@@ -584,23 +583,26 @@ pageEncoding="UTF-8"%>
 	                         	console.log("i = " + i);
 	                         	console.log("aaa" + subwayMin);
 	                         	console.log("subwayDestination" + JSON.stringify(subwayDestination));
-	                         	cnt++;
+	                         	
 	                         	console.log(cnt + " // cnt");
 	                         	console.log(subwayArr.length + " // 어레이크기");
 	                         	
-	                         	if(cnt!=subwayArr.length+1){
-	                         		test(subwayArr,directionsService, directionsDisplay);
-	                         	}
-	                         	routeMap2();
+	                         	
+	                         	
 	                         	
 	                         }
-	               	  
+	                         cnt++;
+	                         if(cnt!=subwayArr.length){
+	                      		test(subwayArr,directionsService, directionsDisplay);
+	                      	}
 	                 } else {
 	                   window.alert('Directions request failed due to ' + status);
 	                 }
 	               });
 	        	 
-	        	return;
+	        	if(cnt==subwayArr.length-1){
+	        		routeMap2()
+	        	}
 	        }
 	        
 	        function routeMap2() {

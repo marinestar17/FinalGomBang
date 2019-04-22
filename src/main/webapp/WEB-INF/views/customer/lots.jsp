@@ -25,9 +25,9 @@
                                 <a href="customerItemDetail?forSale_Seq=${searchItemList.forSale_Seq }" class="overlay-link">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <a class="overlay-link property-video" title="Lexus GS F">
+                                <!-- <a class="overlay-link property-video" title="Lexus GS F">
                                     <i class="fa fa-video-camera"></i>
-                                </a>
+                                </a> -->
                                 <div class="property-magnify-gallery">
                                 	<!-- 이미지 파일 없을시 오류나는거 해결해야 한다. -->
                                     <a href="/GomBang/img/${searchImgList[status.count-1].saveName }" class="overlay-link" data-seq="${searchItemList.forSale_Seq }">

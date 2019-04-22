@@ -962,8 +962,8 @@ pageEncoding="UTF-8"%>
     				
                    </div>
                 </div>
-                <a  class="btn button-sm border-button-theme reservation">예약(상담)신청</a>
-                    <a  class="btn button-sm border-button-theme bookmark ">책갈피 담아두기</a>
+                <!-- <a  class="btn button-sm border-button-theme reservation">예약(상담)신청</a>
+                    <a  class="btn button-sm border-button-theme bookmark ">책갈피 담아두기</a> -->
                 <!-- Location end -->
 
                 <!-- Properties details section start -->
@@ -2237,7 +2237,6 @@ pageEncoding="UTF-8"%>
                                   		subwayArr.push(results[i]);
                                   	}
                                   	console.log("체크");
-                                  	console.log(subwayArr[4]);
                                   	
                                   	subwayLat = results[results.length-1].geometry.location.lat();
                                   	subwayLng = results[results.length-1].geometry.location.lng();
@@ -2335,7 +2334,6 @@ pageEncoding="UTF-8"%>
         	  var origin= {lat:forSale_Lat, lng:forSale_Lng};  // 매물주소의 위도경도
               var destination= {lat: 0, lng: 0};  // 가까운 지하철 위도경도
               var i=cnt;
-             console.log(subwayArr[i]);
         	 directionsService.route({
                  origin: {lat:forSale_Lat, lng:forSale_Lng},  // 매물주소의 위도경도
                  destination: {lat: subwayArr[i].geometry.location.lat(), lng: subwayArr[i].geometry.location.lng()},  // 가까운 지하철 위도경도
@@ -2357,23 +2355,26 @@ pageEncoding="UTF-8"%>
                          	console.log("i = " + i);
                          	console.log("aaa" + subwayMin);
                          	console.log("subwayDestination" + JSON.stringify(subwayDestination));
-                         	cnt++;
+                         	
                          	console.log(cnt + " // cnt");
                          	console.log(subwayArr.length + " // 어레이크기");
                          	
-                         	if(cnt!=subwayArr.length+1){
-                         		test(subwayArr,directionsService, directionsDisplay);
-                         	}
-                         	routeMap2();
+                         	
+                         	
                          	
                          }
-               	  
+                         cnt++;
+                         if(cnt!=subwayArr.length){
+                      		test(subwayArr,directionsService, directionsDisplay);
+                      	}
                  } else {
                    window.alert('Directions request failed due to ' + status);
                  }
                });
         	 
-        	return;
+        	if(cnt==subwayArr.length-1){
+        		routeMap2()
+        	}
         }
         
         function routeMap2() {
