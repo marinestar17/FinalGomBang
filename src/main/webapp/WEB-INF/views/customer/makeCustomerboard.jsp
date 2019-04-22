@@ -27,13 +27,11 @@
 		
 		var customerBoard_Title = $("#customerBoard_Title").val();
 		var customerBoard_Content = CKEDITOR.instances.editor.getData();
-		var customerBoard_Tag = $("#customerBoard_Tag").val();
 		var customer_ID = $("#customer_ID").val();
 		var customerBoard = {
 				
 				"customerBoard_Title":customerBoard_Title,
 				"customerBoard_Content":customerBoard_Content,
-				"customerBoard_Tag":customerBoard_Tag,
 				"customer_ID":customer_ID
 				}
 		console.log(customerBoard);
@@ -209,8 +207,17 @@
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    
+                    <c:if test="${sessionScope.customer.customer_ID!=null}">
                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
@@ -218,7 +225,7 @@
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -348,18 +355,6 @@
 	                                <input type="text" class="input-text" id="customerBoard_Title" name="customerBoard_Title" placeholder="Board Title">
 	                            </div>
                             </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label>집 옵션</label>
-                                        <select class="selectpicker search-fields" id="customerBoard_Tag" name="customerBoard_Tag">
-											<option value="주택" >주택</option>
-											<option value="맨션" >맨션</option>
-											<option value="아파트" >아파트</option>
-											<option value="공단주택" >공단주택</option>
-											<option value="원룸" >원룸</option>
-										</select>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="main-title-2">

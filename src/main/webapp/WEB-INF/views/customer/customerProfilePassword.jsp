@@ -177,6 +177,15 @@
                     <c:if test="${sessionScope.customer.customer_ID!=null}">
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
@@ -298,7 +307,7 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
@@ -313,7 +322,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="profilePassword">
+                                <a href="profilePassword" class="active">
                                     <i class="flaticon-security"></i>Change Password
                                 </a>
                             </li>

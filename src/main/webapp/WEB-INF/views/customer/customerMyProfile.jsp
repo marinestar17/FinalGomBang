@@ -166,7 +166,16 @@
                         </ul>
                     </li>
                     <c:if test="${sessionScope.customer.customer_ID!=null}">
-                    <li class="dropdown active">
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>

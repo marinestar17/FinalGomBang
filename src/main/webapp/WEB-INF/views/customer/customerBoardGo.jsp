@@ -165,8 +165,17 @@ $(function(){
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    
+                    <c:if test="${sessionScope.customer.customer_ID!=null}">
                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
@@ -174,7 +183,7 @@ $(function(){
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -209,7 +218,7 @@ $(function(){
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Profile<span class="caret"></span>
                         </a>
@@ -289,12 +298,12 @@ $(function(){
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}">
+                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}" class="active">
                                     <i class="flaticon-monitor"></i>Customer board
                                 </a>
                             </li>

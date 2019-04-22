@@ -105,7 +105,6 @@ WHERE
 	    CUSTOMERBOARD_TITLE,
 	    CUSTOMERBOARD_CONTENT,
 	    CUSTOMERBOARD_INDATE,
-	    CUSTOMERBOARD_TAG,
 	    CUSTOMERBOARD_HITCOUNT
 	)
 	VALUES
@@ -115,7 +114,6 @@ WHERE
 		#{customerBoard_Title},
 		#{customerBoard_Content},
 		SYSDATE,
-		#{customerBoard_Tag},
 		0
 	)
 </insert>
@@ -126,7 +124,6 @@ WHERE
 	    CUSTOMERBOARD_TITLE,
 	    CUSTOMERBOARD_CONTENT,
 	    TO_CHAR(CUSTOMERBOARD_INDATE, 'YYYY/MM/DD') AS customerBoard_Indate,
-	    CUSTOMERBOARD_TAG,
 	    CUSTOMERBOARD_HITCOUNT
 	FROM
 		CUSTOMERBOARD
@@ -141,7 +138,6 @@ WHERE
 	    CUSTOMERBOARD_TITLE,
 	    CUSTOMERBOARD_CONTENT,
 	    CUSTOMERBOARD_INDATE,
-	    CUSTOMERBOARD_TAG,
 	    CUSTOMERBOARD_HITCOUNT
 	FROM
 		CUSTOMERBOARD
@@ -164,7 +160,6 @@ WHERE
 	SET
 		CUSTOMERBOARD_TITLE=#{customerBoard_Title},
 	    CUSTOMERBOARD_CONTENT=#{customerBoard_Content},
-	    CUSTOMERBOARD_TAG=#{customerBoard_Tag}
 	WHERE
 		CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
 </update>
@@ -442,6 +437,7 @@ WHERE
 <select id="customerCommentList" parameterType="CustomerComment" resultType="CustomerComment">
 	SELECT
 		CUSTOMERBOARD_SEQ,
+		CUSTOMERCOMMENT_SEQ,
 		CUSTOMER_ID,
 	    CUSTOMERCOMMENT_CONTENT,
 	    CUSTOMERCOMMENT_INDATE,
@@ -460,6 +456,15 @@ WHERE
 		CUSTOMERBOARD
 	WHERE
 		CUSTOMER_ID=#{customer_ID} AND CUSTOMERBOARD_SEQ=#{customerBoard_Seq}
+	
+</delete>
+
+<delete id="deleteCustomerComment" parameterType="CustomerComment">
+	DELETE
+	FROM
+		CUSTOMERCOMMENT
+	WHERE
+		CUSTOMER_ID=#{customer_ID} AND CUSTOMERCOMMENT_SEQ=#{customerComment_Seq}
 	
 </delete>
 

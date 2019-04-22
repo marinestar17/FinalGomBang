@@ -237,6 +237,7 @@ pageEncoding="UTF-8"%>
 
 <div class="page_loader"></div>
 
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 <!-- Top header start -->
 <header class="top-header hidden-xs" id="top">
     <div class="container">
@@ -335,8 +336,17 @@ pageEncoding="UTF-8"%>
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    
+                    <c:if test="${sessionScope.customer.customer_ID!=null}">
                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
@@ -344,7 +354,7 @@ pageEncoding="UTF-8"%>
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -396,7 +406,8 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
-                            <li><a href="reservationcomplete">Reservation Complete</a></li> 
+                            <li><a href="reservationcomplete">Reservation Complete</a></li>
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>     
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -405,6 +416,14 @@ pageEncoding="UTF-8"%>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
                         </ul>
                     </li>
                     
@@ -422,6 +441,7 @@ pageEncoding="UTF-8"%>
 </header>
 </c:if>
 <!-- Main header end (기업)-->
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">

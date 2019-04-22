@@ -37,6 +37,7 @@
                                 <h1><span>Comments </span> Section!</h1>
                             </div>
 							<!-- cf:foreach 쓰는 부분 -->
+							<!-- cf:foreach 쓰는 부분 -->
 							<c:forEach var="customerCommentList" items="${customerCommentList2}">
 							
                             <ul class="comments">
@@ -48,21 +49,25 @@
                                             </a>
                                         </div> -->
                                         <div class="comment-content">
-                                            <div class="comment-meta">
-                                                <%-- <div class="comment-meta-author">
-                                                    ${customerCommentList.customerComment_Title}
-                                                </div> --%>
-                                                <div class="comment-meta-reply">
+                                            
+                                                <div class="comment-body">
+                                                <div class="comment-meta-author" style="margin-right:10px; font-size:20px; color:green">
+                                                    ${customerCommentList.customer_ID} :
+                                                </div>
+                                                <div class="comment-meta-author" style="margin-right:10px; font-size:20px">
+                                                    ${customerCommentList.customerComment_Content}
+                                                </div>
+                                                	<div class="comment-meta-reply">
                                                     <a href="#">Reply</a>
-                                                </div>
-                                                <div class="comment-meta-date">
-                                                    <span class="hidden-xs">${customerCommentList.customerComment_Indate}</span>
-                                                </div>
-                                            </div>
+	                                                </div>
+	                                                <div class="comment-meta-date">
+	                                                    <span class="hidden-xs">${customerCommentList.customerComment_Indate}</span>
+	                                                </div>
+                                            	</div>
+                                                
+                                            
                                             <div class="clearfix"></div>
-                                            <div class="comment-body">
-                                                ${customerCommentList.customerComment_Content}
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </li>
