@@ -653,9 +653,12 @@ public class EnterpriseController {
 		
 	// 예약 대기상태를 확인상태로 바꿔주기	
 	@RequestMapping(value = "/updatereservation", method={RequestMethod.POST,RequestMethod.GET})
-	public @ResponseBody String updatereservation(String reservation_Seq){
+	public @ResponseBody String updatereservation(String reservation_Seq,Model model){
 		int result=0;
 		result=dao.updatereservation(reservation_Seq);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		return "redirect:/enterpriseMyProfile";
 	}	
 	

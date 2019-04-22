@@ -106,8 +106,10 @@ public class CustomerController {
 		ArrayList<Total> popularlist=new ArrayList<Total>();
 		popularlist=dao1.popularproperties();
         model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
-        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
+        model.addAttribute("popularlista",popularlist.get(0));
+        model.addAttribute("popularlistb",popularlist.get(1));
+        model.addAttribute("popularlistc",popularlist.get(2));
+        model.addAttribute("popularlistd",popularlist.get(3));
 		return "index-14";
 	}
 	
