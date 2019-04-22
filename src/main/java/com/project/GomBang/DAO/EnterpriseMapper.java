@@ -86,5 +86,7 @@ public interface EnterpriseMapper {
 	public ArrayList<Total> tradeCompleteList(String enterprise_ID); //거래 리스트 완료 출려개ㅐㅐㅐㅐㅐㅐㅐㅐㅐ
 	
 	public ArrayList<Total> popularproperties();//popularproperties
+	
+	public int tradeReservationCancel(String forSale_Seq); //완료된 거래의 매물 예약 전부 취소
 }
 

@@ -744,7 +744,7 @@ where
 	WHERE
 		CUSTOMER_ID = #{customer_ID}
 	AND
-		RESERVATION_SEQ = #{customer_ID}
+		RESERVATION_SEQ = #{reservation_Seq}
 </update>
 
 <!-- 거래 완료  -->
@@ -757,6 +757,17 @@ where
 	WHERE
 		FORSALE_SEQ = #{forSale_Seq}
 </update>
+
+<!-- 거래 완료시 나머지 예약들 전부 취소 -->
+<update id="tradeReservationCancel" parameterType = "Reservation">
+	UPDATE
+		RESERVATION
+	SET
+		RESERVATION_COMPLETE = 'N'
+	WHERE
+		FORSALE_SEQ = #{forSale_SEQ}
+</update>
+
 <!--Poupular properties  -->
 <select id="popularproperties" resultType="Total">
 select

@@ -6,6 +6,7 @@ import com.project.GomBang.VO.Bookmark;
 import com.project.GomBang.VO.Customer;
 import com.project.GomBang.VO.CustomerComment;
 import com.project.GomBang.VO.Customerboard;
+import com.project.GomBang.VO.Enterprise;
 import com.project.GomBang.VO.Image;
 import com.project.GomBang.VO.Item;
 import com.project.GomBang.VO.Reservation;
@@ -73,5 +74,8 @@ public interface CustomerMapper {
 	
 	public ArrayList<Bookmark> bookmarkCheck(String customer_ID); //즐겨찾기 중복 체크용;
 	
-	public int itemHitCountUp(String forsale_Seq);
+	public int itemHitCountUp(String forsale_Seq); // 매물 조회수 up
+	
+	public ArrayList<Enterprise> customerEnterpriseList(); // 소비자가 기업 리스트 확인
+	
 }
