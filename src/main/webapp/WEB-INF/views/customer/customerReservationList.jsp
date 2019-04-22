@@ -201,6 +201,20 @@
 </c:if>
 <!-- Main header end (소비자)-->
 
+                                </ul>
+                            </li>
+                            <li class="col-lg-3 col-md-3 col-sm-6">
+                                <ul>
+                                    <li class="dropdown-header">Pages</li>
+                                    <li><a href="user-profile.html">User profile</a></li>
+                                    <li><a href="my-properties.html">My Properties</a></li>
+                                    <li><a href="favorited-properties.html">Favorited properties</a></li>
+                                    <li><a href="submit-property.html">Submit Property</a></li>
+                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="signup.html">Signup</a></li>
+                                    <li><a href="forgot-password.html">Forgot Password</a></li>
+                                </ul>
+                            </li>
 <!-- Main header start (기업>-->
 <c:if test="${sessionScope.enterpriseLoginID!=null}">
 <header class="main-header">
