@@ -943,22 +943,13 @@ pageEncoding="UTF-8"%>
                                 <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
+                                <a href="searchItem3">Advanced Search</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Blog</a>
+                                 <a href="goCustomerboard">Q&A</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="properties-list-rightside.html">properties Listing</a>
-                            </li>
-                            <li>
-                                <a href="properties-grid-rightside.html">properties Grid</a>
-                            </li>
-                            <li>
-                                <a href="properties-details.html">properties Details</a>
+                            	<a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a>
                             </li>
                         </ul>
                     </div>
@@ -969,21 +960,22 @@ pageEncoding="UTF-8"%>
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -1010,7 +1002,8 @@ pageEncoding="UTF-8"%>
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->

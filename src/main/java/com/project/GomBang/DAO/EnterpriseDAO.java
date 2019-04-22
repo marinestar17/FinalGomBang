@@ -428,6 +428,7 @@ public class EnterpriseDAO {
 		}
 		return tList;
 	}
+	
 	//popular properties
 	public ArrayList<Total> popularproperties(){
 		EnterpriseMapper map = session.getMapper(EnterpriseMapper.class);
@@ -439,6 +440,18 @@ public class EnterpriseDAO {
 			return null;
 		}
 		return tList;
+	}
+	
+	//완료된 매물의 예약 전부 취소
+	public int tradeReservationCancel(String forSale_Seq) {
+		EnterpriseMapper map = session.getMapper(EnterpriseMapper.class);
+		int result = 0;
+		try {
+			result = map.tradeReservationCancel(forSale_Seq);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
 

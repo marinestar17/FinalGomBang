@@ -10,6 +10,7 @@ import com.project.GomBang.VO.Bookmark;
 import com.project.GomBang.VO.Customer;
 import com.project.GomBang.VO.CustomerComment;
 import com.project.GomBang.VO.Customerboard;
+import com.project.GomBang.VO.Enterprise;
 import com.project.GomBang.VO.Image;
 import com.project.GomBang.VO.Item;
 import com.project.GomBang.VO.Reservation;
@@ -385,6 +386,18 @@ public class CustomerDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	//소비자가 기업 리스트 확인 ㅇㅇ
+	public ArrayList<Enterprise> customerEnterpriseList() {
+		CustomerMapper map = session.getMapper(CustomerMapper.class);
+		ArrayList<Enterprise> eList = new ArrayList<Enterprise>();
+		try {
+			eList = map.customerEnterpriseList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return eList;
 	}
 	
 }

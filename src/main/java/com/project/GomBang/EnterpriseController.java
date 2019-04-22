@@ -647,6 +647,7 @@ public class EnterpriseController {
 		int result = 0;
 		try {
 			result = dao.enterpriseReservationCancel(reservation);
+			System.out.println(reservation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -657,8 +658,10 @@ public class EnterpriseController {
 	@RequestMapping(value = "/tradeComplete", method = RequestMethod.POST)
 	public @ResponseBody int tradeComplete(String forSale_Seq) {
 		int result = 0;
+		int result2 = 0;
 		try {
 			result = dao.tradeComplete(forSale_Seq);
+			result2 = dao.tradeReservationCancel(forSale_Seq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

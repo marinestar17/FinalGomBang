@@ -21,6 +21,7 @@ import com.project.GomBang.VO.Bookmark;
 import com.project.GomBang.VO.Customer;
 import com.project.GomBang.VO.CustomerComment;
 import com.project.GomBang.VO.Customerboard;
+import com.project.GomBang.VO.Enterprise;
 import com.project.GomBang.VO.Image;
 import com.project.GomBang.VO.Item;
 import com.project.GomBang.VO.Reservation;
@@ -126,6 +127,19 @@ public class CustomerController {
 		session.setAttribute("customerLoginID", null);
 		
 		return "customer/customerHome";
+	}
+	
+	//기업 정보 게시판 이동
+	@RequestMapping(value = "/enterpriseListCheck", method = RequestMethod.GET)
+	public String enterpriseListCheck(Model model) {
+		ArrayList<Enterprise> eList = new ArrayList<Enterprise>();
+		try {
+			eList = dao.customerEnterpriseList();
+			model.addAttribute("customerEnterpriseList", eList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "customer/enterpriseListCheck";
 	}
 	
 	//게시판 이동

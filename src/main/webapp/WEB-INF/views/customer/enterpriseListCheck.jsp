@@ -5,7 +5,6 @@
 <html lang="zxx">
 <head>
     <title>The Nest - Real Estate HTML Template</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -28,7 +27,7 @@
     <link rel="stylesheet" type="text/css" id="style_sheet" href="resources/user/css/skins/default.css">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="resources/user/image/x-icon" >
+    <link rel="shortcut icon" href="resources/user/img/favicon.ico" type="image/x-icon" >
 
     <!-- Google fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
@@ -45,39 +44,11 @@
     <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <script type="text/javascript" src="js/respond.min.js"></script>
     <![endif]-->
-     <style type="text/css">
-	    .overview-bgi {
-	    background-image:url('resources/image/bannerimage.jpg');  
-		}
-    </style>
-    <script>
-    	$(function(){
-    		deleteBookmark();
-    	});
-    	
-    	function deleteBookmark(){
-    		$(".delete").on("click", function(){
-    			var seq = $(this).attr('data_seq');
-        		$.ajax({
-        			url:"customerDeleteBookmark"
-        			,data:{bookmark_Seq:seq}
-        			,type:"post"
-        			,success:function(result){
-        				if (result == 1) {
-							alert("삭제되었습니다.");
-							location.reload();
-						}
-        			}
-        		})//
-    		});
-    	}
-    </script>
 </head>
 <body>
 
 <div class="page_loader"></div>
 
-<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 <!-- Top header start -->
 <header class="top-header hidden-xs" id="top">
     <div class="container">
@@ -90,7 +61,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <ul class="top-social-media pull-right">
-                    <c:if test="${sessionScope.customerLoginID==null && sessionScope.enterpriseLoginID==null}">
+                    <c:if test="${sessionScope.customerLoginID==null}">
                     <li>
                         <a href="customerLogingo" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
@@ -104,17 +75,6 @@
                     </li>
                     <li>
                         <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i>Customer Modify</a>
-                    </li>
-                    </c:if>
-                    <c:if test="${sessionScope.enterpriseLoginID!=null}">
-                    <li>
-                        <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
-                    </li>
-                    <li>
-                        <a href="goUpdate?enterprise_ID=${sessionScope.enterpriseLoginID}" class="sign-in"><i class="fa fa-user">
-                        
-                        </i> Enterprise Modify
-                        </a>
                     </li>
                     </c:if>
                 </ul>
@@ -176,8 +136,17 @@
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    <c:if test="${sessionScope.customer.customer_ID!=null}">
+                    
                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             User<span class="caret"></span>
                         </a>
@@ -185,7 +154,7 @@
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    </c:if>
+                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -201,88 +170,15 @@
 </c:if>
 <!-- Main header end (소비자)-->
 
-<!-- Main header start (기업>-->
-<c:if test="${sessionScope.enterpriseLoginID!=null}">
-<header class="main-header">
-    <div class="container">
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="goHome">
-                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown active">
-                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Profile<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                              <li><a href="enterpriseMyProfile">User profile</a></li>
-                              <li><a href="myproperties">My Properties</a></li>
-                              <li><a href="submitProperty">Submit New Property</a></li>
-                              <li><a href="goprofilepassword">Forgot Password</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Reservation<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="reservationwait">Reservation Wait</a></li> 
-                            <li><a href="reservationcomplete">Reservation Complete</a></li>
-                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>     
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Board<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
-                        </ul>
-                    </li>
-                     <li class="dropdown">
-                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Map<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="goFullMap">Map</a></li> 
-                        </ul>
-                    </li>
-                    
-                </ul>
-                <ul class="nav navbar-nav navbar-right rightside-navbar">
-                    <li>
-                        <a href="submitProperty" class="button"> 
-                            Submit Property
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-</c:if>
-<!-- Main header end (기업)-->
-<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
-
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>Favorited Properties</h1>
+                <h1>Enterprise List</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html"></a></li>
-                    <li class="active">Favorited Properties</li>
+                    <li><a href="goHome">Home</a></li>
+                    <li class="active">Enterprise List</li>
                 </ul>
             </div>
         </div>
@@ -290,80 +186,75 @@
 </div>
 <!-- Sub Banner end -->
 
-<!-- My Propertiess start -->
-<div class="content-area-7 my-properties">
+<!-- Agent section start -->
+<div class="agent-section content-area">
     <div class="container">
+        <!-- option bar start -->
+        <div class="option-bar">
+            <div class="row">
+                <div class="col-lg-6 col-md-5 col-sm-5 col-xs-2">
+                    <h4>
+                        <span class="heading-icon">
+                            <i class="fa fa-th-list"></i>
+                        </span>
+                        <span class="hidden-xs">Enterprise List</span>
+                    </h4>
+                </div>
+               <!--  <div class="col-lg-6 col-md-7 col-sm-7 col-xs-10 cod-pad">
+                    <div class="sorting-options">
+                        <select class="sorting">
+                            <option>New To Old</option>
+                            <option>Old To New</option>
+                            <option>Properties (High To Low)</option>
+                            <option>Properties (Low To High)</option>
+                        </select>
+                        <a href="agent-listing-row.html" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
+                        <a href="agent-listing-grid.html" class="change-view-btn"><i class="fa fa-th-large"></i></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- option bar end -->
+        <div class="clearfix"></div>
+
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <!-- User account box start -->
-                <div class="user-account-box">
-                    <div class="content">
+            <c:forEach var = "item" items = "${customerEnterpriseList }">
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <!-- Agent box 2start -->
+                <div class="agent-2 clearfix">
+                    <div class="col-lg-7 col-md-7 col-sm-8 agent-content">
+                        <h5>기업:${item.enterprise_Name }</h5>
+                        <h3>
+                           	 매니저:<a href="#">${item.enterprise_ManagerName }</a>
+                        </h3>
                         <ul>
                             <li>
-                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
-                                    <i class="flaticon-social"></i>Profile
-                                </a>
+                                <strong>Address:</strong> ${item.enterprise_Address }
                             </li>
                             <li>
-                                <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}">
-                                    <i class="flaticon-apartment"></i>Reservation Properties
-                                </a>
+                                <strong>Email:</strong> ${item.enterprise_ManagerEmail }
                             </li>
                             <li>
-                                <a href="favoritedList?customer_ID=${sessionScope.customer.customer_ID}">
-                                    <i class="fa fa-heart"></i>Favorited Properties
-                                </a>
+                                <strong>Mobile:</strong>${item.enterprise_ManagerPhone }
                             </li>
                             <li>
-                                <a href="profilePassword">
-                                    <i class="flaticon-security"></i>Change Password
-                                </a>
-                            </li>
-                            <li>
-                                <a href="customerLogout">
-                                    <i class="flaticon-sign-out-option"></i>Log Out
-                                </a>
+                                <strong>Code:</strong> ${item.enterprise_Code }
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- User account box end -->
             </div>
+            </c:forEach>
             
-            <div class="col-lg-8 col-md-8 col-sm-12">
-                <div class="main-title-2">
-                    <h1><span>My</span> Bookmark</h1>
-                </div>
-                <!-- table start -->
-                <table class="manage-table responsive-table">
-                    <tbody>
-					<c:forEach var = "item" items="${customerBookmarkList}">
-	                    <tr>
-	                        <td class="title-container">
-	                           <!--  <img src="http://placehold.it/130x90" alt="my-properties-1" class="img-responsive hidden-xs"> -->
-	                            <div class="title">
-	                                <h4><a href="customerItemDetail?forSale_Seq=${item.forSale_Seq}">${item.forSale_Title} </a></h4>
-	                                <span><i class="fa fa-map-marker"></i>${item.geoapi_prefectures} &nbsp; ${item.geoapi_cities} &nbsp; ${item.geoapi_towns} &nbsp; ${geoapi_remain}  </span>
-	                                <span class="table-property-price">${item.forSale_Rent}yen / ${item.forSale_Status}</span>
-	                            </div>
-	                        </td>
-	                        <td class="expire-date hidden-xs">${item.bookmark_Indate}</td>
-	                        <td class="action">
-	                            <a class="delete" data_seq="${item.bookmark_Seq }"><i class="fa fa-remove"></i> Delete</a>
-	                        </td>
-	                    </tr>
-					</c:forEach>
-
-                    </tbody>
-                </table>
-                <!-- table end -->
+                <!-- Agent box 2 end -->
             </div>
         </div>
     </div>
 </div>
-<!-- My Propertiess end -->
+<!-- Agent section end -->
 
-<!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
+<!-- Partners block start -->
+<!-- Partners block end -->
 
 <!-- Footer start -->
 <footer class="main-footer clearfix">
@@ -507,24 +398,22 @@
 </footer>
 <!-- Footer end -->
 
-<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
-
 <!-- Copy right start -->
 <div class="copy-right">
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
                     <li>
-                        <a href="#" class="facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
