@@ -748,12 +748,13 @@ where
 </update>
 
 <!-- 거래 완료  -->
-<update id="tradeComplete" parameterType = "String">
+<update id="tradeComplete" parameterType = "Reservation">
 	UPDATE
 		FORSALE
 	SET
 		FORSALE_TRADE = 'Y'
 		,FORSALE_TRADEINDATE = SYSDATE
+		,FORSALE_TRADECUSTOMER = #{customer_ID}
 	WHERE
 		FORSALE_SEQ = #{forSale_Seq}
 </update>
@@ -765,7 +766,7 @@ where
 	SET
 		RESERVATION_COMPLETE = 'N'
 	WHERE
-		FORSALE_SEQ = #{forSale_SEQ}
+		FORSALE_SEQ = #{forSale_Seq}
 </update>
 
 <!--Poupular properties  -->

@@ -420,7 +420,7 @@
 	                                                            예약 완료! 
 	                         </td>
 	                        </c:if>
-	                         <c:if test="${item.reservation_Complete eq 'Y' && item.forSale_Trade eq 'Y' }">
+	                         <c:if test="${item.forSale_TradeCustomer eq item.customer_ID}">
 	                         <td class="action">
 	                                                           거래 완료! 
 	                         </td>
