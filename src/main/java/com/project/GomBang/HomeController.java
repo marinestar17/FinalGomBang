@@ -42,6 +42,18 @@ public class HomeController {
 	    return "index-14";
 	}
 	
+	@RequestMapping(value = "/gg", method = RequestMethod.GET)
+	public String gg(Model model) {
+		/*ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao.popularproperties();
+		model.addAttribute("popularlist",popularlist);
+		model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+		model.addAttribute("popularlistb",popularlist.get(1));*/
+		/*model.addAttribute("popularlistc",popularlist.get(2));
+		model.addAttribute("popularlistd",popularlist.get(3));*/
+	    return "index-14";
+	}
+	
 	@RequestMapping(value = "/goHome", method = RequestMethod.GET)
 	public String goHome(Model model) {
 		ArrayList<Total> popularlist=new ArrayList<Total>();
@@ -49,6 +61,7 @@ public class HomeController {
         model.addAttribute("popularlist",popularlist);
         model.addAttribute("popularlista",popularlist.get(0).getSaveName());
         model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
+
 		return "index-14";
 	}
 	

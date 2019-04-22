@@ -295,11 +295,11 @@ $(function(){
                 <table class="manage-table responsive-table">
                     <tbody>
                     <tr>
-                    	<td>방 번호</td>
+                    	<td style="width:66px;">방 번호</td>
                     	<td>방 제목</td>
-                    	<td>작성자</td>
+                    	<td style="width:82px;">작성자</td>
                     	<td>방 생성시간</td>
-                    	<td>조회수 </td>
+                    	<td style="width:82px;">조회수 </td>
                     	<td>수정/삭제</td>
                     </tr>
 					<c:forEach var="ebList" items="${ebList}">
@@ -307,7 +307,7 @@ $(function(){
                     <tr>
                     	<td class="expire-date hidden-xs">${ebList.enterpriseBoard_Seq}</td>
                         <td class="title-container">
-                            <img src="${ebList.enterpriseBoard_Content}" alt="my-properties-1" class="img-responsive hidden-xs">
+                            <img src="${ebList.enterpriseBoard_Content}" alt="my-properties-1" class="img-responsive hidden-xs" style="height:60px;">
                             <div class="title">
                                 <h4><a href="enterEnterpriseboard?enterpriseBoard_Seq=${ebList.enterpriseBoard_Seq}&enterprise_ID=${ebList.enterprise_ID}">${ebList.enterpriseBoard_Title}</a></h4>
                                 <!-- <span><i class="fa fa-map-marker"></i> 123 Kathal St. Tampa City, </span> -->

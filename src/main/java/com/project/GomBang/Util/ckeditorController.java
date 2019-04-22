@@ -24,11 +24,11 @@ public class ckeditorController {
 		//String path = "C:\\Users\\Administrator\\Desktop\\apache-tomcat-8.0.52\\apache-tomcat-8.0.52\\webapps\\GomBangProject\\resources\\image\\";
 		// 로컬에서 확인하고 싶을시에는 path를 설정하면 된다.
 		/*String path = "C:\\Users\\user\\Desktop\\wow\\";*/
-		//String path = "C:\\Users\\vvvxc\\Documents\\pictures\\"; /*연준이꺼*/
+		String path = "C:\\Users\\vvvxc\\Documents\\pictures\\"; /*연준이꺼*/
 		//String path = "C:\\Users\\SIM\\Documents\\test\\";
 		/*String path= "C:\\Users\\KIM\\Documents\\test\\";*/
 		/*String path = "C:\\Users\\user\\Desktop\\roomImage\\"; //김갱호 학원컴
-*/		String path = "C:\\Users\\user\\Pictures\\imagefile\\";
+*/		//String path = "C:\\Users\\user\\Pictures\\imagefile\\";
 		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 		long fileSize = mf.getSize(); // 파일 사이즈
 

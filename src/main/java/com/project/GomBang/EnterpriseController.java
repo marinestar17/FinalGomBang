@@ -275,14 +275,13 @@ public class EnterpriseController {
 	
 	@RequestMapping(value = "/file-upload")
 	public String requestupload2(MultipartHttpServletRequest upload) {
-		
+		System.out.println("확인");
 		
 		List<MultipartFile> fileList = upload.getFiles("file");
 		/*String src = upload.getParameter("src");
 		System.out.println("src value : " + src);*/
-
-
-		String path = "C:\\Users\\user\\Pictures\\imagefile\\";
+		String path = "C:\\Users\\SIM\\Documents\\test\\";
+		//String path = "C:\\Users\\user\\Pictures\\imagefile\\";
 		//String path = "C:\\Users\\vvvxc\\OneDrive\\사진\\배경화면사진";
 
 		
@@ -300,6 +299,7 @@ public class EnterpriseController {
 				System.out.println(img);
 				imgList.add(img);
 				System.out.println(imgList.size());
+				System.out.println("확인");
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -309,7 +309,7 @@ public class EnterpriseController {
 			}
 		}
 
-		return "redirect:/";
+		return "redirect:/gg";
 	}
 	
 	@RequestMapping(value="/ICList",method=RequestMethod.POST)
