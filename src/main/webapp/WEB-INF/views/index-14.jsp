@@ -168,7 +168,7 @@ pageEncoding="UTF-8"%>
     	    	data+="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item' data-category='1, 2, 3, 4'>"
     	    	data+="<div class='property'>"
     	    	data+="<div class='property-img'>";
-    	    	data+="<div class='property-tag button alt featured'>Featured</div>";
+    	    	data+="<div class='property-tag button alt featured'>"+item.forSale_HouseType+"</div>";
     	        data+="<div class='property-tag button sale'>"+item.forSale_Status+"</div>";
     	        data+="<div class='property-price'>"+item.forSale_Rent+"</div>";
     	        data+="<img src='/GomBang/img/"+item.saveName+"' alt='fp' class='img-responsive'>";

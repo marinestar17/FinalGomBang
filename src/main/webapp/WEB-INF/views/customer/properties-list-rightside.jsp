@@ -618,10 +618,9 @@ pageEncoding="UTF-8"%>
                             <select id="selectHouseType" class="selectpicker search-fields" name="forSale_HouseType" data-live-search="true" data-live-search-placeholder="Search value" >
                                 <option>Property Types</option>
                                 <option>Apartment</option>
-                                <option>House</option>
-                                <option>Commercial</option>
-                                <option>Garage</option>
-                                <option>Lot</option>
+                                <option>Mansion</option>
+                                <option>Share House</option>
+                                <option>One Room</option>
                             </select>
                         </div>
                         
