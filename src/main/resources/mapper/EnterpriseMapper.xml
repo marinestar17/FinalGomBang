@@ -744,7 +744,7 @@ where
 	WHERE
 		CUSTOMER_ID = #{customer_ID}
 	AND
-		RESERVATION_SEQ = #{customer_ID}
+		RESERVATION_SEQ = #{reservation_Seq}
 </update>
 
 <!-- 거래 완료  -->

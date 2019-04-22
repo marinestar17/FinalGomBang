@@ -647,6 +647,7 @@ public class EnterpriseController {
 		int result = 0;
 		try {
 			result = dao.enterpriseReservationCancel(reservation);
+			System.out.println(reservation);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html lang="zxx">
 <head>
     <title>The Nest - Real Estate HTML Template</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -14,8 +13,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="resources/user/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="resources/user/css/bootstrap-submenu.css">
     <link rel="stylesheet" type="text/css" href="resources/user/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="resources/user/css/leaflet.css" type="text/css">
-    <link rel="stylesheet" href="resources/user/css/map.css" type="text/css">
+    <link rel="stylesheet" href="css/leaflet.css" type="resources/user/text/css">
+    <link rel="stylesheet" href="css/map.css" type="resources/user/text/css">
     <link rel="stylesheet" type="text/css" href="resources/user/fonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="resources/user/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" type="text/css" href="resources/user/fonts/linearicons/style.css">
@@ -45,49 +44,7 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <script type="text/javascript" src="js/respond.min.js"></script>
     <![endif]-->
-     <style type="text/css">
-    	.overview-bgi {
-    background-image:url('resources/image/bannerimage.jpg');  
-}
-    </style>
 </head>
-<script >
-	$(function(){
-		cancelReservation();
-		tradeOK();
-	});
-	
-	function cancelReservation(){
-		$("#delete").on("click", function(){
-			var seq = $(this).attr("data_Seq");
-			var id = $(this).attr("data_ID");
-			$.ajax({
-				url:"enterpriseReservationCancel"
-				,data:{customer_ID:id,reservation_Seq:seq }
-				,type:"post"
-				,success:function(){
-					alert("success!");
-					location.reload();
-				}
-			});
-		}) //click
-	}//function 
-	
-	function tradeOK(){
-		$("#trade").on("click", function(){
-			var seq = $(this).attr("data_Seq");
-			$.ajax({
-				url:"tradeComplete"
-				,data:{forSale_Seq:seq}
-				,type:"post"
-				,success:function(){
-					alert("save");
-					location.reload();
-				}
-			});
-		})
-	}
-</script>
 <body>
 
 <div class="page_loader"></div>
@@ -98,13 +55,13 @@ pageEncoding="UTF-8"%>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="list-inline">
-                   <!--  <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
+                    <!-- <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
                     <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a> -->
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <ul class="top-social-media pull-right">
-                   <c:if test="${sessionScope.enterpriseLoginID==null}">
+                    <c:if test="${sessionScope.customerLoginID==null}">
                     <li>
                         <a href="customerLogingo" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
@@ -112,15 +69,12 @@ pageEncoding="UTF-8"%>
                         <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i> Register</a>
                     </li>
                     </c:if>
-                    <c:if test="${sessionScope.enterpriseLoginID!=null}">
+                    <c:if test="${sessionScope.customerLoginID!=null}">
                     <li>
-                        <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                        <a href="customerLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                     </li>
                     <li>
-                        <a href="goUpdate?enterprise_ID=${sessionScope.enterpriseLoginID}" class="sign-in"><i class="fa fa-user">
-                        
-                        </i> Enterprise Modify
-                        </a>
+                        <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i>Customer Modify</a>
                     </li>
                     </c:if>
                 </ul>
@@ -130,7 +84,8 @@ pageEncoding="UTF-8"%>
 </header>
 <!-- Top header end -->
 
-<!-- Main header start -->
+<!-- Main header start (소비자)-->
+<c:if test="${sessionScope.enterpriseLoginID==null}">
 <header class="main-header">
     <div class="container">
         <nav class="navbar navbar-default">
@@ -142,72 +97,88 @@ pageEncoding="UTF-8"%>
                     <span class="icon-bar"></span>
                 </button>
                 <a href="goHome">
-                   <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Profile<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                              <li><a href="enterpriseMyProfile">User profile</a></li>
-                              <li><a href="myproperties">My Properties</a></li>
-                              <li><a href="submitProperty">Submit New Property</a></li>
-                              <li><a href="goprofilepassword">Forgot Password</a></li>
-                        </ul>
-                    </li>
                     <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Reservation<span class="caret"></span>
+                            Home<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="reservationwait">Reservation Wait</a></li> 
-                            <li><a href="reservationcomplete">Reservation Complete</a></li> 
-                             <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>  
+                            <li><a href="goHome">Home</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Board<span class="caret"></span>
+                           	 Map<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                            <li><a href="goFullMap">Map FullWidth</a></li>
                         </ul>
                     </li>
-                      <li class="dropdown">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Map<span class="caret"></span>
+                            	Search<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="goFullMap">Map</a></li> 
+                            <li><a href="searchItem3">Advanced Search</a></li>
                         </ul>
                     </li>
+                    
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Q&A<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goCustomerboard">Q&A Board</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Information<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="enterpriseListCheck">Enterprise List </a></li>
+                        </ul> 
+                    </li>
+                    
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            User<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
+                        </ul>
+                    </li>
+                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
-                        <a href="submitProperty" class="button"> 
+                        <!-- <a href="submitProperty" class="button"> 
                             Submit Property
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
 </header>
-<!-- Main header end -->
+</c:if>
+<!-- Main header end (소비자)-->
 
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>My Properties</h1>
+                <h1>Enterprise List</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Properties</li>
+                    <li><a href="goHome">Home</a></li>
+                    <li class="active">Enterprise List</li>
                 </ul>
             </div>
         </div>
@@ -215,166 +186,75 @@ pageEncoding="UTF-8"%>
 </div>
 <!-- Sub Banner end -->
 
-<!-- My Propertiess start -->
-<div class="content-area-7 my-properties">
+<!-- Agent section start -->
+<div class="agent-section content-area">
     <div class="container">
+        <!-- option bar start -->
+        <div class="option-bar">
+            <div class="row">
+                <div class="col-lg-6 col-md-5 col-sm-5 col-xs-2">
+                    <h4>
+                        <span class="heading-icon">
+                            <i class="fa fa-th-list"></i>
+                        </span>
+                        <span class="hidden-xs">Enterprise List</span>
+                    </h4>
+                </div>
+               <!--  <div class="col-lg-6 col-md-7 col-sm-7 col-xs-10 cod-pad">
+                    <div class="sorting-options">
+                        <select class="sorting">
+                            <option>New To Old</option>
+                            <option>Old To New</option>
+                            <option>Properties (High To Low)</option>
+                            <option>Properties (Low To High)</option>
+                        </select>
+                        <a href="agent-listing-row.html" class="change-view-btn active-view-btn"><i class="fa fa-th-list"></i></a>
+                        <a href="agent-listing-grid.html" class="change-view-btn"><i class="fa fa-th-large"></i></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- option bar end -->
+        <div class="clearfix"></div>
+
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <!-- User account box start -->
-                <div class="user-account-box">
-                 
-                    <div class="content">
-                         <ul>
+            <c:forEach var = "item" items = "${customerEnterpriseList }">
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <!-- Agent box 2start -->
+                <div class="agent-2 clearfix">
+                    <div class="col-lg-7 col-md-7 col-sm-8 agent-content">
+                        <h5>기업:${item.enterprise_Name }</h5>
+                        <h3>
+                           	 매니저:<a href="#">${item.enterprise_ManagerName }</a>
+                        </h3>
+                        <ul>
                             <li>
-                                <a href="enterpriseMyProfile">
-                                    <i class="flaticon-social"></i>Profile
-                                </a>
+                                <strong>Address:</strong> ${item.enterprise_Address }
                             </li>
                             <li>
-                                <a href="myproperties">
-                                    <i class="flaticon-apartment"></i>My Properties
-                                </a>
+                                <strong>Email:</strong> ${item.enterprise_ManagerEmail }
                             </li>
                             <li>
-                                <a href="reservationwait">
-                                    <i class="flaticon-social"></i>Reservation wait
-                                </a>
+                                <strong>Mobile:</strong>${item.enterprise_ManagerPhone }
                             </li>
                             <li>
-                                <a href="reservationcomplete" class="active">
-                                    <i class="flaticon-people-1"></i>Reservation complete
-                                </a>
-                            </li>
-                              <li>
-                                <a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">
-                                    <i class="flaticon-people-2"></i>Trade complete
-                                </a>
-                            </li>
-                            <li>
-                                <a href="submit-property.html">
-                                    <i class="fa fa-plus"></i>Submit New Property
-                                </a>
-                            </li>
-                            <li>
-                                <a href="goprofilepassword" >
-                                    <i class="flaticon-security"></i>Change Password
-                                </a>
-                            </li>
-                            <li>
-                                <a href="enterpriseLogout">
-                                    <i class="flaticon-sign-out-option"></i>Log Out
-                                </a>
+                                <strong>Code:</strong> ${item.enterprise_Code }
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- User account box end -->
             </div>
-
-             <div class="col-lg-8 col-md-8 col-sm-12">
-                 <div class="main-title-2">
-                     <h1><span>My</span> Properties</h1>
-                 </div>
-                <!-- table start -->
-                <table class="manage-table responsive-table">
-                    <tbody>
-                      <c:forEach var="completelist" items="${completelist}" varStatus="status">
-                    <tr>
-                        <td class="title-container">
-                            <div class="title">
-                                <h4><a href="#">${completelist.forSale_Title }</a></h4>
-                                <span><i class="fa fa-map-marker"></i>${completelist.geoapi_prefectures} ${completelist.geoapi_cities} ${completelist.geoapi_towns} ${completelist.geoapi_remain} </span>
-                                <span class="table-property-price">${completelist.customer_Email}</span>
-                            </div>
-                        </td>
-                        <td class="expire-date hidden-xs">${completelist.customer_ID}</td>
-                        <td class="action">
-                            <a  id = "trade" data_Seq="${completelist.forSale_Seq }"><i class="fa fa-pencil"></i> Trade OK</a>
-                            <a  id="delete" data_Seq="${completelist.reservation_Seq }" data_ID = "${completelist.customer_ID}"><i class="fa fa-remove"></i> Cancel</a>
-                        </td>
-                        <%-- <td class="action">
-                           <a class="update" data_seq="${completelist.reservation_Seq }"><i class="glyphicon glyphicon-ok"></i></i> Confirm</a>
-                        </td> --%>
-                    </tr>
-                     </c:forEach>
-                   <!--  <tr>
-                        <td class="title-container">
-                            <img src="http://placehold.it/130x90" alt="my-properties-2" class="img-responsive hidden-xs">
-                            <div class="title">
-                                <h4><a href="#">beautiful  Family  home </a></h4>
-                                <span><i class="fa fa-map-marker"></i> 123 Kathal St. Tampa City, </span>
-                                <span class="table-property-price">$900 / monthly</span>
-                            </div>
-                        </td>
-                        <td class="expire-date hidden-xs">December 17 2017</td>
-                        <td class="action">
-                            <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                            <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="title-container">
-                            <img src="http://placehold.it/130x90" alt="my-properties-3" class="img-responsive hidden-xs">
-                            <div class="title">
-                                <h4><a href="#">beautiful  Family  home </a></h4>
-                                <span><i class="fa fa-map-marker"></i> 123 Kathal St. Tampa City, </span>
-                                <span class="table-property-price">$900 / monthly</span>
-                            </div>
-                        </td>
-                        <td class="expire-date hidden-xs">December 17 2017</td>
-                        <td class="action">
-                            <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                            <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="title-container">
-                            <img src="http://placehold.it/130x90" alt="my-properties-4" class="img-responsive hidden-xs">
-                            <div class="title">
-                                <h4><a href="#">beautiful  Family  home </a></h4>
-                                <span><i class="fa fa-map-marker"></i> 123 Kathal St. Tampa City, </span>
-                                <span class="table-property-price">$900 / monthly</span>
-                            </div>
-                        </td>
-                        <td class="expire-date hidden-xs">December 17 2017</td>
-                        <td class="action">
-                            <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                            <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="title-container">
-                            <img src="http://placehold.it/130x90" alt="my-properties-5" class="img-responsive hidden-xs">
-                            <div class="title">
-                                <h4><a href="#">beautiful  Family  home </a></h4>
-                                <span><i class="fa fa-map-marker"></i> 123 Kathal St. Tampa City, </span>
-                                <span class="table-property-price">$900 / monthly</span>
-                            </div>
-                        </td>
-                        <td class="expire-date hidden-xs">December 17 2017</td>
-                        <td class="action">
-                            <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                            <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                        </td>
-                    </tr> -->
-
-                    </tbody>
-                </table>
-                <!-- table end -->
+            </c:forEach>
+            
+                <!-- Agent box 2 end -->
             </div>
         </div>
     </div>
 </div>
+<!-- Agent section end -->
 
-<!-- My Propertiess end -->
-
+<!-- Partners block start -->
+<!-- Partners block end -->
 
 <!-- Footer start -->
 <footer class="main-footer clearfix">
@@ -425,22 +305,13 @@ pageEncoding="UTF-8"%>
                                 <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
+                                <a href="searchItem3">Advanced Search</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Blog</a>
+                                 <a href="goCustomerboard">Q&A</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="properties-list-rightside.html">properties Listing</a>
-                            </li>
-                            <li>
-                                <a href="properties-grid-rightside.html">properties Grid</a>
-                            </li>
-                            <li>
-                                <a href="properties-details.html">properties Details</a>
+                            	<a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a>
                             </li>
                         </ul>
                     </div>
@@ -458,7 +329,7 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
                                 <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
@@ -567,7 +438,6 @@ pageEncoding="UTF-8"%>
     </div>
 </div>
 <!-- Copy end right-->
-
 
 <script src="resources/user/js/jquery-2.2.0.min.js"></script>
 <script src="resources/user/js/bootstrap.min.js"></script>
