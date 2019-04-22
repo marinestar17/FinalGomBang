@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>거래완료 리스트 |GomBang-Administrator</title>
+    <title>GomBang - Administrator</title>
     <!-- Favicon -->
     <link rel="icon" href="resources/adminBoot/favicon.ico" type="image/x-icon">
 

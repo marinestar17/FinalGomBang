@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>기업 문의 게시판 |GomBang-Administrator</title>
+    <title>GomBang - Administrator</title>
     <!-- Favicon -->
     <link rel="icon" href="resources/adminBoot/favicon.ico" type="image/x-icon">
 
@@ -376,7 +376,7 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>고객 게시판 관리</h1>
+                <h1>기업 문의 관리</h1>
                 <ol class="breadcrumb">
                     <li><a href="../../index.html">Home</a></li>
                     <li><a href="javascript:void(0);">Tables</a></li>

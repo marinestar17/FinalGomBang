@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Normal Tables | AdminBSB - Sensitive</title>
+    <title>GomBang - Administrator</title>
     <!-- Favicon -->
     <link rel="icon" href="resources/adminBoot/favicon.ico" type="image/x-icon">
 
@@ -379,8 +379,8 @@
                 <h1>관리자 간편 메세지</h1>
                 <ol class="breadcrumb">
                     <li><a href="../../index.html">Home</a></li>
-                    <li><a href="javascript:void(0);">Tables</a></li>
-                    <li class="active">Normal Tables</li>
+                    <li><a href="javascript:void(0);">Message</a></li>
+                    <li class="active">Administrator Message</li>
                 </ol>
             </div>
             <div class="page-body">
