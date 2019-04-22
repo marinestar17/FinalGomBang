@@ -334,16 +334,103 @@ pageEncoding="UTF-8"%>
 	    });
 	    
 	    
-	    var subRadius=1000;
+	    var subRadius=100;
 	      // 가장 가까운 지하철 찾기
 	      function searchSubway(pyrmont){
 	    	  subRadius=100;
-	    	  subCallBack();
+	    	  //subCallBack();
+	    	  subCallBack2();
 	      }
 	      var subwayLat;
 	      var subwayLng;
 	      var subwayArr = new Array();
 	      var subwayDistanceArr = new Array();
+	      var j = 0;
+	      
+	      //임시
+	      function subCallBack2(){
+		    	  subRadius=subRadius+100;
+		    	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+		    	  subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+		            center: pyrmont,
+		            zoom: 15
+		          });
+		    	  var service = new google.maps.places.PlacesService(subwayMap);
+		    	  
+		    	  service.nearbySearch(
+		                  {location: pyrmont, radius: subRadius, type: ['subway_station']},
+		                  function(results, status, pagination) {
+		                    if (status !== 'OK'){
+		                    	subCallBack();
+		                    }else{
+		                    	console.log(results);
+		                    	for(var i=0; i<=results.length-1; i++){
+		                    		//subwayArr.push(results[i].geometry.location);
+		                    		subwayArr.push(results[i]);
+		                    	}
+		                    	/* for(var var i=0; i<=results.length-1; i++){
+		                    		console.log(subwayArr[i]);
+		                    	} */
+		                    	console.log(subwayArr);
+		                    	test2();
+		                    	subwayLat = results[results.length-1].geometry.location.lat();
+		                    	subwayLng = results[results.length-1].geometry.location.lng();
+		                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
+		                    	console.log(subwayLng); */
+		                    	//createSubwayMarkers(results);
+		                         getNextPage = pagination.hasNextPage && function() {
+		                           pagination.nextPage();
+		                         };
+		                    }
+		                  });
+		    	  
+		      }
+	      //임시
+	      function test2(){
+	    	  subRadius=100;
+	    	  subCallBack3();
+	      }
+	      
+	      //임시
+	      function subCallBack3(){
+		    	  subRadius=subRadius+100;
+		    	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+		    	  subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+		            center: pyrmont,
+		            zoom: 15
+		          });
+		    	  var service = new google.maps.places.PlacesService(subwayMap);
+		    	  
+		    	  service.nearbySearch(
+		                  {location: pyrmont, radius: subRadius, type: ['train_station']},
+		                  function(results, status, pagination) {
+		                    if (status !== 'OK'){
+		                    	subCallBack3();
+		                    }else{
+		                    	console.log(results);
+		                    	for(var i=0; i<=results.length-1; i++){
+		                    		//subwayArr.push(results[i].geometry.location);
+		                    		subwayArr.push(results[i]);
+		                    	}
+		                    	/* for(var var i=0; i<=results.length-1; i++){
+		                    		console.log(subwayArr[i]);
+		                    	} */
+		                    	console.log(subwayArr);
+		                    	routeMap();
+		                    	subwayLat = results[results.length-1].geometry.location.lat();
+		                    	subwayLng = results[results.length-1].geometry.location.lng();
+		                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
+		                    	console.log(subwayLng); */
+		                    	//createSubwayMarkers(results);
+		                         getNextPage = pagination.hasNextPage && function() {
+		                           pagination.nextPage();
+		                         };
+		                    }
+		                  });
+		    	  
+		      }
+	      //임시
+	      
 	       function subCallBack(){
 	    	  subRadius=subRadius+100;
 	    	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
@@ -352,7 +439,6 @@ pageEncoding="UTF-8"%>
 	            zoom: 15
 	          });
 	    	  var service = new google.maps.places.PlacesService(subwayMap);
-	    	  
 	    	  service.nearbySearch(
 	                  {location: pyrmont, radius: subRadius, type: ['subway_station']},
 	                  function(results, status, pagination) {
@@ -361,25 +447,47 @@ pageEncoding="UTF-8"%>
 	                    }else{
 	                    	console.log(results);
 	                    	for(var i=0; i<=results.length-1; i++){
-	                    		//subwayArr.push(results[i].geometry.location);
 	                    		subwayArr.push(results[i]);
+	                    		j=i;
 	                    	}
-	                    	/* for(var var i=0; i<=results.length-1; i++){
-	                    		console.log(subwayArr[i]);
-	                    	} */
+	                    	console.log("트레인");
 	                    	console.log(subwayArr);
+	                    	service.nearbySearch(
+	                                {location: pyrmont, radius: subRadius, type: ['train_station']},
+	                                function(results, status, pagination) {
+	                                  if (status !== 'OK'){
+	                                  	subCallBack();
+	                                  }else{
+	                                  	console.log(results);
+	                                  	for(var i=0; i<=results.length-1; i++){
+	                                  		//subwayArr.push(results[i].geometry.location);
+	                                  		subwayArr.push(results[i]);
+	                                  	}
+	                                  	console.log("체크");
+	                                  	console.log(subwayArr[4]);
+	                                  	
+	                                  	subwayLat = results[results.length-1].geometry.location.lat();
+	                                  	subwayLng = results[results.length-1].geometry.location.lng();
+	                                  	console.log("서브웨이");
+	                                	console.log(subwayArr);
+	                                  	routeMap();
+	                                       getNextPage = pagination.hasNextPage && function() {
+	                                         pagination.nextPage();
+	                                       };
+	                                  }
+	                                });
+	                    	
+	                    	
 	                    	
 	                    	subwayLat = results[results.length-1].geometry.location.lat();
 	                    	subwayLng = results[results.length-1].geometry.location.lng();
-	                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
-	                    	console.log(subwayLng); */
-	                    	//createSubwayMarkers(results);
-	                    	routeMap();
-	                         getNextPage = pagination.hasNextPage && function() {
+	                        
+	                    	getNextPage = pagination.hasNextPage && function() {
 	                           pagination.nextPage();
 	                         };
 	                    }
 	                  });
+	    	  		
 	    	  
 	      } 
 	      
@@ -473,24 +581,17 @@ pageEncoding="UTF-8"%>
 	                         	console.log(response.routes[0].legs[0].distance.value+ "리스폰"+i);
 	                	  		console.log(response.routes[0].legs[0].distance.text+ "리스폰"+i);
 	                         	subwayDestination = {lat: subwayArr[i].geometry.location.lat(), lng: subwayArr[i].geometry.location.lng()};
-	                         	console.log(subwayArr[i].name + "//역이름" );
-	                         	$("#forSubway").val(subwayArr[i].name);
 	                         	console.log("i = " + i);
 	                         	console.log("aaa" + subwayMin);
 	                         	console.log("subwayDestination" + JSON.stringify(subwayDestination));
 	                         	cnt++;
 	                         	console.log(cnt + " // cnt");
 	                         	console.log(subwayArr.length + " // 어레이크기");
-	                         	if(subwayArr.length==1){
-	                         		routeMap2();
-	                         	}
-	                         	else if(cnt == subwayArr.length-1){
-	                         		routeMap2();
-	                         	}
-	                         	else if(cnt!=subwayArr.length+1){
+	                         	
+	                         	if(cnt!=subwayArr.length+1){
 	                         		test(subwayArr,directionsService, directionsDisplay);
 	                         	}
-	                         	
+	                         	routeMap2();
 	                         	
 	                         }
 	               	  
@@ -535,7 +636,6 @@ pageEncoding="UTF-8"%>
 	              if (status == 'OK') {
 	                directionsDisplay.setDirections(response);
 	                console.log(response.routes[0].legs[0].distance.text);
-	                console.log(response.routes[0].legs[0].distance.value+"제발아아아앙");
 	                $("#forSubwayDistance").val(response.routes[0].legs[0].distance.value);
 	                $("#forSubwayDistance2").val(response.routes[0].legs[0].distance.text);
 	              } else {
@@ -544,6 +644,8 @@ pageEncoding="UTF-8"%>
 	            });
 	          }
 	
+	        
+	        
 	  
 	    // 구글 지도
 	    function initAutocomplete() {
