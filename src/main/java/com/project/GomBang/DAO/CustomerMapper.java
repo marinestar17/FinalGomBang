@@ -78,4 +78,6 @@ public interface CustomerMapper {
 	
 	public ArrayList<Enterprise> customerEnterpriseList(); // 소비자가 기업 리스트 확인
 	
+	public Enterprise customerEnterpriseDetail(String enterprise_ID); //소비자 기업 상세 확인
+	
 }

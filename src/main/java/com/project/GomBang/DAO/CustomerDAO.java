@@ -400,4 +400,16 @@ public class CustomerDAO {
 		return eList;
 	}
 	
+	//소비자가 기업 상세 확인
+	public Enterprise customerEnterpriseDetail(String enterprise_ID) {
+		CustomerMapper map = session.getMapper(CustomerMapper.class);
+		Enterprise enterprise = new Enterprise();
+		try {
+			enterprise = map.customerEnterpriseDetail(enterprise_ID);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return enterprise;
+	}
+	
 }
