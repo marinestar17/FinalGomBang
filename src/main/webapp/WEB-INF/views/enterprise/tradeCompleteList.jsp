@@ -213,7 +213,7 @@ pageEncoding="UTF-8"%>
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
+                                <a href="submitProperty">
                                     <i class="fa fa-plus"></i>Submit New Property
                                 </a>
                             </li>

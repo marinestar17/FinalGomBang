@@ -49,172 +49,162 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="http://geoapi.heartrails.com/api/geoapi.js"></script>
     <script>
     var price = $("#itemPriceBar").val();
-    	$(function(){
-    		init();
-        	$("#Allpro").on("click",Allpro);
-        	$("#Apartmentpro").on("click",Apartmentpro);
-        	$("#Mansionpro").on("click",Mansionpro);
-        	$("#ShareHousepro").on("click",ShareHousepro)
-        	$("#Oneroompro").on("click",Oneroompro);
-    		$("#searchButton").on("click",searchItem); // 검색 버튼 클릭
-    		
-    	});
-    	
-    	function searchItem(){
-    		$("#searchItemForm").submit();
-    	}
-    	 function init(){
-    	    	
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "ICList"
-    	    		//, data : 
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    function Allpro(){
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "ICList"
-    	    		//, data : 
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    function Apartmentpro(){
-    	    	var type=$(this).attr('value');
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "HouseTypeList"
-    	    		, data : {
-    	    			forSale_HouseType:type
-    	    		}
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    function Mansionpro(){
-    	    	var type=$(this).attr('value');
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "HouseTypeList"
-    	    		, data : {
-    	    			forSale_HouseType:type
-    	    		}
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    function ShareHousepro(){
-    	    	var type=$(this).attr('value');
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "HouseTypeList"
-    	    		, data : {
-    	    			forSale_HouseType:type
-    	    		}
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    function Oneroompro(){
-    	    	var type=$(this).attr('value');
-    	    	$.ajax({
-    	    		type : 'POST'
-    	    		, url : "HouseTypeList"
-    	    		, data : {
-    	    			forSale_HouseType:type
-    	    		}
-    	    		, success : function(list) {
-    	    			output(list);
-    	    			splitOption(list);
-    	    		}
-    	    	});
-    	    }
-    	    
-    	    function splitOption(resp){
-    	    	$.each(resp, function(index,item){
-    	 		var forSale_Option = $(".forSale_Option"+item.forSale_Seq).val();
-    	 		var seq=item.forSale_Seq;
-    	 		var optionSplit = forSale_Option.split(',');
-    	 		var amenitiesContent = "";
-    	 		$.each(optionSplit,function(index,item){
-    	 			if(index<6){
-    	 				amenitiesContent+="<li>";
-    	 				amenitiesContent+="<i class='flaticon-square-layouting-with-black-square-in-east-area'></i>";
-    	 				amenitiesContent+="<span>"+item+"</span>";
-    	 				amenitiesContent+="</li>";
-    	 				$(".ul"+seq).html(amenitiesContent);
-    	 			}
-    	 		});
-    	    	});
-    	    }
-    	    
-    	    
-    	    function output(resp){
-    	    	var data="";
-    	    	$.each(resp, function(index,item){
-    	    	data+="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item' data-category='1, 2, 3, 4'>"
-    	    	data+="<div class='property'>"
-    	    	data+="<div class='property-img'>";
-    	    	data+="<div class='property-tag button alt featured'>"+item.forSale_HouseType+"</div>";
-    	        data+="<div class='property-tag button sale'>"+item.forSale_Status+"</div>";
-    	        data+="<div class='property-price'>"+item.forSale_Rent+"</div>";
-    	        data+="<img src='/GomBang/img/"+item.saveName+"' alt='fp' class='img-responsive'>";
-    	        data+="<div class='property-overlay'>";
-    	        data+="<a href='customerItemDetail?forSale_Seq="+item.forSale_Seq+"' class='overlay-link'>";
-    	        data+="<i class='fa fa-link'></i>";
-    	        data+="</a>";
-    	        data+="<a class='overlay-link property-video' title='Lexus GS F'>";
-    	        data+="<i class='fa fa-video-camera'></i>";
-    	        data+="</a>";
-    	        data+="<div class='property-magnify-gallery'>";
-    	        data+="<a href='/GomBang/img/"+item.saveName+"' class='overlay-link'>";
-    	        data+="<i class='fa fa-expand'></i>";
-    	        data+="</a>";
-    	        data+="<a href='http://placehold.it/750x540' class='hidden'></a>";
-    	        data+="<a href='http://placehold.it/750x540' class='hidden'></a>";
-    	        data+="</div>";
-    	        data+="</div>";
-    	        data+="</div>";
-    	        data+="<div class='property-content'>";
-    	        data+="<h1 class='title'>";
-    	        data+="<a href='properties-details.html'>"+item.forSale_Title+"</a>";
-    	        data+="</h1>";
-    	        data+="<h3 class='property-address'>";
-    	        data+="<a href='properties-details.html'>";
-    	        data+="<i class='fa fa-map-marker'></i>"+item.geoapi_prefectures+""+item.geoapi_cities+""+item.geoapi_towns+""+item.geoapi_remain+"</a>";
-    	        data+="</h3>";
-    	        data+="<input type='hidden' value='"+item.forSale_Option+"' class='forSale_Option"+item.forSale_Seq+"'>";
-    	        data+="<ul class='facilities-list clearfix ul"+item.forSale_Seq+"'>";
-    	        data+="</ul>";
-    	        data+="<div class='property-footer'>";
-    	        data+="<span class='left'>";
-    	        data+="<a href='#'><i class='fa fa-user'></i>"+item.enterprise_ID+"</a>";
-    	        data+="</span>";
-    	        data+="<span class='right'>";
-    	        data+="<i class='fa fa-calendar'></i>"+item.forSale_Indate+"Days ago";
-    	        data+="</span>";
-    	        data+="</div>";
-    	        data+="</div>";
-    	        data+="</div>";
-    	        data+="</div>";
-    	    	});
-    	    	  $(".filtr-container").html(data);
-    	    }
-    	    
-    </script>
+	$(function(){
+		init();
+    	$("#Allpro").on("click",Allpro);
+    	$("#Apartmentpro").on("click",Apartmentpro);
+    	$("#Mansionpro").on("click",Mansionpro);
+    	$("#ShareHousepro").on("click",ShareHousepro)
+    	$("#OneRoompro").on("click",OneRoompro);
+		$("#searchButton").on("click",searchItem); // 검색 버튼 클릭
+		
+	});
+	
+	function searchItem(){
+		$("#searchItemForm").submit();
+	}
+	 function init(){
+	    	
+	    	$.ajax({
+	    		type : 'POST'
+	    		, url : "ICList"
+	    		//, data : 
+	    		, success : function(list) {
+	    			output(list);
+	    			splitOption(list);
+	    		}
+	    	});
+	    }
+	    function Allpro(){
+	    	$.ajax({
+	    		type : 'POST'
+	    		, url : "ICList"
+	    		//, data : 
+	    		, success : function(list) {
+	    			output(list);
+	    			splitOption(list);
+	    		}
+	    	});
+	    }
+	    function Apartmentpro(){
+	    	var type=$(this).attr('value');
+	    	$.ajax({
+	    		type : 'POST'
+	    		, url : "HouseTypeList"
+	    		, data : {
+	    			forSale_HouseType:type
+	    		}
+	    		, success : function(list) {
+	    			output(list);
+	    			splitOption(list);
+	    		}
+	    	});
+	    }
+	    function Mansionpro(){
+	    	var type=$(this).attr('value');
+	    	$.ajax({
+	    		type : 'POST'
+	    		, url : "HouseTypeList"
+	    		, data : {
+	    			forSale_HouseType:type
+	    		}
+	    		, success : function(list) {
+	    			output(list);
+	    			splitOption(list);
+	    		}
+	    	});
+	    }
+	    function ShareHousepro(){
+	    	var type=$(this).attr('value');
+	    	$.ajax({
+	    		type : 'POST'
+	    		, url : "HouseTypeList"
+	    		, data : {
+	    			forSale_HouseType:type
+	    		}
+	    		, success : function(list) {
+	    			output(list);
+	    			splitOption(list);
+	    		}
+	    	});
+	    }
+	    function OneRoompro(){
+	    	var type=$(this).attr('value');
+	    	$.ajax({
+	    		type : 'POST'
+	    		, url : "HouseTypeList"
+	    		, data : {
+	    			forSale_HouseType:type
+	    		}
+	    		, success : function(list) {
+	    			output(list);
+	    			splitOption(list);
+	    		}
+	    	});
+	    }
+	    
+	    function splitOption(resp){
+	    	$.each(resp, function(index,item){
+	 		var forSale_Option = $(".forSale_Option"+item.forSale_Seq).val();
+	 		var seq=item.forSale_Seq;
+	 		var optionSplit = forSale_Option.split(',');
+	 		var amenitiesContent = "";
+	 		$.each(optionSplit,function(index,item){
+	 			if(index<6){
+	 				amenitiesContent+="<li>";
+	 				amenitiesContent+="<i class='flaticon-square-layouting-with-black-square-in-east-area'></i>";
+	 				amenitiesContent+="<span>"+item+"</span>";
+	 				amenitiesContent+="</li>";
+	 				$(".ul"+seq).html(amenitiesContent);
+	 			}
+	 		});
+	    	});
+	    }
+	    
+	    
+	    function output(resp){
+	    	var data="";
+	    	$.each(resp, function(index,item){
+	    	data+="<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item' data-category='1, 2, 3, 4'>"
+	    	data+="<div class='property'>"
+	    	data+="<div class='property-img'>";
+	    	data+="<div class='property-tag button alt featured'>"+item.forSale_HouseType+"</div>";
+	        data+="<div class='property-tag button sale'>"+item.forSale_Status+"</div>";
+	        data+="<div class='property-price'>"+item.forSale_Rent+"</div>";
+	        data+="<img src='/GomBang/img/"+item.saveName+"' alt='fp' class='img-responsive'>";
+	        data+="<div class='property-overlay'>";
+	        data+="<a href='customerItemDetail?forSale_Seq="+item.forSale_Seq+"' class='overlay-link'>";
+	        data+="<i class='fa fa-link'></i>";
+	        data+="</a>";
+	        data+="</div>";
+	        data+="</div>";
+	        data+="<div class='property-content'>";
+	        data+="<h1 class='title'>";
+	        data+="<a href='properties-details.html'>"+item.forSale_Title+"</a>";
+	        data+="</h1>";
+	        data+="<h3 class='property-address'>";
+	        data+="<a href='properties-details.html'>";
+	        data+="<i class='fa fa-map-marker'></i>"+item.geoapi_prefectures+""+item.geoapi_cities+""+item.geoapi_towns+""+item.geoapi_remain+"</a>";
+	        data+="</h3>";
+	        data+="<input type='hidden' value='"+item.forSale_Option+"' class='forSale_Option"+item.forSale_Seq+"'>";
+	        data+="<ul class='facilities-list clearfix ul"+item.forSale_Seq+"'>";
+	        data+="</ul>";
+	        data+="<div class='property-footer'>";
+	        data+="<span class='left'>";
+	        data+="<a href='#'><i class='fa fa-user'></i>"+item.enterprise_ID+"</a>";
+	        data+="</span>";
+	        data+="<span class='right'>";
+	        data+="<i class='fa fa-calendar'></i>"+item.forSale_Indate+"Days ago";
+	        data+="</span>";
+	        data+="</div>";
+	        data+="</div>";
+	        data+="</div>";
+	        data+="</div>";
+	    	});
+	    	  $(".filtr-container").html(data);
+	    }
+	    
+</script>
     <!-- 주소API CSS -->
     <style>
 
@@ -727,12 +717,12 @@ pageEncoding="UTF-8"%>
         <div class="main-title">
             <h1>Featured Properties</h1>
         </div>
-        <ul class="list-inline-listing filters filters-listing-navigation">
+         <ul class="list-inline-listing filters filters-listing-navigation">
             <li class="active btn filtr-button filtr" data-filter="all"    id="Allpro">All</li>
             <li data-filter="1" class="btn btn-inline filtr-button filtr"  id="Apartmentpro" value="Apartment">Apartment</li>
             <li data-filter="2" class="btn btn-inline filtr-button filtr"  id="Mansionpro" value="Mansion">Mansion</li>
             <li data-filter="3" class="btn btn-inline filtr-button filtr"  id="ShareHousepro" value="Share House">Share House</li>
-            <li data-filter="4" class="btn btn-inline filtr-button filtr"  id="Oneroompro" value="One room">One room</li>
+            <li data-filter="4" class="btn btn-inline filtr-button filtr"  id="OneRoompro" value="One Room">One Room</li>
         </ul>
         
         <div class="row">
@@ -957,18 +947,18 @@ pageEncoding="UTF-8"%>
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
-            <h1>Popular Places</h1>
+              <h1>Popular Places</h1>
         </div>
         <div class="clearfix"></div>
         <div class="row wow">
             <div class="col-lg-5 col-md-5 col-sm-12 col-pad wow fadeInRight delay-04s">
                 <div class="category">
-                    <div class="category_bg_box category_long_bg cat-4-bg" style="background-image: url(http:/GomBang/img/${popularlista})">
+                    <div class="category_bg_box category_long_bg cat-4-bg" style="background-image: url(http:/GomBang/img/${popularlista.saveName})">
                     <%--   <img src="/GomBang/img/${popularlist.saveName}"class="category-img" alt="..."> --%>
                         <div class="category-overlay" >
                             <div class="category-content" >
-                                <div class="category-subtitle">14 Properties</div>
-                                <h3 class="category-title"><a href="#">San Francisco</a></h3>
+                                <div class="category-subtitle">${popularlista.forSale_Status}</div>
+                                <h3 class="category-title"><a href="customerItemDetail?forSale_Seq=${popularlista.forSale_Seq}">${popularlista.forSale_Title}</a></h3>
                             </div>
                         </div>
                     </div>
@@ -978,12 +968,12 @@ pageEncoding="UTF-8"%>
                 <div class="row">
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-1-bg"  style="background-image: url(http:/GomBang/img/${popularlistb})">
+                            <div class="category_bg_box cat-1-bg"  style="background-image: url(http:/GomBang/img/${popularlistb.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
-                                        <div class="category-subtitle">14 Properties</div>
+                                        <div class="category-subtitle">${popularlistb.forSale_Status}</div>
                                         <h3 class="category-title">
-                                            <a href="#">Florida</a>
+                                            <a href="customerItemDetail?forSale_Seq=${popularlistb.forSale_Seq}">${popularlistb.forSale_Title}</a>
                                         </h3>
                                     </div><!-- /.category-content -->
                                 </div>
@@ -993,12 +983,12 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-2-bg"  style="background-image: url(http:/GomBang/img/${popularlistb})">
+                            <div class="category_bg_box cat-2-bg"  style="background-image: url(http:/GomBang/img/${popularlistc.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
-                                        <div class="category-subtitle">24 Properties</div>
+                                        <div class="category-subtitle">${popularlistc.forSale_Status}</div>
                                         <h3 class="category-title">
-                                            <a href="#">California</a>
+                                            <a href="customerItemDetail?forSale_Seq=${popularlistc.forSale_Seq}">${popularlistc.forSale_Title}</a>
                                         </h3>
                                     </div>
                                 </div>
@@ -1008,11 +998,11 @@ pageEncoding="UTF-8"%>
 
                     <div class="col-sm-12 col-pad wow fadeInUp delay-04s">
                         <div class="category">
-                            <div class="category_bg_box cat-3-bg"  style="background-image: url(http:/GomBang/img/${popularlistb})">
+                            <div class="category_bg_box cat-3-bg"  style="background-image: url(http:/GomBang/img/${popularlistd.saveName})">
                                 <div class="category-overlay">
                                     <div class="category-content">
-                                        <div class="category-subtitle">9 Properties</div>
-                                        <h3 class="category-title"><a href="#">New York</a></h3>
+                                        <div class="category-subtitle">${popularlistd.forSale_Status}</div>
+                                        <h3 class="category-title"><a href="customerItemDetail?forSale_Seq=${popularlistd.forSale_Seq}">${popularlistd.forSale_Title}</a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -1347,7 +1337,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
