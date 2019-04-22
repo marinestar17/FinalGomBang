@@ -177,7 +177,7 @@
             <div class="breadcrumb-area">
                 <h1>Enterprise List</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="goHome">Home</a></li>
+                    <li><a href="goHome">Information</a></li>
                     <li class="active">Enterprise List</li>
                 </ul>
             </div>

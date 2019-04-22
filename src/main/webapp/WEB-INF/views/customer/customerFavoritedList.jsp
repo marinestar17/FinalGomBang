@@ -77,36 +77,55 @@
 
 <div class="page_loader"></div>
 
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 <!-- Top header start -->
 <header class="top-header hidden-xs" id="top">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="list-inline">
-                    <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                    <!-- <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
+                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a> -->
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <ul class="top-social-media pull-right">
+                    <c:if test="${sessionScope.customerLoginID==null && sessionScope.enterpriseLoginID==null}">
                     <li>
-                        <a href="login.html" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                        <a href="customerLogingo" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
                     <li>
-                        <a href="signup.html" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                        <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i> Register</a>
                     </li>
+                    </c:if>
+                    <c:if test="${sessionScope.customerLoginID!=null}">
+                    <li>
+                        <a href="customerLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                    </li>
+                    <li>
+                        <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i>Customer Modify</a>
+                    </li>
+                    </c:if>
+                    <c:if test="${sessionScope.enterpriseLoginID!=null}">
+                    <li>
+                        <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                    </li>
+                    <li>
+                        <a href="goUpdate?enterprise_ID=${sessionScope.enterpriseLoginID}" class="sign-in"><i class="fa fa-user">
+                        
+                        </i> Enterprise Modify
+                        </a>
+                    </li>
+                    </c:if>
                 </ul>
             </div>
         </div>
     </div>
 </header>
 <!-- Top header end -->
- <style type="text/css">
-	    .overview-bgi {
-	    background-image:url('resources/image/bannerimage.jpg');  
-		}
-    </style>
-<!-- Main header start -->
+
+<!-- Main header start (소비자)-->
+<c:if test="${sessionScope.enterpriseLoginID==null}">
 <header class="main-header">
     <div class="container">
         <nav class="navbar navbar-default">
@@ -117,168 +136,132 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.html" class="logo">
-                    <img src="img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html">Home 1</a></li>
-                            <li><a href="index-2.html">Home 2</a></li>
-                            <li><a href="index-3.html">Home 3</a></li>
-                            <li><a href="index-4.html">Home 4</a></li>
-                            <li><a href="index-5.html">Home 5</a></li>
+                            <li><a href="goHome">Home</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Properties<span class="caret"></span>
+                           	 Map<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">List Layout</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-list-rightside.html">Right Sidebar</a></li>
-                                    <li><a href="properties-list-leftside.html">Left Sidebar</a></li>
-                                    <li><a href="properties-list-fullwidth.html">Fullwidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Grid Layout</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-grid-rightside.html">Right Sidebar</a></li>
-                                    <li><a href="properties-grid-leftside.html">Left Sidebar</a></li>
-                                    <li><a href="properties-grid-fullwidth.html">Fullwidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Map View</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-map-leftside-list.html">Map List 1</a></li>
-                                    <li><a href="properties-map-rightside-list.html">Map List 2</a></li>
-                                    <li><a href="properties-map-leftside-grid.html">Map Grid 1</a></li>
-                                    <li><a href="properties-map-rightside-grid.html">Map Grid 2</a></li>
-                                    <li><a href="properties-map-full.html">Map FullWidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Property Detail</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="properties-details.html">Property Detail 1</a></li>
-                                    <li><a href="properties-details-2.html">Property Detail 2</a></li>
-                                    <li><a href="properties-details-3.html">Property Detail 3</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="goFullMap">Map FullWidth</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Agents<span class="caret"></span>
+                            	Search<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="agent-listing-grid.html">Agent grid</a></li>
-                            <li><a href="agent-listing-grid-sidebar.html">Agent Grid sidebarbar</a></li>
-                            <li><a href="agent-listing-row.html">Agent list</a></li>
-                            <li><a href="agent-listing-row-sidebar.html">Agent List Sidebarbar</a></li>
-                            <li><a href="agent-single.html">Agent Detail</a></li>
+                            <li><a href="searchItem3">Advanced Search</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown active mega-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Pages <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu mega-dropdown-menu row">
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="about.html">About 1</a></li>
-                                    <li><a href="about-2.html">About 2</a></li>
-                                    <li><a href="services-1.html">Services 1</a></li>
-                                    <li><a href="services-2.html">Services 2</a></li>
-                                    <li><a href="pricing-tables.html">Pricing Tables 1</a></li>
-                                    <li><a href="pricing-tables-2.html">Pricing Tables 2</a></li>
-                                    <li><a href="pricing-tables-3.html">Pricing Tables 3</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="faq.html">Faq 1</a></li>
-                                    <li><a href="faq-2.html">Faq 2</a></li>
-                                    <li><a href="gallery-1.html">Gallery 1</a></li>
-                                    <li><a href="gallery-2.html">Gallery 2</a></li>
-                                    <li><a href="gallery-3.html">Gallery 3</a></li>
-                                    <li><a href="properties-comparison.html">Properties Comparison</a></li>
-                                    <li><a href="search-brand.html">Search Brand</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="contact.html">Contact 1</a></li>
-                                    <li><a href="contact-2.html">Contact 2</a></li>
-                                    <li><a href="contact-3.html">Contact 3</a></li>
-                                    <li><a href="typography.html">Typography</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                    <li><a href="icon.html">Icon</a></li>
-                                    <li><a href="404.html">Pages 404</a></li>
-
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="user-profile.html">User profile</a></li>
-                                    <li><a href="my-properties.html">My Properties</a></li>
-                                    <li><a href="favorited-properties.html">Favorited properties</a></li>
-                                    <li><a href="submit-property.html">Submit Property</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="signup.html">Signup</a></li>
-                                    <li><a href="forgot-password.html">Forgot Password</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                            Blog<span class="caret"></span>
+                            Q&A<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Classic</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-classic-sidebar-right.html">Right Sidebar</a></li>
-                                    <li><a class="dropdown-item" href="blog-classic-sidebar-left.html">Left Sidebar</a></li>
-                                    <li><a class="dropdown-item" href="blog-classic-fullwidth.html">FullWidth</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Columns</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-columns-2col.html">2 Columns</a></li>
-                                    <li><a class="dropdown-item" href="blog-columns-3col.html">3 Columns</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="0">Blog Details</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-single-sidebar-right.html">Right Sidebar</a></li>
-                                    <li><a class="dropdown-item" href="blog-single-sidebar-left.html">Left Sidebar</a></li>
-                                    <li><a class="dropdown-item" href="blog-single-fullwidth.html">Fullwidth</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
+                    <c:if test="${sessionScope.customer.customer_ID!=null}">
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            User<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
+                        </ul>
+                    </li>
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
-                        <a href="submit-property.html" class="button">
+                        <!-- <a href="submitProperty" class="button"> 
+                            Submit Property
+                        </a> -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+</c:if>
+<!-- Main header end (소비자)-->
+
+<!-- Main header start (기업>-->
+<c:if test="${sessionScope.enterpriseLoginID!=null}">
+<header class="main-header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="goHome">
+                    <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown active">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Profile<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                              <li><a href="enterpriseMyProfile">User profile</a></li>
+                              <li><a href="myproperties">My Properties</a></li>
+                              <li><a href="submitProperty">Submit New Property</a></li>
+                              <li><a href="goprofilepassword">Forgot Password</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Reservation<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="reservationwait">Reservation Wait</a></li> 
+                            <li><a href="reservationcomplete">Reservation Complete</a></li>
+                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>     
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Board<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goEnterpriseboard">EnterpriseBoard</a></li> 
+                        </ul>
+                    </li>
+                     <li class="dropdown">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            Map<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="goFullMap">Map</a></li> 
+                        </ul>
+                    </li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right rightside-navbar">
+                    <li>
+                        <a href="submitProperty" class="button"> 
                             Submit Property
                         </a>
                     </li>
@@ -287,7 +270,9 @@
         </nav>
     </div>
 </header>
-<!-- Main header end -->
+</c:if>
+<!-- Main header end (기업)-->
+<!-- header 시작ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
 
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
@@ -296,7 +281,7 @@
             <div class="breadcrumb-area">
                 <h1>Favorited Properties</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html"></a></li>
                     <li class="active">Favorited Properties</li>
                 </ul>
             </div>
@@ -312,53 +297,16 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <!-- User account box start -->
                 <div class="user-account-box">
-                    <div class="header clearfix">
-                        <div class="edit-profile-photo">
-                            <img src="http://placehold.it/150x150" alt="agent-1" class="img-responsive">
-                            <div class="change-photo-btn">
-                                <div class="photoUpload">
-                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                    <input type="file" class="upload">
-                                </div>
-                            </div>
-                        </div>
-                        <h3>John Doe</h3>
-                        <p>johndoe@gmail.com</p>
-
-                        <ul class="social-list clearfix">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="google">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="rss">
-                                    <i class="fa fa-rss"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
                     <div class="content">
                         <ul>
                             <li>
                                 <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
                                     <i class="flaticon-social"></i>Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="goCustomerboard?customer_ID=${sessionScope.customer.customer_ID}">
+                                    <i class="flaticon-monitor"></i>Customer board
                                 </a>
                             </li>
                             <li>
@@ -420,23 +368,7 @@
 </div>
 <!-- My Propertiess end -->
 
-<!-- Intro section strat -->
-<div class="intro-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <img src="img/logos/logo-2.png" alt="logo-2">
-            </div>
-            <div class="col-md-7 col-sm-6 col-xs-12">
-                <h3>Looking To Sell Or Rent Your Property?</h3>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-12">
-                <a href="submit-property.html" class="btn button-md button-theme">Submit Now</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Intro section end -->
+<!-- Footer 시작 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
 <!-- Footer start -->
 <footer class="main-footer clearfix">
@@ -451,29 +383,29 @@
                             <h1>Contact Us</h1>
                         </div>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
+                            SCITMASTERS, 36rd C class Group no.3,
                         </p>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                                Address: 코엑스 4층 SCIT 교육센터
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                                Email:<a href="sjydiablo@naver.com">sjydiablo@naver.com</a>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+82-00-0000-0000">+82-00-0000-0000</a>
                             </li>
                             <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
+                                <!-- <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071 -->
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- <!-- Links -->
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
@@ -481,28 +413,19 @@
                         </div>
                         <ul class="links">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="goHome">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
+                                <a href="searchItem3">Advanced Search</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Blog</a>
+                                 <a href="goCustomerboard">Q&A</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="properties-list-rightside.html">properties Listing</a>
-                            </li>
-                            <li>
-                                <a href="properties-grid-rightside.html">properties Grid</a>
-                            </li>
-                            <li>
-                                <a href="properties-details.html">properties Details</a>
+                            	<a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a>
                             </li>
                         </ul>
                     </div>
@@ -513,21 +436,22 @@
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -554,11 +478,12 @@
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
                             <h1>Subscribe</h1>
@@ -580,12 +505,14 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </footer>
 <!-- Footer end -->
+
+<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
 
 <!-- Copy right start -->
 <div class="copy-right">

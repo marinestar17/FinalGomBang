@@ -1439,7 +1439,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
+                    <!-- <li>
                         <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
@@ -1463,7 +1463,7 @@ pageEncoding="UTF-8"%>
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

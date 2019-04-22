@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.GomBang.DAO.CustomerDAO;
+import com.project.GomBang.DAO.EnterpriseDAO;
 import com.project.GomBang.VO.Bookmark;
 import com.project.GomBang.VO.Customer;
 import com.project.GomBang.VO.CustomerComment;
@@ -33,7 +34,8 @@ public class CustomerController {
 
      @Autowired
 	 CustomerDAO dao;
-   //EnterpriseDAO dao1;
+     @Autowired
+      EnterpriseDAO dao1;
      
      @RequestMapping(value="/goCustomerPage",method=RequestMethod.GET)
   	public String goCustomerPage() {
@@ -50,7 +52,9 @@ public class CustomerController {
  	public String signup(Customer c,Model model,HttpSession session) {
  		
  		dao.signup(c);
- 		
+ 		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
  		return "index-14";
  	}
  	
@@ -73,11 +77,13 @@ public class CustomerController {
 		
 		Customer cu=dao.login(c);
 		System.out.println(cu);
-		
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		if(cu!=null) {
 			session.setAttribute("customerLoginID",c.getCustomer_ID());
 			session.setAttribute("customer",cu);
-			return"index-14";
+			popularlist=dao1.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
+			return "index-14";
 		}else {
 			model.addAttribute("message","아이디나 비밀번호가 틀렸습니다");
 			//return "customer/customerLogingo";
@@ -85,10 +91,9 @@ public class CustomerController {
 	            PrintWriter out = response.getWriter();
 	            out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");
 	            out.flush();
-
 		}
-	    
 		return "customer/customerLogingo";
+		
 	}
 	@RequestMapping(value="/customerLogingo",method=RequestMethod.GET)
 	public String logingo() {
@@ -96,13 +101,18 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/customerLogout",method=RequestMethod.GET)
-	public String logout(HttpSession session) {
+	public String logout(HttpSession session, Model model) {
 		session.invalidate();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlista",popularlist.get(0).getSaveName());
+        model.addAttribute("popularlistb",popularlist.get(1).getSaveName());
 		return "index-14";
 	}
 	
 	@RequestMapping(value="/customerModify",method=RequestMethod.POST)
-	public  String modify(Customer c, HttpSession session) {
+	public  String modify(Customer c, HttpSession session, Model model) {
 		/*String id=(String) session.getAttribute("customerLoginID");*/
 	
 	   try {
@@ -112,6 +122,9 @@ public class CustomerController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	    ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		
 		return "index-14";
 	}
@@ -133,9 +146,12 @@ public class CustomerController {
 	@RequestMapping(value = "/enterpriseListCheck", method = RequestMethod.GET)
 	public String enterpriseListCheck(Model model) {
 		ArrayList<Enterprise> eList = new ArrayList<Enterprise>();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		try {
 			eList = dao.customerEnterpriseList();
 			model.addAttribute("customerEnterpriseList", eList);
+			popularlist=dao1.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -170,6 +186,7 @@ public class CustomerController {
 	@RequestMapping(value="/customerBoardlist", method= {RequestMethod.GET, RequestMethod.POST})
 	public String customerBoardlist(Model model, Customerboard cboard) {
 		ArrayList<Customerboard> result = null;
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		result = dao.customerBoardlist();
 		if (result == null) {
 			return "customer/customerBoardGo";
@@ -186,7 +203,8 @@ public class CustomerController {
 			    System.out.println(matcher.group(4));
 			} 
 		}
-		
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		model.addAttribute("cbList", result);
 		return "customer/customerBoardGo";
 	}
@@ -199,6 +217,7 @@ public class CustomerController {
 		} catch (Exception e) {
 			return "redirect:/customerBoardlist";
 		}
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		Customerboard result = null;
 		dao.countCustomerboard(customerBoard_Seq);
 		result = dao.selectCustomerboard(customerBoard_Seq);
@@ -206,6 +225,8 @@ public class CustomerController {
 			return "redirect:/customerBoardlist";
 		}
 		model.addAttribute("customerBoard", result);
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 				
 		customerCommentList3(CustomerComment, model);
 				
@@ -220,11 +241,14 @@ public class CustomerController {
 		} catch (Exception e) {
 			return "redirect:/customer/selectedCustomerboard";
 		}
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		Customerboard result = null;
 		result = dao.selectCustomerboard(customerBoard_Seq);
 		if (result == null) {
 			return "redirect:/customer/selectedCustomerboard";
 		}
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		model.addAttribute("customerBoard", result);
 		return "customer/remakeCustomerboard";
 	}
@@ -247,7 +271,10 @@ public class CustomerController {
 		Item item = null;
 		item = dao.customerItemDetail(forSale_Seq);
 		String seq = Integer.toString(forSale_Seq);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		dao.itemHitCountUp(seq);
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		model.addAttribute("detailItem", item);
 		return "customer/properties-details";
 	}
@@ -288,6 +315,7 @@ public class CustomerController {
 					ArrayList<Image> imagelist = new ArrayList<Image>();
 					ArrayList<Image> searchImgList = new ArrayList<Image>();
 					ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
+					ArrayList<Total> popularlist=new ArrayList<Total>();
 					list = dao.searchItem(item);
 					for (Item item2 : list) {
 						imagelist = dao.detailImg(item2.getForSale_Seq());
@@ -301,6 +329,8 @@ public class CustomerController {
 					model.addAttribute("searchItemList", list);
 					model.addAttribute("searchImgList", searchImgList);
 					model.addAttribute("threeImgList", threeImgList);
+					popularlist=dao1.popularproperties();
+			        model.addAttribute("popularlist",popularlist);
 					/*return "customer/properties-list-rightside";*/
 					return "customer/properties-list-rightside";
 				}
@@ -321,6 +351,7 @@ public class CustomerController {
 			ArrayList<Image> imagelist = new ArrayList<Image>();
 			ArrayList<Image> searchImgList = new ArrayList<Image>();
 			ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
+			ArrayList<Total> popularlist=new ArrayList<Total>();
 			list = dao.searchItem(item);
 			for (Item item2 : list) {
 				imagelist = dao.detailImg(item2.getForSale_Seq());
@@ -334,6 +365,8 @@ public class CustomerController {
 			model.addAttribute("searchItemList", list);
 			model.addAttribute("searchImgList", searchImgList);
 			model.addAttribute("threeImgList", threeImgList);
+			popularlist=dao1.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
 			/*return "customer/properties-list-rightside";*/
 			return "customer/properties-list-rightside";
 		}
@@ -353,6 +386,7 @@ public class CustomerController {
 					ArrayList<Image> imagelist = new ArrayList<Image>();
 					ArrayList<Image> searchImgList = new ArrayList<Image>();
 					ArrayList<ArrayList<Image>> threeImgList = new ArrayList<ArrayList<Image>>();
+					ArrayList<Total> popularlist=new ArrayList<Total>();
 					list = dao.searchItem(item);
 					for (Item item2 : list) {
 						imagelist = dao.detailImg(item2.getForSale_Seq());
@@ -366,6 +400,8 @@ public class CustomerController {
 					model.addAttribute("searchItemList", list);
 					model.addAttribute("searchImgList", searchImgList);
 					model.addAttribute("threeImgList", threeImgList);
+					popularlist=dao1.popularproperties();
+			        model.addAttribute("popularlist",popularlist);
 					/*return "customer/properties-list-rightside";*/
 					return "customer/lots";
 				}
@@ -373,7 +409,9 @@ public class CustomerController {
 	//게시판 등록페이지 이동
 	@RequestMapping(value="/makeCustomerboard", method=RequestMethod.GET)
 	public String makeCustomerboard(CustomerComment CustomerComment, Model model) {
-		
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 		return "customer/makeCustomerboard";
 	}
 	
@@ -382,12 +420,16 @@ public class CustomerController {
 	public String inserCustomerComment(CustomerComment CustomerComment, Model model) {
 		int result = 0;
 		result = dao.insertCustomerComment(CustomerComment);
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		
 		if (result == 0) {
 			System.out.println("11111111");
 			return "customer/customerBoardDetail";
 		}
 
 		customerCommentList2(CustomerComment, model);
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
 
 		return "customer/commentFragment";
 	}
@@ -414,11 +456,16 @@ public class CustomerController {
 	@RequestMapping(value="/customerCommentList", method=RequestMethod.GET)
 	public String customerCommentList(CustomerComment CustomerComment, Model model) {
 		ArrayList<CustomerComment> result2 = null;
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		
 		result2 = dao.customerCommentList(CustomerComment);
 		if (result2 == null) {
 			return "customer/customerBoardDetail";
 		}
 		model.addAttribute("customerCommentList", result2);
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        
 		return "customer/commentFragment";
 	}
 	
@@ -434,7 +481,10 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/goFullMap",method=RequestMethod.GET)
- 	public String goFullMap() {
+ 	public String goFullMap(Model model) {
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
  		
  		return "customer/properties-map-full";
  	}
@@ -497,9 +547,13 @@ public class CustomerController {
 	@RequestMapping(value = "/customerMyProfile", method = RequestMethod.GET)
 	public String customerMyProfile(String customer_ID, Model model) {
 		Customer c = new Customer();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		
 		try {
 			c = dao.customerProfile(customer_ID);
 			model.addAttribute("customerProfile", c);
+			popularlist=dao1.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -511,11 +565,14 @@ public class CustomerController {
 	public String profileUpdate(Customer customer, String customer_ID, Model model) {
 		int result = 0;
 		Customer c = new Customer();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		try {
 			result = dao.profileUpdate(customer);
 			if (result == 1) {
 				c = dao.customerProfile(customer_ID);
 				model.addAttribute("customerProfile", c);
+				popularlist=dao1.popularproperties();
+		        model.addAttribute("popularlist",popularlist);
 				return "customer/customerMyProfile";
 			} else {
 				return null;
@@ -528,7 +585,11 @@ public class CustomerController {
 	
 	//프로필 화면 - 비밀번호 변겅으로 이동
 	@RequestMapping(value = "/profilePassword", method = RequestMethod.GET)
-	public String profliePassword() {
+	public String profliePassword(Model model) {
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		popularlist=dao1.popularproperties();
+        model.addAttribute("popularlist",popularlist);
+        
 		return "customer/customerProfilePassword";
 	}
 	
@@ -537,12 +598,16 @@ public class CustomerController {
 	public String profilePasswordUpdate(Customer customer,String customer_ID, Model model,HttpSession session) {
 		int result = 0;
 		Customer c = new Customer();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		
 		try {
 			result = dao.profilePasswordUpdate(customer);
 			if (result == 1) {
 				c = dao.customerProfile(customer_ID);
 				session.setAttribute("customer", c);
 				model.addAttribute("customerProfile", c);
+				popularlist=dao1.popularproperties();
+		        model.addAttribute("popularlist",popularlist);
 				return "customer/customerMyProfile";
 			} else {
 				return null;
@@ -557,9 +622,13 @@ public class CustomerController {
 	@RequestMapping(value = "/favoritedList", method = RequestMethod.GET)
 	public String favoritedList(String customer_ID, Model model) {
 		ArrayList<Total> tList = new ArrayList<Total>();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
+		
 		try {
 			tList = dao.customerBookmarkList(customer_ID);
 			model.addAttribute("customerBookmarkList", tList);
+			popularlist=dao1.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -570,9 +639,12 @@ public class CustomerController {
 	@RequestMapping(value = "/reservationList", method = RequestMethod.GET)
 	public String reservationList(String customer_ID, Model model) {
 		ArrayList<Total> tList = new ArrayList<Total>();
+		ArrayList<Total> popularlist=new ArrayList<Total>();
 		try {
 			tList = dao.customerReservationList(customer_ID);
 			model.addAttribute("customerReservationList", tList);
+			popularlist=dao1.popularproperties();
+	        model.addAttribute("popularlist",popularlist);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
