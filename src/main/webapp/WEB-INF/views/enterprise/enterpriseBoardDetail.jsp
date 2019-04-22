@@ -292,18 +292,23 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <!-- Header -->
+                <div class="heading-properties clearfix sidebar-widget" style="margin-bottom:0px;">
+                    <div class="pull-left">
+                    	<h3 style="font-size:40px;"><span>방제목 : </span>${enterpriseBoard.enterpriseBoard_Title}</h3>
+                    </div>
+                </div>
                 <div class="heading-properties clearfix sidebar-widget">
-                    <div class="pull-left">
-                    	<h3><span>방번호 : </span>${enterpriseBoard.enterpriseBoard_Seq}</h3>
+                    <div class="pull-right" style="float:left! important;">
+                    	<h3 style="font-size:15px; margin-right:20px;"><span>방번호 : </span>${enterpriseBoard.enterpriseBoard_Seq}</h3>
                     </div>
-                    <div class="pull-left">
-                    	<h3><span>방제목 : </span>${enterpriseBoard.enterpriseBoard_Title}</h3>
-                    	<h3><span>작성자 : </span>${enterpriseBoard.enterprise_ID}</h3>
+                    <div class="pull-right" style="float:left! important;">
+                    	<h3 style="font-size:15px; margin-right:20px;"><span>작성자 : </span>${enterpriseBoard.enterprise_ID}</h3>
                     </div>
-                    <div class="pull-right">
-                    	<h3><span>방 생성시간 : </span>${enterpriseBoard.enterpriseBoard_Indate}</h3>
-                        <h3><span>조회수 : </span>${enterpriseBoard.enterpriseBoard_HitCount}</h3>
-                        
+                    <div class="pull-right" style="float:left! important;">
+                    	<h3 style="font-size:15px; margin-right:20px;"><span>방 생성시간 : </span>${enterpriseBoard.enterpriseBoard_Indate}</h3>
+                    </div>
+                    <div class="pull-right" style="float:left! important;">
+                        <h3 style="font-size:15px;"><span>조회수 : </span>${enterpriseBoard.enterpriseBoard_HitCount}</h3> 
                     </div>
                 </div>
                 <!-- Properties details section start -->
@@ -1378,7 +1383,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
 <script>
 $("#submitReply2").on("click",function(){
-	alert("!!");
 	$.ajax({
 		
 		url:"insertEnterpriseComment",
