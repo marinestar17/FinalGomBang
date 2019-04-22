@@ -102,7 +102,6 @@ pageEncoding="UTF-8"%>
     	function searchItem(){/* 
     		$("#searchItemForm").submit();
     		 */
-    		
     		$.ajax({
     			url:"searchItem2",
     			data:{
@@ -115,8 +114,8 @@ pageEncoding="UTF-8"%>
     				max_distance:$("input[name=max_distance]").val(),
     				max_price:$("input[name=max_price]").val(),
     				min_price:$("input[name=min_price]").val(),
+					enterprise_ID:$("#searchEnterprise").val(),    				
     				forSale_OptionA:$('input[name=forSale_OptionA]:checked').val(),
-    				
     				forSale_OptionB:$('input[name=forSale_OptionB]:checked').val(),
     				forSale_OptionC:$('input[name=forSale_OptionC]:checked').val(),
     				forSale_OptionD:$('input[name=forSale_OptionD]:checked').val(),
@@ -226,6 +225,14 @@ pageEncoding="UTF-8"%>
 		display:block;
 
 	}
+	#searchEnterprise{
+		width:100%;
+		height:44px;
+		border: 1px solid #e0e0e0;
+		color: #999;
+		display:block;
+		padding : 0 0 0 10px;
+	}
     </style>
 </head>
 <body>
@@ -303,7 +310,7 @@ pageEncoding="UTF-8"%>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -319,7 +326,7 @@ pageEncoding="UTF-8"%>
                             <li><a href="goFullMap">Map FullWidth</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             	Search<span class="caret"></span>
                         </a>
@@ -450,7 +457,7 @@ pageEncoding="UTF-8"%>
             <div class="breadcrumb-area">
                 <h1>Advanced Search</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="goHome"></a></li>
+                    <li><a href="goHome">Home</a></li>
                     <li class="active">Advanced Search</li>
                 </ul>
             </div>
@@ -679,6 +686,12 @@ pageEncoding="UTF-8"%>
                             <i class="fa fa-plus-circle"></i> Show More Options
                         </a>
                         <div id="options-content" class="collapse">
+                        	<div class="form-group">
+                        		<div style="margin-left: 5px;">
+                            	<input type="text" class="input-text" id="searchEnterprise" name="enterprise_ID" placeholder="기업명">
+                            	</div>
+                            </div>
+                        
                             <label class="margin-t-10">Features</label>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="에어컨">
@@ -716,6 +729,7 @@ pageEncoding="UTF-8"%>
                                    	 주차장
                                 </label>
                             </div>
+                            
                         </div>
 
                         <div class="form-group mb-0">

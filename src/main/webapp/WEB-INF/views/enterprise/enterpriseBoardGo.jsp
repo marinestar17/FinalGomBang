@@ -72,18 +72,18 @@ $(function(){
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="list-inline">
-                    <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
+                   <!--  <a href="tel:1-8X0-666-8X88"><i class="fa fa-phone"></i>1-8X0-666-8X88</a>
+                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a> -->
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <ul class="top-social-media pull-right">
-                    <c:if test="${sessionScope.customerLoginID==null && sessionScope.enterpriseLoginID==null}">
+                   <c:if test="${sessionScope.enterpriseLoginID==null}">
                     <li>
-                        <a href="enterpriseLogingo" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                        <a href="customerLogingo" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
                     <li>
-                        <a href="enterpriseSignupgo" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                        <a href="customerSignupgo" class="sign-in"><i class="fa fa-user"></i> Register</a>
                     </li>
                     </c:if>
                     <c:if test="${sessionScope.enterpriseLoginID!=null}">
@@ -91,7 +91,10 @@ $(function(){
                         <a href="enterpriseLogout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                     </li>
                     <li>
-                        <a href="enterpriseSignupgo" class="sign-in"><i class="fa fa-user"></i>Enterprise Modify</a>
+                        <a href="goUpdate?enterprise_ID=${sessionScope.enterpriseLoginID}" class="sign-in"><i class="fa fa-user">
+                        
+                        </i> Enterprise Modify
+                        </a>
                     </li>
                     </c:if>
                 </ul>
@@ -112,14 +115,14 @@ $(function(){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="index.html" class="logo">
-                    <img src="resources/user/img/logos/logo.png" alt="logo">
+                <a href="goHome">
+                   <img src="/GomBang/img/gombangLogo.png" style="margin-right:50px;padding:19px 0;">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+            <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Profile<span class="caret"></span>
                         </a>
@@ -137,10 +140,10 @@ $(function(){
                         <ul class="dropdown-menu">
                             <li><a href="reservationwait">Reservation Wait</a></li> 
                             <li><a href="reservationcomplete">Reservation Complete</a></li> 
-                            <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>   
+                             <li><a href="tradeCompleteList?enterprise_ID=${sessionScope.enterpriseLoginID}">Trade complete</a></li>  
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Board<span class="caret"></span>
                         </a>
@@ -175,10 +178,9 @@ $(function(){
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>Customer Board</h1>
+                <h1>Enterprise Board</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Customer Board</li>
+                   
                 </ul>
             </div>
         </div>
@@ -193,48 +195,7 @@ $(function(){
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <!-- User account box start -->
                 <div class="user-account-box">
-                    <div class="header clearfix">
-                        <div class="edit-profile-photo">
-                            <img src="http://placehold.it/150x150" alt="agent-1" class="img-responsive">
-                            <div class="change-photo-btn">
-                                <div class="photoUpload">
-                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                    <input type="file" class="upload">
-                                </div>
-                            </div>
-                        </div>
-                        <h3>John Doe</h3>
-                        <p>johndoe@gmail.com</p>
-
-                        <ul class="social-list clearfix">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="google">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="rss">
-                                    <i class="fa fa-rss"></i>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
+                 
                     <div class="content">
                        
                  <ul>
@@ -264,7 +225,7 @@ $(function(){
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
+                                <a href="submitProperty">
                                     <i class="fa fa-plus"></i>Submit New Property
                                 </a>
                             </li>
@@ -350,23 +311,7 @@ $(function(){
 </div>
 <!-- My Propertiess end -->
 
-<!-- Intro section strat -->
-<div class="intro-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <img src="resources/user/img/logos/logo-2.png" alt="logo-2">
-            </div>
-            <div class="col-md-7 col-sm-6 col-xs-12">
-                <h3>Looking To Sell Or Rent Your Property?</h3>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-12">
-                <a href="submit-property.html" class="btn button-md button-theme">Submit Now</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Intro section end -->
+
 
 <!-- Footer start -->
 <footer class="main-footer clearfix">
@@ -381,29 +326,29 @@ $(function(){
                             <h1>Contact Us</h1>
                         </div>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
+                            SCITMASTERS, 36rd C class Group no.3,
                         </p>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 20/F Green Road, Dhanmondi, Dhaka
+                                Address: 코엑스 4층 SCIT 교육센터
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                Email:<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                                Email:<a href="sjydiablo@naver.com">sjydiablo@naver.com</a>
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
-                                Phone: <a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+                                Phone: <a href="tel:+82-00-0000-0000">+82-00-0000-0000</a>
                             </li>
                             <li>
-                                <i class="fa fa-fax"></i>
-                                Fax: +55 4XX-634-7071
+                                <!-- <i class="fa fa-fax"></i>
+                                Fax: +55 4XX-634-7071 -->
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- Links -->
+                <!-- <!-- Links -->
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
@@ -411,10 +356,10 @@ $(function(){
                         </div>
                         <ul class="links">
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="goHome">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About Us</a>
+                                <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact Us</a>
@@ -443,21 +388,22 @@ $(function(){
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -484,11 +430,12 @@ $(function(){
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-item">
                         <div class="main-title-2">
                             <h1>Subscribe</h1>
@@ -510,7 +457,7 @@ $(function(){
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -522,17 +469,17 @@ $(function(){
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
                     <li>
-                        <a href="#" class="facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>

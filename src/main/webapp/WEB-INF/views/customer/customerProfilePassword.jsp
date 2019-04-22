@@ -141,7 +141,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -174,7 +174,7 @@
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    <c:if test="${sessionScope.customer.customer_ID!=null}">
+                    
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Information<span class="caret"></span>
@@ -192,7 +192,7 @@
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    </c:if>
+                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>

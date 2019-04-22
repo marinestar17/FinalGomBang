@@ -320,6 +320,10 @@ WHERE
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>
+		<if test="enterprise_ID!=''">
+		AND
+		ENTERPRISE_ID=#{enterprise_ID}
+		</if>
 </select>
 
 <!-- 물품 검색 -->
@@ -402,6 +406,10 @@ WHERE
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>
+		<if test="enterprise_ID!=null">
+		AND
+		ENTERPRISE_ID==#{enterprise_ID}
+		</if>
 		<!-- 
 		AND
 		GEOAPI_PREFECTURES=#{geoapi_prefectures}
@@ -410,7 +418,7 @@ WHERE
 		AND
 		GEOAPI_TOWNS=#{geoapi_towns}
 		 -->
-		ORDER BY FORSALE_INDATE DESC; 
+		ORDER BY FORSALE_INDATE DESC 
 </select>
 
 <!-- 고객 댓글 입력 -->
@@ -571,6 +579,8 @@ WHERE
 		,TO_CHAR(RESERVATION_INDATE, 'YYYY-MM-DD') RESERVATION_INDATE
 		,RESERVATION_COMPLETE
 		,RESERVATION_SEQ
+		,F.FORSALE_TRADECUSTOMER
+		,R.CUSTOMER_ID
 	FROM
 		FORSALE F, RESERVATION R
 	WHERE
@@ -646,6 +656,7 @@ WHERE
 		,ENTERPRISE_MANAGEREMAIL
 		,ENTERPRISE_MANAGERPHONE
 		,ENTERPRISE_CODE
+		,ENTERPRISE_ID
 	FROM
 		ENTERPRISE
 	WHERE
@@ -656,4 +667,24 @@ WHERE
 		ENTERPRISE_CODE DESC
 </select>
 
+<!--손님이 기업 상세 보기 -->
+<select id="customerEnterpriseDetail" parameterType = "String" resultType = "Enterprise">
+	SELECT
+		ENTERPRISE_ID
+		,ENTERPRISE_NAME
+		,ENTERPRISE_ADDRESS
+		,ENTERPRISE_REGINUM
+		,ENTERPRISE_MANAGERNAME
+		,ENTERPRISE_MANAGERPHONE
+		,ENTERPRISE_MANAGEREMAIL
+		,ENTERPRISE_ETC
+		,ENTERPRISE_CODE
+		,ENTERPRISE_INDATE
+	FROM
+		ENTERPRISE
+	WHERE
+		ENTERPRISE_ID = #{enterprise_ID}
+	AND
+		ENTERPRISE_PERMISSION = 'Y'
+</select>
 </mapper>

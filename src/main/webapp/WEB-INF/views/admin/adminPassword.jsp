@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Forgot Password | AdminBSB - Sensitive</title>
+   <title>GomBang - Administrator</title>
     <!-- Favicon -->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
  

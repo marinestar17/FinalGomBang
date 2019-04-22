@@ -176,7 +176,7 @@
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    <c:if test="${sessionScope.customer.customer_ID!=null}">
+                    
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Information<span class="caret"></span>
@@ -194,7 +194,7 @@
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    </c:if>
+                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -377,7 +377,7 @@
 	                                                            예약 완료! 
 	                         </td>
 	                        </c:if>
-	                         <c:if test="${item.reservation_Complete eq 'Y' && item.forSale_Trade eq 'Y' }">
+	                         <c:if test="${item.forSale_TradeCustomer eq item.customer_ID}">
 	                         <td class="action">
 	                                                           거래 완료! 
 	                         </td>

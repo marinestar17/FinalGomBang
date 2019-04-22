@@ -310,7 +310,7 @@
                     <div class="col-lg-7 col-md-7 col-sm-8 agent-content">
                         <h5>기업:${item.enterprise_Name }</h5>
                         <h3>
-                           	 매니저:<a href="#">${item.enterprise_ManagerName }</a>
+                           	 매니저:<a href="enterpriseDetailCheck?enterprise_ID=${item.enterprise_ID }">${item.enterprise_ManagerName }</a>
                         </h3>
                         <ul>
                             <li>

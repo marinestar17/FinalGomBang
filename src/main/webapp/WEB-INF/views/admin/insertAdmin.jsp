@@ -12,7 +12,7 @@
     <title>관리자 추가 | GomBangAdministrator</title>
     </c:if>
     <c:if test="${sessionScope.admin != null}">
-    <title>관리자 개인정보 수정| GomBangAdministrator</title>
+   <title>GomBang - Administrator</title>
     </c:if>
     
     <!-- Favicon -->
