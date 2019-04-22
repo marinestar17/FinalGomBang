@@ -461,6 +461,10 @@
                                <div class="stats">${allReservation}건</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
                                <p><font color="#050099">예약 수</font></p>
+                               
+                               <div class="stats">${allTrade}건</div>
+                                <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
+                               <p><font color="#F15F5F">거래 완료 수</font></p>
                             </div>
                         </div>
                     </div>

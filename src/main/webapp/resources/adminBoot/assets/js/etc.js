@@ -366,7 +366,6 @@
         table+='<thead><tr>';
         table+='<th>#</th>';
         table+='<th>ID</th>';  
-        table+='<th>TAG</th>';  
         table+='<th>TITLE</th>';
         table+='<th>INDATE</th>';
         table+='<th>HITCOUNT</th>';
@@ -376,7 +375,6 @@
         $.each(list,function(index,item){
         	 table+='<td>'+item.enterpriseBoard_Seq +'</td>';
         	 table+='<td>'+item.enterprise_ID +'</td>';
-        	 table+='<td>'+item.enterpriseBoard_Tag+'</td>';
         	 table+='<td><a href="adminEnterpriseBoardDetail?enterpriseBoard_Seq='+item.enterpriseBoard_Seq+'">'+item.enterpriseBoard_Title  +'</a></td>';
         	 table+='<td>'+item.enterpriseBoard_Indate  +'</td>';
         	 table+='<td>'+item.enterpriseBoard_HitCount  +'</td>';
@@ -389,7 +387,6 @@
         table+='<select class="selectpicker form-control show-tick show3">';
         table+='<option value="enterprise_ID">ID로 검색</option>';
         table+='<option value="enterpriseBoard_Title">제목으로 검색</option>';
-        table+='<option value="enterpriseBoard_Tag">태그로 검색</option>';
         table+='<option value="enterpriseBoard_Indate">날짜로 검색</option>';
         table+='<option value="enterpriseBoard_AdminCheck">체크 여부로 검색</option>';
         table+='</select></div>';

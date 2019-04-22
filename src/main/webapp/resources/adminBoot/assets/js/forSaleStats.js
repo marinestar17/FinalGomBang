@@ -4,6 +4,8 @@
     	countForSaleRent();
     	countHouseType();
     	enterpriseItemCount();
+    	bestItemCity();
+    	shikirei();
         //Init line chart
       /*  function initLineChart() {
             Morris.Line({
@@ -73,16 +75,70 @@
     			$.each(list, function(index,item){
     				data.push({ y: item.enterprise_ID, a:item.stats_Count});
     			}) //each
-    			console.log(data);
     				Morris.Bar({
     	                element: 'bar_chart',
     	                data:data,
     	                xkey: 'y',
     	                ykeys: ['a'],
-    	                labels: ['등록수'],
+    	                labels: ['최대 매물 수'],
     	                barColors: ['#f6b225']
     	            });
     		} //success 
+    	});
+    }
+    
+    function bestItemCity(){
+    	var data = [];
+    	$.ajax({
+    		url:"bestItemCity"
+    		,data:{}
+    		,type:"get"
+    		,success:function(list){
+    			$.each(list,function(index,item){
+    				data.push({y:item.geoapi_cities, a:item.stats_Count});
+    			})
+    			Morris.Bar({
+	                element: 'bar_chart2',
+	                data:data,
+	                xkey: 'y',
+	                ykeys: ['a'],
+	                labels: ['최대 매물 수'],
+	                barColors: ['#6B9900']
+	            });
+    		}
+    	});
+    }
+    
+    function shikirei(){
+    	var all = 0;
+    	var deposit = 0;
+    	var reward = 0;
+    	var no = 0;
+    	
+    	$.ajax({
+    		url:"countShikiRei"
+    		,data:{}
+    		,type:"get"
+    		,success:function(hMap){
+    			all = hMap["ALL_ZERO"];
+    			no = hMap["NO_ZERO"];
+    			deposit = hMap["D_ZERO"];
+    			reward = hMap["R_ZERO"];
+    			
+    			Morris.Donut({
+                    element: 'donut_chart3',
+                    data: [
+                        { label: '둘 다 0', value: all },
+                        { label: '시키킹=0', value: reward },
+                        { label: '레이킹=0', value: deposit },
+                        { label: '둘 다 존재', value: no },
+                    ],
+                    colors: ['#F2CB61', '#670000' , '#A566FF' , '#0054FF'],
+                    formatter: function (y) {
+                        return y + '개';
+                    }
+                });
+    		}
     	});
     }
     //Init donut chart - 기업 분류별 통계

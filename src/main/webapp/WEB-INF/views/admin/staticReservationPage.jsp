@@ -54,15 +54,6 @@
         <header>
             <nav class="navbar navbar-default">
                 <!-- Search Bar -->
-                <div class="search-bar">
-                    <div class="search-icon">
-                        <i class="material-icons">search</i>
-                    </div>
-                    <input type="text" placeholder="Start typing...">
-                    <div class="close-search js-close-search">
-                        <i class="material-icons">close</i>
-                    </div>
-                </div>
                 <!-- #END# Search Bar -->
 
                 <div class="container-fluid">
@@ -90,18 +81,8 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <!-- Call Search -->
-                            <li>
-                                <a href="javascript:void(0);" class="js-search" data-close="true">
-                                    <i class="material-icons">search</i>
-                                </a>
-                            </li>
                             <!-- #END# Call Search -->
                             <!-- Fullscreen Request -->
-                            <li>
-                                <a href="javascript:void(0);" class="fullscreen js-fullscreen">
-                                    <i class="material-icons">fullscreen</i>
-                                </a>
-                            </li>
                             <!-- #END# Fullscreen Request -->
                             <!-- Email -->
                             <li class="dropdown email-menu">
@@ -395,11 +376,11 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>기업 통계</h1>  
+                <h1>예약 통계</h1>  
                 <ol class="breadcrumb">
                     <li><a href="GomBangAdmin">메인화면</a></li>
                     <li><a href="javascript:void(0);">통계자료</a></li>
-                    <li class="active">기업 유형별</li>
+                    <li class="active">예약</li>
                 </ol>
             </div>
             <div class="page-body">

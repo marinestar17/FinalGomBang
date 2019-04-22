@@ -287,6 +287,7 @@
 			,(SELECT COUNT(*) FROM ENTERPRISE) AS E_COUNT
 			,(SELECT COUNT(*) FROM FORSALE) AS F_COUNT 
 			,(SELECT COUNT(*) FROM RESERVATION) AS R_COUNT
+			,(SELECT COUNT(*) FROM FORSALE WHERE FORSALE_TRADE = 'Y') AS T_COUNT
 		FROM
 			DUAL
 	</select>
@@ -455,6 +456,28 @@
 		)
 		WHERE
 			10 > ROWNUM
+	</select>
+	
+	<!-- 메인 페이지 통계  - 년도:거래완료 수 -->
+	<select id="mainPageTrade" resultType = "Item">
+		SELECT
+			STATS_COUNT
+			,EX AS FORSALE_TRADEINDATE
+		FROM(
+			SELECT
+				COUNT(*) AS stats_Count
+				,TO_CHAR(FORSALE_TRADEINDATE, 'YYYY-MM')AS EX
+			FROM
+				FORSALE
+			WHERE
+				FORSALE_TRADE = 'Y'
+			GROUP BY
+				TO_CHAR(FORSALE_TRADEINDATE, 'YYYY-MM')
+			ORDER BY
+				TO_CHAR(FORSALE_TRADEINDATE, 'YYYY-MM')
+		)
+		WHERE
+			10> ROWNUM
 	</select>
 	
 	<!--관리자 간편 게시판 등록 -->
@@ -834,7 +857,7 @@
 			AND
 				FORSALE_REWARD = 0
 			AND
-				FORSALE_STATUS = 'For Rent') AS ZERO
+				FORSALE_STATUS = 'For Rent') AS ALL_ZERO
 			,(SELECT
 				COUNT(*) 
 			FROM 
@@ -845,6 +868,26 @@
 				FORSALE_REWARD != 0
 			AND
 				FORSALE_STATUS = 'For Rent') AS NO_ZERO
+			,(SELECT
+				COUNT(*) 
+			FROM 
+				FORSALE 
+			WHERE 
+				FORSALE_DEPOSIT = 0
+			AND
+				FORSALE_REWARD != 0
+			AND
+				FORSALE_STATUS = 'For Rent') AS D_ZERO
+			,(SELECT
+				COUNT(*) 
+			FROM 
+				FORSALE 
+			WHERE 
+				FORSALE_DEPOSIT != 0
+			AND
+				FORSALE_REWARD = 0
+			AND
+				FORSALE_STATUS = 'For Rent') AS R_ZERO
 		FROM
 			DUAL
 	</select>
@@ -924,5 +967,20 @@
 			R.FORSALE_SEQ = F.FORSALE_SEQ
 		AND
 			F.FORSALE_TRADE = 'Y'
+	</select>
+	
+	<!-- 매물통계 - 등록된 매물 중  많은 도시 5곳 추출하기 -->
+	<select id="bestItemCity" resultType = "Item">
+		SELECT
+			GEOAPI_CITIES
+			,COUNT(*) AS stats_Count
+		FROM
+			FORSALE
+		WHERE
+			FORSALE_TRADE = 'N'
+		AND
+			6> ROWNUM
+		GROUP BY
+			GEOAPI_CITIES
 	</select>
 </mapper>

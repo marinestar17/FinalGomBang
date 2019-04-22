@@ -63,6 +63,7 @@ public class AdminController {
 			model.addAttribute("allCustomer", hMap.get("C_COUNT"));
 			model.addAttribute("allEnterprise", hMap.get("E_COUNT"));
 			model.addAttribute("allReservation", hMap.get("R_COUNT"));
+			model.addAttribute("allTrade", hMap.get("T_COUNT"));
 			/*Iterator<String> keys = hMap.keySet().iterator();
 			while ( keys.hasNext() ) {
 			    String key = keys.next();
@@ -231,6 +232,7 @@ public class AdminController {
 		model.addAttribute("allCustomer", hMap.get("C_COUNT"));
 		model.addAttribute("allEnterprise", hMap.get("E_COUNT"));
 		model.addAttribute("allReservation", hMap.get("R_COUNT"));
+		model.addAttribute("allTrade", hMap.get("T_COUNT"));
 		httpSession.setAttribute("admin", result);
 		return "admin/adminMain2";
 	}
@@ -582,6 +584,18 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return rList;
+	}
+	
+	//메인 페이지 통계 - 거래
+	@RequestMapping(value = "/mainPageTrade", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> mainPageTrade(){
+		ArrayList<Item> iList = new ArrayList<Item>();
+		try {
+			iList = dao.mainPageTrade();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return iList;
 	}
 	
 	//관리자 간편 게시판 등록
@@ -949,4 +963,27 @@ public class AdminController {
 		return tList;
 	}
 	
+	//매물통계 - 등록된 매물 중 인기도시 5등까지 
+	@RequestMapping(value = "/bestItemCity", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> bestItemCity(){
+		ArrayList<Item> iList = new ArrayList<Item>();
+		try {
+			iList = dao.bestItemCity();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return iList;
+	}
+	
+	//매물통계 - 시키.레이킹 관련 통계
+	@RequestMapping(value = "countShikiRei", method = RequestMethod.GET)
+	public @ResponseBody HashMap<String,Integer> countShikiRei(){
+		HashMap<String,Integer> hMap = new HashMap<String, Integer>();
+		try {
+			hMap = dao.countShikiRei();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return hMap;
+	}
 }
