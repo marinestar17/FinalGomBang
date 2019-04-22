@@ -158,6 +158,19 @@ public class CustomerController {
 		return "customer/enterpriseListCheck";
 	}
 	
+	// 기업 상세 정보 페이지 이동
+	@RequestMapping(value = "/enterpriseDetailCheck", method = RequestMethod.GET)
+	public String enterpriseDetailCheck(String enterprise_ID, Model model) {
+		Enterprise enterprise = new Enterprise();
+		try {
+			enterprise = dao.customerEnterpriseDetail(enterprise_ID);
+			model.addAttribute("customerEnterpriseDetail", enterprise);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "customer/enterpriseDetailCheck";
+	}
+	
 	//게시판 이동
 		@RequestMapping(value="/goCustomerboard", method=RequestMethod.GET)
 		public String goBoard(HttpSession session) {
