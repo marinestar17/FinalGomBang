@@ -174,7 +174,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -199,7 +199,7 @@
                         </ul>
                     </li>
                     
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Q&A<span class="caret"></span>
                         </a>
@@ -319,10 +319,10 @@
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>CustomerBoard</h1>
+                <h1>Q&A BOARD</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">CustomerBoard</li>
+                    <li><a href="index.html">Q&A</a></li>
+                    <li class="active">Q&A BOARD</li>
                 </ul>
             </div>
         </div>
@@ -336,8 +336,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="notification-box">
-                    <h3>Don't Have an Account?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan.</p>
+                    <h3>Do you know GomBang?</h3>
+                    <p>Fantastic Real Estate</p>
                 </div>
             </div>
             <div class="col-md-12">
