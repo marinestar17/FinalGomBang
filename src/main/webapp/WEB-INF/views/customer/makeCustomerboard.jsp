@@ -27,13 +27,11 @@
 		
 		var customerBoard_Title = $("#customerBoard_Title").val();
 		var customerBoard_Content = CKEDITOR.instances.editor.getData();
-		var customerBoard_Tag = $("#customerBoard_Tag").val();
 		var customer_ID = $("#customer_ID").val();
 		var customerBoard = {
 				
 				"customerBoard_Title":customerBoard_Title,
 				"customerBoard_Content":customerBoard_Content,
-				"customerBoard_Tag":customerBoard_Tag,
 				"customer_ID":customer_ID
 				}
 		console.log(customerBoard);
@@ -176,7 +174,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -201,7 +199,7 @@
                         </ul>
                     </li>
                     
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Q&A<span class="caret"></span>
                         </a>
@@ -209,7 +207,7 @@
                             <li><a href="goCustomerboard">Q&A Board</a></li>
                         </ul>
                     </li>
-                    
+                    <c:if test="${sessionScope.customer.customer_ID!=null}">
                     <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Information<span class="caret"></span>
@@ -227,7 +225,7 @@
                             <li><a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a></li>
                         </ul>
                     </li>
-                    
+                    </c:if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right rightside-navbar">
                     <li>
@@ -321,10 +319,10 @@
     <div class="overlay">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>CustomerBoard</h1>
+                <h1>Q&A BOARD</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">CustomerBoard</li>
+                    <li><a href="index.html">Q&A</a></li>
+                    <li class="active">Q&A BOARD</li>
                 </ul>
             </div>
         </div>
@@ -338,8 +336,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="notification-box">
-                    <h3>Don't Have an Account?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac tortor at tellus feugiat congue quis ut nunc. Semper ac dolor vitae accumsan.</p>
+                    <h3>Do you know GomBang?</h3>
+                    <p>Fantastic Real Estate</p>
                 </div>
             </div>
             <div class="col-md-12">
@@ -357,18 +355,6 @@
 	                                <input type="text" class="input-text" id="customerBoard_Title" name="customerBoard_Title" placeholder="Board Title">
 	                            </div>
                             </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label>집 옵션</label>
-                                        <select class="selectpicker search-fields" id="customerBoard_Tag" name="customerBoard_Tag">
-											<option value="주택" >주택</option>
-											<option value="맨션" >맨션</option>
-											<option value="아파트" >아파트</option>
-											<option value="공단주택" >공단주택</option>
-											<option value="원룸" >원룸</option>
-										</select>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="main-title-2">

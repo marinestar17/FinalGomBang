@@ -307,7 +307,7 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
@@ -322,7 +322,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="profilePassword">
+                                <a href="profilePassword" class="active">
                                     <i class="flaticon-security"></i>Change Password
                                 </a>
                             </li>

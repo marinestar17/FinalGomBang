@@ -143,7 +143,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -210,20 +210,6 @@
 </c:if>
 <!-- Main header end (소비자)-->
 
-                                </ul>
-                            </li>
-                            <li class="col-lg-3 col-md-3 col-sm-6">
-                                <ul>
-                                    <li class="dropdown-header">Pages</li>
-                                    <li><a href="user-profile.html">User profile</a></li>
-                                    <li><a href="my-properties.html">My Properties</a></li>
-                                    <li><a href="favorited-properties.html">Favorited properties</a></li>
-                                    <li><a href="submit-property.html">Submit Property</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="signup.html">Signup</a></li>
-                                    <li><a href="forgot-password.html">Forgot Password</a></li>
-                                </ul>
-                            </li>
 <!-- Main header start (기업>-->
 <c:if test="${sessionScope.enterpriseLoginID!=null}">
 <header class="main-header">
@@ -323,7 +309,7 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
@@ -333,7 +319,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}">
+                                <a href="reservationList?customer_ID=${sessionScope.customer.customer_ID}" class="active">
                                     <i class="flaticon-apartment"></i>Reservation Properties
                                 </a>
                             </li>

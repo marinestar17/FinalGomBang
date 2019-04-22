@@ -143,7 +143,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             Home<span class="caret"></span>
                         </a>
@@ -309,7 +309,7 @@
                     <div class="content">
                         <ul>
                             <li>
-                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }" class="active">
+                                <a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">
                                     <i class="flaticon-social"></i>Profile
                                 </a>
                             </li>
@@ -324,7 +324,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="favoritedList?customer_ID=${sessionScope.customer.customer_ID}">
+                                <a href="favoritedList?customer_ID=${sessionScope.customer.customer_ID}" class="active">
                                     <i class="fa fa-heart"></i>Favorited Properties
                                 </a>
                             </li>
