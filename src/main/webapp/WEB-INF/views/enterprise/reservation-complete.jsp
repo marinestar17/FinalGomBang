@@ -60,10 +60,11 @@ pageEncoding="UTF-8"%>
 	function cancelReservation(){
 		$("#delete").on("click", function(){
 			var seq = $(this).attr("data_Seq");
-			var id = $(this).attr("data_ID");
+			var id = $(this).attr("data_ID  ");
+			
 			$.ajax({
 				url:"enterpriseReservationCancel"
-				,data:{customer_ID:id,reservation_Seq:seq }
+				,data:{forSale_Seq:seq, customer_ID:id}
 				,type:"post"
 				,success:function(){
 					alert("success!");
@@ -76,10 +77,9 @@ pageEncoding="UTF-8"%>
 	function tradeOK(){
 		$("#trade").on("click", function(){
 			var seq = $(this).attr("data_Seq");
-			var id = $(this).attr("data_ID");
 			$.ajax({
 				url:"tradeComplete"
-				,data:{forSale_Seq:seq, customer_ID:id}
+				,data:{forSale_Seq:seq}
 				,type:"post"
 				,success:function(){
 					alert("save");
@@ -252,7 +252,7 @@ pageEncoding="UTF-8"%>
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
+                                <a href="submitProperty">
                                     <i class="fa fa-plus"></i>Submit New Property
                                 </a>
                             </li>
@@ -290,8 +290,8 @@ pageEncoding="UTF-8"%>
                         </td>
                         <td class="expire-date hidden-xs">${completelist.customer_ID}</td>
                         <td class="action">
-                            <a  id = "trade" data_Seq="${completelist.forSale_Seq }" data_ID = "${completelist.customer_ID}"><i class="fa fa-pencil"></i> Trade OK</a>
-                            <a  id="delete" data_Seq="${completelist.reservation_Seq }" data_ID = "${completelist.customer_ID}"><i class="fa fa-remove"></i> Cancel</a>
+                            <a  id = "trade" data_Seq="${completelist.forSale_Seq }"><i class="fa fa-pencil"></i> Trade OK</a>
+                            <a  id="delete" data_Seq="${completelist.forSale_Seq }" data_ID = "${completelist.customer_ID}"><i class="fa fa-remove"></i> Cancel</a>
                         </td>
                         <%-- <td class="action">
                            <a class="update" data_seq="${completelist.reservation_Seq }"><i class="glyphicon glyphicon-ok"></i></i> Confirm</a>

@@ -2107,17 +2107,103 @@ pageEncoding="UTF-8"%>
         var service = new google.maps.places.PlacesService(map);
       } */
       
-      var subRadius=1000;
+      var subRadius=100;
       // 가장 가까운 지하철 찾기
       function searchSubway(pyrmont){
     	  subRadius=100;
-    	  subCallBack();
+    	  //subCallBack();
+    	  subCallBack2();
       }
       var subwayLat;
       var subwayLng;
       var subwayArr = new Array();
       var subwayDistanceArr = new Array();
       var j = 0;
+      
+      //임시
+      function subCallBack2(){
+	    	  subRadius=subRadius+100;
+	    	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+	    	  subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	            center: pyrmont,
+	            zoom: 15
+	          });
+	    	  var service = new google.maps.places.PlacesService(subwayMap);
+	    	  
+	    	  service.nearbySearch(
+	                  {location: pyrmont, radius: subRadius, type: ['subway_station']},
+	                  function(results, status, pagination) {
+	                    if (status !== 'OK'){
+	                    	subCallBack();
+	                    }else{
+	                    	console.log(results);
+	                    	for(var i=0; i<=results.length-1; i++){
+	                    		//subwayArr.push(results[i].geometry.location);
+	                    		subwayArr.push(results[i]);
+	                    	}
+	                    	/* for(var var i=0; i<=results.length-1; i++){
+	                    		console.log(subwayArr[i]);
+	                    	} */
+	                    	console.log(subwayArr);
+	                    	test2();
+	                    	subwayLat = results[results.length-1].geometry.location.lat();
+	                    	subwayLng = results[results.length-1].geometry.location.lng();
+	                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
+	                    	console.log(subwayLng); */
+	                    	//createSubwayMarkers(results);
+	                         getNextPage = pagination.hasNextPage && function() {
+	                           pagination.nextPage();
+	                         };
+	                    }
+	                  });
+	    	  
+	      }
+      //임시
+      function test2(){
+    	  subRadius=100;
+    	  subCallBack3();
+      }
+      
+      //임시
+      function subCallBack3(){
+	    	  subRadius=subRadius+100;
+	    	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
+	    	  subwayMap = new google.maps.Map(document.getElementById('subwayMap'), {
+	            center: pyrmont,
+	            zoom: 15
+	          });
+	    	  var service = new google.maps.places.PlacesService(subwayMap);
+	    	  
+	    	  service.nearbySearch(
+	                  {location: pyrmont, radius: subRadius, type: ['train_station']},
+	                  function(results, status, pagination) {
+	                    if (status !== 'OK'){
+	                    	subCallBack3();
+	                    }else{
+	                    	console.log(results);
+	                    	for(var i=0; i<=results.length-1; i++){
+	                    		//subwayArr.push(results[i].geometry.location);
+	                    		subwayArr.push(results[i]);
+	                    	}
+	                    	/* for(var var i=0; i<=results.length-1; i++){
+	                    		console.log(subwayArr[i]);
+	                    	} */
+	                    	console.log(subwayArr);
+	                    	routeMap();
+	                    	subwayLat = results[results.length-1].geometry.location.lat();
+	                    	subwayLng = results[results.length-1].geometry.location.lng();
+	                    	/* console.log(subwayLat); // 지하철 위도 경도를 구했다.
+	                    	console.log(subwayLng); */
+	                    	//createSubwayMarkers(results);
+	                         getNextPage = pagination.hasNextPage && function() {
+	                           pagination.nextPage();
+	                         };
+	                    }
+	                  });
+	    	  
+	      }
+      //임시
+      
        function subCallBack(){
     	  subRadius=subRadius+100;
     	  pyrmont = {lat:forSale_Lat, lng:forSale_Lng};
