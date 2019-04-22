@@ -62,7 +62,7 @@
                         <!-- Form start -->
                         <form action="enterpriseLogin" method="POST">
                             <div class="form-group">
-                                <input type="text" name="enterprise_ID" class="input-text" placeholder="ID">
+                                <input type="text" name="enterprise_ID" class="input-text" placeholder="Full ID">
                             </div>
                             <div class="form-group">
                                 <input type="password" name="enterprise_PW" class="input-text" placeholder="Password">
@@ -78,7 +78,7 @@
                                 <div class="clearfix"></div>
                             </div> -->
                             <div class="form-group">
-                                <button type="submit" class="button-md button-theme btn-block">login</button>
+                                <button type="submit" class="button-md button-theme btn-block" style="width:100%">login</button>
                             </div>
                         </form>
                         <!-- Form end -->
