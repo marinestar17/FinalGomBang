@@ -430,7 +430,7 @@ pageEncoding="UTF-8"%>
             <div class="breadcrumb-area">
                 <h1>Advanced Search</h1>
                 <ul class="breadcrumbs">
-                    <li><a href="goHome"></a></li>
+                    <li><a href="goHome">Home</a></li>
                     <li class="active">Advanced Search</li>
                 </ul>
             </div>
