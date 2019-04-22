@@ -10,6 +10,7 @@ public class SearchItem {
 	private int max_distance;
 	private int min_price;
 	private int max_price;
+	private String enterprise_ID;
 	private String forSale_OptionA;
 	private String forSale_OptionB;
 	private String forSale_OptionC;
@@ -22,7 +23,7 @@ public class SearchItem {
 	}
 
 	public SearchItem(String forSale_Status, String forSale_HouseType, String geoapi_prefectures, String geoapi_cities,
-			String geoapi_towns, int min_distance, int max_distance, int min_price, int max_price,
+			String geoapi_towns, int min_distance, int max_distance, int min_price, int max_price, String enterprise_ID,
 			String forSale_OptionA, String forSale_OptionB, String forSale_OptionC, String forSale_OptionD,
 			String forSale_OptionE, String forSale_OptionF) {
 		super();
@@ -35,6 +36,7 @@ public class SearchItem {
 		this.max_distance = max_distance;
 		this.min_price = min_price;
 		this.max_price = max_price;
+		this.enterprise_ID = enterprise_ID;
 		this.forSale_OptionA = forSale_OptionA;
 		this.forSale_OptionB = forSale_OptionB;
 		this.forSale_OptionC = forSale_OptionC;
@@ -115,6 +117,14 @@ public class SearchItem {
 		this.max_price = max_price;
 	}
 
+	public String getEnterprise_ID() {
+		return enterprise_ID;
+	}
+
+	public void setEnterprise_ID(String enterprise_ID) {
+		this.enterprise_ID = enterprise_ID;
+	}
+
 	public String getForSale_OptionA() {
 		return forSale_OptionA;
 	}
@@ -168,11 +178,13 @@ public class SearchItem {
 		return "SearchItem [forSale_Status=" + forSale_Status + ", forSale_HouseType=" + forSale_HouseType
 				+ ", geoapi_prefectures=" + geoapi_prefectures + ", geoapi_cities=" + geoapi_cities + ", geoapi_towns="
 				+ geoapi_towns + ", min_distance=" + min_distance + ", max_distance=" + max_distance + ", min_price="
-				+ min_price + ", max_price=" + max_price + ", forSale_OptionA=" + forSale_OptionA + ", forSale_OptionB="
-				+ forSale_OptionB + ", forSale_OptionC=" + forSale_OptionC + ", forSale_OptionD=" + forSale_OptionD
-				+ ", forSale_OptionE=" + forSale_OptionE + ", forSale_OptionF=" + forSale_OptionF + "]";
+				+ min_price + ", max_price=" + max_price + ", enterprise_ID=" + enterprise_ID + ", forSale_OptionA="
+				+ forSale_OptionA + ", forSale_OptionB=" + forSale_OptionB + ", forSale_OptionC=" + forSale_OptionC
+				+ ", forSale_OptionD=" + forSale_OptionD + ", forSale_OptionE=" + forSale_OptionE + ", forSale_OptionF="
+				+ forSale_OptionF + "]";
 	}
 
+	
 	
 	
 	

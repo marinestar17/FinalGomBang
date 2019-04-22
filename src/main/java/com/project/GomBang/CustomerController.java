@@ -322,6 +322,9 @@ public class CustomerController {
 					if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
 						item.setGeoapi_towns("none");
 					}
+					if(item.getEnterprise_ID()==null) {
+						item.setEnterprise_ID("");
+					}
 					System.out.println(item);
 					ArrayList<String[]> optionList = new ArrayList<String[]>();
 					ArrayList<Item> list = null;
@@ -351,12 +354,15 @@ public class CustomerController {
 		// 하이퍼링크로 매물 검색 이동시
 		@RequestMapping(value="/searchItem3", method=RequestMethod.GET)
 		public String searchItem3(Model model) {
-			SearchItem item = new SearchItem("Property Status", "Property Types", "都道府県を選択してください", "市区町村を選択してください", "町域を選択してください", -1, 0, 0, 300000, null, null, null, null, null, null);
+			SearchItem item = new SearchItem("Property Status", "Property Types", "都道府県を選択してください", "市区町村を選択してください", "町域を選択してください", -1, 0, 0, 300000, "", null, null, null, null, null,null);
 			if(item.getGeoapi_cities().contains("市区町村を選択してください")||item.getGeoapi_cities().contains("市区町村名を選択してください")) {
 				item.setGeoapi_cities("none");
 			}
 			if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
 				item.setGeoapi_towns("none");
+			}
+			if(item.getEnterprise_ID()==null) {
+				item.setEnterprise_ID("");
 			}
 			System.out.println(item);
 			ArrayList<String[]> optionList = new ArrayList<String[]>();
@@ -384,7 +390,7 @@ public class CustomerController {
 			return "customer/properties-list-rightside";
 		}
 		
-		// 매물 검색하기
+		// 매물 검색하기 고급검색시
 				@RequestMapping(value="/searchItem2", method=RequestMethod.GET)
 				public String searchItem2(SearchItem item, Model model) {
 					if(item.getGeoapi_cities().contains("市区町村を選択してください")||item.getGeoapi_cities().contains("市区町村名を選択してください")) {
@@ -392,6 +398,9 @@ public class CustomerController {
 					}
 					if(item.getGeoapi_towns().contains("町域を選択してください")||item.getGeoapi_towns().equals("町域を選択してください")) {
 						item.setGeoapi_towns("none");
+					}
+					if(item.getEnterprise_ID()==null) {
+						item.setEnterprise_ID("");
 					}
 					System.out.println(item);
 					ArrayList<String[]> optionList = new ArrayList<String[]>();

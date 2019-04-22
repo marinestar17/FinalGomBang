@@ -325,6 +325,10 @@ WHERE
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>
+		<if test="enterprise_ID!=''">
+		AND
+		ENTERPRISE_ID=#{enterprise_ID}
+		</if>
 </select>
 
 <!-- 물품 검색 -->
@@ -407,6 +411,10 @@ WHERE
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>
+		<if test="enterprise_ID!=null">
+		AND
+		ENTERPRISE_ID==#{enterprise_ID}
+		</if>
 		<!-- 
 		AND
 		GEOAPI_PREFECTURES=#{geoapi_prefectures}
@@ -415,7 +423,7 @@ WHERE
 		AND
 		GEOAPI_TOWNS=#{geoapi_towns}
 		 -->
-		ORDER BY FORSALE_INDATE DESC; 
+		ORDER BY FORSALE_INDATE DESC 
 </select>
 
 <!-- 고객 댓글 입력 -->
