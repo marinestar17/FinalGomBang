@@ -77,6 +77,8 @@ public interface AdminMapper {
 	
 	public ArrayList<Reservation> mainPageReservation(); //메인 페이지 통계 - 예약
 	
+	public ArrayList<Item> mainPageTrade(); //메인 페이지 통계  - 거래
+	
 	public int insertAdminMessage(AdminMessage adminmessage); //관리자 소규모 메세지창 등록
 	
 	public ArrayList<AdminMessage> printMessage(AdminMessage adminMessage); //관리자 소규모 메세지창 출력
@@ -126,4 +128,8 @@ public interface AdminMapper {
 	public Total adminReservationDetail(String reservation_Seq); //예약 상세히 보기 ...
 	
 	public ArrayList<Total> adminTradeBoard(Total total); // 거래 완료 리스트
+	
+	public ArrayList<Item> bestItemCity(); // 매물통계 - 등록된 것 중 인기 도시 5등까지
+	
+	public HashMap<String,Integer> countShikiRei(); //매물통계 - 시키/레이킹 없는거
 }

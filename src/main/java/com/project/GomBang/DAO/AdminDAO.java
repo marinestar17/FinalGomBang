@@ -351,7 +351,7 @@ public class AdminDAO {
 	}
 	
 	//메인 페이지 통계 - 매물
-	 public ArrayList<Item> mainPageItem(){
+	public ArrayList<Item> mainPageItem(){
 		AdminMapper map = sqlSession.getMapper(AdminMapper.class);
 		ArrayList<Item> iList = new ArrayList<Item>();
 		try {
@@ -372,6 +372,18 @@ public class AdminDAO {
 			e.printStackTrace();
 		}
 		 return rList;
+	 }
+	 
+	 //메인 페이지 통계 - 거래
+	 public ArrayList<Item> mainPageTrade(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Item> iList = new ArrayList<Item>();
+		 try {
+			iList = map.mainPageTrade();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return iList;
 	 }
 	 
 	 //관리자 간편 게시판 등록하기
@@ -678,4 +690,27 @@ public class AdminDAO {
 		 return tList;
 	 }
 	 
+	 //매물통계 - 제일 인기많은 도시 5개 ㅇㅇ
+	 public ArrayList<Item> bestItemCity(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 ArrayList<Item> iList = new ArrayList<Item>();
+		 try {
+			iList = map.bestItemCity();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return iList;
+	 }
+	 
+	 //매물통계 - 시키/레이킹 관련
+	 public HashMap<String,Integer> countShikiRei(){
+		 AdminMapper map = sqlSession.getMapper(AdminMapper.class);
+		 HashMap<String,Integer> hMap = new HashMap<String,Integer>();
+		 try {
+			hMap = map.countShikiRei();
+		} catch (Exception e) {
+			e.printStackTrace(); 
+		}
+		 return hMap;
+	 }
 }

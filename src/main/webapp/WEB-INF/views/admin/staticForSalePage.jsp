@@ -423,7 +423,24 @@
                             </div>
                         </div>
                    	  </div>
-               			
+               		
+               		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <div class="panel panel-default">
+                            <div class="panel-heading">등록매물 인기지역 (도시)</div>
+                            <div class="panel-body">
+                                <div id="bar_chart2"></div>
+                            </div> 
+                        </div> 
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <div class="panel panel-default">
+                            <div class="panel-heading">시키킹, 레이킹 관련</div>
+                            <div class="panel-body">
+                                <div id="donut_chart3"></div>
+                            </div> 
+                        </div> 
+                    </div>
                     <!-- #END# Donut Chart -->
                 </div>
             </div>
