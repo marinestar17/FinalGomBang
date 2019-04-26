@@ -4,9 +4,9 @@ public class Customer {
 	private String customer_ID; 
 	private String customer_PW; 
 	private String customer_Name;
-	private String customer_Address;
+	private String customer_Address; // 안씀
 	private String customer_Birthdate;
-	private String customer_Nickname;
+	private String customer_Nickname; // 안씀
 	private String customer_Phone;
 	private String customer_Gender;
 	private String customer_Email;

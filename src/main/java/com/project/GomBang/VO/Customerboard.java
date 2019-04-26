@@ -12,7 +12,7 @@ public class Customerboard {
 	private String customerBoard_Title;
 	private String customerBoard_Content;
 	private String customerBoard_Indate;
-	private String customerBoard_Tag;
+	private String customerBoard_Tag; // 안씀
 	private int customerBoard_Hitcount;
 	private String searchSelect;
 	private String search;
