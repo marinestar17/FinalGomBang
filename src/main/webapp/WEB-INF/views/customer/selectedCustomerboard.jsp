@@ -19,22 +19,22 @@
 <body>
 	<table>
 		<tr>
-			<td>방 번호 : ${customerBoard.customerBoard_Seq}</td>
-			<td>방 제목 : ${customerBoard.customerBoard_Title}</td>
-			<td>조회수 : ${customerBoard.customerBoard_Hitcount}</td>
+			<td>ROOM NUMBER : ${customerBoard.customerBoard_Seq}</td>
+			<td>TITLE : ${customerBoard.customerBoard_Title}</td>
+			<td>HITCOUNT : ${customerBoard.customerBoard_Hitcount}</td>
 			<td>
 				<c:if test="${sessionScope.customerLoginID==customerBoard.customer_ID}">
-					<a href="goRemakecustomer?customerBoard_Seq=${customerBoard.customerBoard_Seq}">수정하기</a>
+					<a href="goRemakecustomer?customerBoard_Seq=${customerBoard.customerBoard_Seq}">MODIFY</a>
 				</c:if>
 			</td>
 		</tr>
 		<tr>
-			<td>작성자 : ${customerBoard.customer_ID}</td>
-			<td>방 태그 : ${customerBoard.customerBoard_Tag}</td>
-			<td>작성 날짜 : ${customerBoard.customerBoard_Indate}</td>
+			<td>WRITER : ${customerBoard.customer_ID}</td>
+			<%-- <td>방 태그 : ${customerBoard.customerBoard_Tag}</td> --%>
+			<td>DATE : ${customerBoard.customerBoard_Indate}</td>
 		</tr>
 		<tr>
-			<td>내용 : ${customerBoard.customerBoard_Content}</td>
+			<td>CONTENT : ${customerBoard.customerBoard_Content}</td>
 		</tr>
 	</table>
 </body>

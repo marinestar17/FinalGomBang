@@ -558,7 +558,7 @@
                     <!-- #END# To-Do List -->
                 </div>
 
-                <!-- Task List -->
+<!--                 Task List
                 <div class="panel panel-default">
                     <div class="panel-heading">TASK LIST</div>
                     <div class="panel-body">
@@ -696,7 +696,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- #END# Task List -->
+                #END# Task List -->
             </div>
         </section>
         <!-- Footer -->

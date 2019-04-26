@@ -70,7 +70,7 @@
 <h1>${sessionScope.customerLoginID}</h1>
 	<form id="insertItemForm" method="post">
 	<table>
-		<tr>
+		<%-- <tr>
 		
 			<th>말머리태그</th>
 			<td>
@@ -82,7 +82,7 @@
 					<option value="원룸" <c:if test="${customerBoard.customerBoard_Tag=='원룸'}">selected</c:if> >원룸</option>
 				</select>
 			</td>
-		</tr>
+		</tr> --%>
 		<tr>
 			<th>TITLE</th>
 			<td><input type="text" id="customerBoard_Title" name="customerBoard_Title" value="${customerBoard.customerBoard_Title}"></td>

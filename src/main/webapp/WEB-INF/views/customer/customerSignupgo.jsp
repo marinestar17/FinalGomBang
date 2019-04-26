@@ -28,13 +28,13 @@
 			  if(id.length<=10 && id.length>=3){
 				  
 				if(data1=="duplicated"){
-					$("#duplicatemessage").html("ID중복");
+					$("#duplicatemessage").html("存在するIDです！");
 				}else{
-					$("#duplicatemessage").html("등록가능");
+					$("#duplicatemessage").html("登録可能。");
 				}					
 			  }else{
 				  
-				  $("#duplicatemessage").html("3이상10이하를 적어주세요");
+				  $("#duplicatemessage").html("ID,PWは3文字から10文字です。");
 			  }
 			  
 			  
@@ -49,7 +49,7 @@
     function length(){//pw의 길이 유효성검사
     	var pw=$("#customer_pw").val();
         if(pw.length>10 || pw.length<3){
-        	$("#li").html("3이상10이하를 적어주세요");
+        	$("#li").html("ID,PWは3文字から10文字です。");
         }
         else{
         	$("#li").html("");
@@ -87,79 +87,79 @@
     	if(checkid==""){
     		
     	if(id==""){
-    		alert("아이디를 입력하세요");
+    		alert("IDを確認してください。");
     		
     	}else if(pw==""){
-    		alert("비밀번호를 입력하세요");
+    		alert("パスワードを確認してください。");
     		
     	}else if(name==""){
-    		alert("이름을 입력하세요");
+    		alert("名前を確認してください。");
     		
     	}else if(address==""){
-    		alert("주소를 입력하세요");
+    		alert("アドレスを確認してください。");
     		
     	}else if(birthdate==""){
-    		alert("생일을 입력하세요");
+    		alert("誕生日を確認してください。");
     		
     	}else if(nickname==""){
-    		alert("닉네임을 입력하세요");
+    		alert("닉네임을 입력하세요"); //안씀
     		
     	}else if(phone==""){
-    		alert("핸드폰을 입력하세요");
+    		alert("電話番号を確認してください。");
     	
     	}else if(regPhone.test(phone)==false){
-    		alert("잘못된 핸드폰 양식입니다");
+    		alert("잘못된 핸드폰 양식입니다"); //안씀
     		return false;
     			
     	}else if(gender==""){
-    		alert("성별을 입력하세요");
+    		alert("性別を確認してください。");
     		
     	}else if(email==""){
-    		alert("이메일을 입력하세요");
+    		alert("メールを確認してください。");
     		
     	}else if(regEmail.test(email)==false){
-    		alert("잘못된 이메일 형식입니다");
+    		alert("잘못된 이메일 형식입니다"); //안씀
     		return false;
     		
     	}else{
     		$("#signupForm").submit();
-    		alert("회원가입이 완료 되었습니다");
+    		alert("登録完了！");
     		
     	}  
     		
     }else{
 		if(pw==""){
-    		alert("비밀번호를 입력하세요");
+    		alert("パスワードを確認してください。");
     		
     	}else if(name==""){
-    		alert("이름을 입력하세요");
+    		alert("名前を確認してください。");
     		
     	}else if(address==""){
-    		alert("주소를 입력하세요");
+    		alert("アドレスを確認してください。");
     		
     	}else if(birthdate==""){
-    		alert("생일을 입력하세요");
+    		alert("誕生日を確認してください。");
     		
     	}else if(nickname==""){
-    		alert("닉네임을 입력하세요");
+    		alert("닉네임을 입력하세요"); //안씀
     		
     	}else if(phone==""){
-    		alert("핸드폰을 입력하세요");
+    		alert("電話番号を確認してください。");
     	
     	}else if(regPhone.test(phone)==false){
-    		alert("잘못된 핸드폰 양식입니다");
+    		alert("잘못된 핸드폰 양식입니다"); //안씀
     		return false;
     			
     	}else if(email==""){
-    		alert("이메일을 입력하세요");
+    		alert("メールを確認してください。");
     		
     	}else if(regEmail.test(email)==false){
-    		alert("잘못된 이메일 형식입니다");
+    		alert("잘못된 이메일 형식입니다"); //안씀
     		return false;
     		
     	}else{
     		$("#modifyForm").submit();
-    		alert("회원정보가 수정되었습니다");
+    		alert("情報が修正されました。");
     		
     	} 
     }

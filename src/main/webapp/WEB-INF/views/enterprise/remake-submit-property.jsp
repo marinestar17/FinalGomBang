@@ -756,25 +756,25 @@ pageEncoding="UTF-8"%>
                             <div class="row">
                                  <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>야칭</label>
+                                        <label>家賃</label>
                                         <input type="text" id="forSale_Rent" class="input-text" name="forSale_Rent" placeholder="家賃" value="${enterItem.forSale_Rent}">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>시키킹</label>
+                                        <label>敷金</label>
                                         <input type="text" id="forSale_Deposit" class="input-text" name="forSale_Deposit" placeholder="敷金" value="${enterItem.forSale_Deposit}">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>레이킹</label>
+                                        <label>礼金</label>
                                         <input type="text" id="forSale_Reward" class="input-text" name="forSale_Reward" placeholder="礼金" value="${enterItem.forSale_Reward}">
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label>관리비</label>
+                                        <label>管理費</label>
                                         <input type="text" id="forSale_ManageCost" class="input-text" name="forSale_ManageCost" placeholder="管理費" value="${enterItem.forSale_ManageCost}">
                                     </div>
                                 </div>
@@ -795,7 +795,7 @@ pageEncoding="UTF-8"%>
                         <div class="row mb-30 ">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>현</label>
+                                    <label>県</label>
                                      <!-- class="selectpicker search-fields"  -->
                                     <select id="geoapi-prefectures" name="geoapi_prefectures" >
   										<option value="都道府県を選択してください">都道府県を選択してください</option>
@@ -804,7 +804,7 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group" id="cities">
-                                    <label>City</label>
+                                    <label>都市</label>
                                     <select id="geoapi-cities" name="geoapi_cities"  data-live-search="true" data-live-search-placeholder="Search value" style="color:#999;">
   										<option value="市区町村名を選択してください">市区町村名を選択してください</option>
 									</select>
@@ -832,13 +832,13 @@ pageEncoding="UTF-8"%>
                             
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>나머지 주소</label>
+                                    <label>残り住所</label>
                                     <input type="text" id="geoapi_remain" class="input-text" name="geoapi_remain"  placeholder="나머지 주소">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Postal Code</label>
+                                    <label> 郵便番号</label>
                                     <input type="text" id="geoapi_postCode" class="input-text" name="zip"  placeholder="우편번호">
                                 </div>
                             </div>
@@ -896,20 +896,20 @@ pageEncoding="UTF-8"%>
                                          
                                             <input id="checkbox1" class="forSale_Option" type="checkbox" value="에어컨" name="forSale_Option">
                                             <label for="checkbox1">
-                                                	에어컨	
+                                                	エアコン	
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
                                        
                                             <input id="checkbox2" class="forSale_Option" type="checkbox" value="세탁기" name="forSale_Option">
                                             <label for="checkbox2">
-                                                	세탁기
+                                                	洗濯機
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
                                             <input id="checkbox3" class="forSale_Option" type="checkbox" value="베란다" name="forSale_Option">
                                             <label for="checkbox3">
-                                                	베란다
+                                                	ベランダ
                                             </label>
                                         </div>
                                     </div>
@@ -917,19 +917,19 @@ pageEncoding="UTF-8"%>
                                         <div class="checkbox checkbox-theme checkbox-circle">
                                             <input id="checkbox4" class="forSale_Option" type="checkbox" value="엘리베이터" name="forSale_Option">
                                             <label for="checkbox4">
-                                                	엘리베이터
+                                                	エレベーター
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
                                             <input id="checkbox5" class="forSale_Option" type="checkbox" value="흡연장" name="forSale_Option">
                                             <label for="checkbox5">
-                                                	흡연장
+                                                	喫煙室
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
                                             <input id="checkbox6" class="forSale_Option" type="checkbox" value="주차장"  name="forSale_Option">
                                             <label for="checkbox6">
-                                                	주차장
+                                                	駐車場
                                             </label>
                                         </div>
                                         <input type="hidden" value="${enterItem.forSale_Seq}" id="forSale_Seq" name="forSale_Seq">
@@ -1045,7 +1045,7 @@ pageEncoding="UTF-8"%>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -1076,28 +1076,19 @@ pageEncoding="UTF-8"%>
                                 <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
+                                <a href="searchItem3">Advanced Search</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Blog</a>
+                                 <a href="goCustomerboard">Q&A</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="properties-list-rightside.html">properties Listing</a>
-                            </li>
-                            <li>
-                                <a href="properties-grid-rightside.html">properties Grid</a>
-                            </li>
-                            <li>
-                                <a href="properties-details.html">properties Details</a>
+                            	<a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
@@ -1109,7 +1100,7 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">${popularlist.forSale_Title}</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
                                 <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
@@ -1178,18 +1169,16 @@ pageEncoding="UTF-8"%>
 </footer>
 <!-- Footer end -->
 
-<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
-
 <!-- Copy right start -->
 <div class="copy-right">
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
+                    <!-- <li>
                         <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
@@ -1213,7 +1202,7 @@ pageEncoding="UTF-8"%>
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

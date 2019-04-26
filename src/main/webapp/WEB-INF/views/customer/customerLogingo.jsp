@@ -20,7 +20,7 @@
 		var pwd = $("#customer_pw").val();
 		
 		if(id.length > 10 || id.length<3 || pwd.length>10 || pwd.length<3) {	//길이값 비교
-			alert("아이디나 비밀번호는 3자리 이상 10자리아히로 입력해주세요");
+			alert("ID,PWは3文字から10文字です.");
 		}
 		else{
 			$("#loginForm").submit();
@@ -100,7 +100,7 @@
                     <!-- Footer -->
                     <div class="footer">
                         <span>
-                            New to Tempo? <a href="customerSignupgo">Sign up now</a>
+                            New to GomBang? <a href="customerSignupgo">Sign up now</a>
                         </span>
                         <span class="enterpriseMark pull-right">
                         	<a href="goEnterprisePage">Enterprise</a>

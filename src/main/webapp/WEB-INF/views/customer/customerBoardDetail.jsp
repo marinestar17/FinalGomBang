@@ -282,21 +282,21 @@
                 <!-- Header -->
                 <div class="heading-properties clearfix sidebar-widget" style="margin-bottom:0px;">
                     <div class="pull-left">
-                    	<h3 style="font-size:40px;"><span>방제목 : </span>${customerBoard.customerBoard_Title}</h3>
+                    	<h3 style="font-size:40px;"><span>TITLE : </span>${customerBoard.customerBoard_Title}</h3>
                     </div>
                 </div>
                 <div class="heading-properties clearfix sidebar-widget">
                     <div class="pull-right" style="float:left! important;">
-                    	<h3 style="font-size:15px; margin-right:20px;"><span>방번호 : </span>${customerBoard.customerBoard_Seq}</h3>
+                    	<h3 style="font-size:15px; margin-right:20px;"><span>NUMBER : </span>${customerBoard.customerBoard_Seq}</h3>
                     </div>
                     <div class="pull-right" style="float:left! important;">
-                    	<h3 style="font-size:15px; margin-right:20px;"><span>작성자 : </span>${customerBoard.customer_ID}</h3>
+                    	<h3 style="font-size:15px; margin-right:20px;"><span>WRITER : </span>${customerBoard.customer_ID}</h3>
                     </div>
                     <div class="pull-right" style="float:left! important;">
-                    	<h3 style="font-size:15px; margin-right:20px;"><span>방 생성시간 : </span>${customerBoard.customerBoard_Indate}</h3>
+                    	<h3 style="font-size:15px; margin-right:20px;"><span>TIME : </span>${customerBoard.customerBoard_Indate}</h3>
                     </div>
                     <div class="pull-right" style="float:left! important;">
-                        <h3 style="font-size:15px;"><span>조회수 : </span>${customerBoard.customerBoard_Hitcount}</h3>
+                        <h3 style="font-size:15px;"><span>HITCOUNT : </span>${customerBoard.customerBoard_Hitcount}</h3>
                     </div>
                 </div>
                 <!-- Properties details section start -->
@@ -713,7 +713,7 @@
                         <div class="contact-form">
                             <!-- Main Title 2 -->
                             <div class="main-title-2">
-                                <h1><span>댓글</span> 작성</h1>
+                                <h1><span>REPLY</span></h1>
                             </div>
                             <form id="contact_form" action="insertCustomerComment" method="POST" enctype="multipart/form-data">
                                 <div class="row">
@@ -1013,7 +1013,7 @@
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -1144,17 +1144,17 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
-                        <a href="#" class="facebook">
+                    <!-- <li>
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
@@ -1172,7 +1172,7 @@
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
