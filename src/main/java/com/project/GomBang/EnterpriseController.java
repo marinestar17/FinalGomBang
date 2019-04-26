@@ -213,9 +213,9 @@ public class EnterpriseController {
 	@RequestMapping(value="/submitProperty", method=RequestMethod.GET)
 	public String submitProperty(Model model) {
 		imgList = new ArrayList<Image>();
-		ArrayList<Total> popularlist=new ArrayList<Total>();
+		/*ArrayList<Total> popularlist=new ArrayList<Total>();
 		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
+        model.addAttribute("popularlist",popularlist);*/
 		return "enterprise/submit-property";
 	}
 	// 매물 등록하기
@@ -223,7 +223,7 @@ public class EnterpriseController {
 	public String insertItem(Item item,HttpSession session) {
 		System.out.println("콘트롤러 확인");
 		String userid = (String) session.getAttribute("enterpriseLoginID");
-		item.setEnterprise_ID(userid);
+		item.setEnterprise_ID("aaa");
 		System.out.println(item);
 		dao.insertItem(item);
 		System.out.println(item.getForSale_Seq());

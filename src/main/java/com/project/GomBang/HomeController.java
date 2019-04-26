@@ -34,13 +34,13 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-		ArrayList<Total> popularlist=new ArrayList<Total>();
+		/*ArrayList<Total> popularlist=new ArrayList<Total>();
 		popularlist=dao.popularproperties();
         model.addAttribute("popularlist",popularlist);
         model.addAttribute("popularlista",popularlist.get(0));
         model.addAttribute("popularlistb",popularlist.get(1));
         model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));
+        model.addAttribute("popularlistd",popularlist.get(3));*/
 	    return "index-14";
 	}
 	
@@ -58,14 +58,14 @@ public class HomeController {
 	
 	@RequestMapping(value = "/goHome", method = RequestMethod.GET)
 	public String goHome(Model model) {
-		ArrayList<Total> popularlist=new ArrayList<Total>();
+		/*ArrayList<Total> popularlist=new ArrayList<Total>();
 		popularlist=dao.popularproperties();
         model.addAttribute("popularlist",popularlist);
         model.addAttribute("popularlista",popularlist.get(0));
         model.addAttribute("popularlistb",popularlist.get(1));
         model.addAttribute("popularlistc",popularlist.get(2));
         model.addAttribute("popularlistd",popularlist.get(3));
-
+*/
 		return "index-14";
 	}
 	

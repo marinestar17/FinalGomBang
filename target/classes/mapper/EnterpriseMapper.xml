@@ -116,16 +116,7 @@
 <select id="selectEnterprise" parameterType="Enterprise" resultType="Enterprise">
 	SELECT
 		ENTERPRISE_ID,
-		 ENTERPRISE_PW,
-		  ENTERPRISE_NAME,
-	       ENTERPRISE_ADDRESS,
-	        ENTERPRISE_REGINUM,
-	         ENTERPRISE_MANAGERNAME,
-	          ENTERPRISE_MANAGERPHONE,
-	           ENTERPRISE_MANAGEREMAIL,
-	            ENTERPRISE_ETC,
-	             ENTERPRISE_CODE,
-	              ENTERPRISE_PERMISSION
+		 ENTERPRISE_PW
 	FROM
 		ENTERPRISE
 	WHERE
