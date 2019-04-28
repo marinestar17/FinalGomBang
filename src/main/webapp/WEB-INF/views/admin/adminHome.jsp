@@ -31,8 +31,8 @@
 </head>
 <body class="sign-in-page">
     <div class="signin-form-area">
-        <h1><b>GomBang</b> - 관리자</h1>
-        <div class="signin-top-info">관리자 계정 확인</div>
+        <h1><b>GomBang</b> - Administrator</h1>
+        <div class="signin-top-info">Check Account</div>
         <div class="row padding-15">
             <div class="col-sm-2 col-md-2 col-lg-4"></div>
             <div class="col-sm-8 col-md-8 col-lg-4">
@@ -50,13 +50,13 @@
                     <div class="row">
                         <div class="col-xs-8">
                             <div class="checkbox icheck m-l--20">
-                                <label><input type="checkbox"> 기억하기</label><br>
+                                <label><input type="checkbox">Remember</label><br>
                                 <font color="red">${ok}</font>
                                 <font color="red">${error}</font>
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-success btn-block btn-flat">로그인</button>
+                            <button type="submit" class="btn btn-success btn-block btn-flat">Log In</button>
                             
                         </div>
                     </div>
@@ -95,9 +95,9 @@
     </div> -->
     <div class="signin-bottom-info">
         <a href="addAdmin">
-            <i class="fa fa-user-circle-o m-r-5"></i>관리자 계정 추가
+            <i class="fa fa-user-circle-o m-r-5"></i>Additon Account
         </a>
-        <a href="adminPassword" class="pull-right">비밀번호 찾기
+        <a href="adminPassword" class="pull-right">Forget Password
             <i class="fa fa-unlock m-l-5 font-14"></i>
         </a>
     </div> 

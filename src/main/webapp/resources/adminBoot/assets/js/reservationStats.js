@@ -81,7 +81,7 @@
         	                data: data,
         	                xkey: 'y',
         	                ykeys: ['a'],
-        	                labels: ['인수'],
+        	                labels: ['Number'],
         	                barColors: ['#01C0C8']
         	            });
         		}
@@ -104,7 +104,7 @@
      	                data: data,
      	                xkey: 'y',
      	                ykeys: ['a'],
-     	                labels: ['즐겨찾기 수'],
+     	                labels: ['Number'],
      	                barColors: ['#16a085']
      	            });
         		}
@@ -127,7 +127,7 @@
      	                data: data,
      	                xkey: 'y',
      	                ykeys: ['a'],
-     	                labels: ['예약 수'],
+     	                labels: ['Number'],
      	                barColors: ['#030066']
      	            });
         		}
@@ -150,7 +150,7 @@
         		            data: data,
         		            colors: ['#f6b225', '#DA4453', '#16a085'], 
         		            fomatter: function(y){
-        		            	return y + "개";
+        		            	return ;
         		            }
         		        });
         		}

@@ -112,12 +112,12 @@
                                         <ul>
                                             <li>
                                                 <a href="resources/adminBoot/pages/miscellaneous/profile.html">
-                                                    <i class="material-icons">account_circle</i> 프로필
+                                                    <i class="material-icons">account_circle</i> Profile
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="addAdmin">
-                                                    <i class="material-icons">lock_open</i> 개인정보수정
+                                                    <i class="material-icons">lock_open</i> Information Modify
                                                 </a>
                                             </li>
                                         </ul>
@@ -125,11 +125,11 @@
                                     <li class="footer">
                                         <div class="row clearfix">
                                             <div class="col-xs-5">
-                                                <a href="lockScreen" class="btn btn-default btn-sm btn-block">로그오프</a>
+                                                <a href="lockScreen" class="btn btn-default btn-sm btn-block">Log Off</a>
                                             </div>
                                             <div class="col-xs-2"></div>
                                             <div class="col-xs-5">
-                                                <a href="adminLogout" class="btn btn-default btn-sm btn-block">로그아웃</a>
+                                                <a href="adminLogout" class="btn btn-default btn-sm btn-block">Log Out</a>
                                             </div>
                                         </div>
                                     </li>
@@ -161,22 +161,22 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="GomBangAdmin">메인 페이지</a>
+                                <a href="GomBangAdmin">Main Page</a>
                             </li>
                             <li >
-                                <a href="#">관리자</a>
+                                <a href="#">Administrator</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
-                            <span class="nav-label">관리자 기본 메뉴</span>
+                            <span class="nav-label">Basic Menu</span>
                         </a>
                         <ul>
                           
                             <li>
-                                <a href="adminMessage">관리자 메세지</a>
+                                <a href="adminMessage">Message</a>
                             </li>
                         </ul>
                     </li>
@@ -184,37 +184,37 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment</i>
-                            <span class="nav-label">문의/질의/게시판</span>
+                            <span class="nav-label">Question Board Manage</span>
                         </a>
                         <ul>
                             <li>
-                                <a href="adminEnterpriseBoardList">기업 문의</a>
+                                <a href="adminEnterpriseBoardList">Enterprise</a>
                             </li>
                             <li>
-                                <a href="adminCustomerBoardList">고객 게시판</a>
+                                <a href="adminCustomerBoardList">Customer</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
-                            <span class="nav-label">각 항목 리스트</span>
+                            <span class="nav-label">List Information</span>
                         </a>
                         <ul>
                              <li>
-                                <a href="customerList">고객 리스트</a>
+                                <a href="customerList">Customer List</a>
                             </li>
                             <li>
-                                <a href="allEnterprisePrint">기업 리스트</a>
+                                <a href="allEnterprisePrint">Enterprise List</a>
                             </li>
                             <li>
-                                <a href="adminItemList">매물 리스트</a>
+                                <a href="adminItemList">ForSale List</a>
                             </li>
                             <li>
-                                <a href="adminReservationList">예약 리스트</a>
+                                <a href="adminReservationList">Reservation List</a>
                             </li>
                             <li>
-                                <a href="adminTradeList">거래완료 리스트</a>
+                                <a href="adminTradeList">Trade List</a>
                             </li>
                         </ul>
                     </li>
@@ -222,46 +222,46 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
-                            <span class="nav-label">통계자료</span>
+                            <span class="nav-label">Static Information</span>
                         </a>
                          <ul>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">기업 관련 통계 </a>
+                                <a href="javascript:void(0);" class="menu-toggle">Enterprise Static </a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticEnterprisePage" >통계 지표 확인 </a>
+                                			 <a href="staticEnterprisePage" >Check </a>
                                 		</li>
                                 	</ul>
                             </li>
                             <li>
-                               <a href="javascript:void(0);" class="menu-toggle"> 일반 고객 통계 </a>
+                               <a href="javascript:void(0);" class="menu-toggle">Customer Static </a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticCustomerPage" > 통계 지표 확인</a>
+                                			 <a href="staticCustomerPage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
                            <li>
-                               <a href="javascript:void(0);" class="menu-toggle"> 매물 통계 </a>
+                               <a href="javascript:void(0);" class="menu-toggle">ForSale Static</a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticForSalePage" >통계 지표 확인</a>
+                                			 <a href="staticForSalePage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
                             <li>
-                               <a href="javascript:void(0);" class="menu-toggle">게시물 통계</a>
+                               <a href="javascript:void(0);" class="menu-toggle">Board Static</a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticBoardPage" > 통계 지표 확인 </a>
+                                			 <a href="staticBoardPage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
                             <li>
-                               <a href="javascript:void(0);" class="menu-toggle">예약 거래 통계</a>
+                               <a href="javascript:void(0);" class="menu-toggle">Reservation Static</a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticReservationPage" >통계 지표 확인</a>
+                                			 <a href="staticReservationPage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
@@ -379,7 +379,7 @@
         <!-- #END# Right Sidebar -->
         <section class="content dashboard">
             <div class="page-heading">
-                <h1>메인화면</h1>
+                <h1>Main Monitor</h1>
             </div>
 
             <div class="page-body">
@@ -391,7 +391,7 @@
                                 <i class="material-icons">account_box</i>
                             </div>
                             <div class="content">
-                                <div class="text">회원수 현황</div>
+                                <div class="text">Member</div>
                                 <div class="number"></div>
                             </div>
                         </div>
@@ -402,7 +402,7 @@
                                 <i class="material-icons">view_list</i>
                             </div>
                             <div class="content">
-                                <div class="text">예약 현황 (성립/대기중)</div>
+                                <div class="text">Reservation(progress/waiting)</div>
                                 <div class="number2"></div>
                             </div>
                         </div>
@@ -413,7 +413,7 @@
                                 <i class="material-icons">shopping_cart</i>
                             </div>
                             <div class="content">
-                                <div class="text">매물 수 현황</div>
+                                <div class="text">ForSale</div>
                                 <div class="number3"></div>
                             </div>
                         </div>
@@ -424,7 +424,7 @@
                                 <i class="material-icons">assignment</i>
                             </div>
                             <div class="content">
-                                <div class="text">기업문의/가입대기 현황</div>
+                                <div class="text">Enterprise Question/Waiting</div>
                                 <div class="number4"></div>
                             </div>
                         </div>
@@ -448,23 +448,23 @@
 
                                 <div class="stats">${allEnterprise} 사</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
-                                <p><font color="#f6b225">기업 수</font></p>
+                                <p><font color="#f6b225">Enterprise</font></p>
 
                                 <div class="stats">${allCustomer}명</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
-                                <p><font color="#DA4453">고객 수</font></p>
+                                <p><font color="#DA4453">Customer</font></p>
 
                                 <div class="stats">${allForSale}건</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
-                               <p><font color="#16a085">매물 수</font></p>
+                               <p><font color="#16a085">ForSale</font></p>
                                
                                <div class="stats">${allReservation}건</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
-                               <p><font color="#050099">예약 수</font></p>
+                               <p><font color="#050099">Reservaion</font></p>
                                
                                <div class="stats">${allTrade}건</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
-                               <p><font color="#F15F5F">거래 완료 수</font></p>
+                               <p><font color="#F15F5F">Trade Complete</font></p>
                             </div>
                         </div>
                     </div>
@@ -488,7 +488,7 @@
                             <div class="panel-heading">TODO LIST</div>
                             <div class="panel-body">    
                                 <div class="input-group m-b-15">
-                                    <input type="text" placeholder="할 일 넣기" class="input input-sm form-control js-input" id = "adminTodo_Content" name = "adminTodo_Content">
+                                    <input type="text" placeholder="Insert Your TODO" class="input input-sm form-control js-input" id = "adminTodo_Content" name = "adminTodo_Content">
                                     <input type = "hidden" value = "${sessionScope.admin.admin_ID}" class = "admin_ID" name = "admin_ID">
                                     <input type = "hidden" value = 0 id = "insert_update">
                                    <!--  input input-sm form-control js-input -->
@@ -707,7 +707,7 @@
                         Copyright &copy; 2019, <b>GomBang - SC_IT_MASTER C - 3</b>
                     </div>
                     <div class="col-sm-6 align-right">
-                        © 2019 탐라국. 혼저옵서예주식회사.
+                       SC_IT_MASTER C - 3
                     </div>
                 </div>
             </div>

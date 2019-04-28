@@ -36,11 +36,11 @@
 <body class="sign-up-page">
     <div class="signup-form-area">
     	<c:if test="${sessionScope.admin == null }">
-        <h1><b>GomBang</b> - 관리자 추가</h1>
+        <h1><b>GomBang</b> - Addition Account</h1>
         <div class="signup-top-info">Register a new Administrator</div>
         </c:if>
         <c:if test="${sessionScope.admin != null }">
-        <h1><b>GomBang</b> - 관리자 개인정보 수정</h1>
+        <h1><b>GomBang</b> - Information Modify</h1>
         <div class="signup-top-info">Update the Administrator Information</div>
         </c:if>
         <div class="row padding-15">
@@ -92,16 +92,16 @@
                     <div class="form-group">
                         <div class="checkbox icheck m-l--20">
                         	<c:if test="${sessionScope.admin == null }">
-                            <label><input type="checkbox" name="Terms" class="Terms" required> 이 조항을 확실히  <a href="javascript:void(0);" data-toggle="modal" data-target="#termsModal">읽었습니다.</a></label>
+                            <label><input type="checkbox" name="Terms" class="Terms" required> I READ THIS <a href="javascript:void(0);" data-toggle="modal" data-target="#termsModal">CONTENT.</a></label>
                             </c:if>
                         </div>
                     </div>
                     <div>
                     	<c:if test="${sessionScope.admin == null }">
-                        <button type="submit" class="btn btn-success btn-block btn-flat">관리자 계정 추가</button>
+                        <button type="submit" class="btn btn-success btn-block btn-flat">Additon Account</button>
                         </c:if>
                         <c:if test="${sessionScope.admin != null }">
-                        <button type="submit" class="btn btn-success btn-block btn-flat">정보 수정</button>
+                        <button type="submit" class="btn btn-success btn-block btn-flat">Information Modify</button>
                         </c:if>
                     </div>
                 </form>
@@ -131,7 +131,7 @@
         </div>  
     </div> -->
     <div class="signup-bottom-info">
-        <a href="goAdminPage"><i class="fa fa-user-circle-o m-r-5"></i>로그인창으로</a>
+        <a href="goAdminPage"><i class="fa fa-user-circle-o m-r-5"></i>Log In Page</a>
     </div>
 
     <!-- Terms of Usage Modal -->
@@ -140,28 +140,28 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="termsModal-label">안내사항</h4>
+                    <h4 class="modal-title" id="termsModal-label">Read This</h4>
                 </div>
                 <div class="modal-body">
                     <p>
-                       1. 관리자 계정 생성에 있어서 있는 그대로 사실에 기반한 정보를 입력합니다.
+                       1. You must Insert true Information.
                     </p>
                     <p>
-                       2. 관리자 계정을 남용하지 않습니다.
+                       2. Do not abuse Administrator Account.
                     </p>
                     <p>
-                       3. 이 계정으로 알게 된 정보, 사실을 외부로 유출하지 않습니다.
+                       3. Do not spill the Information what about this site.
                     </p>
                     <p>
-                       4. 업무 외의 용도로 계정을 사용하지 않습니다.
+                       4. You must this account for only task.
                     </p>
                     <p>
-                       5. 위와 같은 사항을 위반하여 적발되었을 시, 회사는 개인에게 그 책임을 물을수도 있습니다.
+                       5. If you not observe 1-4, you will be charged from Enterprise.
                     </p>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
