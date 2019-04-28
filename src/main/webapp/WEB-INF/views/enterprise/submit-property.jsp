@@ -1058,9 +1058,9 @@ pageEncoding="UTF-8"%>
                                 <div class="row">
                                     <div class="col-lg-4 col-sm-4 col-xs-12">
                                         <div class="checkbox checkbox-theme checkbox-circle">
-                                            <input id="checkbox1" class="forSale_Option" type="checkbox" value="에어컨" name="forSale_Option">
+                                            <input id="checkbox1" class="forSale_Option" type="checkbox" value="エアコン" name="forSale_Option">
                                             <label for="checkbox1">
-                                                	에어컨	
+                                                	エアコン	
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
