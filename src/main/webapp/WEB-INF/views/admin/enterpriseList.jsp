@@ -114,12 +114,12 @@
                                         <ul>
                                             <li>
                                                 <a href="resources/adminBoot/pages/miscellaneous/profile.html">
-                                                    <i class="material-icons">account_circle</i> 프로필
+                                                    <i class="material-icons">account_circle</i> Profile
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="addAdmin">
-                                                    <i class="material-icons">lock_open</i> 개인정보수정
+                                                    <i class="material-icons">lock_open</i> Information Modify
                                                 </a>
                                             </li>
                                         </ul>
@@ -127,11 +127,11 @@
                                     <li class="footer">
                                         <div class="row clearfix">
                                             <div class="col-xs-5">
-                                                <a href="lockScreen" class="btn btn-default btn-sm btn-block">로그오프</a>
+                                                <a href="lockScreen" class="btn btn-default btn-sm btn-block">Log Off</a>
                                             </div>
                                             <div class="col-xs-2"></div>
                                             <div class="col-xs-5">
-                                                <a href="adminLogout" class="btn btn-default btn-sm btn-block">로그아웃</a>
+                                                <a href="adminLogout" class="btn btn-default btn-sm btn-block">Log Out</a>
                                             </div>
                                         </div>
                                     </li>
@@ -150,7 +150,7 @@
         </header>
         <!-- #END# Top Bar -->
         <!-- Left Menu -->
-       <aside class="sidebar">
+        <aside class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="metismenu">
                     <li class="title">
@@ -163,22 +163,22 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="GomBangAdmin">메인 페이지</a>
+                                <a href="GomBangAdmin">Main Page</a>
                             </li>
                             <li >
-                                <a href="#">관리자</a>
+                                <a href="#">Administrator</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
-                            <span class="nav-label">관리자 기본 메뉴</span>
+                            <span class="nav-label">Basic Menu</span>
                         </a>
                         <ul>
                           
                             <li>
-                                <a href="adminMessage">관리자 메세지</a>
+                                <a href="adminMessage">Message</a>
                             </li>
                         </ul>
                     </li>
@@ -186,37 +186,37 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">assignment</i>
-                            <span class="nav-label">문의/질의/게시판</span>
+                            <span class="nav-label">Question Board Manage</span>
                         </a>
                         <ul>
                             <li>
-                                <a href="adminEnterpriseBoardList">기업 문의</a>
+                                <a href="adminEnterpriseBoardList">Enterprise</a>
                             </li>
                             <li>
-                                <a href="adminCustomerBoardList">고객 게시판</a>
+                                <a href="adminCustomerBoardList">Customer</a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
-                            <span class="nav-label">각 항목 리스트</span>
+                            <span class="nav-label">List Information</span>
                         </a>
                         <ul>
                              <li>
-                                <a href="customerList">고객 리스트</a>
+                                <a href="customerList">Customer List</a>
                             </li>
                             <li>
-                                <a href="allEnterprisePrint">기업 리스트</a>
+                                <a href="allEnterprisePrint">Enterprise List</a>
                             </li>
                             <li>
-                                <a href="adminItemList">매물 리스트</a>
+                                <a href="adminItemList">ForSale List</a>
                             </li>
                             <li>
-                                <a href="adminReservationList">예약 리스트</a>
+                                <a href="adminReservationList">Reservation List</a>
                             </li>
                             <li>
-                                <a href="adminTradeList">거래완료 리스트</a>
+                                <a href="adminTradeList">Trade List</a>
                             </li>
                         </ul>
                     </li>
@@ -224,46 +224,46 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">pie_chart</i>
-                            <span class="nav-label">통계자료</span>
+                            <span class="nav-label">Static Information</span>
                         </a>
                          <ul>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">기업 관련 통계 </a>
+                                <a href="javascript:void(0);" class="menu-toggle">Enterprise Static </a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticEnterprisePage" >통계 지표 확인 </a>
+                                			 <a href="staticEnterprisePage" >Check </a>
                                 		</li>
                                 	</ul>
                             </li>
                             <li>
-                               <a href="javascript:void(0);" class="menu-toggle"> 일반 고객 통계 </a>
+                               <a href="javascript:void(0);" class="menu-toggle">Customer Static </a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticCustomerPage" > 통계 지표 확인</a>
+                                			 <a href="staticCustomerPage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
                            <li>
-                               <a href="javascript:void(0);" class="menu-toggle"> 매물 통계 </a>
+                               <a href="javascript:void(0);" class="menu-toggle">ForSale Static</a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticForSalePage" >통계 지표 확인</a>
+                                			 <a href="staticForSalePage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
                             <li>
-                               <a href="javascript:void(0);" class="menu-toggle">게시물 통계</a>
+                               <a href="javascript:void(0);" class="menu-toggle">Board Static</a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticBoardPage" > 통계 지표 확인 </a>
+                                			 <a href="staticBoardPage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
                             <li>
-                               <a href="javascript:void(0);" class="menu-toggle">예약 거래 통계</a>
+                               <a href="javascript:void(0);" class="menu-toggle">Reservation Static</a>
                                 	<ul>
                                 		<li>
-                                			 <a href="staticReservationPage" >통계 지표 확인</a>
+                                			 <a href="staticReservationPage" >Check</a>
                                 		</li>
                                 	</ul>
                             </li>
@@ -390,28 +390,28 @@
             </div>
             <div class="page-body" id="databody">
 	             <div class="panel panel-default">
-					 <div class="panel-heading">옵션</div>
+					 <div class="panel-heading">Option</div>
 	                    <div class="panel-body as">
-	                        <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "acceptButton" value = "accept">승인됨</button>
-	                        <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "denyButton" value = "deny">거부됨</button>
-	                        <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "waitingButton" value = "waiting">대기중</button>
-	                         <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "allButton" value = "all">전체</button>
+	                        <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "acceptButton" value = "accept">Accept</button>
+	                        <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "denyButton" value = "deny">Deny</button>
+	                        <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "waitingButton" value = "waiting">Waiting</button>
+	                         <button type="button" class="m-w-150 btn btn-rounded btn-default" id = "allButton" value = "all">All</button>
 	                    </div>
 	              </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading title">전체 기업리스트</div>
+                    <div class="panel-heading title">All Enterprise List</div>
                     <div class="panel-body">
                         <table id="dataList" class="table table-striped" data-paging="true" data-paging-position="right" data-sorting="true" data-filtering="true" data-filter-dropdown-title="Search in:">
                             <thead>
                                 <tr>
-                                    <th >기업이름</th>
-                                    <th>소재지 주소</th>
-                                    <th>담당자 이름</th>
-                                    <th>담당자 번호</th>
-                                    <th>담당자 이메일</th>
-                                    <th>기업분류코드</th>
-                                    <th>승인현황</th>
-                                    <th>가입일자</th>
+                                    <th >Name</th>
+                                    <th>Address</th>
+                                    <th>Manager Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Code</th>
+                                    <th>Permission</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -441,7 +441,7 @@
                         Copyright &copy; 2019, <b>GomBang - SC_IT_MASTER C - 3</b>
                     </div>
                     <div class="col-sm-6 align-right">
-                        © 2019 탐라국. 혼저옵서예주식회사.
+                        SC_IT_MASTER C - 3
                     </div>
                 </div>
             </div>

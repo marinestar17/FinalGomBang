@@ -19,7 +19,7 @@
 	  
 
 	function customerDelete(){
-		var result = confirm('정말로 삭제하시겠습니까?');
+		var result = confirm('削除しますか?');
 		
 		if (!result) {
 			return false;
@@ -29,7 +29,7 @@
 				,type:"get"
 				,data:{}
 				,success:function(){
-					alert("삭제되셨습니다");
+					alert("削除しました.");
 					location.href="/GomBang";
 				}
 			})
@@ -44,20 +44,20 @@
 
 <c:if test="${sessionScope.customerLoginID!=null}">
 <h1>${sessionScope.customerLoginID}</h1>
-<a href="customerSignupgo">고객 정보수정</a><br><br>
-<a href="customerLogout">고객 로그아웃</a><br><br>
-<a href="#" id = "customerDelete">회원탈퇴</a>
+<a href="customerSignupgo">CUSTOMER MODIFY</a><br><br>
+<a href="customerLogout">LOGOUT</a><br><br>
+<a href="#" id = "customerDelete">WITHDRAW</a>
 
 <form action="goCustomerboard">
 	<input type="submit" value="게시판이동">
 </form>
 	<table>
 		<tr>
-			<td>게시글 번호</td>
-			<td>게시글 제목</td>
-			<td>유저</td>
-			<td>작성 시간</td>
-			<td>조회수</td>
+			<td>NUMBER</td>
+			<td>TITLE</td>
+			<td>WRITER</td>
+			<td>TIME</td>
+			<td>HITCOUNT</td>
 		</tr>
 <c:forEach var="cbList" items="${cbList}">
 		<tr>

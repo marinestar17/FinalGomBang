@@ -11,8 +11,8 @@
 <script>
 var re_id = /^[a-z0-9]+$/;
 var re_id = /^[a-z0-9]+$/;
-var re_name= /^[가-힣]+$/;
-var re_address= /^[가-힣0-9\s]+$/;
+var re_name= /^[a-z]+$/;
+var re_address= /^[a-z0-9\s]+$/;
 var re_reginum = /^[0-9]{10}$/;
 var re_managerphone = /^[0-9]{10,11}$/;
 var re_manageremail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -57,7 +57,7 @@ var checkid;
 					/* return false; */
 				}
 				else if (!re_id.test(id)) {
-					$("#message1").html("영어와 숫자만 입력가능합니다. 띄어쓰기불가능");
+					$("#message1").html("英語と数字だけ入力可能です。");
 					/* return false; */
 				} else {
 					$.ajax({
@@ -68,17 +68,17 @@ var checkid;
 						type:"get",
 						success:function(data){
 							if (data=="duplicated") {
-								$("#message1").html("중복되는 ID가 있습니다.");
+								$("#message1").html("存在するIDです。");
 								idFlag=false;
 								return idFlag;
 							}
 							else if(data=="fail"){
-								$("#message1").html("ID는 6~14자 내로 가능합니다. 띄어쓰기불가능");
+								$("#message1").html("ID,PWは6文字から14文字です。");
 								idFlag=false;
 								return idFlag;
 							}
 							else if(data="success"){
-								$("#message1").html("가능한 ID입니다.");
+								$("#message1").html("可能なIDです。");
 								idFlag=true;
 							}
 						} 
@@ -93,7 +93,7 @@ var checkid;
 		    	$("#message2").html(" ");
 				/* return false; */
 			} else if (!pattern1.test(pw)||!pattern2.test(pw)||!pattern3.test(pw)||pw.length<8||pw.length>20) {
-				$("#message2").html("영문+숫자+특수기호 8자리 이상 20자리 이하로 구성하여야 합니다. 띄어쓰기불가능");
+				$("#message2").html("英語＋数字＋記号で、8文字から20文字です。");
 				/* return false; */
 			}else {
 				$("#message2").html(" ");
@@ -107,10 +107,10 @@ var checkid;
 				/* return false; */
 			}
 			else if (!re_name.test(name)) {
-				$("#message3").html("한글로 적어주세요. 띄어쓰기불가능");
+				$("#message3").html("英語で書いてください。");
 				/* return false; */
 			} else if (name.length>5 || name.length<2) {
-				$("#message3").html("2~5자 내로 입력해주세요. 띄어쓰기불가능");
+				$("#message3").html("2文字から5文字です。");
 				/* return false; */
 			} else{
 				$("#message3").html(" ");
@@ -123,7 +123,7 @@ var checkid;
 				$("#message4").html(" ");
 				/* return false; */
 			}else if (!re_address.test(address)) {
-				$("#message4").html("한글과 숫자로만 적어주세요. 띄어쓰기가능");
+				$("#message4").html("英語と数字で書いてください。");
 				/* return false; */
 			}else{
 				$("#message4").html(" ");
@@ -138,7 +138,7 @@ var checkid;
 				/* return false; */
 			}
 			if (!re_reginum.test(reginum)) {
-				$("#message5").html("10자리로 된 숫자만 입력해주세요. 띄어쓰기불가능");
+				$("#message5").html("数字10文字でお願いします。");
 				/* return false; */
 			}else{
 				$("#message5").html(" ");
@@ -152,10 +152,10 @@ var checkid;
 				$("#message6").html(" ");
 				/* return false; */
 			}else if (!re_name.test(managername)) {
-				$("#message6").html("한글로 적어주세요. 띄어쓰기불가능");
+				$("#message6").html("英語で書いてください。");
 				/* return false; */
 			}else if (managername.length>5 || managername.length<2) {
-				$("#message6").html("2~5자 내로 입력해주세요. 띄어쓰기불가능");
+				$("#message6").html("2文字から5文字です。");
 				/* return false; */
 			}else{
 				$("#message6").html(" ");
@@ -168,7 +168,7 @@ var checkid;
 				$("#message7").html(" ");
 				/* return false; */
 			}else if (!re_managerphone.test(managerphone)) {
-				$("#message7").html("10자리 혹은 11자리의 숫자를 입력해주세요. 띄어쓰기불가능")
+				$("#message7").html("数字10文字から11文字です。")
 				/* return false; */
 			}else{
 				$("#message7").html(" ");
@@ -181,7 +181,7 @@ var checkid;
 				$("#message8").html(" ");
 				/* return false; */
 			}else if (!re_manageremail.test(manageremail)) {
-				$("#message8").html("mail의 주소를 입력해주세요. 띄어쓰기불가능");
+				$("#message8").html("メール形式でかいてください。");
 				/* return false; */
 			} else{
 				$("#message8").html(" ");
@@ -199,7 +199,7 @@ var checkid;
 				return false;
 			}
 			else if (!re_id.test(id)) {
-				$("#message1").html("영어와 숫자만 입력가능합니다. 띄어쓰기불가능");
+				$("#message1").html("英語と数字で書いてください。");
 				return false;
 			} else if(!idFlag){
 				return false;
@@ -211,7 +211,7 @@ var checkid;
 	    	$("#message2").html(" ");
 			return false;
 		} else if (!pattern1.test(pw)||!pattern2.test(pw)||!pattern3.test(pw)||pw.length<8||pw.length>20) {
-			$("#message2").html("영문+숫자+특수기호 8자리 이상 20자리 이하로 구성하여야 합니다. 띄어쓰기불가능");
+			$("#message2").html("英語＋数字＋記号で、8文字から20文字です。");
 			return false;
 		} else if (pw==""){
 			$("#message2").html(" ");
@@ -224,10 +224,10 @@ var checkid;
 			/* return false; */
 		}
 		else if (!re_name.test(name)) {
-			$("#message3").html("한글로 적어주세요. 띄어쓰기불가능");
+			$("#message3").html("英語でお願いします。");
 			return false;
 		} else if (name.length>5 || name.length<2) {
-			$("#message3").html("2~5자 내로 입력해주세요. 띄어쓰기불가능");
+			$("#message3").html("2文字から5文字です。");
 			return false;
 		} else if (name==""){
 			$("#message3").html(" ");
@@ -239,7 +239,7 @@ var checkid;
 			$("#message4").html(" ");
 			/* return false; */
 		}else if (!re_address.test(address)) {
-			$("#message4").html("한글과 숫자로만 적어주세요. 띄어쓰기가능");
+			$("#message4").html("英語と数字で書いてください。");
 			return false;
 		}else if (address==""){
 			$("#message4").html(" ");
@@ -251,7 +251,7 @@ var checkid;
 			$("#message5").html(" ");
 			/* return false; */
 		}else if (!re_reginum.test(reginum)) {
-			$("#message5").html("10자리로 된 숫자만 입력해주세요. 띄어쓰기불가능");
+			$("#message5").html("数字で書いてください。");
 			return false;
 		}else if (reginum==""){
 			$("#message5").html(" ");
@@ -263,10 +263,10 @@ var checkid;
 			$("#message6").html(" ");
 			/* return false; */
 		}else if (!re_name.test(managername)) {
-			$("#message6").html("한글로 적어주세요. 띄어쓰기불가능");
+			$("#message6").html("英語でお願いします。");
 			return false;
 		}else if (managername.length>5 || managername.length<2) {
-			$("#message6").html("2~5자 내로 입력해주세요. 띄어쓰기불가능");
+			$("#message6").html("2文字から5文字です。");
 			return false;
 		}else if (managername==""){
 			$("#message6").html(" ");
@@ -278,7 +278,7 @@ var checkid;
 			$("#message7").html(" ");
 			/* return false; */
 		}else if (!re_managerphone.test(managerphone)) {
-			$("#message7").html("10자리 혹은 11자리의 숫자를 입력해주세요. 띄어쓰기불가능")
+			$("#message7").html("数字10文字から11文字です。")
 			return false;
 		}else if (managerphone==""){
 			$("#message7").html(" ");
@@ -290,7 +290,7 @@ var checkid;
 			$("#message8").html(" ");
 			/* return false; */
 		}else if (!re_manageremail.test(manageremail)) {
-			$("#message8").html("mail의 주소를 입력해주세요. 띄어쓰기불가능");
+			$("#message8").html("メール形式でかいてください。");
 			return false;
 		} else if (manageremail==""){
 			$("#message8").html(" ");

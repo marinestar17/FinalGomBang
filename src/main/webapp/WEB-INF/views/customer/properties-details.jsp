@@ -169,7 +169,7 @@ pageEncoding="UTF-8"%>
          			,success:function(list){
          				for (var i = 0; i < list.length; i++) {
        						if (list[i].forSale_Seq == seq) {
-       							alert("이미 예약중");
+       							alert("予約中");
        							return;
 							}
         				} //for
@@ -193,8 +193,8 @@ pageEncoding="UTF-8"%>
     			,data:{reservation_Visa:visa, reservation_Guarantor:guarantor, customer_ID:customer, enterprise_ID:enterprise, forSale_Seq:seq}
     			,success:function(result){
     				if (result == 1) {
-						alert("신청되었습니다.");
-						alert("예약 성사시, 각 기업과의 연락은 개인 E-mail 등을 이용해주시기 바랍니다.");
+						alert("完了しました。");
+						alert("連絡は直接メール等でしてください。");
 						 $("#reservation_Visa").val("");
 						 $("#reservation_Guarantor").val("");
 						 var url = "searchItem3"; 
@@ -218,7 +218,7 @@ pageEncoding="UTF-8"%>
  	 			,success:function(list){
  	 				for (var i = 0; i < list.length; i++) {
  						if (list[i].forSale_Seq == seq) {
- 							alert("이미 추가되어있습니다.");
+ 							alert("追加されています。");
  							return;
  						}
  					}
@@ -238,7 +238,7 @@ pageEncoding="UTF-8"%>
        			,type:"post"
        			,success:function(result){
        				if (result == 1) {
-						alert("책갈피 등록");
+						alert("登録完了。");
 					} else {
 						alert("error!");
 					}
@@ -948,19 +948,19 @@ pageEncoding="UTF-8"%>
 		
 		<div id="controls">
 			<form name="controls">
-				<input type="radio" name="type" value="cafe" onclick="search()" checked="checked" />카페
+				<input type="radio" name="type" value="cafe" onclick="search()" checked="checked" />カフェ
 				<br/>
-				<input type="radio" name="type" value="bus_station" onclick="search()" />버스정류장
+				<input type="radio" name="type" value="bus_station" onclick="search()" />バス停
 				<br/>
-				<input type="radio" name="type" value="restaurant" onclick="search()" />레스토랑
+				<input type="radio" name="type" value="restaurant" onclick="search()" />レストラン
 				<br/>
-				<input type="radio" name="type" value="subway_station" onclick="search()" />지하철
+				<input type="radio" name="type" value="subway_station" onclick="search()" />地下鉄
 				<br/>
-				<input type="radio" name="type" value="train_station" onclick="search()" />기차역
+				<input type="radio" name="type" value="train_station" onclick="search()" />電車駅
 				<br/>
-				<input type="radio" name="type" value="supermarket" onclick="search()" />슈퍼마켓
+				<input type="radio" name="type" value="supermarket" onclick="search()" />スーパーマーケット
 				<br/>
-				<input type="radio" name="type" value="convenience_store" onclick="search()" />편의점
+				<input type="radio" name="type" value="convenience_store" onclick="search()" />コンビニエンスストア
 				</form>
 		</div>
 		<div id="ResultCnt">
@@ -1253,37 +1253,37 @@ pageEncoding="UTF-8"%>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="에어컨">
                                 <label for="checkbox1">
-                                    	에어컨
+                                    	エアコン
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="세탁기">
                                 <label for="checkbox2">
-                                    	세탁기
+                                    	洗濯機
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="베란다">
                                 <label for="checkbox3">
-                                    	베란다
+                                    	ベランダ
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="엘리베이터">
                                 <label for="checkbox4">
-                                    	엘리베이터
+                                    	エレベーター
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="흡연장">
                                 <label for="checkbox5">
-                                    	흡연장
+                                    	喫煙室
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="주차장">
                                 <label for="checkbox6">
-                                   	 주차장
+                                    	 駐車場　
                                 </label>
                             </div>
                         </div>
@@ -1499,7 +1499,7 @@ pageEncoding="UTF-8"%>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -1530,47 +1530,39 @@ pageEncoding="UTF-8"%>
                                 <a href="goFullMap">Property-list-fullmap</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact Us</a>
+                                <a href="searchItem3">Advanced Search</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Blog</a>
+                                 <a href="goCustomerboard">Q&A</a>
                             </li>
                             <li>
-                                <a href="blog-single-sidebar-right.html">Services</a>
-                            </li>
-                            <li>
-                                <a href="properties-list-rightside.html">properties Listing</a>
-                            </li>
-                            <li>
-                                <a href="properties-grid-rightside.html">properties Grid</a>
-                            </li>
-                            <li>
-                                <a href="properties-details.html">properties Details</a>
+                            	<a href="customerMyProfile?customer_ID=${sessionScope.customer.customer_ID }">User profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
                         </div>
+                         <c:forEach var="popularlist" items="${popularlist}" varStatus="status">
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-1">
+                                <img class="media-object" src="/GomBang/img/${popularlist.saveName}" alt="small-properties-1" class="img-responsive hidden-xs" style="width: 90px; height: 63px;">
                             </div>
                             <div class="media-body">
                                 <h3 class="media-heading">
-                                    <a href="properties-details.html">Sweet Family Home</a>
+                                    <a href="customerItemDetail?forSale_Seq=${popularlist.forSale_Seq}">${popularlist.forSale_Title}</a>
                                 </h3>
-                                <p>February 27, 2018</p>
+                                <p>${popularlist.forSale_Indate}</p>
                                 <div class="price">
-                                    $734,000
+                                   ${popularlist.forSale_Rent}
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
+                       <!--  <div class="media">
                             <div class="media-left">
                                 <img class="media-object" src="http://placehold.it/90x63" alt="small-properties-2">
                             </div>
@@ -1597,7 +1589,8 @@ pageEncoding="UTF-8"%>
                                     $734,000
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        </c:forEach>
                     </div>
                 </div>
                 <!-- Subscribe -->
@@ -1630,24 +1623,22 @@ pageEncoding="UTF-8"%>
 </footer>
 <!-- Footer end -->
 
-<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
-
 <!-- Copy right start -->
 <div class="copy-right">
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
-                        <a href="#" class="facebook">
+                    <!-- <li>
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
@@ -1665,7 +1656,7 @@ pageEncoding="UTF-8"%>
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

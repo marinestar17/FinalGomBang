@@ -93,7 +93,7 @@
         		            data: data,
         		            colors: ['#f6b225', '#DA4453', '#16a085'], 
         		            fomatter: function(y){
-        		            	return y + "개";
+        		            	return y;
         		            }
         		        });
         		}

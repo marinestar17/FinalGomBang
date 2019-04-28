@@ -35,10 +35,9 @@
 	function output(ebList){
 		var table = '<table id = "listTable">';
 		table+= '<hr>';
-		table+= '<tr><th>글번호</th><th>태그</th><th>글제목</th><th>글쓴이</th><th>조회수</th><th>등록일자</th></tr>';
+		table+= '<tr><th>ROOM NUMBER</th><th>TITLE</th><th>WRITER</th><th>HITCOUNT</th><th>DATE</th></tr>';
 		$.each(ebList, function(index,item){
 			table+= '<tr><td>' + item.enterpriseBoard_Seq + '</td>';
-			table+= '<td>' +item.enterpriseBoard_Tag + '</td>';
 			table+= '<td><a href="enterpriseBoardDetail?enterpriseBoard_Seq='+item.enterpriseBoard_Seq+'" class="detail">' +item.enterpriseBoard_Title+ '</a></td>';
 			table+= '<td>' +item.enterprise_ID + '</td>';
 			table+= '<td>' +item.enterpriseBoard_HitCount + '</td>';
@@ -47,12 +46,11 @@
 		table+= '</table><hr>';
 		table+='<select id="searchSelectBoard" name="searchSelect">';
 		table+='<option>전체</option>'; 
-		table+='<option value="enterpriseBoard_Tag" >태그로 검색</option>';
-		table+='<option value="enterprise_ID">작성자로 검색</option>';
-		table+='<option value="enterpriseBoard_Title">제목으로 검색</option>';
+		table+='<option value="enterprise_ID">WRITER</option>';
+		table+='<option value="enterpriseBoard_Title">TITLE</option>';
 		table+='</select>&nbsp;&nbsp;';
-		table+='<input type = text name = "search" id = "searchBoard" placeholder="검색할 값을 입력하세요" >';
-		table+= '<input type = button id="searchButton" value = "확인">';
+		table+='<input type = text name = "search" id = "searchBoard" placeholder="INSERT" >';
+		table+= '<input type = button id="searchButton" value = "SEARCH">';
 		$("#top").html(table);
 		$("#searchButton").on("click", function(){
 			var search = $("#searchBoard").val();
@@ -65,7 +63,7 @@
 	<div id = "top"></div>
 	
 	<form action="goInsertEnterpriseBoard" method = "get" id = "goInsertEnterpriseBoard">
-		<input type = "button" value = "글쓰기" id = "button">
+		<input type = "button" value = "WRITE" id = "button">
 	</form>
 </body>
 </html>

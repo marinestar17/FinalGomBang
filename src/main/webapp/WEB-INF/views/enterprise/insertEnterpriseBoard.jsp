@@ -47,15 +47,15 @@
 		var pw = $("#enterpriseBoard_PW").val();
 		var title = $("#enterpriseBoard_Title").val();
 		if (pw.length == 0) {
-			alert("비밀번호 입력");
+			alert("パスワード入力。");
 			return;
 		}		
 		if(title.length==0){
-			alert("제목입력");
+			alert("タイトル入力。");
 			return;
 		}
 		if(pw.length==0){
-			alert("비번입력");
+			alert("パスワード入力。");
 			return;
 		}
 	}
@@ -93,9 +93,9 @@
 		<tr>
 			<td>말머리:
 				<select id="enterpriseBoard_Tag" name="enterpriseBoard_Tag">
-					<option value="문의">문의사항</option>
-					<option value="건의">건의사항</option>
-					<option value="기타">기타</option>
+					<option value="문의">問とい合あわせ</option>
+					<option value="건의">建議</option>
+					<option value="기타"> その他</option>
 				</select>
 			</td>
 			<td>게시글 비밀번호:
@@ -110,14 +110,14 @@
 		<tr >
 			<td colspan='4'>
 				<textarea name="editor" id="editor" rows="10" cols="80">
-					뭐가 문제입니까?
+					問題について書いてください。
 				</textarea> 
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<input type = "hidden" value = "${sessionScope.loginId}" id = "enterprise_ID">
-				<input type = "button" value = "등록" id = "insertButton">
+				<input type = "button" value = "登録" id = "insertButton">
 			</td>
 		</tr>
 	</table>

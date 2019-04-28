@@ -696,37 +696,37 @@ pageEncoding="UTF-8"%>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="에어컨">
                                 <label for="checkbox1">
-                                    	에어컨
+                                    	エアコン
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="세탁기">
                                 <label for="checkbox2">
-                                    	세탁기
+                                    	洗濯機
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="베란다">
                                 <label for="checkbox3">
-                                    	베란다
+                                    	ベランダ
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="엘리베이터">
                                 <label for="checkbox4">
-                                    	엘리베이터
+                                    	エレベーター
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="흡연장">
                                 <label for="checkbox5">
-                                    	흡연장
+                                    	喫煙室
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
                                 <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="주차장">
                                 <label for="checkbox6">
-                                   	 주차장
+                                   	 駐車場
                                 </label>
                             </div>
                             
@@ -946,7 +946,7 @@ pageEncoding="UTF-8"%>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -989,7 +989,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
@@ -1070,24 +1070,22 @@ pageEncoding="UTF-8"%>
 </footer>
 <!-- Footer end -->
 
-<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
-
 <!-- Copy right start -->
 <div class="copy-right">
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
-                        <a href="#" class="facebook">
+                    <!-- <li>
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
@@ -1105,7 +1103,7 @@ pageEncoding="UTF-8"%>
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

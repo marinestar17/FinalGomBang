@@ -64,7 +64,7 @@
     				,type:"post"
     				,success:function(result){
     					if (result == 1) {
-							alert("취소되었습니다.");
+							alert("キャンセルしました。");
 							location.reload();
 						}
     				}
@@ -369,17 +369,17 @@
 	                        </c:if>
 	                         <c:if test="${item.reservation_Complete eq 'N' }">
 	                        <td class="action">
-	                                                            취소된 예약
+	                                              キャンセル。
 	                        </td>
 	                        </c:if>
 	                         <c:if test="${item.reservation_Complete eq 'Y' }">
 	                         <td class="action">
-	                                                            예약 완료! 
+	                                              予約確認。
 	                         </td>
 	                        </c:if>
 	                         <c:if test="${item.forSale_TradeCustomer eq item.customer_ID}">
 	                         <td class="action">
-	                                                           거래 완료! 
+	                          　　　　　　　取引完了。
 	                         </td>
 	                         </c:if>
 	                    </tr>
@@ -413,7 +413,7 @@
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -456,7 +456,7 @@
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
@@ -544,17 +544,17 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
-                        <a href="#" class="facebook">
+                    <!-- <li>
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
@@ -572,7 +572,7 @@
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

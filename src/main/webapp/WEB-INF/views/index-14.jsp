@@ -747,8 +747,7 @@ pageEncoding="UTF-8"%>
                 <div class="services-info">
                     <i class="flaticon-internet"></i>
                     <h5>Apartment</h5>
-                    <p>한국의 아파트와는 다릅니다.<br>
-                    	아파트.<br>
+                    <p>韓国のアパートと違います。<br>
                     	アパート。
                     </p>
                 </div>
@@ -757,8 +756,7 @@ pageEncoding="UTF-8"%>
                 <div class="services-info">
                 	<i class="flaticon-apartment"></i>
                     <h5>Mansion</h5>
-                    <p>한국의 아파트가 일본의 맨션입니다.<br>
-                    	맨션.<br>
+                    <p>韓国のアパートの意味です。<br>
                     	マンション。
                     </p>
                 </div>
@@ -768,8 +766,7 @@ pageEncoding="UTF-8"%>
                     <i class="flaticon-social"></i>
                     <h5>Share House</h5>
                     <p>
-                    	다른 사람들과 같이 사는 집입니다.<br>
-                    	쉐어하우스.<br>
+                    	他の人と一緒に生活します。<br>
                     	シェアハウス。
                     </p>
                 </div>
@@ -779,9 +776,7 @@ pageEncoding="UTF-8"%>
                     <i class="flaticon-symbol"></i>
                     <h5>One Room</h5>
                     <p>
-                    	기본적으로는 2LDK.<br>
-                    	원룸.
-                    	<br>
+                    	一人暮らしに最適です。<br>
                     	ワンルーム。
                     </p>
                 </div>
@@ -1090,7 +1085,8 @@ pageEncoding="UTF-8"%>
                         <h4>Happy Programmer</h4>
                         <h2>GomBang Project</h2>
                         <div class="text">
-                            1명의 리더와 3명의 사축들이 함께 만든 일본에 향하는 한국인들을 위한 부동산 사이트!
+                        	4人1チームでつくりだした、<br>
+                        	日本へ行く韓国人向けの不動産サイト！
                         </div>
                     </div>
                 </div>
@@ -1106,10 +1102,8 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
-                                		SCIT MASTER 36기 심진용<br>
-                                    	언제나 팀원들을 챙기는 배려심 깊은<br>
-                                    	진정한 리더<br>  
-                                    	절.대.리.더.해
+                                		SCITMASTER36期 シム　ジンヨン<br>
+                                    	チームリーダー。<br>
                                 </div>
                                 <div class="author-name">
                                     JINYONG SIM
@@ -1141,10 +1135,8 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
-                                	SCIT MASTER 36기 김경호<br>
-                                	언제나 솔선수범 리더를 받쳐주는 특등사축<br>
-                                	어느 기업이나 원하는 인재<br>
-                                	Three Gold
+                                	SCITMASTER36期 キム　ギョンホ<br>
+                                	チームメンバー。<br>
                                 </div>
                                 <div class="author-name">
                                      KYEONGHO KIM
@@ -1176,10 +1168,8 @@ pageEncoding="UTF-8"%>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                 <div class="text">
-                                	SCIT MASTER 36기 김문승<br>
-                                	고양이축에도 못끼는 니세모노네코였지만<br>
-                                	ついにここまで来た。<br>
-                                	IT계의 새로운 인재 킹문승.
+                                	SCITMASTER36期 キム　ムンスン<br>
+                                	チームメンバー。<br>
                                 </div>
                                 <div class="author-name">
                                     MUNSEUNG KIM
@@ -1210,11 +1200,9 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12 ">
-                                <div class="text">
-									SCIT MASTER 36기 정연준
-									프로젝트를 위해서 정처기는 5일만 공부한 그는<br>
-									IT계의 도 덕 책<br>
-									야 우냐?                                   	
+                                 <div class="text">
+                                	SCITMASTER36期 ジョンヨンジュンン<br>
+                                	チームメンバー。<br>
                                 </div>
                                 <div class="author-name">
                                     YOUNJUN JUNG
@@ -1298,7 +1286,7 @@ pageEncoding="UTF-8"%>
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -1429,7 +1417,7 @@ pageEncoding="UTF-8"%>
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">

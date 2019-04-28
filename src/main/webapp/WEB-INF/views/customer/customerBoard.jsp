@@ -142,7 +142,7 @@
 <h1>${sessionScope.customerLoginID}</h1>
 	<form id="insertItemForm" method="post">
 	<table>
-		<tr>
+		<!-- <tr>
 			<th>말머리태그</th>
 			<td>
 				<select id="customerBoard_Tag" name="customerBoard_Tag">
@@ -153,7 +153,7 @@
 					<option value="원룸" >원룸</option>
 				</select>
 			</td>
-		</tr>
+		</tr> -->
 		<!-- <tr>
 			<th>매물주소</th>
 			<td>

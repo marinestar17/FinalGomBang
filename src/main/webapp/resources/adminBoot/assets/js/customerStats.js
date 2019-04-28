@@ -80,7 +80,7 @@
         		            data: data,
         		            colors: ['#f6b225', '#DA4453', '#16a085'], 
         		            fomatter: function(y){
-        		            	return y + "개";
+        		            	return y;
         		            }
         		        });
         		}
@@ -117,15 +117,15 @@
     				  new Morris.Bar({
     			        	element: "bar_chart",
     			        	data: [
-    			        		    { y: '1~19세', a: age10},
-    			        		    { y: '20~29세', a: age20},
-    			        		    { y: '30~39세', a: age30},
-    			        		    { y: '40~49세', a: age40},
-    			        		    { y: '50세~', a: age50},
+    			        		    { y: '1~19', a: age10},
+    			        		    { y: '20~29', a: age20},
+    			        		    { y: '30~39', a: age30},
+    			        		    { y: '40~49', a: age40},
+    			        		    { y: '50~', a: age50},
     			        		  ],   
     			        		  xkey: 'y',
     			        		  ykeys: ['a'],
-    			        		  labels: ['인원수'],
+    			        		  labels: ['Number'],
     				  			  gredTextSize: 15,
     				  			  barColors: ['blue']
     			        });

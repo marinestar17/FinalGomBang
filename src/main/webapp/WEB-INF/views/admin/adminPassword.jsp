@@ -29,8 +29,8 @@
 </head>
 <body class="fp-page"> 
     <div class="fp-form-area">
-        <h1><b>GomBang</b> - 관리자</h1> 
-        <div class="fp-top-info">관리자 ID를 입력하세요.</div>
+        <h1><b>GomBang</b> - Administrator</h1> 
+        <div class="fp-top-info">Insert ID</div>
         <div class="row padding-15">
             <div class="col-sm-2 col-md-2 col-lg-4"></div>
             <div class="col-sm-8 col-md-8 col-lg-4">
@@ -44,7 +44,7 @@
                       	<input type = "text" class = "form-control" placeholder="Email" name="admin_Email" id="admin_Email" required />
                       		 <span class="glyphicon glyphicon-envelope form-control-feedback"></span> 
                     </div>
-                    <button type="button" id = "findButton" class="btn btn-success btn-block btn-flat">확인</button>
+                    <button type="button" id = "findButton" class="btn btn-success btn-block btn-flat">Confirm</button>
                 </form>
             </div>
             <div class="col-sm-2 col-md-2 col-lg-4"></div>
@@ -58,8 +58,8 @@
         </div>
     </div> -->
     <div class="fp-bottom-info">
-        <a href="addAdmin"><i class="fa fa-user-circle-o m-r-5"></i>관리자 추가</a>
-        <a href="goAdminPage" class="pull-right">로그인 화면<i class="fa fa-user-circle-o m-l-5"></i></a>
+        <a href="addAdmin"><i class="fa fa-user-circle-o m-r-5"></i>Addtion Account</a>
+        <a href="goAdminPage" class="pull-right">LogIn Page<i class="fa fa-user-circle-o m-l-5"></i></a>
     </div>
 
     <!-- Jquery Core Js -->

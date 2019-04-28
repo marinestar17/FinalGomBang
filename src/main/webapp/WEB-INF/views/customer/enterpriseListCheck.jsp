@@ -308,9 +308,9 @@
                 <!-- Agent box 2start -->
                 <div class="agent-2 clearfix">
                     <div class="col-lg-7 col-md-7 col-sm-8 agent-content">
-                        <h5>기업:${item.enterprise_Name }</h5>
+                        <h5>Enterprise:${item.enterprise_Name }</h5>
                         <h3>
-                           	 매니저:<a href="enterpriseDetailCheck?enterprise_ID=${item.enterprise_ID }">${item.enterprise_ManagerName }</a>
+                           	 MANAGER:<a href="enterpriseDetailCheck?enterprise_ID=${item.enterprise_ID }">${item.enterprise_ManagerName }</a>
                         </h3>
                         <ul>
                             <li>
@@ -359,7 +359,7 @@
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -402,7 +402,7 @@
                     </div>
                 </div>
                 <!-- Recent cars -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="footer-item popular-posts">
                         <div class="main-title-2">
                             <h1>Popular Posts</h1>
@@ -488,11 +488,11 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2019 <a href="http://themevessel.com/" target="_blank">탐라국</a>. 혼저옵서예주식회사.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
+                    <!-- <li>
                         <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
@@ -516,7 +516,7 @@
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

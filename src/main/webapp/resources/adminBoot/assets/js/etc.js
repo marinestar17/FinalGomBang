@@ -43,7 +43,7 @@
     		,success:function(hMap){
     			c_count = hMap["C_COUNT"];
     			e_count = hMap["E_COUNT"];
-    			var result=  '기업:' + e_count + ' 소비자:' + c_count;  
+    			var result=  'En:' + e_count + ' Cus:' + c_count;  
     	    	$(".number").html(result);
     		}
     	});//ajax
@@ -61,7 +61,7 @@
     		,success: function(hMap){
     			y_reservation = hMap["Y_RESERVATION"];
     			n_reservation = hMap["N_RESERVATION"];
-    			var result=  y_reservation + '건 / ' + n_reservation + '건' 
+    			var result=  y_reservation + ' / ' + n_reservation  
     	    	$(".number2").html(result);
     		}  
     	}); //ajax
@@ -75,7 +75,7 @@
     		,data:{}
     		,type:"get"
     		,success: function(count){
-    			var result = count + '개';
+    			var result = count + 'Items';
     			$(".number3").html(result);
     		}
     	}); //ajax
@@ -93,7 +93,7 @@
     			,success: function(hMap){
     				b_count = hMap["B_COUNT"];
     				e_count = hMap["E_COUNT"];
-    				var result = (b_count)+ '건/' + (e_count) + '건';
+    				var result = (b_count)+ '/' + (e_count);
     				
     				$(".number4").html(result);
     			}
@@ -166,7 +166,7 @@
     				alert("????");
     			}
     			,success:function(){
-    				alert("거부 완료");
+    				alert("Deny Complete");
     				location.href = "allEnterprisePrint";
     			}
     		});//ajax
@@ -182,7 +182,7 @@
     			,type:"post"
     			,async: false
     			,success:function(){
-    				alert("허가 완료");
+    				alert("Accept Complete");
     				location.href = "allEnterprisePrint";
     			}
     		});
@@ -241,13 +241,13 @@
         table+='<table>';
         table+='<tr><td> <div class="col-sm-4">';
         table+='<select class="selectpicker form-control show-tick">';
-        table+='<option value="admin_ID">ID로 검색</option>';
-        table+='<option value="adminMessage_Content">내용으로 검색</option>';
-        table+='<option value="adminMessage_Indate">날짜로 검색</option>';
+        table+='<option value="admin_ID">ID</option>';
+        table+='<option value="adminMessage_Content">Content</option>';
+        table+='<option value="adminMessage_Indate">Date</option>';
         table+='</select></div>';
         table+='<div class="col-sm-8">';
         table+='<div class="input-group">';
-        table+='<input type="text" class="form-control" id = "search" placeholder="검색">';
+        table+='<input type="text" class="form-control" id = "search" placeholder="Search">';
         table+='<span class="input-group-btn">';
         table+='<button class="btn btn-default" type="button">Search</button></span></div></div></td>';
         table+='</tr>';
@@ -325,14 +325,13 @@
         table+='<table>';
         table+='<tr><td> <div class="col-sm-4">';
         table+='<select class="selectpicker form-control show-tick show2">';
-        table+='<option value="customer_ID">ID로 검색</option>';
-        table+='<option value="customerboard_Title">제목으로 검색</option>';
-        table+='<option value="customerboard_Tag">태그로 검색</option>';
-        table+='<option value="customerboard_Indate">날짜로 검색</option>';
+        table+='<option value="customer_ID">ID</option>';
+        table+='<option value="customerboard_Title">Title</option>';
+        table+='<option value="customerboard_Indate">Date</option>';
         table+='</select></div>';
         table+='<div class="col-sm-8">';
         table+='<div class="input-group">';
-        table+='<input type="text" class="form-control" id = "search2" placeholder="검색">';
+        table+='<input type="text" class="form-control" id = "search2" placeholder="Search">';
         table+='<span class="input-group-btn">';
         table+='<button class="btn btn-default default2" type="button">Search</button></span></div></div></td>';
         table+='</tr>';
@@ -385,13 +384,13 @@
         table+='<tr><td> <div class="col-sm-4">';
         table+='<select class="selectpicker form-control show-tick show3">';
         table+='<option value="enterprise_ID">ID로 검색</option>';
-        table+='<option value="enterpriseBoard_Title">제목으로 검색</option>';
-        table+='<option value="enterpriseBoard_Indate">날짜로 검색</option>';
-        table+='<option value="enterpriseBoard_AdminCheck">체크 여부로 검색</option>';
+        table+='<option value="enterpriseBoard_Title">Title</option>';
+        table+='<option value="enterpriseBoard_Indate">Date</option>';
+        table+='<option value="enterpriseBoard_AdminCheck">Check</option>';
         table+='</select></div>';
         table+='<div class="col-sm-8">';
         table+='<div class="input-group">';
-        table+='<input type="text" class="form-control" id = "search3" placeholder="검색">';
+        table+='<input type="text" class="form-control" id = "search3" placeholder="Search">';
         table+='<span class="input-group-btn">';
         table+='<button class="btn btn-default default3" type="button">Search</button></span></div></div></td>';
         table+='</tr>';
@@ -443,15 +442,15 @@
         table+='<table>';
         table+='<tr><td> <div class="col-sm-4">';
         table+='<select class="selectpicker form-control show-tick show4">';
-        table+='<option value="enterprise_ID">기업ID로 검색</option>';
-        table+='<option value="forSale_Title">제목으로 검색</option>';
-        table+='<option value="forSale_Status">거래 형태로 검색</option>';
-        table+='<option value="forSale_Indate">날짜로 검색</option>';
-        table+='<option value="forSale_HouseType">매물 종류로 검색</option>';
+        table+='<option value="enterprise_ID">ID</option>';
+        table+='<option value="forSale_Title">Title</option>';
+        table+='<option value="forSale_Status">Status</option>';
+        table+='<option value="forSale_Indate">Date</option>';
+        table+='<option value="forSale_HouseType">HouseType</option>';
         table+='</select></div>';
         table+='<div class="col-sm-8">';
         table+='<div class="input-group">';
-        table+='<input type="text" class="form-control" id = "search4" placeholder="검색">';
+        table+='<input type="text" class="form-control" id = "search4" placeholder="Search">';
         table+='<span class="input-group-btn">';
         table+='<button class="btn btn-default default4" type="button">Search</button></span></div></div></td>';
         table+='</tr>';
@@ -524,15 +523,15 @@
         table+='<table>';
         table+='<tr><td> <div class="col-sm-4">';
         table+='<select class="selectpicker form-control show-tick show5">';
-        table+='<option value="enterprise_ID">기업ID</option>';
-        table+='<option value="customer_ID">고객ID</option>';
-        table+='<option value="reservation_Complete">진행상태</option>';
-        table+='<option value="reservation_Indate">날짜</option>';
-        table+='<option value="forSale_Title">매물이름</option>';
+        table+='<option value="enterprise_ID">EnterpriseID</option>';
+        table+='<option value="customer_ID">CustomerID</option>';
+        table+='<option value="reservation_Complete">Complete</option>';
+        table+='<option value="reservation_Indate">Date</option>';
+        table+='<option value="forSale_Title">Title</option>';
         table+='</select></div>';
         table+='<div class="col-sm-8">';
         table+='<div class="input-group">';
-        table+='<input type="text" class="form-control" id = "search5" placeholder="검색">';
+        table+='<input type="text" class="form-control" id = "search5" placeholder="Search">';
         table+='<span class="input-group-btn">';
         table+='<button class="btn btn-default default5" type="button">Search</button></span></div></div></td>';
         table+='</tr>';
@@ -584,15 +583,15 @@
         table+='<table>';
         table+='<tr><td> <div class="col-sm-4">';
         table+='<select class="selectpicker form-control show-tick show6">';
-        table+='<option value="enterprise_ID">기업ID</option>';
-        table+='<option value="customer_ID">고객ID</option>';
-        table+='<option value="reservation_Indate">예약날짜</option>';
-        table+='<option value="forSale_TradeIndate">거래날짜</option>';
-        table+='<option value="forSale_Title">매물이름</option>';
+        table+='<option value="enterprise_ID">EnterpriseID</option>';
+        table+='<option value="customer_ID">CustomerID</option>';
+        table+='<option value="reservation_Indate">Reser_Date</option>';
+        table+='<option value="forSale_TradeIndate">Trade_Date</option>';
+        table+='<option value="forSale_Title">Title</option>';
         table+='</select></div>';
         table+='<div class="col-sm-8">';
         table+='<div class="input-group">';
-        table+='<input type="text" class="form-control" id = "search6" placeholder="검색">';
+        table+='<input type="text" class="form-control" id = "search6" placeholder="Search">';
         table+='<span class="input-group-btn">';
         table+='<button class="btn btn-default default6" type="button">Search</button></span></div></div></td>';
         table+='</tr>';

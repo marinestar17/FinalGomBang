@@ -22,12 +22,12 @@ $(function(){
 						}
 			}); */
 
-		var result = confirm('정말로 삭제하시겠습니까?');
+		var result = confirm('削除しますか?');
 		
 		if (!result) {
 			return false;
 		} else {
-			alert("삭제되셨습니다.")
+			alert("削除しました.")
 		}
 	});
 	
@@ -42,7 +42,7 @@ $(function(){
 <form action="enterpriseLogin" method = "post">
 	ID : <input type="text" name="enterprise_ID" id="id"><font color="red">${warning}</font><br>
 	PW : <input type="password" name="enterprise_PW" id="pw"><br>
-	<input type="submit" value="로그인"><br>
+	<input type="submit" value="LOGIN"><br>
 	<font color="red">${wait}</font>
 	<font color="red">${deny}</font>
 </form>

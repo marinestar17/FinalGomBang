@@ -82,7 +82,7 @@
     	                data:data,
     	                xkey: 'y',
     	                ykeys: ['a'],
-    	                labels: ['최대 매물 수'],
+    	                labels: ['Number of ForSale'],
     	                barColors: ['#f6b225']
     	            });
     		} //success 
@@ -104,7 +104,7 @@
 	                data:data,
 	                xkey: 'y',
 	                ykeys: ['a'],
-	                labels: ['최대 매물 수'],
+	                labels: ['Number of ForSale'],
 	                barColors: ['#6B9900']
 	            });
     		}
@@ -130,14 +130,14 @@
     			Morris.Donut({
                     element: 'donut_chart3',
                     data: [
-                        { label: '둘 다 0', value: all },
-                        { label: '시키킹=0', value: reward },
-                        { label: '레이킹=0', value: deposit },
-                        { label: '둘 다 존재', value: no },
+                        { label: 'Both 0', value: all },
+                        { label: 'shiki=0', value: reward },
+                        { label: 'rei=0', value: deposit },
+                        { label: 'both !=0', value: no },
                     ],
                     colors: ['#F2CB61', '#670000' , '#A566FF' , '#0054FF'],
                     formatter: function (y) {
-                        return y + '개';
+                        return y;
                     }
                 });
     		}
@@ -158,12 +158,12 @@
     			Morris.Donut({
                     element: 'donut_chart',
                     data: [
-                        { label: '임대', value: r_count },
-                        { label: '판매', value: s_count },
+                        { label: 'Rent', value: r_count },
+                        { label: 'Sale', value: s_count },
                     ],
                     colors: ['#f6b225', '#DA4453'],
                     formatter: function (y) {
-                        return y + '개';
+                        return y ;
                     }
                 });
     		}
@@ -187,7 +187,7 @@
                     data: data,
                     colors: ['red', 'blue','green','black', 'pink'],
                     formatter: function (y) {
-                        return y + '개';
+                        return y ;
                     }
                 });
 			}//success
@@ -224,14 +224,14 @@
     			Morris.Bar({
 	                element: 'bar_chart3',
 	                data: [
-	        		    { y: '5만엔 이하', a: rent1},
-	        		    { y: '5~8만엔', a: rent2},
-	        		    { y: '8~10만', a: rent3},
-	        		    { y: '10만 초과', a: rent4},
+	        		    { y: '~50,000', a: rent1},
+	        		    { y: '5~80,000', a: rent2},
+	        		    { y: '8~100,000', a: rent3},
+	        		    { y: '100,000~', a: rent4},
 	        		  ],   
 	                xkey: 'y',
 	                ykeys: ['a'],
-	                labels: ['최대 매물 수'],
+	                labels: ['Number of ForSale'],
 	                barColors: ['#6B9900']
 	            });
     		}
@@ -253,7 +253,7 @@
     	                data:data,
     	                xkey: 'y',
     	                ykeys: ['a'],
-    	                labels: ['조회수'],
+    	                labels: ['HitCount'],
     	                barColors: ['#86E57F']
     	            });
     		}

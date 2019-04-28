@@ -46,9 +46,9 @@
     		   table+= '<table class="table">';
     	       table+='<thead><tr>';
     	       table+='<th width = "10%";>ID</th>';  
-    	       table+='<th width = "60%";>내용</th>';  
+    	       table+='<th width = "60%";>Content</th>';  
     	       table+='<th width = "20%";>INDATE</th>';
-    	       table+='<th width = "10%";>삭제</th>';
+    	       table+='<th width = "10%";>Delete</th>';
     	       table+='</tr></thead>';
     	       table+='<tbody>';
     	       $.each(list,function(index,item){

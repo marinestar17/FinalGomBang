@@ -360,7 +360,7 @@
                             </div>
                         </div>
                         <div class="main-title-2">
-                            <h1><span>본문</span> 내용</h1>
+                            <h1><span>TEXT</span>BODY</h1>
                         </div>
 
                         <div class="row mb-30">
@@ -408,7 +408,7 @@
                         <ul class="personal-info">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                Address: 코엑스 4층 SCIT 교육센터
+                                Address: コエックス四階 SCIT教育センター
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
@@ -532,24 +532,22 @@
 </footer>
 <!-- Footer end -->
 
-<!-- Footer 끝 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ-->
-
 <!-- Copy right start -->
 <div class="copy-right">
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-8 col-sm-12">
-                &copy;  2017 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.
+                &copy;  2019 <a href="http://themevessel.com/" target="_blank"></a>.  SCITMASTERS, 36rd C class Group no.3,
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul class="social-list clearfix">
-                    <li>
-                        <a href="#" class="facebook">
+                    <!-- <li>
+                        <a href="https://www.facebook.com/profile.php?id=100008832071756" class="facebook">
                             <i class="fa fa-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="twitter">
+                        <a href="https://twitter.com/SimJinyong?lang=ko" class="twitter">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
@@ -567,7 +565,7 @@
                         <a href="#" class="rss">
                             <i class="fa fa-rss"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
