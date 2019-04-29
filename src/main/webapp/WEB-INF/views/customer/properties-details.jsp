@@ -867,10 +867,10 @@ pageEncoding="UTF-8"%>
                                             </div>
                                             <table>
                                                 <tbody><tr>
-                                                    <td><strong>forSale_Rent</strong></td>
-                                                    <td><strong>forSale_Deposit</strong></td>
-                                                    <td><strong>forSale_Reward</strong></td>
-                                                    <td><strong>forSale_ManageCost</strong></td>
+                                                    <td><strong>家賃</strong></td>
+                                                    <td><strong>敷金</strong></td>
+                                                    <td><strong>礼金</strong></td>
+                                                    <td><strong>管理費</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td>${detailItem.forSale_Rent}</td>
@@ -1241,7 +1241,7 @@ pageEncoding="UTF-8"%>
 
                         <div class="range-slider">
                             <label>Price</label>
-                            <div data-min="0" data-max="300000" data-unit="엔화" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                            <div data-min="0" data-max="300000" data-unit="円" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                             <div class="clearfix"></div>
                         </div>
 
@@ -1251,37 +1251,37 @@ pageEncoding="UTF-8"%>
                         <div id="options-content" class="collapse">
                             <label class="margin-t-10">Features</label>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="에어컨">
+                                <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="エアコン">
                                 <label for="checkbox1">
                                     	エアコン
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="세탁기">
+                                <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="洗濯機">
                                 <label for="checkbox2">
                                     	洗濯機
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="베란다">
+                                <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="ベランダ">
                                 <label for="checkbox3">
                                     	ベランダ
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="엘리베이터">
+                                <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="エレベーター">
                                 <label for="checkbox4">
                                     	エレベーター
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="흡연장">
+                                <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="喫煙室">
                                 <label for="checkbox5">
                                     	喫煙室
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="주차장">
+                                <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="駐車場">
                                 <label for="checkbox6">
                                     	 駐車場　
                                 </label>
@@ -1377,8 +1377,8 @@ pageEncoding="UTF-8"%>
 
                     <!-- Mortgage calculator start -->
                     <div class="sidebar-widget contact-1 mortgage-calculator">
-                    <a  class="btn button-sm border-button-theme reservation">예약(상담)신청</a>
-                    <a  class="btn button-sm border-button-theme bookmark ">책갈피 담아두기</a>
+                    <a  class="btn button-sm border-button-theme reservation">予約申請</a>
+                    <a  class="btn button-sm border-button-theme bookmark ">ブックマーク</a>
                    <!--  <div class="main-title-2">  
                             <h1><span>Mortgage</span> Calculator</h1>
                         </div> -->
@@ -2420,7 +2420,7 @@ pageEncoding="UTF-8"%>
           }
         
     </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD16Rw_1wxr6ylwIbpNOeW76O89uhaIaz4&libraries=places&callback=initMap&sensor=false"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD16Rw_1wxr6ylwIbpNOeW76O89uhaIaz4&language=ja&libraries=places&callback=initMap&sensor=false"></script>
 
 </body>
 </html>

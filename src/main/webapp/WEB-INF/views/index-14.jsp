@@ -537,7 +537,7 @@ pageEncoding="UTF-8"%>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group mb-0">
                                                     <div class="range-slider">
-                                                        <div id="itemPriceBar" data-min="0" data-max="300000" data-unit="엔화" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                                        <div id="itemPriceBar" data-min="0" data-max="300000" data-unit="円" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                                         <input type="hidden" id="itemPrice" name="forSale_Rent">
                                                         <div class="clearfix"></div>
                                                     </div>
@@ -557,52 +557,6 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
             </div>
-            <!-- <div class="item item-100vh">
-                <img src="http://placehold.it/2200x1200" alt="banner-slider-1" class="img-responsive">
-                <div class="container">
-                    <div class="carousel-caption banner-slider-inner">
-                        <div class="banner-content banner-content-left">
-                            <div class="banner-detail-box text-left">
-                                <h3 data-animation="animated fadeInDown delay-1s"><span>Find your </span> Dream House</h3>
-                                <p data-animation="animated fadeInUp delay-05s">Lorem ipsum dolor sit amet, conconsectetuer adipiscing elit Lorem ipsum dolor sit amet, conconsectetuer</p>
-                                <a href="#" class="btn button-sm button-theme" data-animation="animated fadeInUp delay-15s">View Details</a>
-                                <a href="#" class="btn button-sm border-button-theme" data-animation="animated fadeInUp delay-15s">Contact Agent</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item item-100vh">
-                <img src="http://placehold.it/2200x1200" alt="banner-slider-1" class="img-responsive">
-                <div class="container">
-                    <div class="carousel-caption banner-slider-inner">
-                        <div class="banner-content banner-content-left">
-                            <div class="banner-detail-box text-left">
-                                <h3 data-animation="animated fadeInLeft delay-05s"><span>Find your </span> Dream House</h3>
-                                <p data-animation="animated fadeInLeft delay-1s">Lorem ipsum dolor sit amet, conconsectetuer adipiscing elit Lorem ipsum dolor sit amet, conconsectetuer</p>
-                                <a href="#" class="btn button-sm button-theme" data-animation="animated fadeInLeft delay-15s">View Details</a>
-                                <a href="#" class="btn button-sm border-button-theme" data-animation="animated fadeInLeft delay-20s">Contact Agent</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-
-        <!-- Controls -->
-        <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="slider-mover-left" aria-hidden="true">
-                <i class="fa fa-angle-left"></i>
-            </span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="slider-mover-right" aria-hidden="true">
-                <i class="fa fa-angle-right"></i>
-            </span>
-            <span class="sr-only">Next</span>
-        </a> -->
     </div>
 </div>
 <!-- Banner end -->

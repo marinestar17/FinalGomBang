@@ -688,43 +688,43 @@ pageEncoding="UTF-8"%>
                         <div id="options-content" class="collapse">
                         	<div class="form-group">
                         		<div style="margin-left: 5px;">
-                            	<input type="text" class="input-text" id="searchEnterprise" name="enterprise_ID" placeholder="기업명">
+                            	<input type="text" class="input-text" id="searchEnterprise" name="enterprise_ID" placeholder="企業名">
                             	</div>
                             </div>
                         
                             <label class="margin-t-10">Features</label>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="에어컨">
+                                <input id="checkbox1" class="forSale_Option" type="checkbox" name="forSale_OptionA" value="エアコン">
                                 <label for="checkbox1">
                                     	エアコン
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="세탁기">
+                                <input id="checkbox2" class="forSale_Option" type="checkbox" name="forSale_OptionB" value="洗濯機">
                                 <label for="checkbox2">
                                     	洗濯機
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="베란다">
+                                <input id="checkbox3" class="forSale_Option" type="checkbox" name="forSale_OptionC" value="ベランダ">
                                 <label for="checkbox3">
                                     	ベランダ
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="엘리베이터">
+                                <input id="checkbox4" class="forSale_Option" type="checkbox" name="forSale_OptionD" value="エレベーター">
                                 <label for="checkbox4">
                                     	エレベーター
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="흡연장">
+                                <input id="checkbox5" class="forSale_Option" type="checkbox" name="forSale_OptionE" value="喫煙室">
                                 <label for="checkbox5">
                                     	喫煙室
                                 </label>
                             </div>
                             <div class="checkbox checkbox-theme checkbox-circle">
-                                <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="주차장">
+                                <input id="checkbox6" class="forSale_Option" type="checkbox" name="forSale_OptionF" value="駐車場">
                                 <label for="checkbox6">
                                    	 駐車場
                                 </label>

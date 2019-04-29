@@ -296,27 +296,27 @@ WHERE
 		AND
 		GEOAPI_TOWNS=#{geoapi_towns}
 		</if>
-		<if test="forSale_OptionA=='에어컨'">
+		<if test="forSale_OptionA=='エアコン'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionA}||'%'	
 		</if>
-		<if test="forSale_OptionB=='세탁기'">
+		<if test="forSale_OptionB=='洗濯機'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionB}||'%'	
 		</if>
-		<if test="forSale_OptionC=='베란다'">
+		<if test="forSale_OptionC=='ベランダ'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionC}||'%'	
 		</if>
-		<if test="forSale_OptionD=='엘리베이터'">
+		<if test="forSale_OptionD=='エレベーター'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionD}||'%'	
 		</if>
-		<if test="forSale_OptionE=='흡연장'">
+		<if test="forSale_OptionE=='喫煙室'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionE}||'%'	
 		</if>
-		<if test="forSale_OptionF=='주차장'">
+		<if test="forSale_OptionF=='駐車場'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>
@@ -382,27 +382,27 @@ WHERE
 		AND
 		GEOAPI_TOWNS=#{geoapi_towns}
 		</if>
-		<if test="forSale_OptionA=='에어컨'">
+		<if test="forSale_OptionA=='エアコン'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionA}||'%'	
 		</if>
-		<if test="forSale_OptionB=='세탁기'">
+		<if test="forSale_OptionB=='洗濯機'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionB}||'%'	
 		</if>
-		<if test="forSale_OptionC=='베란다'">
+		<if test="forSale_OptionC=='ベランダ'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionC}||'%'	
 		</if>
-		<if test="forSale_OptionD=='엘리베이터'">
+		<if test="forSale_OptionD=='エレベーター'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionD}||'%'	
 		</if>
-		<if test="forSale_OptionE=='흡연장'">
+		<if test="forSale_OptionE=='喫煙室'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionE}||'%'	
 		</if>
-		<if test="forSale_OptionF=='주차장'">
+		<if test="forSale_OptionF=='駐車場'">
 		AND
 		FORSALE_OPTION LIKE '%'||#{forSale_OptionF}||'%'	
 		</if>

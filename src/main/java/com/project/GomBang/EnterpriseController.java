@@ -86,23 +86,6 @@ public class EnterpriseController {
 		if (result.getEnterprise_Permission().equals("Y")) {
 			session.setAttribute("enterpriseLoginID", result.getEnterprise_ID());
 			session.setAttribute("enterprise",result);
-			/*model.addAttribute("ID", result.getEnterprise_ID());
-			model.addAttribute("PW", result.getEnterprise_PW());
-			model.addAttribute("Name", result.getEnterprise_Name());
-			model.addAttribute("Address", result.getEnterprise_Address());
-			model.addAttribute("RegiNum", result.getEnterprise_RegiNum());
-			model.addAttribute("ManagerName", result.getEnterprise_ManagerName());
-			model.addAttribute("ManagerPhone", result.getEnterprise_ManagerPhone());
-			model.addAttribute("ManagerEmail", result.getEnterprise_ManagerEmail());
-			model.addAttribute("ETC", result.getEnterprise_ETC());
-			model.addAttribute("Code", result.getEnterprise_Code());*/
-			/*ArrayList<Total> popularlist=new ArrayList<Total>();
-			popularlist=dao.popularproperties();
-	        model.addAttribute("popularlist",popularlist);
-	        model.addAttribute("popularlista",popularlist.get(0));
-	        model.addAttribute("popularlistb",popularlist.get(1));
-	        model.addAttribute("popularlistc",popularlist.get(2));
-	        model.addAttribute("popularlistd",popularlist.get(3));*/
 		} else if(result.getEnterprise_Permission().equals("W")){
 			model.addAttribute("wait", "관리자의 심사중입니다.");
 		} else {
@@ -118,13 +101,6 @@ public class EnterpriseController {
 			return "customer/customerHome";
 		}
 		session.invalidate();
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		
 		return "index-14";
 	}
@@ -155,13 +131,6 @@ public class EnterpriseController {
 		enterprise.setEnterprise_ID((String)session.getAttribute("loginId"));
 		dao.deleteEnterprise(enterprise);
 		session.setAttribute("loginId", null);
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		return "index-14";
 	}
 	@RequestMapping(value="/updateEnterprise", method=RequestMethod.POST)
@@ -188,13 +157,6 @@ public class EnterpriseController {
 		model.addAttribute("ETC", enterprise.getEnterprise_ETC());
 		model.addAttribute("Code", enterprise.getEnterprise_Code());
 		
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		
 		return "index-14";
 	}
@@ -214,9 +176,6 @@ public class EnterpriseController {
 	@RequestMapping(value="/submitProperty", method=RequestMethod.GET)
 	public String submitProperty(Model model) {
 		imgList = new ArrayList<Image>();
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);*/
 		return "enterprise/submit-property";
 	}
 	// 매물 등록하기
@@ -235,54 +194,6 @@ public class EnterpriseController {
 		return "redirect:/";
 	}
 	
-	/*//기업 게시판 이동
-	@RequestMapping(value = "/goEnterpriseboard", method = RequestMethod.GET)
-	public String goEnterpriseboard() {
-		return "enterprise/enterpriseBoardGo";
-	}*/
-	
-	/*//게시물 상세 확인 이동
-	@RequestMapping(value = "/enterpriseBoardDetail", method = RequestMethod.GET)
-	public String enterpriseBoardDetail(int enterpriseBoard_Seq, Model model) {
-		EnterpriseBoard eb = new EnterpriseBoard();
-		try {
-			eb = dao.enterpriseBoardDetail(enterpriseBoard_Seq);
-			dao.updateHitCount(enterpriseBoard_Seq);
-			model.addAttribute("eb", eb);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return "enterprise/enterpriseBoardDetail";
-	}*/
-	
-	/*//게시물 등록폼으로 이동
-	@RequestMapping(value = "goInsertEnterpriseBoard", method = RequestMethod.GET)
-	public String insertEnterpriseBoard() {
-		return "enterprise/insertEnterpriseBoard";
-	}*/
-	
-	/*//게시물 등록
-	@RequestMapping(value = "/insertEnterpriseBoard", method = RequestMethod.POST)
-	public String insertEnterpriseBoard(EnterpriseBoard enterpriseboard) {
-		try {
-			dao.insertEnterpriseBoard(enterpriseboard);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "enterprise/enterpriseBoard";
-	}*/
-	
-	/*//게시물 전체 뿌리기
-	@RequestMapping(value = "/enterpriseBoardList", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<EnterpriseBoard> enterpriseBoardList() {
-		ArrayList<EnterpriseBoard> ebList = new ArrayList<EnterpriseBoard>();
-		try {
-			ebList = dao.enterpriseBoardList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return ebList;
-	}*/
 	
 	
 	@RequestMapping(value = "/file-upload")
@@ -290,13 +201,8 @@ public class EnterpriseController {
 		System.out.println("확인");
 		
 		List<MultipartFile> fileList = upload.getFiles("file");
-		/*String src = upload.getParameter("src");
-		System.out.println("src value : " + src);*/
 		String path = "C:\\Users\\SIM\\Documents\\test\\";
-		//String path = "C:\\Users\\user\\Pictures\\imagefile\\";
-		//String path = "C:\\Users\\vvvxc\\OneDrive\\사진\\배경화면사진";
 
-		
 		for (MultipartFile mf : fileList) {
 			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 			
@@ -529,15 +435,6 @@ public class EnterpriseController {
 	    total.setEnterprise_ID(userid);
 		ArrayList<Total> enterItemList=dao.EnterpriseItemList(total);
 		model.addAttribute("enterItemList",enterItemList);
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));
-		model.addAttribute("popularlistc",popularlist.get(2));
-		model.addAttribute("popularlistd",popularlist.get(3));*/
 	    return "enterprise/my-properties";
 	}
 		//기업 자신이 등록한 매물 삭제하기
@@ -573,7 +470,6 @@ public class EnterpriseController {
 	//기업 매물 수정		
 	@RequestMapping(value="/updateItem",method={RequestMethod.POST,RequestMethod.GET})
 	public  String modify(Item item) {
-		 //System.out.println(item);
 		 int result = 0;
 		 result=dao.updateItem(item);
 		 System.out.println(dao.updateItem(item));
@@ -608,13 +504,6 @@ public class EnterpriseController {
 	//프로필 화면 - 비밀번호 변겅으로 이동
 	@RequestMapping(value = "/goprofilepassword", method = RequestMethod.GET)
 	public String profliePassword(Model model) {
-	/*	ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		return "enterprise/enterpriseProfilePassword";
 	}
 	
@@ -624,13 +513,6 @@ public class EnterpriseController {
 		int result=0;
 		result=dao.updateenterprisePassword(enterprise);
 		session.setAttribute("enterprise",enterprise);
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		return "redirect:/enterpriseMyProfile";
 	}	
 		
@@ -642,13 +524,6 @@ public class EnterpriseController {
 		total.setEnterprise_ID(userid);
 		ArrayList<Total> reservationlist=dao.reservationwait(total);
 		model.addAttribute("reservationlist",reservationlist);
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		return "enterprise/reservation-wait";
 	}
 		
@@ -671,13 +546,6 @@ public class EnterpriseController {
 		total.setEnterprise_ID(userid);
 		ArrayList<Total> completelist=dao.reservationcomplete(total);
 		model.addAttribute("completelist",completelist);
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		return "enterprise/reservation-complete";
 	}	
 		
@@ -721,13 +589,6 @@ public class EnterpriseController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		/*ArrayList<Total> popularlist=new ArrayList<Total>();
-		popularlist=dao.popularproperties();
-        model.addAttribute("popularlist",popularlist);
-        model.addAttribute("popularlista",popularlist.get(0));
-        model.addAttribute("popularlistb",popularlist.get(1));
-        model.addAttribute("popularlistc",popularlist.get(2));
-        model.addAttribute("popularlistd",popularlist.get(3));*/
 		return "enterprise/tradeCompleteList";
 	}
 	

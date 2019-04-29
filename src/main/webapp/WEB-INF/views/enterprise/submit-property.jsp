@@ -1064,35 +1064,35 @@ pageEncoding="UTF-8"%>
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
-                                            <input id="checkbox2" class="forSale_Option" type="checkbox" value="세탁기" name="forSale_Option">
+                                            <input id="checkbox2" class="forSale_Option" type="checkbox" value="洗濯機" name="forSale_Option">
                                             <label for="checkbox2">
-                                                	세탁기
+                                                	洗濯機
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
-                                            <input id="checkbox3" class="forSale_Option" type="checkbox" value="베란다" name="forSale_Option">
+                                            <input id="checkbox3" class="forSale_Option" type="checkbox" value="ベランダ" name="forSale_Option">
                                             <label for="checkbox3">
-                                                	베란다
+                                                	ベランダ
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-sm-4 col-xs-12">
                                         <div class="checkbox checkbox-theme checkbox-circle">
-                                            <input id="checkbox4" class="forSale_Option" type="checkbox" value="엘리베이터" name="forSale_Option">
+                                            <input id="checkbox4" class="forSale_Option" type="checkbox" value="エレベーター" name="forSale_Option">
                                             <label for="checkbox4">
-                                                	엘리베이터
+                                                	エレベーター
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
-                                            <input id="checkbox5" class="forSale_Option" type="checkbox" value="흡연장" name="forSale_Option">
+                                            <input id="checkbox5" class="forSale_Option" type="checkbox" value="喫煙室" name="forSale_Option">
                                             <label for="checkbox5">
-                                                	흡연장
+                                                	喫煙室
                                             </label>
                                         </div>
                                         <div class="checkbox checkbox-theme checkbox-circle">
-                                            <input id="checkbox6" class="forSale_Option" type="checkbox" value="주차장" name="forSale_Option">
+                                            <input id="checkbox6" class="forSale_Option" type="checkbox" value="駐車場" name="forSale_Option">
                                             <label for="checkbox6">
-                                                	주차장
+                                                	駐車場
                                             </label>
                                         </div>
                                     </div>
@@ -1123,7 +1123,7 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div> -->
                             <div class="col-md-4 col-sm-4">
-                                <a href="#" class="btn button-md button-theme" id="insertItem">등록</a>
+                                <a href="#" class="btn button-md button-theme" id="insertItem">登録</a>
                                 <!-- <a href="#" class="btn button-md button-theme">Preview</a> -->
                             </div>
                             
