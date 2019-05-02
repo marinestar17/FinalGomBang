@@ -464,7 +464,7 @@
                                
                                <div class="stats">${allTrade}건</div>
                                 <span data-type="bar" data-sparkline="true">3,4,3,7,12,9,9,5,8,8,8,12,14,20,16,14,20,12,10,14,8,4,4,5</span>
-                               <p><font color="#F15F5F">Trade Complete</font></p>
+                               <p><font color="#747474">Trade Complete</font></p>
                             </div>
                         </div>
                     </div>

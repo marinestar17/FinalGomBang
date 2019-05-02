@@ -98,7 +98,7 @@
 						    	                labels: ['Enterprises', 'Customers', 'Items', 'Reservation' , 'Trade'],
 						    	                hideHover: 'auto',
 						    	                resize: true,
-						    	                lineColors: ['#f6b225', '#DA4453', '#16a085', '#050099', '#F15F5F']
+						    	                lineColors: ['#f6b225', '#DA4453', '#16a085', '#050099', '#747474']
 						    	            }); //MORRIS
 			      	        			}
 			      	        		})

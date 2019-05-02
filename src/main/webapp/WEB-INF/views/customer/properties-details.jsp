@@ -187,6 +187,10 @@ pageEncoding="UTF-8"%>
    		var customer = "${sessionScope.customer.customer_ID}";
    		var enterprise = "${detailItem.enterprise_ID}";
    		var seq = "${detailItem.forSale_Seq}"; 
+   		console.log(visa);
+   		console.log(guarantor);
+   		console.log(enterprise);
+   		console.log(seq);
  		 $.ajax({
     			url:"insertCustomerReservation"
     			,type:"post"

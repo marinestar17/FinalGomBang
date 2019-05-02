@@ -382,7 +382,7 @@
         <!-- #END# Right Sidebar -->
         <section class="content">
             <div class="page-heading">
-                <h1>매물 통계</h1>  
+                <h1>ForSale Static</h1>  
                 <ol class="breadcrumb">
                     <li><a href="GomBangAdmin">Main Page</a></li>
                     <li><a href="javascript:void(0);">Static</a></li>

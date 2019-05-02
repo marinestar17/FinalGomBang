@@ -407,9 +407,9 @@ function checkForm(){
                                 <b id="message8"></b>
                             </div>
                             <div class="form-group2">
-                                <input type="radio" name="enterprise_Code" id="code" value="부동산" <c:if test="${Enterprise.enterprise_Code=='부동산'}">checked="checked"</c:if> checked="checked">부동산
-                                <input type="radio" name="enterprise_Code" id="code" value="보증업체" <c:if test="${Enterprise.enterprise_Code=='보증업체'}">checked="checked"</c:if>>보증업체
-                                <input type="radio" name="enterprise_Code" id="code" value="기타" <c:if test="${Enterprise.enterprise_Code=='기타'}">checked="checked"</c:if>>기타<br>
+                                <input type="radio" name="enterprise_Code" id="code" value="부동산" <c:if test="${Enterprise.enterprise_Code=='부동산'}">checked="checked"</c:if> checked="checked">不動産
+                                <input type="radio" name="enterprise_Code" id="code" value="보증업체" <c:if test="${Enterprise.enterprise_Code=='보증업체'}">checked="checked"</c:if>>保障業態
+                                <input type="radio" name="enterprise_Code" id="code" value="기타" <c:if test="${Enterprise.enterprise_Code=='기타'}">checked="checked"</c:if>>その他<br>
                                 <b id="message9"></b>
                             </div>
                             <div class="form-group">

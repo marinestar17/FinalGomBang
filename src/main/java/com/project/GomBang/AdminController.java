@@ -403,11 +403,11 @@ public class AdminController {
 			eList = dao.allEnterprisePrint();
 			for (Enterprise e : eList) {
 				if (e.getEnterprise_Permission().equals("W")) {
-					e.setEnterprise_Permission("대기중");
+					e.setEnterprise_Permission("Waiting");
 				} else if (e.getEnterprise_Permission().equals("N")) {
-					e.setEnterprise_Permission("거부됨");
+					e.setEnterprise_Permission("Deny");
 				} else {
-					e.setEnterprise_Permission("승인됨");
+					e.setEnterprise_Permission("Accept");
 				}
 			}
 			model.addAttribute("enterpriseList", eList);

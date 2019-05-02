@@ -802,7 +802,7 @@
 			forSale_HouseType like '%'||#{search}||'%'
 		</if>
 		ORDER BY
-			FORSALE_INDATE DESC
+			FORSALE_SEQ ASC
 	</select>
 	
 	<!--관리자 입장에서 매물 상세 조회  -->

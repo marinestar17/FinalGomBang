@@ -519,18 +519,20 @@ public class CustomerController {
 	
 	//손님이 예약
 	@RequestMapping(value = "/insertCustomerReservation", method = {RequestMethod.POST,RequestMethod.GET})
-	public @ResponseBody int insertCustomerReservation(String reservation_Visa, String reservation_Guarantor, String enterprise_ID, String customer_ID, String forSale_Seq) {
+	public @ResponseBody int insertCustomerReservation(Reservation reservation/*String reservation_Visa, String reservation_Guarantor, String enterprise_ID, String customer_ID, String forSale_Seq*/) {
 		int result = 0;
-		Reservation reservation = new Reservation();
+		/*Reservation reservation = new Reservation();
 		reservation.setReservation_Visa(reservation_Visa);
 		reservation.setReservation_Guarantor(reservation_Guarantor);
 		reservation.setEnterprise_ID(enterprise_ID);
 		reservation.setCustomer_ID(customer_ID);
-		reservation.setForSale_Seq(forSale_Seq);
+		reservation.setForSale_Seq(forSale_Seq);*/
 		try {
 			result = dao.insertCustomerReservation(reservation);
+			System.out.println(result);
+			System.out.println(reservation);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		return result;
 	}

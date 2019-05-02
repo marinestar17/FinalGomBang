@@ -250,8 +250,9 @@ public class CustomerDAO {
 		int result = 0;
 		try {
 			result = map.insertCustomerReservation(reservation);
+			System.out.println("dao" + result);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		return result;
 	}

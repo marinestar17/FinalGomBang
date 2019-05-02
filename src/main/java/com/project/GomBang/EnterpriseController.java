@@ -183,7 +183,7 @@ public class EnterpriseController {
 	public String insertItem(Item item,HttpSession session) {
 		System.out.println("콘트롤러 확인");
 		String userid = (String) session.getAttribute("enterpriseLoginID");
-		item.setEnterprise_ID("aaa");
+		item.setEnterprise_ID(userid);
 		System.out.println(item);
 		dao.insertItem(item);
 		System.out.println(item.getForSale_Seq());
@@ -197,7 +197,7 @@ public class EnterpriseController {
 	
 	
 	@RequestMapping(value = "/file-upload")
-	public String requestupload2(MultipartHttpServletRequest upload) {
+	public @ResponseBody void requestupload2(MultipartHttpServletRequest upload) {
 		System.out.println("확인");
 		
 		List<MultipartFile> fileList = upload.getFiles("file");
@@ -227,7 +227,6 @@ public class EnterpriseController {
 			}
 		}
 
-		return "redirect:/gg";
 	}
 	
 	@RequestMapping(value="/ICList",method=RequestMethod.POST)
